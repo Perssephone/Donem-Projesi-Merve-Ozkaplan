@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Piton (Ball Python) - Egzotik Hayvanlar Dünyası</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .species-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            gap: 30px;
+        }
+        
+        .species-header-image {
+            width: 40%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .species-header-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .species-header-content {
+            width: 60%;
+        }
+        
+        .species-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .fact-card {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .fact-card h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .care-level {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .beginner { background-color: #4caf50; }
+        .intermediate { background-color: #ff9800; }
+        .advanced { background-color: #f44336; }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .gallery-item {
+            border-radius: 5px;
+            overflow: hidden;
+            height: 200px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .care-guide-section {
+            margin: 40px 0;
+        }
+        
+        .care-guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .care-guide-item {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .care-guide-item h4 {
+            color: var(--secondary-color);
+            margin-top: 0;
+        }
+        
+        .care-guide-item ul {
+            padding-left: 20px;
+        }
+        
+        .care-guide-item li {
+            margin-bottom: 10px;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            margin: 30px 0;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .lifecycle-timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+        
+        .lifecycle-timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -13px;
+            background-color: white;
+            border: 4px solid var(--secondary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid var(--primary-color);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--primary-color);
+        }
+        
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid var(--primary-color);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--primary-color) transparent transparent;
+        }
+        
+        .right::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        @media screen and (max-width: 768px) {
+            .species-header {
+                flex-direction: column;
+            }
+            
+            .species-header-image, .species-header-content {
+                width: 100%;
+            }
+            
+            .lifecycle-timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-container::before {
+                left: 60px;
+                border: medium solid var(--primary-color);
+                border-width: 10px 10px 10px 0;
+                border-color: transparent var(--primary-color) transparent transparent;
+            }
+            
+            .left::after, .right::after {
+                left: 18px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+        }
+        
+        .related-species {
+            margin-top: 60px;
+        }
+        
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .related-card {
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .related-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .related-image {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .related-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .related-content {
+            padding: 15px;
+        }
+        
+        .related-content h4 {
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+        
+        .related-content p {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .morph-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .morph-card {
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .morph-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .morph-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .morph-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .morph-content {
+            padding: 15px;
+            background-color: white;
+        }
+        
+        .morph-content h4 {
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+        
+        .morph-content p {
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Egzotik Hayvanlar Dünyası</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Ana Sayfa</a></li>
+                    <li><a href="../snakes.html">Yılanlar</a></li>
+                    <li><a href="../tarantulas.html">Tarantulalar</a></li>
+                    <li><a href="../lizards.html">Kertenkeleler</a></li>
+                    <li><a href="../about.html">Hakkımızda</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="animal-header">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="../index.html">Ana Sayfa</a> &gt; 
+                <a href="../snakes.html">Yılanlar</a> &gt; 
+                <span>Top Piton (Ball Python)</span>
+            </div>
+            <h2>Top Piton (<em>Python regius</em>)</h2>
+        </div>
+    </section>
+
+    <section class="animal-info">
+        <div class="container">
+            <div class="species-header">
+                <div class="species-header-image">
+                    <img src="https://source.unsplash.com/600x400/?ball+python" alt="Top Piton (Ball Python)">
+                </div>
+                <div class="species-header-content">
+                    <h3>Genel Bakış</h3>
+                    <p>Top Piton (Python regius), diğer adıyla Ball Python, Afrika kökenli orta boyutlu bir boğucu yılandır. Adını kendini savunmak için top şeklinde kıvrılma alışkanlığından alır. Uysal mizacı, göreceli olarak küçük boyutu ve kolay bakımı nedeniyle dünyanın en popüler evcil yılanlarından biridir.</p>
+                    
+                    <p>Bu tür, özellikle yeni başlayan yılan sahipleri için ideal bir seçimdir. Uzun ömürleri, çeşitli renk morfolojileri (varyasyonları) ve genellikle sakin doğaları, onları evcil hayvan olarak çok aranan yılanlar haline getirmiştir. Uygun bakım koşulları altında, bir Top Piton 30 yıldan fazla yaşayabilir.</p>
+                    
+                    <div class="taxonomy">
+                        <h4>Bilimsel Sınıflandırma</h4>
+                        <p><strong>Alem:</strong> Animalia</p>
+                        <p><strong>Şube:</strong> Chordata</p>
+                        <p><strong>Sınıf:</strong> Reptilia</p>
+                        <p><strong>Takım:</strong> Squamata</p>
+                        <p><strong>Alttakım:</strong> Serpentes</p>
+                        <p><strong>Familya:</strong> Pythonidae</p>
+                        <p><strong>Cins:</strong> Python</p>
+                        <p><strong>Tür:</strong> P. regius</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="species-facts">
+                <div class="fact-card">
+                    <h4>Temel Özellikler</h4>
+                    <p><strong>Ortalama Boy:</strong> 90-150 cm</p>
+                    <p><strong>Ağırlık:</strong> 1.5-2.5 kg (dişiler daha büyük)</p>
+                    <p><strong>Yaşam Süresi:</strong> 20-30+ yıl</p>
+                    <p><strong>Zorluk Seviyesi:</strong> <span class="care-level beginner">Başlangıç</span></p>
+                    <p><strong>Mizaç:</strong> Uysal, sakin, genellikle tutulmaya toleranslı</p>
+                    <p><strong>Aktivite Düzeyi:</strong> Alacakaranlık/gece aktif (nocturnal)</p>
+                </div>
+                
+                <div class="fact-card">
+                    <h4>Habitat Bilgileri</h4>
+                    <p><strong>Doğal Habitat:</strong> Batı ve Orta Afrika'nın savanaları ve açık ormanları</p>
+                    <p><strong>Yaşam Tarzı:</strong> Yer yaşamı (Terrestrial), zaman zaman tırmanabilir</p>
+                    <p><strong>Doğal Davranış:</strong> Geceleri avlanır, gündüzleri kemirgen inlerinde veya termit tepelerinde gizlenir</p>
+                    <p><strong>İklim Tercihi:</strong> Sıcak, yarı kurak ila yarı nemli ortamlar</p>
+                    <p><strong>Koruma Durumu:</strong> CITES Ek II kapsamında korunmaktadır</p>
+                </div>
+                
+                <div class="fact-card">
+                    <h4>Fiziksel Özellikler</h4>
+                    <p><strong>Vücut Yapısı:</strong> Kaslı, kompakt vücut, büyük baş</p>
+                    <p><strong>Renk:</strong> Doğal (wild-type) renkleri siyah/kahverengi zemin üzerine altın desenleridir</p>
+                    <p><strong>Varyasyonlar:</strong> 1000'den fazla farklı renk morfolojisi üretilmiştir</p>
+                    <p><strong>Cinsiyet Farklılıkları:</strong> Dişiler genellikle daha büyük, erkekler daha küçük kafa ve daha uzun kuyruk</p>
+                    <p><strong>Gömlek Değişimi:</strong> Düzenli olarak deri değiştirir, büyüme hızına bağlı olarak</p>
+                </div>
+            </div>
+            
+            <div class="care-guide-section">
+                <h3>Detaylı Bakım Rehberi</h3>
+                <div class="care-guide-grid">
+                    <div class="care-guide-item">
+                        <h4>Terraryum Gereksinimleri</h4>
+                        <ul>
+                            <li><strong>Boyut:</strong> Yetişkin bir Top Piton için 90x45x45 cm boyutlarında bir terraryum idealdir. Yavru ve genç bireyler için daha küçük terraryumlar uygundur.</li>
+                            <li><strong>Terraryum Tipi:</strong> Kaçma riski en aza indirmek için kilitlenebilir kapağı olan bir terraryum tercih edilmelidir.</li>
+                            <li><strong>Substrat (Taban Malzemesi):</strong> Hindistan cevizi lifi (coco fiber), kiraz ağacı yongası, aspen talaşı veya gazete kağıdı kullanılabilir. Yutulabilecek küçük parçacıkları olan substratlardan kaçınılmalıdır.</li>
+                            <li><strong>Saklanma Alanları:</strong> En az iki adet saklanma kutusu/mağara sağlanmalıdır - biri sıcak, diğeri serin bölgede. Ticari sürüngen saklanma kutuları, yarım kütükler veya ters çevrilmiş saksılar kullanılabilir.</li>
+                            <li><strong>Tırmanma Olanakları:</strong> Düşük dallar veya kökler eklenebilir, ancak yüksek tırmanma yapıları gerekli değildir.</li>
+                            <li><strong>Su Kabı:</strong> Yılanın tam olarak içine girebileceği kadar büyük bir su kabı sağlanmalıdır (banyo yapabilmesi için).</li>
+                            <li><strong>Dekorasyon:</strong> Yapay veya canlı bitkiler, taşlar ve diğer doğal öğeler eklenebilir, ancak yılanı ezebilecek ağır nesnelerden kaçınılmalıdır.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Sıcaklık ve Nem</h4>
+                        <ul>
+                            <li><strong>Sıcaklık Gradyanı:</strong> Terraryumun bir ucunda sıcak, diğer ucunda serin bir bölge oluşturulmalıdır. Bu, yılanın vücut sıcaklığını düzenlemesine olanak tanır.</li>
+                            <li><strong>Sıcak Bölge:</strong> 31-33°C (88-92°F)</li>
+                            <li><strong>Serin Bölge:</strong> 26-28°C (78-82°F)</li>
+                            <li><strong>Gece Sıcaklığı:</strong> 24-27°C (75-80°F)</li>
+                            <li><strong>Isıtma Yöntemleri:</strong>
+                                <ul>
+                                    <li>Isıtma Pedleri: Terraryumun bir kenarının altına yerleştirilir (termostat ile kullanılmalıdır)</li>
+                                    <li>Seramik Isıtıcılar: Terraryumun üstüne monte edilir, ısı yayar ancak ışık yaymaz</li>
+                                    <li>Isıtma Lambaları: Hem ısı hem ışık sağlar, gece kapatılmalıdır</li>
+                                </ul>
+                            </li>
+                            <li><strong>Nem Oranı:</strong> %50-60</li>
+                            <li><strong>Nem Sağlama:</strong> Su kabının boyutu ve substratın bir kısmının hafifçe nemlendirilmesi ile nem ayarlanabilir</li>
+                            <li><strong>Ölçüm:</strong> Termostat ve higrometreler ile sıcaklık ve nem düzenli olarak izlenmelidir</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Beslenme</h4>
+                        <ul>
+                            <li><strong>Besin Türü:</strong> Top Pitonlar temel olarak kemirgenlerle (fareler, sıçanlar) beslenir</li>
+                            <li><strong>Beslenme Sıklığı ve Porsiyon:</strong>
+                                <ul>
+                                    <li>Yavrular (1 yaşına kadar): Her 5-7 günde bir yeni doğmuş veya yavru fare</li>
+                                    <li>Gençler (1-2 yaş): Her 7-10 günde bir genç fare veya yetişkin fare</li>
+                                    <li>Yetişkinler (3+ yaş): Her 10-14 günde bir yetişkin fare veya küçük sıçan</li>
+                                </ul>
+                            </li>
+                            <li><strong>Yem Boyutu:</strong> Yılanın vücudunun en geniş yerinden biraz daha büyük olmamalıdır (aşırı besleme yapmaktan kaçının)</li>
+                            <li><strong>Canlı veya Dondurulmuş:</strong> Dondurulmuş ve çözdürülmüş yem tercih edilir (daha güvenli ve daha az stresli)</li>
+                            <li><strong>Yem Hazırlama:</strong> Dondurulmuş yem tamamen çözdürülmeli ve vücut sıcaklığına kadar ısıtılmalıdır</li>
+                            <li><strong>Beslenme İpuçları:</strong>
+                                <ul>
+                                    <li>Yılanı elle beslemek yerine uzun cımbız veya maşa kullanın</li>
+                                    <li>Beslenme sonrası 48 saat boyunca yılanı tutmaktan kaçının (sindirimi bozabilir)</li>
+                                    <li>Yılan yemi reddettiğinde panik yapmayın, özellikle deri değişimi, çiftleşme veya mevsimsel değişimler sırasında bu normaldir</li>
+                                </ul>
+                            </li>
+                            <li><strong>Beslenme Reddi:</strong> Top Pitonlar bazen uzun süre yem reddedebilir. 2-3 aylık reddin ardından, yılanın sağlık durumu normale yakınsa, büyük bir endişe sebebi değildir. Daha uzun süren beslenme reddi veteriner ziyareti gerektirebilir.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Gömlek Değişimi (Deri Değişimi)</h4>
+                        <ul>
+                            <li><strong>Deri Değişim Sıklığı:</strong>
+                                <ul>
+                                    <li>Yavrular: 4-6 haftada bir</li>
+                                    <li>Yetişkinler: 6-8 haftada bir veya daha seyrek</li>
+                                </ul>
+                            </li>
+                            <li><strong>Deri Değişimi Belirtileri:</strong>
+                                <ul>
+                                    <li>Donuk, soluk veya mavi/gri renkli deri</li>
+                                    <li>Bulanık, mavi/gri gözler (göz pulları nedeniyle)</li>
+                                    <li>Gizlenme ve aktivitede azalma</li>
+                                    <li>Beslenme reddi</li>
+                                </ul>
+                            </li>
+                            <li><strong>Deri Değişimi Sırasında Bakım:</strong>
+                                <ul>
+                                    <li>Nem seviyesini biraz artırın (%60-65)</li>
+                                    <li>Su kabını dolu tutun</li>
+                                    <li>Deri değişimi sırasında yılanı rahatsız etmeyin</li>
+                                    <li>"Nemli kutu" eklemek yardımcı olabilir: nemli yosun ile dolu bir saklama kutusu</li>
+                                </ul>
+                            </li>
+                            <li><strong>Deri Değişimi Sorunları:</strong>
+                                <ul>
+                                    <li>Tamamlanmamış deri değişimi genellikle düşük nem nedeniyledir</li>
+                                    <li>Göz pulları veya kuyruk ucundaki deri kalıntıları dikkatlice çıkarılabilir (nemli havlu yardımıyla)</li>
+                                    <li>Sürekli deri değişimi sorunları bir veterinere danışılmasını gerektirebilir</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Sağlık Sorunları</h4>
+                        <ul>
+                            <li><strong>Yaygın Sağlık Sorunları:</strong>
+                                <ul>
+                                    <li><strong>Solunum Yolu Enfeksiyonları:</strong> Hırıltılı veya zorlu nefes alma, ağız açık nefes alma, burun akıntısı</li>
+                                    <li><strong>Ağız Çürüğü (Stomatit):</strong> Ağız içinde kızarıklık, şişlik veya peynir kıvamında madde</li>
+                                    <li><strong>Parazitler:</strong> İç veya dış parazitler, kötü sindirim, kilo kaybı, anormal dışkı</li>
+                                    <li><strong>Dahil Olmayan Gömlek (Deri Değişimi):</strong> Deri veya göz pullarının düzgün atılamaması</li>
+                                    <li><strong>Yanıklar:</strong> Düzgün düzenlenmemiş ısıtma nedeniyle deri yaralanmaları</li>
+                                    <li><strong>Kütle (Şişlikler):</strong> Dahili veya harici büyüme</li>
+                                </ul>
+                            </li>
+                            <li><strong>Önleyici Sağlık Bakımı:</strong>
+                                <ul>
+                                    <li>Düzenli veteriner kontrolleri (yılda en az bir kez)</li>
+                                    <li>Temiz bir ortam sağlamak</li>
+                                    <li>Doğru sıcaklık ve nem seviyelerini korumak</li>
+                                    <li>Kaliteli beslenme sağlamak</li>
+                                    <li>Stresi en aza indirmek</li>
+                                </ul>
+                            </li>
+                            <li><strong>Sağlık İpuçları:</strong>
+                                <ul>
+                                    <li>Yeni bir Top Piton aldığınızda, ilk olarak sürüngen veterinerine götürün</li>
+                                    <li>Dışkı örneğini parazit testi için toplayın</li>
+                                    <li>Yılanı düzenli olarak tartın ve kayıt tutun</li>
+                                    <li>Beslenme, deri değişimi ve dışkılama sıklığını kaydedin</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Tutma ve Etkileşim</h4>
+                        <ul>
+                            <li><strong>Alıştırma Süreci:</strong>
+                                <ul>
+                                    <li>Yeni bir yılan aldığınızda, en az 1-2 hafta dokunmadan bırakın</li>
+                                    <li>İlk birkaç beslemeden sonra kısa tutma seansları ile başlayın</li>
+                                    <li>Tutma süresini kademeli olarak artırın</li>
+                                </ul>
+                            </li>
+                            <li><strong>Tutma Teknikleri:</strong>
+                                <ul>
+                                    <li>Vücudunu orta kısmından nazikçe destekleyin</li>
+                                    <li>Hareket eden yılanı kontrol etmek için bir eliniz her zaman yılanın vücudunda olmalı</li>
+                                    <li>Başına yakın bölgeden tutmaktan kaçının (stres yaratabilir)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Güvenlik Kuralları:</strong>
+                                <ul>
+                                    <li>Yüksek yerlerden tutmaktan kaçının (düşme yaralanmaları ciddi olabilir)</li>
+                                    <li>Beslemeden önce ve sonra 48 saat tutmaktan kaçının</li>
+                                    <li>Deri değişimi sırasında tutmaktan kaçının</li>
+                                    <li>Yılanı kedi veya köpek gibi diğer evcil hayvanlardan uzak tutun</li>
+                                </ul>
+                            </li>
+                            <li><strong>Stres İşaretleri:</strong>
+                                <ul>
+                                    <li>Hızlı hareket veya sürekli kaçma girişimleri</li>
+                                    <li>Tıslamak veya savunma pozisyonuna geçmek</li>
+                                    <li>Top şeklinde sıkıca kıvrılmak</li>
+                                    <li>Stresli durumda ısırabilir veya üzerinize dışkılayabilir</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="morphs-section">
+                <h3>Renk Morfolojileri (Morphs)</h3>
+                <p>Top Pitonlar, sürüngen dünyasında üretilen en çeşitli renk ve desen morfolojilerine sahip hayvanlardan biridir. İşte en popüler bazı morphlardan örnekler:</p>
+                
+                <div class="morph-gallery">
+                    <div class="morph-card">
+                        <div class="morph-image">
+                            <img src="https://source.unsplash.com/600x400/?ball+python+albino" alt="Albino Top Piton">
+                        </div>
+                        <div class="morph-content">
+                            <h4>Albino</h4>
+                            <p>Pigmentasyon eksikliği nedeniyle siyah pigment olmayan, sarı ve beyaz renkli bir morfoloji.</p>
+                            <p><strong>Gen Tipi:</strong> Resesif</p>
+                        </div>
+                    </div>
+                    
+                    <div class="morph-card">
+                        <div class="morph-image">
+                            <img src="https://source.unsplash.com/600x400/?ball+python+spider" alt="Spider Top Piton">
+                        </div>
+                        <div class="morph-content">
+                            <h4>Spider</h4>
+                            <p>İnce, örümcek ağı benzeri desenleri olan bir morfoloji. Not: Nörolojik sorunlarla ilişkilendirilmiştir.</p>
+                            <p><strong>Gen Tipi:</strong> Dominant</p>
+                        </div>
+                    </div>
+                    
+                    <div class="morph-card">
+                        <div class="morph-image">
+                            <img src="https://source.unsplash.com/600x400/?ball+python+piebald" alt="Piebald Top Piton">
+                        </div>
+                        <div class="morph-content">
+                            <h4>Piebald</h4>
+                            <p>Vücudunda normal pigmentli alanlar ve tamamen beyaz alanlar olan bir morfoloji.</p>
+                            <p><strong>Gen Tipi:</strong> Resesif</p>
+                        </div>
+                    </div>
+                    
+                    <div class="morph-card">
+                        <div class="morph-image">
+                            <img src="https://source.unsplash.com/600x400/?ball+python+mojave" alt="Mojave Top Piton">
+                        </div>
+                        <div class="morph-content">
+                            <h4>Mojave</h4>
+                            <p>Açık desenli ve belirgin "hayalet" (ghost) desenleri olan bir morfoloji. Blue Eyed Leucistic üretiminde kullanılır.</p>
+                            <p><strong>Gen Tipi:</strong> Co-dominant</p>
+                        </div>
+                    </div>
+                    
+                    <div class="morph-card">
+                        <div class="morph-image">
+                            <img src="https://source.unsplash.com/600x400/?ball+python+pinstripe" alt="Pinstripe Top Piton">
+                        </div>
+                        <div class="morph-content">
+                            <h4>Pinstripe</h4>
+                            <p>Temiz, ince çizgili desenleri olan bir morfoloji.</p>
+                            <p><strong>Gen Tipi:</strong> Dominant</p>
+                        </div>
+                    </div>
+                    
+                    <div class="morph-card">
+                        <div class="morph-image">
+                            <img src="https://source.unsplash.com/600x400/?ball+python+pastel" alt="Pastel Top Piton">
+                        </div>
+                        <div class="morph-content">
+                            <h4>Pastel</h4>
+                            <p>Açık renkli, canlı sarı pigmentli popüler bir morfoloji.</p>
+                            <p><strong>Gen Tipi:</strong> Co-dominant</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-section">
+                <h3>Fotoğraf Galerisi</h3>
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <img src="https://source.unsplash.com/600x400/?ball+python+1" alt="Top Piton 1">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://source.unsplash.com/600x400/?ball+python+2" alt="Top Piton 2">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://source.unsplash.com/600x400/?python+snake" alt="Top Piton 3">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://source.unsplash.com/600x400/?pet+snake" alt="Top Piton 4">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="related-species">
+                <h3>Benzer Türler</h3>
+                <p>Top Pitona benzer özelliklere sahip diğer yılan türleri:</p>
+                <div class="related-grid">
+                    <a href="pantherophis-guttatus.html" class="related-card">
+                        <div class="related-image">
+                            <img src="https://source.unsplash.com/600x400/?corn+snake" alt="Mısır Yılanı">
+                        </div>
+                        <div class="related-content">
+                            <h4>Mısır Yılanı</h4>
+                            <p><em>Pantherophis guttatus</em></p>
+                            <p>Zorluk: <span class="care-level beginner">Başlangıç</span></p>
+                        </div>
+                    </a>
+                    <a href="boa-constrictor.html" class="related-card">
+                        <div class="related-image">
+                            <img src="https://source.unsplash.com/600x400/?boa+constrictor" alt="Boa Yılanı">
+                        </div>
+                        <div class="related-content">
+                            <h4>Boa Yılanı</h4>
+                            <p><em>Boa constrictor</em></p>
+                            <p>Zorluk: <span class="care-level intermediate">Orta</span></p>
+                        </div>
+                    </a>
+                    <a href="lampropeltis-getula.html" class="related-card">
+                        <div class="related-image">
+                            <img src="https://source.unsplash.com/600x400/?king+snake" alt="Kral Yılanı">
+                        </div>
+                        <div class="related-content">
+                            <h4>Kral Yılanı</h4>
+                            <p><em>Lampropeltis getula</em></p>
+                            <p>Zorluk: <span class="care-level intermediate">Başlangıç-Orta</span></p>
+                        </div>
+                    </a>
+                    <a href="python-reticulatus.html" class="related-card">
+                        <div class="related-image">
+                            <img src="https://source.unsplash.com/600x400/?reticulated+python" alt="Retiküle Piton">
+                        </div>
+                        <div class="related-content">
+                            <h4>Retiküle Piton</h4>
+                            <p><em>Python reticulatus</em></p>
+                            <p>Zorluk: <span class="care-level advanced">Çok İleri</span></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="faq-section">
+                <h3>Sık Sorulan Sorular</h3>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <h4>Top Piton'lar ne kadar uzun yaşar?</h4>
+                        <div class="accordion-content">
+                            <p>İyi bakım altında, Top Pitonlar 20-30+ yıl yaşayabilir. Bu, uzun vadeli bir taahhüt gerektiren bir evcil hayvan olduğu anlamına gelir.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4>Top Piton'lar tehlikeli midir?</h4>
+                        <div class="accordion-content">
+                            <p>Hayır, Top Pitonlar genellikle uysal hayvanlardır ve zehirli değillerdir. Avlarını zehir yerine sararak boğarlar. İnsanlar için nadiren agresiftirler ve ısırıkları genellikle minör yaralanmalara neden olur.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4>Top Piton'um yemek yemiyor, ne yapmalıyım?</h4>
+                        <div class="accordion-content">
+                            <p>Yemek reddi, Top Pitonlarda özellikle kış aylarında veya deri değişimi sırasında yaygındır. Sağlıklı bir yılan, birkaç ay yemeden hayatta kalabilir. Ancak, diğer sağlık sorunları (zayıf vücut durumu, ağırlık kaybı, anormal davranış) eşlik ediyorsa veterinere başvurun.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4>Top Piton'umun cinsiyetini nasıl belirleyebilirim?</h4>
+                        <div class="accordion-content">
+                            <p>Cinsiyet belirleme, deneyim gerektirir. En güvenilir yöntem "popping" (erkekler için) veya "probing" (her iki cinsiyet için) olarak bilinen tekniklerdir. Bunlar profesyonel bir veteriner veya deneyimli bir üretici tarafından yapılmalıdır. Ayrıca, kuyruk genişliği ve şekli bazı ipuçları verebilir (erkeklerin genellikle daha ince ve daha uzun kuyrukları vardır).</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4>Top Piton'lar grup halinde barındırılabilir mi?</h4>
+                        <div class="accordion-content">
+                            <p>Hayır, Top Pitonlar yalnız yaşayan hayvanlardır ve ayrı terraryumlarda tutulmalıdır. Birlikte barındırıldıklarında, stres yaşayabilir, beslenme sorunları yaşayabilir veya birbirlerine zarar verebilirler. Sadece çiftleşme amaçlı kısa süreli bir araya gelmelidirler.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Egzotik Hayvanlar Dünyası. Tüm hakları saklıdır.</p>
+            <div class="social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Accordion işlevselliği
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            
+            accordionItems.forEach(item => {
+                const header = item.querySelector('h4');
+                const content = item.querySelector('.accordion-content');
+                
+                // Başlangıçta tüm içerikleri gizle
+                content.style.display = 'none';
+                
+                header.addEventListener('click', () => {
+                    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

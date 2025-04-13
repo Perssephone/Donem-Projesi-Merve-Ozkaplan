@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarantulalar - Egzotik Hayvanlar Dünyası</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .species-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .taxonomy {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .taxonomy p {
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+        
+        .species-card {
+            transition: transform 0.3s;
+        }
+        
+        .species-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .care-level {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+            color: white;
+            margin-top: 5px;
+        }
+        
+        .beginner {
+            background-color: #4caf50;
+        }
+        
+        .intermediate {
+            background-color: #ff9800;
+        }
+        
+        .advanced {
+            background-color: #f44336;
+        }
+        
+        .habitat-tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            background-color: #e0f2f1;
+            color: #00796b;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .tabs {
+            margin: 30px 0;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 10px 15px;
+            background-color: #f5f5f5;
+            border: none;
+            cursor: pointer;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            border-radius: 5px 5px 0 0;
+            transition: background-color 0.3s;
+        }
+        
+        .tab-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 0 5px 5px 5px;
+            background-color: white;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .fact-list {
+            background-color: #fffde7;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .fact-list h4 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        
+        .fact-list ul {
+            list-style-type: circle;
+            margin-left: 20px;
+        }
+        
+        .care-section {
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Egzotik Hayvanlar Dünyası</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="tarantulas.html" class="active">Tarantulalar</a></li>
+                    <li><a href="snakes.html">Yılanlar</a></li>
+                    <li><a href="lizards.html">Kertenkeleler</a></li>
+                    <li><a href="about.html">Hakkımızda</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="animal-header">
+        <div class="container">
+            <h2>Tarantulalar</h2>
+            <p>Dünyanın en etkileyici örümcek türlerinden biri olan tarantulaların büyüleyici dünyasını keşfedin.</p>
+        </div>
+    </section>
+
+    <section class="animal-info">
+        <div class="container">
+            <h2>Tarantulalar Hakkında Genel Bilgi</h2>
+            <p>Tarantulalar (Theraphosidae familyası), dünyanın en büyük örümcek türlerindendir. Tüm kıtalarda (Antarktika hariç) doğal yaşam alanlarına sahiptirler. Bilinen 900'den fazla tarantula türü bulunmaktadır.</p>
+            
+            <div class="taxonomy">
+                <h3>Bilimsel Sınıflandırma</h3>
+                <p><strong>Alem:</strong> Animalia (Hayvanlar)</p>
+                <p><strong>Şube:</strong> Arthropoda (Eklem bacaklılar)</p>
+                <p><strong>Sınıf:</strong> Arachnida (Örümceğimsiler)</p>
+                <p><strong>Takım:</strong> Araneae (Örümcekler)</p>
+                <p><strong>Alttakım:</strong> Mygalomorphae</p>
+                <p><strong>Familya:</strong> Theraphosidae (Tarantulalar)</p>
+            </div>
+            
+            <div class="fact-list">
+                <h4>Tarantulalar Hakkında İlginç Bilgiler</h4>
+                <ul>
+                    <li>Dişi tarantulalar 20-30 yıl, erkekler ise genellikle 5-10 yıl yaşayabilir.</li>
+                    <li>Tarantulalar büyüdükçe düzenli olarak deri değiştirir (gömlek döker).</li>
+                    <li>Bazı türler, tehdit altında hissettiklerinde urticarial kıllar atabilir, bu kıllar ciltte ve gözlerde tahriş yaratabilir.</li>
+                    <li>Çoğu tarantulanın zehri insanlar için ciddi bir tehlike oluşturmaz.</li>
+                    <li>Tarantulaların 8 gözü vardır, ancak görüşleri zayıftır. Çevrelerini algılamak için daha çok vücut kıllarındaki titreşim reseptörlerine güvenirler.</li>
+                </ul>
+            </div>
+            
+            <div class="tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="openTab(event, 'new-world')">Yeni Dünya Tarantulaları</button>
+                    <button class="tab-btn" onclick="openTab(event, 'old-world')">Eski Dünya Tarantulaları</button>
+                    <button class="tab-btn" onclick="openTab(event, 'arboreal')">Ağaç Yaşamı Türleri</button>
+                    <button class="tab-btn" onclick="openTab(event, 'terrestrial')">Yer Yaşamı Türleri</button>
+                </div>
+                
+                <div id="new-world" class="tab-content active">
+                    <h3>Yeni Dünya Tarantulaları</h3>
+                    <p>Kuzey, Orta ve Güney Amerika'dan gelen türler. Bu grupta yer alan tarantulalar şu özelliklere sahiptir:</p>
+                    <ul>
+                        <li>Genellikle daha uysal mizaçlıdırlar</li>
+                        <li>Tehdit altında hissettiklerinde urtikarya (tahriş edici) kıllar atabilirler</li>
+                        <li>Zehirleri nispeten daha zayıftır</li>
+                        <li>Evcil hayvan olarak en çok tercih edilen grup bu tarantulalardır</li>
+                        <li><strong>Popüler Cinsler:</strong> Brachypelma, Tliltocatl, Aphonopelma, Grammostola, Avicularia, Caribena</li>
+                    </ul>
+                </div>
+                
+                <div id="old-world" class="tab-content">
+                    <h3>Eski Dünya Tarantulaları</h3>
+                    <p>Avrupa, Asya, Afrika ve Avustralya'dan gelen türler. Bu grupta yer alan tarantulalar şu özelliklere sahiptir:</p>
+                    <ul>
+                        <li>Genellikle daha agresif veya savunmacı olabilirler</li>
+                        <li>Urtikarya kılları yoktur, ancak daha güçlü zehirleri ve daha büyük çeneleri vardır</li>
+                        <li>Daha hızlı hareket ederler ve daha çabuk savunma pozisyonu alabilirler</li>
+                        <li>Daha deneyimli bakıcılar için uygun olabilirler</li>
+                        <li><strong>Popüler Cinsler:</strong> Poecilotheria, Pterinochilus, Ceratogyrus, Phormictopus, Harpactira</li>
+                    </ul>
+                </div>
+                
+                <div id="arboreal" class="tab-content">
+                    <h3>Ağaç Yaşamı (Arboreal) Tarantulalar</h3>
+                    <p>Ağaçlarda ve yüksek alanlarda yaşayan türler:</p>
+                    <ul>
+                        <li>Dikey tırmanma yetenekleri gelişmiştir</li>
+                        <li>Genellikle daha ince ve uzun bacaklara sahiptir</li>
+                        <li>Yukarıdan ağ örerek yuva yaparlar</li>
+                        <li>Bakım için daha yüksek terraryumlar gerektirir</li>
+                        <li><strong>Örnekler:</strong> Avicularia avicularia (Pembe Ayaklı Tarantula), Caribena versicolor (Antiller Pembe Ayaklı), Poecilotheria metallica (Safir Ornamental)</li>
+                    </ul>
+                </div>
+                
+                <div id="terrestrial" class="tab-content">
+                    <h3>Yer Yaşamı (Terrestrial) Tarantulalar</h3>
+                    <p>Yerde yaşayan, genellikle yuva kazıcı türler:</p>
+                    <ul>
+                        <li>Daha sağlam yapılı vücutları vardır</li>
+                        <li>Toprakta tünel veya çukur kazarak yaşarlar</li>
+                        <li>Daha geniş, daha düşük terraryumlar gerektirirler</li>
+                        <li>Beslenmeleri ve bakımları genellikle daha kolaydır</li>
+                        <li><strong>Örnekler:</strong> Brachypelma hamorii (Meksika Kırmızı Diz), Grammostola rosea (Şili Gül), Tliltocatl albopilosus (Kıvırcık Saçlı)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h2>Popüler Tarantula Türleri</h2>
+            <p>Dünya genelinde 900'den fazla tarantula türü bulunmaktadır. İşte evcil hayvan olarak bakılan en popüler türlerden bazıları:</p>
+            
+            <div class="species-grid">
+                <div class="species-card">
+                    <a href="species/brachypelma-hamorii.html" class="species-link">
+                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?mexican+red+knee+tarantula');"></div>
+                    <div class="species-content">
+                        <h3>Meksika Kırmızı Diz Tarantulası</h3>
+                        <p><em>Brachypelma hamorii</em></p>
+                        <p>Meksika'nın batı kıyılarında yaşayan bu tür, parlak kırmızı eklemleri ve sakin doğası nedeniyle yeni başlayanlar için ideal bir türdür.</p>
+                        <div class="habitat-tags">
+                            <span class="habitat-tag">Yer Yaşamı</span>
+                            <span class="habitat-tag">Yeni Dünya</span>
+                        </div>
+                        <div class="specs">
+                            <p><strong>Ortalama Boy:</strong> 12-15 cm</p>
+                            <p><strong>Yaşam Süresi:</strong> Dişiler 25-30 yıl, Erkekler 5-10 yıl</p>
+                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level beginner">Başlangıç</span></p>
+                            <p><strong>Mizaç:</strong> Sakin, nadir olarak agresif</p>
+                            <p><strong>Doğal Habitat:</strong> Meksika'nın batı sahil kıyısı boyunca yarı kurak bölgeler</p>
+                            <p><strong>Önerilen Terraryum Boyutu:</strong> 30x30x30 cm</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+
+                <div class="species-card">
+                    <a href="species/tliltocatl-albopilosus.html" class="species-link">
+                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?curly+hair+tarantula');"></div>
+                    <div class="species-content">
+                        <h3>Kıvırcık Saçlı Tarantula</h3>
+                        <p><em>Tliltocatl albopilosus</em></p>
+                        <p>Orta Amerika'da bulunan bu tür, vücudunu kaplayan kıvırcık kılları nedeniyle bu ismi almıştır. Sakin yapısı ile bilinir.</p>
+                        <div class="habitat-tags">
+                            <span class="habitat-tag">Yer Yaşamı</span>
+                            <span class="habitat-tag">Yeni Dünya</span>
+                        </div>
+                        <div class="specs">
+                            <p><strong>Ortalama Boy:</strong> 13-16 cm</p>
+                            <p><strong>Yaşam Süresi:</strong> Dişiler 15-20 yıl, Erkekler 4-7 yıl</p>
+                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level beginner">Başlangıç</span></p>
+                            <p><strong>Mizaç:</strong> Sakin, çok uysal</p>
+                            <p><strong>Doğal Habitat:</strong> Kosta Rika, Honduras ve Nikaragua'nın tropikal ormanları</p>
+                            <p><strong>Önerilen Terraryum Boyutu:</strong> 30x30x30 cm</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+
+                <div class="species-card">
+                    <a href="species/avicularia-avicularia.html" class="species-link">
+                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?pink+toe+tarantula');"></div>
+                    <div class="species-content">
+                        <h3>Pembe Ayaklı Tarantula</h3>
+                        <p><em>Avicularia avicularia</em></p>
+                        <p>Güney Amerika'nın tropikal ormanlarında ağaç üzerinde yaşayan bu tür, bacaklarının uçlarındaki pembe rengi ile dikkat çeker.</p>
+                        <div class="habitat-tags">
+                            <span class="habitat-tag">Ağaç Yaşamı</span>
+                            <span class="habitat-tag">Yeni Dünya</span>
+                        </div>
+                        <div class="specs">
+                            <p><strong>Ortalama Boy:</strong> 10-13 cm</p>
+                            <p><strong>Yaşam Süresi:</strong> Dişiler 10-15 yıl, Erkekler 3-4 yıl</p>
+                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level intermediate">Orta</span></p>
+                            <p><strong>Mizaç:</strong> Ürkek, genellikle kaçmayı tercih eder</p>
+                            <p><strong>Doğal Habitat:</strong> Güney Amerika'nın kuzey bölgelerindeki tropikal ormanlar</p>
+                            <p><strong>Önerilen Terraryum Boyutu:</strong> 30x30x45 cm (daha fazla yükseklik)</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+
+                <div class="species-card">
+                    <a href="species/grammostola-rosea.html" class="species-link">
+                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?chilean+rose+tarantula');"></div>
+                    <div class="species-content">
+                        <h3>Şili Gül Tarantulası</h3>
+                        <p><em>Grammostola rosea</em></p>
+                        <p>Şili'nin kurak bölgelerinde bulunan bu tür, pembemsi-kahverengi rengi ve dayanıklılığı ile tanınır.</p>
+                        <div class="habitat-tags">
+                            <span class="habitat-tag">Yer Yaşamı</span>
+                            <span class="habitat-tag">Yeni Dünya</span>
+                        </div>
+                        <div class="specs">
+                            <p><strong>Ortalama Boy:</strong> 12-15 cm</p>
+                            <p><strong>Yaşam Süresi:</strong> Dişiler 15-20 yıl, Erkekler 4-6 yıl</p>
+                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level beginner">Başlangıç</span></p>
+                            <p><strong>Mizaç:</strong> Sakin, genellikle uysal</p>
+                            <p><strong>Doğal Habitat:</strong> Şili, Bolivya ve Arjantin'in kurak ve yarı kurak bölgeleri</p>
+                            <p><strong>Önerilen Terraryum Boyutu:</strong> 30x30x30 cm</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                
+                <div class="species-card">
+                    <a href="species/theraphosa-blondi.html" class="species-link">
+                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?goliath+bird+eater');"></div>
+                    <div class="species-content">
+                        <h3>Goliath Kuş Yiyen Tarantula</h3>
+                        <p><em>Theraphosa blondi</em></p>
+                        <p>Dünyanın en büyük tarantula türü olan bu devasa örümcek, 30 cm'ye varan bacak açıklığıyla etkileyici bir görünüme sahiptir.</p>
+                        <div class="habitat-tags">
+                            <span class="habitat-tag">Yer Yaşamı</span>
+                            <span class="habitat-tag">Yeni Dünya</span>
+                        </div>
+                        <div class="specs">
+                            <p><strong>Ortalama Boy:</strong> 25-30 cm</p>
+                            <p><strong>Yaşam Süresi:</strong> Dişiler 15-25 yıl, Erkekler 3-6 yıl</p>
+                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level advanced">İleri</span></p>
+                            <p><strong>Mizaç:</strong> Agresif olabilir, savunmacı</p>
+                            <p><strong>Doğal Habitat:</strong> Amazon Yağmur Ormanları (Brezilya, Venezuela, Guyana)</p>
+                            <p><strong>Önerilen Terraryum Boyutu:</strong> 45x45x30 cm (büyük bir tür)</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                
+                <div class="species-card">
+                    <a href="species/caribena-versicolor.html" class="species-link">
+                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?tarantula+spider');"></div>
+                    <div class="species-content">
+                        <h3>Antiller Pembe Ayaklı Tarantula</h3>
+                        <p><em>Caribena versicolor</em></p>
+                        <p>Küçük yavruları mavi-mor renkli olan, büyüdükçe muhteşem rengarenk bir görünüm kazanan etkileyici bir ağaç tarantulası.</p>
+                        <div class="habitat-tags">
+                            <span class="habitat-tag">Ağaç Yaşamı</span>
+                            <span class="habitat-tag">Yeni Dünya</span>
+                        </div>
+                        <div class="specs">
+                            <p><strong>Ortalama Boy:</strong> 10-12 cm</p>
+                            <p><strong>Yaşam Süresi:</strong> Dişiler 10-15 yıl, Erkekler 2-4 yıl</p>
+                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level intermediate">Orta</span></p>
+                            <p><strong>Mizaç:</strong> Genellikle uysal, hızlı hareket edebilir</p>
+                            <p><strong>Doğal Habitat:</strong> Martinik Adası (Karayipler)</p>
+                            <p><strong>Önerilen Terraryum Boyutu:</strong> 30x30x45 cm (yüksek terraryum)</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                
+                <div class="species-card">
+                    <a href="species/pterinochilus-murinus.html" class="species-link">
+                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?orange+baboon+tarantula');"></div>
+                    <div class="species-content">
+                        <h3>Turuncu Babun Tarantula</h3>
+                        <p><em>Pterinochilus murinus</em></p>
+                        <p>Canlı turuncu rengi ve hızlı, agresif doğası nedeniyle "Turuncu Bituminous Tarantula" (OBT) olarak da bilinir.</p>
+                        <div class="habitat-tags">
+                            <span class="habitat-tag">Kazıcı</span>
+                            <span class="habitat-tag">Eski Dünya</span>
+                        </div>
+                        <div class="specs">
+                            <p><strong>Ortalama Boy:</strong> 10-15 cm</p>
+                            <p><strong>Yaşam Süresi:</strong> Dişiler 15-20 yıl, Erkekler 3-4 yıl</p>
+                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level advanced">İleri</span></p>
+                            <p><strong>Mizaç:</strong> Çok agresif, güçlü zehir</p>
+                            <p><strong>Doğal Habitat:</strong> Doğu Afrika'nın savanları (Kenya, Tanzanya, Uganda)</p>
+                            <p><strong>Önerilen Terraryum Boyutu:</strong> 30x30x30 cm, derin substrat</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                
+                <div class="species-card">
+                    <a href="species/cyriopagopus-lividus.html" class="species-link">
+                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?cobalt+blue+tarantula');"></div>
+                    <div class="species-content">
+                        <h3>Kobalt Mavi Tarantula</h3>
+                        <p><em>Cyriopagopus lividus</em></p>
+                        <p>Parlak mavi renkli, hızlı ve genellikle agresif olan bu tür, etkileyici görünümü ile deneyimli bakıcıların tercihidir.</p>
+                        <div class="habitat-tags">
+                            <span class="habitat-tag">Kazıcı</span>
+                            <span class="habitat-tag">Eski Dünya</span>
+                        </div>
+                        <div class="specs">
+                            <p><strong>Ortalama Boy:</strong> 12-15 cm</p>
+                            <p><strong>Yaşam Süresi:</strong> Dişiler 15-20 yıl, Erkekler 3-4 yıl</p>
+                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level advanced">İleri</span></p>
+                            <p><strong>Mizaç:</strong> Agresif, savunmacı</p>
+                            <p><strong>Doğal Habitat:</strong> Myanmar ve Tayland'ın tropikal ormanları</p>
+                            <p><strong>Önerilen Terraryum Boyutu:</strong> 30x30x30 cm, derin substrat</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                
+                <!-- Yeni Tarantula Türleri -->
+                <div class="species-card">
+                    <a href="species/poecilotheria-metallica.html" class="species-link">
+                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?poecilotheria+metallica');"></div>
+                    <div class="species-content">
+                        <h3>Safir Ornamental Tarantula</h3>
+                        <p><em>Poecilotheria metallica</em></p>
+                        <p>Çarpıcı metalik mavi rengi ile dünyanın en güzel tarantulalarından biri olarak kabul edilir. Hindistan'ın endemik bir türü olup, doğada nesli tehlikededir.</p>
+                        <div class="habitat-tags">
+                            <span class="habitat-tag">Ağaç Yaşamı</span>
+                            <span class="habitat-tag">Eski Dünya</span>
+                        </div>
+                        <div class="specs">
+                            <p><strong>Ortalama Boy:</strong> 15-20 cm</p>
+                            <p><strong>Yaşam Süresi:</strong> Dişiler 12-15 yıl, Erkekler 3-4 yıl</p>
+                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level advanced">İleri</span></p>
+                            <p><strong>Mizaç:</strong> Ürkek, hızlı, savunmacı</p>
+                            <p><strong>Doğal Habitat:</strong> Hindistan'ın Andhra Pradesh eyaletindeki yaprak döken ormanlar</p>
+                            <p><strong>Önerilen Terraryum Boyutu:</strong> 30x30x45 cm (yüksek terraryum)</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                
+                <div class="species-card">
+                    <a href="species/chromatopelma-cyaneopubescens.html" class="species-link">
+                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?greenbottle+blue+tarantula');"></div>
+                    <div class="species-content">
+                        <h3>Yeşil Şişe Mavi Tarantula</h3>
+                        <p><em>Chromatopelma cyaneopubescens</em></p>
+                        <p>Canlı mavi bacakları, yeşil prosoma (baş bölgesi) ve turuncu abdomen ile son derece renkli bir türdür. Karmaşık ağ yapıları inşa etmesiyle tanınır.</p>
+                        <div class="habitat-tags">
+                            <span class="habitat-tag">Yarı Ağaç Yaşamı</span>
+                            <span class="habitat-tag">Yeni Dünya</span>
+                        </div>
+                        <div class="specs">
+                            <p><strong>Ortalama Boy:</strong> 12-15 cm</p>
+                            <p><strong>Yaşam Süresi:</strong> Dişiler 12-15 yıl, Erkekler 3-4 yıl</p>
+                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level beginner">Başlangıç</span></p>
+                            <p><strong>Mizaç:</strong> Aktif, ürkek fakat genellikle uysal</p>
+                            <p><strong>Doğal Habitat:</strong> Venezuela'nın Paraguana Yarımadası'ndaki kurak bölgeler</p>
+                            <p><strong>Önerilen Terraryum Boyutu:</strong> 30x30x30 cm</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                
+                <div class="species-card">
+                    <a href="species/psalmopoeus-irminia.html" class="species-link">
+                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?venezuelan+suntiger');"></div>
+                    <div class="species-content">
+                        <h3>Venezuela Güneş Kaplanı</h3>
+                        <p><em>Psalmopoeus irminia</em></p>
+                        <p>Siyah zemin üzerinde turuncu çizgileri olan çarpıcı bir türdür. Hızlı ve çevik olup, ani hareket edebilir. Usta bir avcıdır.</p>
+                        <div class="habitat-tags">
+                            <span class="habitat-tag">Ağaç Yaşamı</span>
+                            <span class="habitat-tag">Yeni Dünya</span>
+                        </div>
+                        <div class="specs">
+                            <p><strong>Ortalama Boy:</strong> 12-15 cm</p>
+                            <p><strong>Yaşam Süresi:</strong> Dişiler 12-15 yıl, Erkekler 3-4 yıl</p>
+                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level intermediate">Orta</span></p>
+                            <p><strong>Mizaç:</strong> Ürkek, hızlı, savunmacı</p>
+                            <p><strong>Doğal Habitat:</strong> Venezuela'nın tropikal ormanları</p>
+                            <p><strong>Önerilen Terraryum Boyutu:</strong> 30x30x45 cm (yüksek terraryum)</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                
+                <div class="species-card">
+                    <a href="species/ephebopus-murinus.html" class="species-link">
+                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?skeleton+tarantula');"></div>
+                    <div class="species-content">
+                        <h3>İskelet Tarantula</h3>
+                        <p><em>Ephebopus murinus</em></p>
+                        <p>Siyah vücut üzerinde beyazımsı çizgileri olan bu tür, iskelet görünümü nedeniyle bu adı almıştır. İlginç bir özelliği, femurlarda urtikarya kıllarına sahip olmasıdır.</p>
+                        <div class="habitat-tags">
+                            <span class="habitat-tag">Kazıcı</span>
+                            <span class="habitat-tag">Yeni Dünya</span>
+                        </div>
+                        <div class="specs">
+                            <p><strong>Ortalama Boy:</strong> 12-15 cm</p>
+                            <p><strong>Yaşam Süresi:</strong> Dişiler 12-15 yıl, Erkekler 3-5 yıl</p>
+                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level intermediate">Orta</span></p>
+                            <p><strong>Mizaç:</strong> Ürkek, savunmacı</p>
+                            <p><strong>Doğal Habitat:</strong> Güney Amerika'nın kuzey bölgesindeki yağmur ormanları</p>
+                            <p><strong>Önerilen Terraryum Boyutu:</strong> 30x30x30 cm, derin substrat</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                
+                <div class="species-card">
+                    <a href="species/brachypelma-emilia.html" class="species-link">
+                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?mexican+redleg+tarantula');"></div>
+                    <div class="species-content">
+                        <h3>Meksika Kırmızı Bacak</h3>
+                        <p><em>Brachypelma emilia</em></p>
+                        <p>Siyah vücut üzerinde kırmızı-turuncu bacaklara sahip olan bu tür, Brachypelma hamorii'ye benzer ancak desenleri farklıdır. Sakin ve uzun ömürlüdür.</p>
+                        <div class="habitat-tags">
+                            <span class="habitat-tag">Yer Yaşamı</span>
+                            <span class="habitat-tag">Yeni Dünya</span>
+                        </div>
+                        <div class="specs">
+                            <p><strong>Ortalama Boy:</strong> 12-15 cm</p>
+                            <p><strong>Yaşam Süresi:</strong> Dişiler 20-30 yıl, Erkekler 5-7 yıl</p>
+                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level beginner">Başlangıç</span></p>
+                            <p><strong>Mizaç:</strong> Sakin, uysal</p>
+                            <p><strong>Doğal Habitat:</strong> Meksika'nın Sinaloa ve Sonora eyaletlerindeki yarı kurak bölgeler</p>
+                            <p><strong>Önerilen Terraryum Boyutu:</strong> 30x30x30 cm</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                
+                <div class="species-card">
+                    <a href="species/ceratogyrus-darlingi.html" class="species-link">
+                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?horned+baboon+tarantula');"></div>
+                    <div class="species-content">
+                        <h3>Boynuzlu Babun Tarantula</h3>
+                        <p><em>Ceratogyrus darlingi</em></p>
+                        <p>Prosoma üzerinde bulunan karakteristik boynuz şeklindeki çıkıntısı ile tanınır. Afrika kökenli, hızlı ve savunmacı bir türdür.</p>
+                        <div class="habitat-tags">
+                            <span class="habitat-tag">Kazıcı</span>
+                            <span class="habitat-tag">Eski Dünya</span>
+                        </div>
+                        <div class="specs">
+                            <p><strong>Ortalama Boy:</strong> 12-15 cm</p>
+                            <p><strong>Yaşam Süresi:</strong> Dişiler 15-20 yıl, Erkekler 3-4 yıl</p>
+                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level advanced">İleri</span></p>
+                            <p><strong>Mizaç:</strong> Agresif, savunmacı</p>
+                            <p><strong>Doğal Habitat:</strong> Zimbabve, Mozambik ve güney Afrika'nın kurak savanları</p>
+                            <p><strong>Önerilen Terraryum Boyutu:</strong> 30x30x30 cm, derin substrat</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="subheader" style="background-color: #e0f2f1; padding: 15px; border-radius: 5px; margin: 30px 0;">
+                <h3>Nadir Tarantula Türleri</h3>
+                <p>Aşağıda, daha az yaygın ancak evcil hayvan olarak bakılabilen ilginç tarantula türleri bulunmaktadır.</p>
+            </div>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tür Adı</th>
+                            <th>Bilimsel Adı</th>
+                            <th>Ortalama Boy</th>
+                            <th>Zorluk</th>
+                            <th>Özellikler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="species/xenesthis-immanis.html">Kolombiya Kırmızı</a></td>
+                            <td><em>Xenesthis immanis</em></td>
+                            <td>18-20 cm</td>
+                            <td><span class="care-level intermediate">Orta</span></td>
+                            <td>Çarpıcı kırmızı-pembe vücut, büyük ve etkileyici bir tür</td>
+                        </tr>
+                        <tr>
+                            <td><a href="species/monocentropus-balfouri.html">Sokotra Adası Mavi</a></td>
+                            <td><em>Monocentropus balfouri</em></td>
+                            <td>10-15 cm</td>
+                            <td><span class="care-level advanced">İleri</span></td>
+                            <td>Mavi-beyaz renkleri olan nadir bir tür, koloniler halinde yaşayabilir</td>
+                        </tr>
+                        <tr>
+                            <td><a href="species/pamphobeteus-sp-machala.html">Ekvador Mor</a></td>
+                            <td><em>Pamphobeteus sp. "Machala"</em></td>
+                            <td>18-22 cm</td>
+                            <td><span class="care-level intermediate">Orta</span></td>
+                            <td>Erkekler çarpıcı mor renkte, dişiler kahverengi-siyah</td>
+                        </tr>
+                        <tr>
+                            <td><a href="species/harpactira-pulchripes.html">Altın Ayaklı Babun</a></td>
+                            <td><em>Harpactira pulchripes</em></td>
+                            <td>10-12 cm</td>
+                            <td><span class="care-level intermediate">Orta</span></td>
+                            <td>Siyah vücut, parlak altın sarısı bacaklar, çok nadir</td>
+                        </tr>
+                        <tr>
+                            <td><a href="species/lasiodora-parahybana.html">Brezilya Siyah</a></td>
+                            <td><em>Lasiodora parahybana</em></td>
+                            <td>20-25 cm</td>
+                            <td><span class="care-level beginner">Başlangıç</span></td>
+                            <td>Çok büyük bir tür, hızlı büyür, uysal mizaçlı</td>
+                        </tr>
+                        <tr>
+                            <td><a href="species/heteroscodra-maculata.html">Babun Örümceği</a></td>
+                            <td><em>Heteroscodra maculata</em></td>
+                            <td>10-15 cm</td>
+                            <td><span class="care-level advanced">İleri</span></td>
+                            <td>Beyaz-siyah desenli, çok hızlı, savunmacı</td>
+                        </tr>
+                        <tr>
+                            <td><a href="species/psalmopoeus-cambridgei.html">Trinidad Zümrüdü</a></td>
+                            <td><em>Psalmopoeus cambridgei</em></td>
+                            <td>15-17 cm</td>
+                            <td><span class="care-level intermediate">Orta</span></td>
+                            <td>Yeşilimsi-bronz renk, hızlı büyür, çevik</td>
+                        </tr>
+                        <tr>
+                            <td><a href="species/phormictopus-sp-purple.html">Mor Haiti</a></td>
+                            <td><em>Phormictopus sp. "purple"</em></td>
+                            <td>15-18 cm</td>
+                            <td><span class="care-level intermediate">Orta</span></td>
+                            <td>Mor-kahverengi tonları, güçlü ve aktif</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="species-navigation" style="margin-top: 40px; text-align: center;">
+                <a href="species/all-tarantulas.html" class="btn">Tüm Tarantula Türlerini Görüntüle</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="care-section">
+        <div class="container">
+            <h2>Tarantula Bakım Rehberi</h2>
+            
+            <div class="care-container">
+                <h3>Yaşam Alanı (Terraryum)</h3>
+                <p>Tarantulalar için uygun bir terraryum aşağıdaki özelliklere sahip olmalıdır:</p>
+                <ul>
+                    <li>Türün boyutuna göre yeterli büyüklükte olmalı (genellikle tarantula boyunun 3 katı genişlik, 2 katı derinlik yeterlidir)</li>
+                    <li>Yer yaşamı tarantulalar için en az 5-10 cm derinliğinde, havalandırılmış ve hafif nemli toprak veya kokosit substrat</li>
+                    <li>Ağaç tarantulalarının terraryumu daha yüksek olmalı ve tırmanmaları için kökler veya dallar içermeli</li>
+                    <li>Saklanma yeri olarak bir mağara veya yarık</li>
+                    <li>Kaçmaları önlemek için güvenli bir kapak</li>
+                    <li>İyi havalandırma</li>
+                    <li>Sığ, küçük bir su kabı</li>
+                </ul>
+            </div>
+            
+            <div class="care-container">
+                <h3>Sıcaklık ve Nem</h3>
+                <p>Tarantula türünün yaşadığı doğal ortama bağlı olarak sıcaklık ve nem gereksinimleri değişebilir:</p>
+                <ul>
+                    <li>Çoğu tarantula için ideal sıcaklık aralığı: 23-27°C</li>
+                    <li>Çöl tarantulaları için nem oranı: %30-50</li>
+                    <li>Tropikal tarantulalar için nem oranı: %60-80</li>
+                    <li>Aşırı sıcaklık ve nem değişimleri tarantulalara zarar verebilir</li>
+                    <li>Substratın bir kısmına su püskürtmek nemi artırabilir</li>
+                    <li>Higrometreler ve termometreler ile nem ve sıcaklık takibi yapılmalıdır</li>
+                </ul>
+            </div>
+            
+            <div class="care-container">
+                <h3>Beslenme</h3>
+                <p>Tarantulalar etobur hayvanlardır ve canlı besinlerle beslenmeleri gerekir:</p>
+                <ul>
+                    <li>Erişkin tarantulalar haftada 1-2 kere beslenmelidir</li>
+                    <li>Genç tarantulalar daha sık (haftada 2-3 kere) beslenmelidir</li>
+                    <li>Ana besin kaynakları: canlı cırcır böcekleri, un kurtları, zophobas kurtları, küçük hamam böcekleri</li>
+                    <li>Yem hayvanlarının tarantuladan büyük olmamasına dikkat edilmelidir</li>
+                    <li>Yem hayvanları vitaminlerle desteklenebilir</li>
+                    <li>Tarantula yemini reddederse, kabı çıkarın ve birkaç gün sonra tekrar deneyin</li>
+                    <li>Deri değişimi öncesi ve sonrası yemek reddi normaldir</li>
+                </ul>
+            </div>
+            
+            <div class="care-container">
+                <h3>Deri Değişimi ve Sağlık</h3>
+                <p>Tarantulaların büyümesi için deri değiştirmeleri gerekir ve bu dönem özel bakım gerektirir:</p>
+                <ul>
+                    <li>Genç tarantulalar sık sık (1-4 ayda bir), yetişkinler daha seyrek (6-12 ayda bir) deri değiştirir</li>
+                    <li>Deri değişimi öncesi iştah kaybı, hareketlerde azalma ve daha koyu renk görülebilir</li>
+                    <li>Deri değişimi sırasında tarantulayı rahatsız etmeyin, beslemeyin</li>
+                    <li>Deri değişiminden sonra en az 5-7 gün besleme yapmayın</li>
+                    <li>Yaygın sağlık sorunları: dehidrasyon, mantar enfeksiyonları, parazitler ve düşme sonucu yaralanmalar</li>
+                    <li>Tarantulaların yemeği tarantulanın ölçüsünden büyük olmamalı</li>
+                    <li>Sıcaklık ve nem koşullarını düzenli kontrol edin</li>
+                </ul>
+            </div>
+            
+            <div class="care-container">
+                <h3>Tarantulalar ile Güvenli Etkileşim</h3>
+                <p>Tarantulalar görsel hayvanlardır ve elle tutulmaları önerilmez:</p>
+                <ul>
+                    <li>Tarantulalar kırılgan hayvanlardır, düşme sonucu ciddi yaralanabilir veya ölebilirler</li>
+                    <li>Bazı türler urtikarya kılları atabilir, bu kıllar cilt ve göz tahrişine neden olur</li>
+                    <li>Isırıklar ağrılı olabilir ve bazı türlerde daha güçlü zehir bulunur</li>
+                    <li>Tarantula tutmanız gerekirse, bunu yere yakın bir yerde yapın</li>
+                    <li>Tarantulanızı yumuşak bir fırça ile nazikçe yönlendirebilirsiniz</li>
+                    <li>Terraryum temizliği sırasında dikkatli olun ve eldiven kullanın</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Egzotik Hayvanlar Dünyası. Tüm hakları saklıdır.</p>
+            <div class="social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        function openTab(evt, tabId) {
+            // Tüm tab içeriklerini gizle
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            
+            // Tüm butonlardan active sınıfını kaldır
+            var tabButtons = document.getElementsByClassName("tab-btn");
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+            
+            // Tıklanan butonun içeriğini göster ve butona active sınıfını ekle
+            document.getElementById(tabId).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html> 

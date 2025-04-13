@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yılanlar: Detaylı Bakım ve Türler - Egzotik Hayvanlar Dünyası</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .species-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .taxonomy {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .taxonomy p {
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+        
+        .species-card {
+            transition: transform 0.3s;
+        }
+        
+        .species-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .care-level {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+            color: white;
+            margin-top: 5px;
+        }
+        
+        .beginner {
+            background-color: #4caf50;
+        }
+        
+        .intermediate {
+            background-color: #ff9800;
+        }
+        
+        .advanced {
+            background-color: #f44336;
+        }
+        
+        .habitat-tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            background-color: #e0f2f1;
+            color: #00796b;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .tabs {
+            margin: 30px 0;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 10px 15px;
+            background-color: #f5f5f5;
+            border: none;
+            cursor: pointer;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            border-radius: 5px 5px 0 0;
+            transition: background-color 0.3s;
+        }
+        
+        .tab-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 0 5px 5px 5px;
+            background-color: white;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .fact-list {
+            background-color: #fffde7;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .fact-list h4 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        
+        .fact-list ul {
+            list-style-type: circle;
+            margin-left: 20px;
+        }
+        
+        .care-section {
+            margin-top: 60px;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .detail-image {
+            width: 100%;
+            border-radius: 8px;
+            margin: 15px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .snake-family {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            background-color: #f5f5f5;
+        }
+        
+        .snake-family h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Egzotik Hayvanlar Dünyası</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="tarantulas.html">Tarantulalar</a></li>
+                    <li><a href="snakes.html" class="active">Yılanlar</a></li>
+                    <li><a href="lizards.html">Kertenkeleler</a></li>
+                    <li><a href="about.html">Hakkımızda</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="animal-header">
+        <div class="container">
+            <h2>Yılanlar: Muhteşem Sürüngenler</h2>
+            <p>Dünya genelinde 3000'den fazla tür ile yılanlar, evrimsel adaptasyon ve biyolojik çeşitlilik açısından olağanüstü bir hayvan grubudur. Evcil hayvan olarak bakılan yılan türleri, özellikleri ve detaylı bakım rehberi.</p>
+        </div>
+    </section>
+
+    <section class="animal-info">
+        <div class="container">
+            <h2>Yılanlar Hakkında Genel Bilgi</h2>
+            <p>Yılanlar (Serpentes alttakımı), bacaksız, uzatılmış vücutlara sahip etobur sürüngenlerdir. Küçük kertenkelelerden (10-15 cm) dev anakondalar ve pitonlara (7-8 metre) kadar değişen 3600'den fazla yılan türü bulunmaktadır. Yılanlar tüm kıtalarda (Antarktika hariç), denizlerde ve çeşitli habitatlarda yaşayabilirler.</p>
+            
+            <div class="two-column">
+                <div>
+                    <div class="taxonomy">
+                        <h3>Bilimsel Sınıflandırma</h3>
+                        <p><strong>Alem:</strong> Animalia (Hayvanlar)</p>
+                        <p><strong>Şube:</strong> Chordata (Kordalılar)</p>
+                        <p><strong>Sınıf:</strong> Reptilia (Sürüngenler)</p>
+                        <p><strong>Takım:</strong> Squamata (Pullular)</p>
+                        <p><strong>Alttakım:</strong> Serpentes (Yılanlar)</p>
+                    </div>
+                    
+                    <p>Yılanlar, ekosistemlerinde hem avcı hem de av olarak önemli bir rol oynarlar. Kemirgen popülasyonlarını kontrol altında tutarak tarım için faydalı olabilirler. Yaklaşık 600 tür zehirli olmasına rağmen, bunların yalnızca 200'den azı insanlara ciddi zarar verecek kadar zehirlidir ve çoğu yılan türü tamamen zararsızdır.</p>
+                    
+                    <p>Evcil hayvan olarak, zararsız yılan türleri genellikle uzun ömürlü, nispeten bakımı kolay ve çok çeşitli olmalarından dolayı tercih edilir. En popüler evcil yılan türleri genellikle boğucu (constrictors) grubundandır - bunlar avlarını sıkarak öldürürler ve çoğu insan için güvenlidirler.</p>
+                </div>
+                
+                <div class="fact-list">
+                    <h4>Yılanlar Hakkında İlginç Bilgiler</h4>
+                    <ul>
+                        <li>Yılanlar her bir göz kapağı hareketsiz ve şeffaf olduğu için göz kırpamazlar.</li>
+                        <li>Çoğu yılan, dillerini havadaki kimyasal parçacıkları yakalamak için kullanırlar ve bu parçacıkları ağızlarının tavanındaki "Jacobson organı" ile analiz ederler.</li>
+                        <li>Yılanlar, içi boş olan ve esnek bir eklemle bağlanan çenelere sahiptir, bu da kendi vücut çaplarından çok daha büyük avları yutabilmelerini sağlar.</li>
+                        <li>Yılanlar düzenli olarak deri değiştirirler. Genç yılanlar büyüme sürecinde daha sık deri değiştirirken, yetişkinler yılda birkaç kez deri değiştirir.</li>
+                        <li>Bazı yılan türleri (örneğin pitonlar) vücut sıcaklıklarını artırmak için "titreme" üretebilir, bu özellikle yumurtalarını kuluçkaya yatırırken faydalıdır.</li>
+                        <li>Dünyanın en uzun yılanı Reticulated Piton (Python reticulatus) 10 metreye kadar ulaşabilir.</li>
+                        <li>Yılanların kemikleri ve organları oldukça esnek ve uzatılmış yapıdadır, bu da onlara olağanüstü hareket kabiliyeti sağlar.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="openTab(event, 'families')">Yılan Familyaları</button>
+                    <button class="tab-btn" onclick="openTab(event, 'habitats')">Yaşam Alanları</button>
+                    <button class="tab-btn" onclick="openTab(event, 'venom')">Zehir Tipleri</button>
+                    <button class="tab-btn" onclick="openTab(event, 'beginners')">Yeni Başlayanlar İçin</button>
+                </div>
+                
+                <div id="families" class="tab-content active">
+                    <h3>Başlıca Yılan Familyaları</h3>
+                    <p>Yılanlar çeşitli familyalara ayrılır, bunlardan bazıları şunlardır:</p>
+                    
+                    <div class="snake-family">
+                        <h3>Boidae (Boa ve Piton Familyası)</h3>
+                        <p>Boa ve pitonları içeren, avlarını sararak boğan yılan ailesi. Evcil hayvan olarak en popüler türlerin çoğu bu gruba aittir.</p>
+                        <p><strong>Örnekler:</strong> Boa constrictor (Boa Yılanı), Python regius (Top Piton), Python bivittatus (Burma Pitonu)</p>
+                    </div>
+                    
+                    <div class="snake-family">
+                        <h3>Colubridae (Kör Yılan Familyası)</h3>
+                        <p>En büyük yılan familyası olup, çoğunlukla zararsız türleri içerir. Bazı türler hafif zehirli olabilir, ancak insanlar için genellikle tehlikeli değildir.</p>
+                        <p><strong>Örnekler:</strong> Pantherophis guttatus (Mısır Yılanı), Lampropeltis getula (Kral Yılanı), Natrix natrix (Su Yılanı)</p>
+                    </div>
+                    
+                    <div class="snake-family">
+                        <h3>Elapidae (Elapid Familyası)</h3>
+                        <p>Nörotoksik zehirleri olan, sabit ön dişli zehirli yılanları içerir.</p>
+                        <p><strong>Örnekler:</strong> Naja naja (Hint Kobrası), Dendroaspis polylepis (Kara Mamba), Ophiophagus hannah (Kral Kobra)</p>
+                    </div>
+                    
+                    <div class="snake-family">
+                        <h3>Viperidae (Engerek Familyası)</h3>
+                        <p>Katlanabilir, uzun zehir dişleri olan ve genellikle hemotoksik zehir üreten yılanları içerir.</p>
+                        <p><strong>Örnekler:</strong> Crotalus atrox (Batı Elmas Sırtlı Çıngıraklı Yılan), Bitis gabonica (Gabon Engerek), Vipera berus (Avrupa Engereği)</p>
+                    </div>
+                </div>
+                
+                <div id="habitats" class="tab-content">
+                    <h3>Yılanların Yaşam Alanları</h3>
+                    <p>Yılanlar çeşitli habitatlara uyum sağlamışlardır:</p>
+                    
+                    <div class="snake-family">
+                        <h3>Kara Yılanları</h3>
+                        <p>Çoğu yılan türü karada yaşar ve çeşitli ortamlarda bulunabilir:</p>
+                        <ul>
+                            <li><strong>Çöl/Kurak Bölge Türleri:</strong> Kum altında hareket edebilen veya aşırı sıcaklıklara dayanabilen yılanlar (örn. Çıngıraklı yılanlar, Kum boaları)</li>
+                            <li><strong>Orman Türleri:</strong> Ağaçlarda yaşayan veya orman tabanında avlanan yılanlar (örn. Yeşil mambalar, Pitonlar)</li>
+                            <li><strong>Çayır/Ova Türleri:</strong> Açık alanlarda yaşayan yılanlar (örn. Mısır yılanları, Garter yılanları)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="snake-family">
+                        <h3>Ağaç Yılanları (Arboreal)</h3>
+                        <p>Çoğunlukla veya tamamen ağaçlarda yaşayan yılanlar. Bu türler genellikle:</p>
+                        <ul>
+                            <li>İnce, uzun vücutlara sahiptir</li>
+                            <li>Güçlü karın kasları vardır</li>
+                            <li>İyi gelişmiş görsel yeteneklere sahiptir</li>
+                            <li><strong>Örnekler:</strong> Yeşil Piton (Morelia viridis), Yeşil Mamba (Dendroaspis angusticeps)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="snake-family">
+                        <h3>Su Yılanları (Aquatic)</h3>
+                        <p>Tatlı su veya tuzlu su ortamlarında yaşayan yılanlar:</p>
+                        <ul>
+                            <li><strong>Tatlı Su Türleri:</strong> Genellikle yarı sucul olup, karada da yaşayabilirler (örn. Su yılanları)</li>
+                            <li><strong>Deniz Yılanları:</strong> Tamamen sucul olup, kuyrukları kürek şeklinde düzleşmiştir (örn. Sarı Deniz Yılanı)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="snake-family">
+                        <h3>Yeraltı Yılanları (Fossorial)</h3>
+                        <p>Toprak altında yaşayan ve kazıcı adaptasyonlara sahip yılanlar:</p>
+                        <ul>
+                            <li>Genellikle küçük gözlere sahiptirler</li>
+                            <li>Vücutları silindirik şekildedir</li>
+                            <li>Küt burunları toprak kazmaya uygundur</li>
+                            <li><strong>Örnekler:</strong> Kör yılanlar, Solucan yılanları</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div id="venom" class="tab-content">
+                    <h3>Yılan Zehir Tipleri</h3>
+                    <p>Yılanların zehirleri, yapıları ve etkileri bakımından çeşitli tiplere ayrılır:</p>
+                    
+                    <div class="snake-family">
+                        <h3>1. Nörotoksik Zehirler</h3>
+                        <p>Sinir sistemini hedef alan zehirler:</p>
+                        <ul>
+                            <li>Kas felcine neden olabilir</li>
+                            <li>Solunum sistemi üzerinde etkilidir</li>
+                            <li>Hızlı etki gösterir</li>
+                            <li><strong>Taşıyan Yılanlar:</strong> Kobralar, Mambalar, Bungaruslar, Deniz yılanları</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="snake-family">
+                        <h3>2. Hemotoksik Zehirler</h3>
+                        <p>Kan ve kan dokularını hedef alan zehirler:</p>
+                        <ul>
+                            <li>Kan pıhtılaşmasını bozar</li>
+                            <li>Doku ölümüne ve iç kanamaya neden olabilir</li>
+                            <li>Genellikle ağrılı ve yavaş etkilidir</li>
+                            <li><strong>Taşıyan Yılanlar:</strong> Engerekler, Çıngıraklı yılanlar, Çukurbaşlı yılanlar</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="snake-family">
+                        <h3>3. Sitotoksik Zehirler</h3>
+                        <p>Hücre ve dokuları doğrudan yok eden zehirler:</p>
+                        <ul>
+                            <li>Şiddetli ağrı ve doku nekrozuna neden olur</li>
+                            <li>Ampütasyon gerektirebilecek doku hasarı yaratabilir</li>
+                            <li><strong>Taşıyan Yılanlar:</strong> Bazı engerekler, Spit kobralar</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="snake-family">
+                        <h3>4. Kardiyotoksik Zehirler</h3>
+                        <p>Kalp kasını hedef alan zehirler:</p>
+                        <ul>
+                            <li>Kalp ritmi düzensizliklerine neden olabilir</li>
+                            <li>Kan basıncını etkileyebilir</li>
+                            <li><strong>Taşıyan Yılanlar:</strong> Bazı kobralar, Bazı deniz yılanları</li>
+                        </ul>
+                    </div>
+                    
+                    <p><strong>Not:</strong> Evcil hayvan olarak bakılan yılanlar genellikle zehirli olmayan türlerdir. Zehirli yılan türleri, uzman bakıcılar ve özel izinler gerektirir.</p>
+                </div>
+                
+                <div id="beginners" class="tab-content">
+                    <h3>Yeni Başlayanlar İçin Uygun Yılan Türleri</h3>
+                    <p>Yılan bakımına yeni başlayanlar için en iyi tercihler şunları içerir:</p>
+                    
+                    <div class="snake-family">
+                        <h3>1. Mısır Yılanı (Pantherophis guttatus)</h3>
+                        <p>Yeni başlayanlar için en ideal türlerden biri:</p>
+                        <ul>
+                            <li>Uysal mizaç, nadiren ısırır</li>
+                            <li>Orta boy (120-180 cm)</li>
+                            <li>Bakımı kolay ve hastalıklara dirençli</li>
+                            <li>Çok çeşitli renk ve desen varyasyonları (morph) mevcuttur</li>
+                            <li>15-20 yıl yaşayabilir</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="snake-family">
+                        <h3>2. Top Piton (Python regius)</h3>
+                        <p>Sakin mizacı ile bilinen popüler bir tür:</p>
+                        <ul>
+                            <li>Boyutu yönetilebilir (90-150 cm)</li>
+                            <li>Uysal yapı, genellikle tehdit altında kendini top şeklinde kıvırır</li>
+                            <li>Uzun ömürlü (20-30+ yıl)</li>
+                            <li>Çeşitli renk varyasyonları mevcuttur</li>
+                            <li>Not: Bazen yemek reddi yaşanabilir</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="snake-family">
+                        <h3>3. Kral Yılanı (Lampropeltis getula ve ilgili türler)</h3>
+                        <p>Dayanıklı ve çoğunlukla uysal:</p>
+                        <ul>
+                            <li>Orta boy (90-140 cm)</li>
+                            <li>Güzel desenli türler mevcuttur</li>
+                            <li>15-20 yıl yaşayabilir</li>
+                            <li>Doğada diğer yılanları yiyebilirler, bu nedenle diğer yılanlarla birlikte tutulmamalıdır</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="snake-family">
+                        <h3>4. Süt Yılanı (Lampropeltis triangulum)</h3>
+                        <p>Renkli ve genellikle uysal:</p>
+                        <ul>
+                            <li>Küçük-orta boy (60-120 cm)</li>
+                            <li>Gösterişli kırmızı, siyah ve beyaz/sarı bantları vardır</li>
+                            <li>Bir terraryumda yönetmesi kolaydır</li>
+                            <li>12-15 yıl yaşayabilir</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="snake-family">
+                        <h3>5. Rosy Boa (Lichanura trivirgata)</h3>
+                        <p>Küçük, sakin ve bakımı kolay:</p>
+                        <ul>
+                            <li>Küçük boy (60-90 cm)</li>
+                            <li>Çok uysal mizaç</li>
+                            <li>Kurak iklimlere adapte olmuştur, bu nedenle nem ihtiyaçları düşüktür</li>
+                            <li>20-30 yıl yaşayabilir</li>
+                        </ul>
+                    </div>
+                    
+                    <p><strong>Yeni Başlayanlar İçin Tavsiyeler:</strong></p>
+                    <ul>
+                        <li>Yetişkin olduğunda yönetilebilir boyutta olacak bir tür seçin</li>
+                        <li>Uysal mizaçlı bir tür tercih edin</li>
+                        <li>Özel nem veya sıcaklık gereksinimleri olmayan türler daha kolay bakılabilir</li>
+                        <li>Güvenilir bir yetiştiriciden sağlıklı, esaret altında üretilmiş bir yılan edinin</li>
+                        <li>Satın almadan önce türün tüm yetişkin ömrü için bakım gereksinimlerini araştırın</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h2>Popüler Yılan Türleri: Detaylı İnceleme</h2>
+            <p>Dünya genelinde 3000'den fazla yılan türü bulunmasına rağmen, sadece belirli türler ev ortamında bakım için uygundur. İşte evcil hayvan olarak en sık bakılan türlerin detaylı özellikleri:</p>
+            
+            <div class="species-grid">
+                <div class="species-card">
+                    <a href="species/python-regius.html" class="species-link">
+                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?ball+python');"></div>
+                    <div class="species-content">
+                        <h3>Top Piton</h3>
+                        <p><em>Python regius</em></p>
+                        <p>Batı Afrika kökenli olan bu tür, uysal yapısı, kolay bakımı ve orta boyutlu olması nedeniyle en popüler evcil yılanlardan biridir.</p>
+                        <div class="habitat-tags">
+                            <span class="habitat-tag">Yer Yaşamı</span>
+                            <span class="habitat-tag">Zehirsiz Boğucu</span>
+                        </div>
+                        <div class="specs">
+                            <p><strong>Ortalama Boy:</strong> 90-150 cm</p>
+                            <p><strong>Yaşam Süresi:</strong> 20-30+ yıl</p>
+                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level beginner">Başlangıç</span></p>
+                            <p><strong>Mizaç:</strong> Uysal, sakin, tehdit altında kendini savunmak için top şeklinde kıvrılır</p>
+                            <p><strong>Doğal Habitat:</strong> Batı ve Orta Afrika'nın savanaları ve açık ormanları</p>
+                            <p><strong>Önerilen Terraryum:</strong> 90x45x45 cm (yetişkinler için), yükseklikten çok genişlik önemli</p>
+                            <p><strong>Sıcaklık İhtiyacı:</strong> Sıcak bölge 31-33°C, serin bölge 26-28°C</p>
+                            <p><strong>Nem İhtiyacı:</strong> %50-60</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+
+                <div class="species-card">
+                    <a href="species/pantherophis-guttatus.html" class="species-link">
+                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?corn+snake');"></div>
+                    <div class="species-content">
+                        <h3>Mısır Yılanı</h3>
+                        <p><em>Pantherophis guttatus</em></p>
+                        <p>Kuzey Amerika'nın doğusunda bulunan bu yılan türü renkli desenleri, sakin doğası ve kolay bakımı ile bilinir. Mısır yılanları en çok tavsiye edilen ilk evcil yılandır.</p>
+                        <div class="habitat-tags">
+                            <span class="habitat-tag">Yer Yaşamı</span>
+                            <span class="habitat-tag">Tırmanıcı</span>
+                            <span class="habitat-tag">Zehirsiz</span>
+                        </div>
+                        <div class="specs">
+                            <p><strong>Ortalama Boy:</strong> 120-180 cm</p>
+                            <p><strong>Yaşam Süresi:</strong> 15-20 yıl</p>
+                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level beginner">Başlangıç</span></p>
+                            <p><strong>Mizaç:</strong> Sakin, nadiren ısırır, aktif</p>
+                            <p><strong>Doğal Habitat:</strong> ABD'nin güneydoğusu, ağaçlık alanlar, çayırlar, tarlalar</p>
+                            <p><strong>Önerilen Terraryum:</strong> 90x45x45 cm, tırmanma olanakları ile</p>
+                            <p><strong>Sıcaklık İhtiyacı:</strong> Sıcak bölge 28-30°C, serin bölge 24-26°C</p>
+                            <p><strong>Nem İhtiyacı:</strong> %40-50</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+
+                <div class="species-card">
+                    <a href="species/lampropeltis-getula.html" class="species-link">
+                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?king+snake');"></div>
+                    <div class="species-content">
+                        <h3>Kral Yılanı</h3>
+                        <p><em>Lampropeltis getula</em></p>
+                        <p>Kuzey Amerika'da geniş bir alanda yayılmış olan bu yılan, çarpıcı desenlerine ve diğer yılanları yeme alışkanlığına sahiptir. Bu nedenle "kral" adını almıştır.</p>
+                        <div class="habitat-tags">
+                            <span class="habitat-tag">Yer Yaşamı</span>
+                            <span class="habitat-tag">Zehirsiz</span>
+                            <span class="habitat-tag">Yılanyiyen</span>
+                        </div>
+                        <div class="specs">
+                            <p><strong>Ortalama Boy:</strong> 90-140 cm</p>
+                            <p><strong>Yaşam Süresi:</strong> 15-20 yıl</p>
+                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level intermediate">Başlangıç-Orta</span></p>
+                            <p><strong>Mizaç:</strong> Genellikle uysal, bazıları biraz hırçın olabilir</p>
+                            <p><strong>Doğal Habitat:</strong> ABD'nin güney ve orta kesimleri, çeşitli habitatlar</p>
+                            <p><strong>Önerilen Terraryum:</strong> 90x45x45 cm</p>
+                            <p><strong>Sıcaklık İhtiyacı:</strong> Sıcak bölge 28-30°C, serin bölge 24-26°C</p>
+                            <p><strong>Nem İhtiyacı:</strong> %40-50</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+
+                <div class="species-card">
+                    <a href="species/boa-constrictor.html" class="species-link">
+                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?boa+constrictor');"></div>
+                    <div class="species-content">
+                        <h3>Boa Yılanı</h3>
+                        <p><em>Boa constrictor</em></p>
+                        <p>Orta ve Güney Amerika'da yaşayan bu büyük yılan türü, etkileyici görünümü ve sakin mizacıyla bilinir. Daha deneyimli bakıcılar için uygundur.</p>
+                        <div class="habitat-tags">
+                            <span class="habitat-tag">Yer Yaşamı</span>
+                            <span class="habitat-tag">Yarı Ağaç Yaşamı</span>
+                            <span class="habitat-tag">Zehirsiz Boğucu</span>
+                        </div>
+                        <div class="specs">
+                            <p><strong>Ortalama Boy:</strong> 2-3 metre (dişiler daha büyük)</p>
+                            <p><strong>Yaşam Süresi:</strong> 20-30 yıl</p>
+                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level intermediate">Orta</span></p>
+                            <p><strong>Mizaç:</strong> Genellikle sakin, ancak büyük boyutu nedeniyle dikkatli olunmalı</p>
+                            <p><strong>Doğal Habitat:</strong> Orta ve Güney Amerika'nın tropikal ormanları ve kuru alanları</p>
+                            <p><strong>Önerilen Terraryum:</strong> 180x90x60 cm (yetişkin dişiler için daha büyük olabilir)</p>
+                            <p><strong>Sıcaklık İhtiyacı:</strong> Sıcak bölge 30-33°C, serin bölge 26-28°C</p>
+                            <p><strong>Nem İhtiyacı:</strong> %60-70</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                
+                <div class="species-card">
+                    <a href="species/lampropeltis-triangulum.html" class="species-link">
+                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?milk+snake');"></div>
+                    <div class="species-content">
+                        <h3>Süt Yılanı</h3>
+                        <p><em>Lampropeltis triangulum</em></p>
+                        <p>Çarpıcı kırmızı, siyah ve beyaz/sarı bantlı bu tür, zararsız olmasına rağmen zehirli mercan yılanlarına benzerlik gösterir (mimikri). Kolay bakımı ile bilinir.</p>
+                        <div class="habitat-tags">
+                            <span class="habitat-tag">Yer Yaşamı</span>
+                            <span class="habitat-tag">Zehirsiz</span>
+                            <span class="habitat-tag">Mimikri</span>
+                        </div>
+                        <div class="specs">
+                            <p><strong>Ortalama Boy:</strong> 60-120 cm (alttüre bağlı)</p>
+                            <p><strong>Yaşam Süresi:</strong> 12-20 yıl</p>
+                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level beginner">Başlangıç</span></p>
+                            <p><strong>Mizaç:</strong> Genellikle sakin, bazıları ürkek olabilir</p>
+                            <p><strong>Doğal Habitat:</strong> Kuzey ve Güney Amerika'nın çeşitli bölgeleri</p>
+                            <p><strong>Önerilen Terraryum:</strong> 75x45x45 cm</p>
+                            <p><strong>Sıcaklık İhtiyacı:</strong> Sıcak bölge 28-30°C, serin bölge 24-25°C</p>
+                            <p><strong>Nem İhtiyacı:</strong> %40-60 (alttüre bağlı)</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                
+                <div class="species-card">
+                    <a href="species/morelia-viridis.html" class="species-link">
+                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?green+tree+python');"></div>
+                    <div class="species-content">
+                        <h3>Yeşil Ağaç Pitonu</h3>
+                        <p><em>Morelia viridis</em></p>
+                        <p>Canlı yeşil rengi ve benzersiz dinlenme pozisyonu ile tanınan bu ağaç yılanı, görsel olarak en etkileyici türlerden biridir. Yavruları genellikle sarı veya kırmızıdır, büyüdükçe yeşile döner.</p>
+                        <div class="habitat-tags">
+                            <span class="habitat-tag">Ağaç Yaşamı</span>
+                            <span class="habitat-tag">Zehirsiz Boğucu</span>
+                        </div>
+                        <div class="specs">
+                            <p><strong>Ortalama Boy:</strong> 120-180 cm</p>
+                            <p><strong>Yaşam Süresi:</strong> 15-20 yıl</p>
+                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level advanced">İleri</span></p>
+                            <p><strong>Mizaç:</strong> Mizaçları değişken, genellikle agresif olabilir</p>
+                            <p><strong>Doğal Habitat:</strong> Yeni Gine ve kuzey Avustralya'nın yağmur ormanları</p>
+                            <p><strong>Önerilen Terraryum:</strong> 60x60x90 cm (yükseklik önemli)</p>
+                            <p><strong>Sıcaklık İhtiyacı:</strong> Sıcak bölge 29-31°C, serin bölge 24-26°C</p>
+                            <p><strong>Nem İhtiyacı:</strong> %60-80</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                
+                <div class="species-card">
+                    <a href="species/heterodon-nasicus.html" class="species-link">
+                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?hognose+snake');"></div>
+                    <div class="species-content">
+                        <h3>Domuz Burunlu Yılan</h3>
+                        <p><em>Heterodon nasicus</em></p>
+                        <p>Yukarı doğru kıvrık burnu ile bilinen bu sevimli yılan, kendini savunmak için ölü taklidi yapabilir. Küçük boyutu ve genellikle uysal mizacı ile popülerdir.</p>
+                        <div class="habitat-tags">
+                            <span class="habitat-tag">Yer Yaşamı</span>
+                            <span class="habitat-tag">Kazıcı</span>
+                            <span class="habitat-tag">Hafif Zehirli (zararsız)</span>
+                        </div>
+                        <div class="specs">
+                            <p><strong>Ortalama Boy:</strong> 45-90 cm</p>
+                            <p><strong>Yaşam Süresi:</strong> 10-15 yıl</p>
+                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level beginner">Başlangıç-Orta</span></p>
+                            <p><strong>Mizaç:</strong> Genellikle uysal, tehdit altında tiyatral davranışlar sergiler</p>
+                            <p><strong>Doğal Habitat:</strong> ABD'nin orta ve batı kesimleri, Kanada ve Meksika'nın bazı bölgeleri</p>
+                            <p><strong>Önerilen Terraryum:</strong> 75x45x45 cm, derin substrat (kazmaları için)</p>
+                            <p><strong>Sıcaklık İhtiyacı:</strong> Sıcak bölge 29-32°C, serin bölge 24-26°C</p>
+                            <p><strong>Nem İhtiyacı:</strong> %30-50</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                
+                <div class="species-card">
+                    <a href="species/python-reticulatus.html" class="species-link">
+                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?reticulated+python');"></div>
+                    <div class="species-content">
+                        <h3>Retiküle Piton</h3>
+                        <p><em>Python reticulatus</em></p>
+                        <p>Dünyanın en uzun yılanlarından biri olan bu tür, karmaşık ağ şeklindeki desenleri ile bilinir. Sadece çok deneyimli bakıcılar için uygundur.</p>
+                        <div class="habitat-tags">
+                            <span class="habitat-tag">Yer Yaşamı</span>
+                            <span class="habitat-tag">Yarı Suda Yaşayan</span>
+                            <span class="habitat-tag">Zehirsiz Boğucu</span>
+                        </div>
+                        <div class="specs">
+                            <p><strong>Ortalama Boy:</strong> 4-6 metre (10 metreye kadar ulaşabilir)</p>
+                            <p><strong>Yaşam Süresi:</strong> 20-30 yıl</p>
+                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level advanced">Çok İleri</span></p>
+                            <p><strong>Mizaç:</strong> Genellikle agresif olabilir, güçlü ve büyük</p>
+                            <p><strong>Doğal Habitat:</strong> Güneydoğu Asya'nın yağmur ormanları</p>
+                            <p><strong>Önerilen Terraryum:</strong> Özel yapım büyük muhafaza (minimum 2.4x1.2x1.2 metre)</p>
+                            <p><strong>Sıcaklık İhtiyacı:</strong> Sıcak bölge 30-32°C, serin bölge 26-28°C</p>
+                            <p><strong>Nem İhtiyacı:</strong> %60-80</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="subheader" style="background-color: #e0f2f1; padding: 15px; border-radius: 5px; margin: 30px 0;">
+                <h3>Egzotik Yılan Türleri</h3>
+                <p>Aşağıda, daha az yaygın ancak evcil hayvan olarak bakılabilen ilginç yılan türleri bulunmaktadır. Bu türler genellikle daha deneyimli bakıcılar için uygundur.</p>
+            </div>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tür Adı</th>
+                            <th>Bilimsel Adı</th>
+                            <th>Ortalama Boy</th>
+                            <th>Zorluk</th>
+                            <th>Özellikler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Gökkuşağı Boa</td>
+                            <td><em>Epicrates cenchria</em></td>
+                            <td>1.5-2 metre</td>
+                            <td><span class="care-level intermediate">Orta</span></td>
+                            <td>Işık altında gökkuşağı parıltısı gösteren, etkileyici renklere sahip</td>
+                        </tr>
+                        <tr>
+                            <td>Kaliforniya Kral Yılanı</td>
+                            <td><em>Lampropeltis californiae</em></td>
+                            <td>90-120 cm</td>
+                            <td><span class="care-level beginner">Başlangıç</span></td>
+                            <td>Çarpıcı siyah, beyaz ve kırmızı bantları olan popüler bir tür</td>
+                        </tr>
+                        <tr>
+                            <td>Sahte Su Kobrası</td>
+                            <td><em>Hydrodynastes gigas</em></td>
+                            <td>2-2.5 metre</td>
+                            <td><span class="care-level advanced">İleri</span></td>
+                            <td>Aktif, hızlı ve güçlü, yarı sucul yaşam tarzına sahip</td>
+                        </tr>
+                        <tr>
+                            <td>Kenyan Kum Boası</td>
+                            <td><em>Eryx colubrinus</em></td>
+                            <td>60-90 cm</td>
+                            <td><span class="care-level beginner">Başlangıç-Orta</span></td>
+                            <td>Küçük, kum altında yaşayan, sıradışı bir boa türü</td>
+                        </tr>
+                        <tr>
+                            <td>Karbonat Yılanı</td>
+                            <td><em>Boaedon fuliginosus</em></td>
+                            <td>90-120 cm</td>
+                            <td><span class="care-level beginner">Başlangıç</span></td>
+                            <td>Afrika kökenli, güçlü ve aktif, genellikle uysal</td>
+                        </tr>
+                        <tr>
+                            <td>Yıldızlı Yılan</td>
+                            <td><em>Xenopeltis unicolor</em></td>
+                            <td>90-120 cm</td>
+                            <td><span class="care-level intermediate">Orta</span></td>
+                            <td>İnanılmaz derecede parlak, gökkuşağı yansımaları olan pullar</td>
+                        </tr>
+                        <tr>
+                            <td>Kırmızı Kuyruklu Boa</td>
+                            <td><em>Boa constrictor imperator</em></td>
+                            <td>1.5-2.5 metre</td>
+                            <td><span class="care-level intermediate">Orta</span></td>
+                            <td>Boa constrictorun daha küçük ve genellikle daha uysal alttürü</td>
+                        </tr>
+                        <tr>
+                            <td>Mısır Kum Boası</td>
+                            <td><em>Gongylophis colubrinus</em></td>
+                            <td>60-90 cm</td>
+                            <td><span class="care-level beginner">Başlangıç-Orta</span></td>
+                            <td>Kum kazıcı, küçük, uysal bir yılan türü</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="care-section">
+        <div class="container">
+            <h2>Yılan Bakım Rehberi</h2>
+            
+            <div class="care-container">
+                <h3>Yaşam Alanı (Terraryum)</h3>
+                <p>Yılanlar için uygun bir terraryum şu özelliklere sahip olmalıdır:</p>
+                <ul>
+                    <li>Yılanın boyutuna uygun genişlik ve yükseklik (genellikle yılan boyunun en az yarısı genişlikte, yeterli tırmanma alanı)</li>
+                    <li>Güvenli, kaçış imkanı olmayan bir kapak</li>
+                    <li>Substrat olarak gazete, kağıt havlu, yonga, hindistan cevizi lifi veya asmoss gibi malzemeler kullanılabilir</li>
+                    <li>En az iki saklanma alanı (teraryumun sıcak ve soğuk ucunda birer tane)</li>
+                    <li>Isı kaynağı (ısıtıcı ped, seramik ısıtıcı veya ısı lambası)</li>
+                    <li>İyi havalandırma</li>
+                    <li>Büyük ve ağır, devrilmeyecek bir su kabı</li>
+                    <li>Tırmanma dalları ve yapay bitkiler (türe bağlı olarak)</li>
+                </ul>
+            </div>
+            
+            <div class="care-container">
+                <h3>Sıcaklık ve Nem</h3>
+                <p>Yılanlar sıcaklık gradyanına ihtiyaç duyarlar ve türe göre nem gereksinimleri değişir:</p>
+                <ul>
+                    <li>Terraryumda sıcak bölge ve serin bölge olmalıdır</li>
+                    <li>Çoğu yılan için sıcak bölge: 28-32°C</li>
+                    <li>Serin bölge: 24-26°C</li>
+                    <li>Gece sıcaklığı birkaç derece düşebilir</li>
+                    <li>Top piton gibi türler için nem: %50-60</li>
+                    <li>Boa ve diğer tropikal türler için: %60-80</li>
+                    <li>Mısır yılanı ve kral yılanları için: %40-50</li>
+                    <li>Sıcaklık ve nem ölçümü için termometre ve higrometre kullanılmalıdır</li>
+                </ul>
+            </div>
+            
+            <div class="care-container">
+                <h3>Beslenme</h3>
+                <p>Yılanlar tamamen etoburdur ve çoğunlukla kemirgenleri tercih ederler:</p>
+                <ul>
+                    <li>Yavru yılanlar 5-7 günde bir beslenmelidir</li>
+                    <li>Yetişkin yılanlar için 7-14 günde bir beslenme yeterlidir</li>
+                    <li>Besin boyutu yılanın vücudunun en kalın yerinden biraz daha kalın olmalıdır</li>
+                    <li>Dondurulmuş-çözülmüş fare veya sıçan, sağlık ve güvenlik açısından canlı yeme tercih edilir</li>
+                    <li>Besleme sırasında yılanı rahatsız etmeyin</li>
+                    <li>Yemekten sonra en az 24-48 saat yılanı tutmayın (stres ve kusma riski)</li>
+                    <li>Her zaman temiz su bulundurun ve günlük kontrol edin</li>
+                </ul>
+            </div>
+            
+            <div class="care-container">
+                <h3>Deri Değişimi ve Sağlık</h3>
+                <p>Yılanlar büyüdükçe düzenli olarak deri değiştirirler:</p>
+                <ul>
+                    <li>Deri değişimi öncesi gözler mavi/opak görünür (Gömlek)</li>
+                    <li>Deri değişimi sırasında su kabı büyük ve derin olmalı</li>
+                    <li>Nem seviyesi artırılabilir</li>
+                    <li>Yılan deri değiştirirken rahatsız edilmemeli</li>
+                    <li>Sağlıklı bir deri değişimi tek parça halinde olmalıdır</li>
+                    <li>Yaygın sağlık sorunları: solunum enfeksiyonları, ağız çürümesi, parazitler, termal yanıklar</li>
+                    <li>Sağlık sorunu belirtileri: yemek reddi, zayıf deri değişimi, solunum güçlüğü, ağız açık soluma</li>
+                    <li>Şüpheli durumlarda egzotik hayvan veterinerine başvurun</li>
+                </ul>
+            </div>
+            
+            <div class="care-container">
+                <h3>Yılanlar ile Güvenli Etkileşim</h3>
+                <p>Yılanlarla güvenli bir şekilde etkileşim kurmak için şu noktalara dikkat edin:</p>
+                <ul>
+                    <li>Yılanınızı yemekten sonra 48 saat tutmayın</li>
+                    <li>Gömlek döneminde (deri değişimi öncesi) tutmayın</li>
+                    <li>Her zaman yavaş ve nazik hareketlerle yaklaşın</li>
+                    <li>Kafasından tutmak yerine vücudundan nazikçe destekleyin</li>
+                    <li>Yılanı tuttuktan sonra ellerinizi yıkayın (salmonella riski)</li>
+                    <li>Yılanı asla başka evcil hayvanlarınızla bir araya getirmeyin</li>
+                    <li>Yılanların sosyalleşme ihtiyacı yoktur, çok sık tutulmamalıdır</li>
+                    <li>Terraryum temizliği yapılırken geçici bir kutuya alınmalıdır</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Egzotik Hayvanlar Dünyası. Tüm hakları saklıdır.</p>
+            <div class="social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        function openTab(evt, tabId) {
+            // Tüm tab içeriklerini gizle
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            
+            // Tüm butonlardan active sınıfını kaldır
+            var tabButtons = document.getElementsByClassName("tab-btn");
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+            
+            // Tıklanan butonun içeriğini göster ve butona active sınıfını ekle
+            document.getElementById(tabId).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html> 

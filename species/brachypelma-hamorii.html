@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meksika Kırmızı Diz Tarantulası - Egzotik Hayvanlar Dünyası</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .species-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            gap: 30px;
+        }
+        
+        .species-header-image {
+            width: 40%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .species-header-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .species-header-content {
+            width: 60%;
+        }
+        
+        .species-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .fact-card {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .fact-card h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .care-level {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .beginner { background-color: #4caf50; }
+        .intermediate { background-color: #ff9800; }
+        .advanced { background-color: #f44336; }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .gallery-item {
+            border-radius: 5px;
+            overflow: hidden;
+            height: 200px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .care-guide-section {
+            margin: 40px 0;
+        }
+        
+        .care-guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .care-guide-item {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .care-guide-item h4 {
+            color: var(--secondary-color);
+            margin-top: 0;
+        }
+        
+        .care-guide-item ul {
+            padding-left: 20px;
+        }
+        
+        .care-guide-item li {
+            margin-bottom: 10px;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            margin: 30px 0;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .lifecycle-timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+        
+        .lifecycle-timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -13px;
+            background-color: white;
+            border: 4px solid var(--secondary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid var(--primary-color);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--primary-color);
+        }
+        
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid var(--primary-color);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--primary-color) transparent transparent;
+        }
+        
+        .right::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        @media screen and (max-width: 768px) {
+            .species-header {
+                flex-direction: column;
+            }
+            
+            .species-header-image, .species-header-content {
+                width: 100%;
+            }
+            
+            .lifecycle-timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-container::before {
+                left: 60px;
+                border: medium solid var(--primary-color);
+                border-width: 10px 10px 10px 0;
+                border-color: transparent var(--primary-color) transparent transparent;
+            }
+            
+            .left::after, .right::after {
+                left: 18px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+        }
+        
+        .related-species {
+            margin-top: 60px;
+        }
+        
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .related-card {
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .related-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .related-image {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .related-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .related-content {
+            padding: 15px;
+        }
+        
+        .related-content h4 {
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+        
+        .related-content p {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Egzotik Hayvanlar Dünyası</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Ana Sayfa</a></li>
+                    <li><a href="../tarantulas.html">Tarantulalar</a></li>
+                    <li><a href="../snakes.html">Yılanlar</a></li>
+                    <li><a href="../lizards.html">Kertenkeleler</a></li>
+                    <li><a href="../about.html">Hakkımızda</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="animal-header">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="../index.html">Ana Sayfa</a> &gt; 
+                <a href="../tarantulas.html">Tarantulalar</a> &gt; 
+                <span>Meksika Kırmızı Diz Tarantulası</span>
+            </div>
+            <h2>Meksika Kırmızı Diz Tarantulası (<em>Brachypelma hamorii</em>)</h2>
+        </div>
+    </section>
+
+    <section class="animal-info">
+        <div class="container">
+            <div class="species-header">
+                <div class="species-header-image">
+                    <img src="https://source.unsplash.com/600x400/?mexican+red+knee+tarantula" alt="Meksika Kırmızı Diz Tarantulası">
+                </div>
+                <div class="species-header-content">
+                    <h3>Genel Bakış</h3>
+                    <p>Meksika Kırmızı Diz Tarantulası (Brachypelma hamorii), parlak kırmızı-turuncu eklemleri ve sakin mizacı ile evcil tarantulalar arasında en çok tercih edilen türlerden biridir. Önceden Brachypelma smithi olarak bilinen bu tür, bilimsel olarak yeniden sınıflandırılmıştır.</p>
+                    
+                    <p>Bu tür, yeni başlayanlar için ideal bir seçimdir. Uzun ömürlü olması, sakin mizacı ve göz alıcı görünümü nedeniyle tarantula hobisine başlayanların ilk tercihlerinden biridir. Uygun bakım koşulları sağlandığında, dişiler 30 yıla kadar yaşayabilir.</p>
+                    
+                    <div class="taxonomy">
+                        <h4>Bilimsel Sınıflandırma</h4>
+                        <p><strong>Alem:</strong> Animalia</p>
+                        <p><strong>Şube:</strong> Arthropoda</p>
+                        <p><strong>Sınıf:</strong> Arachnida</p>
+                        <p><strong>Takım:</strong> Araneae</p>
+                        <p><strong>Alttakım:</strong> Mygalomorphae</p>
+                        <p><strong>Familya:</strong> Theraphosidae</p>
+                        <p><strong>Cins:</strong> Brachypelma</p>
+                        <p><strong>Tür:</strong> B. hamorii</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="species-facts">
+                <div class="fact-card">
+                    <h4>Temel Özellikler</h4>
+                    <p><strong>Ortalama Boy:</strong> 12-15 cm (bacak açıklığı)</p>
+                    <p><strong>Vücut Uzunluğu:</strong> 6-7 cm</p>
+                    <p><strong>Yaşam Süresi:</strong> Dişiler 25-30 yıl, Erkekler 5-10 yıl</p>
+                    <p><strong>Zorluk Seviyesi:</strong> <span class="care-level beginner">Başlangıç</span></p>
+                    <p><strong>Mizaç:</strong> Sakin, nadir olarak agresif</p>
+                </div>
+                
+                <div class="fact-card">
+                    <h4>Habitat Bilgileri</h4>
+                    <p><strong>Doğal Habitat:</strong> Meksika'nın batı sahil kıyısı boyunca yarı kurak bölgeler</p>
+                    <p><strong>Yaşam Tarzı:</strong> Yer yaşamı (Terrestrial)</p>
+                    <p><strong>Habitat Tipi:</strong> Çöl kenarları, kuru ormanlık alanlar</p>
+                    <p><strong>Doğal Davranış:</strong> Kendileri için oyuklar ve tüneller kazarlar</p>
+                    <p><strong>Koruma Durumu:</strong> CITES Ek II kapsamında korunmaktadır</p>
+                </div>
+                
+                <div class="fact-card">
+                    <h4>Fiziksel Özellikler</h4>
+                    <p><strong>Renk:</strong> Siyah vücut, parlak kırmızı-turuncu eklemler</p>
+                    <p><strong>Urtikarya Kılları:</strong> Var (savunma mekanizması olarak)</p>
+                    <p><strong>Cinsiyet Farklılıkları:</strong> Dişiler daha büyük ve uzun ömürlü</p>
+                    <p><strong>Büyüme Hızı:</strong> Orta (diğer tarantulalara göre yavaş)</p>
+                    <p><strong>Deri Değişimi:</strong> Gençken her 1-2 ayda, yetişkinlerde yılda 1-2 kez</p>
+                </div>
+            </div>
+            
+            <div class="care-guide-section">
+                <h3>Detaylı Bakım Rehberi</h3>
+                <div class="care-guide-grid">
+                    <div class="care-guide-item">
+                        <h4>Terraryum Gereksinimleri</h4>
+                        <ul>
+                            <li><strong>Boyut:</strong> Yetişkin bir birey için 30x30x30 cm boyutlarında bir terraryum idealdir.</li>
+                            <li><strong>Substrat:</strong> 10-12 cm derinliğinde torf, hindistan cevizi lifi (coco fiber) veya toprak karışımı kullanılmalıdır. Bu, tarantulanın yuva kazmasına olanak sağlar.</li>
+                            <li><strong>Dekorasyon:</strong> Saklanma alanı olarak bir mantar kabuğu, saksı veya tarantula sığınağı, ayrıca birkaç doğal obje (ağaç kabuğu, yapraklar) eklenebilir.</li>
+                            <li><strong>Bitki:</strong> Canlı veya yapay bitkiler kullanılabilir, ancak canlı bitkiler nem dengesini korumaya yardımcı olur.</li>
+                            <li><strong>Su Kabı:</strong> Küçük, sığ bir su kabı daima bulunmalıdır.</li>
+                            <li><strong>Havalandırma:</strong> İyi havalandırma sağlanmalı, küf oluşumu önlenmelidir.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Sıcaklık ve Nem</h4>
+                        <ul>
+                            <li><strong>İdeal Sıcaklık:</strong> 24-27°C (75-80°F)</li>
+                            <li><strong>Sıcaklık Aralığı:</strong> 21-29°C (70-85°F)</li>
+                            <li><strong>Nem Oranı:</strong> %50-60 (ılımlı nem)</li>
+                            <li><strong>Isıtma:</strong> Genellikle oda sıcaklığında iyi gelişir, ancak daha soğuk iklimlerde bir ısıtma pedi (terraryumun bir kenarına yerleştirilmiş) kullanılabilir.</li>
+                            <li><strong>Nem Sağlama:</strong> Haftada bir substratın bir kısmını hafifçe nemlendirin, aşırı nemden kaçının.</li>
+                            <li><strong>Ölçüm:</strong> Terraryumda bir termometre ve higrometre bulundurmak, koşulları düzenli olarak kontrol etmenize yardımcı olur.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Beslenme ve Su</h4>
+                        <ul>
+                            <li><strong>Besin Tipi:</strong> Canlı böcekler (cırcır böcekleri, un kurtları, dubia hamam böcekleri)</li>
+                            <li><strong>Beslenme Sıklığı:</strong>
+                                <ul>
+                                    <li>Yavrular: Haftada 2-3 kez (küçük böcekler)</li>
+                                    <li>Gençler: Haftada 1-2 kez</li>
+                                    <li>Yetişkinler: 7-10 günde bir</li>
+                                </ul>
+                            </li>
+                            <li><strong>Besin Boyutu:</strong> Tarantulanın vücut büyüklüğüne göre uygun boyutta olmalıdır (genellikle abdomenin yarısı kadar veya daha küçük)</li>
+                            <li><strong>Su:</strong> Her zaman temiz, taze su bulunmalıdır</li>
+                            <li><strong>Vitamin ve Mineral:</strong> Yemleri kalsiyum tozu ile hafifçe kaplamak (ayda bir kez) faydalı olabilir</li>
+                            <li><strong>Özel Notlar:</strong> Deri değişimi öncesi ve sonrası birkaç gün beslemeyin. Tarantula yemi reddettiğinde zorlamayın.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Deri Değişimi (Molt) Bakımı</h4>
+                        <ul>
+                            <li><strong>Belirtiler:</strong> İştah kaybı, aktivitede azalma, abdomenin koyulaşması, parlak/cilalı görünüm, "deri değişimi halısı" örülmesi</li>
+                            <li><strong>Hazırlık:</strong> Su kabının dolu olduğundan emin olun, yem kabını çıkarın</li>
+                            <li><strong>Süreç Sırasında:</strong> Tarantulayı kesinlikle rahatsız etmeyin, terraryumu taşımayın, beslenme yapmayın</li>
+                            <li><strong>Sonrası:</strong> Deri değişiminden sonra en az 7 gün besleme yapmayın, çeneler sertleşene kadar bekleyin</li>
+                            <li><strong>Eski Deri:</strong> Deri değişimi sonrası eski deriyi çıkarabilirsiniz. Bu deri, tarantulanın sağlık durumu hakkında bilgi verir ve cinsiyet tayini için kullanılabilir.</li>
+                            <li><strong>Zorluk Yaşanması:</strong> Deri değişiminde zorluk yaşayan tarantulalar için nem oranını biraz artırın (%65-70)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Sağlık Sorunları ve İşaretleri</h4>
+                        <ul>
+                            <li><strong>Yaygın Sorunlar:</strong>
+                                <ul>
+                                    <li>Mikoz (mantar enfeksiyonu)</li>
+                                    <li>Dehidrasyon</li>
+                                    <li>Deri değişimi komplikasyonları</li>
+                                    <li>Parazitler (nadir)</li>
+                                    <li>Düşme sonucu yaralanmalar</li>
+                                </ul>
+                            </li>
+                            <li><strong>Uyarı İşaretleri:</strong>
+                                <ul>
+                                    <li>Uzun süreli hareketsizlik (deri değişimi dışında)</li>
+                                    <li>Bacaklarda anormal duruş veya titreme</li>
+                                    <li>Vücutta beyaz nokta veya lekeler (mantar)</li>
+                                    <li>Abdomenin büzüşmesi (dehidrasyon)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Önleyici Bakım:</strong> Düzenli temizlik, uygun nem ve sıcaklık, temiz su, stressiz bir ortam sağlayın</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Tutma ve Etkileşim</h4>
+                        <ul>
+                            <li><strong>Genel Tavsiye:</strong> Tarantulalar öncelikle gözlem hayvanlarıdır, sürekli tutulmamaları önerilir</li>
+                            <li><strong>Tutma Tekniği:</strong> Gerekirse, tarantulayı yumuşak bir fırça ile yönlendirin ve elinize tırmanmasına izin verin</li>
+                            <li><strong>Güvenlik Önlemleri:</strong>
+                                <ul>
+                                    <li>Her zaman yere yakın tutun (düşme riski nedeniyle)</li>
+                                    <li>Agresif davranış sergiliyorsa tutmaktan kaçının</li>
+                                    <li>Urtikarya kıllarına dikkat edin (cilt ve göz tahrişi yapabilir)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Davranış Yorumlama:</strong> Savunma pozisyonu alması veya abdomenini sıvazlaması (kıl atmak için), stres belirtisidir</li>
+                            <li><strong>Ortamda Gezinme:</strong> Tarantulanızı asla gözetimsiz bırakmayın, kaçması durumunda bulması zor olabilir</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lifecycle-section">
+                <h3>Yaşam Döngüsü ve Gelişim</h3>
+                <div class="lifecycle-timeline">
+                    <div class="timeline-container left">
+                        <div class="timeline-content">
+                            <h4>Yumurta Kesesi</h4>
+                            <p>Dişi, yaklaşık 50-300 yumurta içeren bir yumurta kesesi (kokon) üretir. Kokon, dişi tarafından 6-8 hafta boyunca korunur.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container right">
+                        <div class="timeline-content">
+                            <h4>Nimf (1. Dönem)</h4>
+                            <p>Yumurtadan çıkan nimfler henüz tam gelişmemiştir, hareketsizdir ve yumurta sarısından beslenir. Bu dönem yaklaşık 1-2 hafta sürer.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container left">
+                        <div class="timeline-content">
+                            <h4>Yavru (2. Dönem)</h4>
+                            <p>İlk deri değişiminden sonra, yavrular artık aktiftir ve beslenmeye başlayabilirler. Bu dönemde yavrular genellikle 3-5 mm boyundadır.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container right">
+                        <div class="timeline-content">
+                            <h4>Genç (1-3 Yıl)</h4>
+                            <p>Bu dönemde tarantula düzenli olarak deri değiştirir ve hızla büyür. Cinsiyet özellikleri belirginleşmeye başlar, ancak henüz tam olarak gelişmemiştir.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container left">
+                        <div class="timeline-content">
+                            <h4>Eşeysel Olgunluk (Erkek: 3-5 Yıl)</h4>
+                            <p>Erkekler daha erken olgunlaşır. Son deri değişiminden sonra, erkekler çiftleşme kancaları (tibial hooks) ve palpal bulbuslar (çiftleşme organları) geliştirir. Bu deri değişimden sonra artık büyümezler ve ömürleri kısadır.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container right">
+                        <div class="timeline-content">
+                            <h4>Eşeysel Olgunluk (Dişi: 5-7 Yıl)</h4>
+                            <p>Dişiler daha geç olgunlaşır ve büyümeye devam eder. Spermatekası (sperm depolama organı) tam olarak gelişir ve çiftleşme sonrası yumurta üretebilir.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container left">
+                        <div class="timeline-content">
+                            <h4>Yetişkin Yaşam (Dişi: 25-30 Yıl)</h4>
+                            <p>Dişiler uzun bir yetişkin yaşamı sürer, düzenli olarak deri değiştirir ve uygun koşullarda birkaç kez üreme yapabilir.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-section">
+                <h3>Fotoğraf Galerisi</h3>
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <img src="https://source.unsplash.com/600x400/?tarantula+red+knee" alt="Meksika Kırmızı Diz Tarantulası 1">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://source.unsplash.com/600x400/?spider+tarantula" alt="Meksika Kırmızı Diz Tarantulası 2">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://source.unsplash.com/600x400/?arachnid+spider" alt="Meksika Kırmızı Diz Tarantulası 3">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://source.unsplash.com/600x400/?mexican+tarantula" alt="Meksika Kırmızı Diz Tarantulası 4">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="related-species">
+                <h3>Benzer Türler</h3>
+                <p>Brachypelma hamorii'ye benzer özelliklere sahip diğer tarantula türleri:</p>
+                <div class="related-grid">
+                    <a href="brachypelma-emilia.html" class="related-card">
+                        <div class="related-image">
+                            <img src="https://source.unsplash.com/600x400/?mexican+redleg+tarantula" alt="Meksika Kırmızı Bacak Tarantulası">
+                        </div>
+                        <div class="related-content">
+                            <h4>Meksika Kırmızı Bacak</h4>
+                            <p><em>Brachypelma emilia</em></p>
+                            <p>Zorluk: <span class="care-level beginner">Başlangıç</span></p>
+                        </div>
+                    </a>
+                    <a href="tliltocatl-albopilosus.html" class="related-card">
+                        <div class="related-image">
+                            <img src="https://source.unsplash.com/600x400/?curly+hair+tarantula" alt="Kıvırcık Saçlı Tarantula">
+                        </div>
+                        <div class="related-content">
+                            <h4>Kıvırcık Saçlı Tarantula</h4>
+                            <p><em>Tliltocatl albopilosus</em></p>
+                            <p>Zorluk: <span class="care-level beginner">Başlangıç</span></p>
+                        </div>
+                    </a>
+                    <a href="grammostola-rosea.html" class="related-card">
+                        <div class="related-image">
+                            <img src="https://source.unsplash.com/600x400/?chilean+rose+tarantula" alt="Şili Gül Tarantulası">
+                        </div>
+                        <div class="related-content">
+                            <h4>Şili Gül Tarantulası</h4>
+                            <p><em>Grammostola rosea</em></p>
+                            <p>Zorluk: <span class="care-level beginner">Başlangıç</span></p>
+                        </div>
+                    </a>
+                    <a href="aphonopelma-chalcodes.html" class="related-card">
+                        <div class="related-image">
+                            <img src="https://source.unsplash.com/600x400/?arizona+blonde+tarantula" alt="Arizona Sarışın Tarantulası">
+                        </div>
+                        <div class="related-content">
+                            <h4>Arizona Sarışın Tarantulası</h4>
+                            <p><em>Aphonopelma chalcodes</em></p>
+                            <p>Zorluk: <span class="care-level beginner">Başlangıç</span></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="faq-section">
+                <h3>Sık Sorulan Sorular</h3>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <h4>Meksika Kırmızı Diz Tarantulası tehlikeli midir?</h4>
+                        <div class="accordion-content">
+                            <p>Bu tür, nispeten zayıf bir zehire sahiptir ve insanlara karşı tehlikeli değildir. Isırıkları arı sokmasına benzer bir acıya neden olabilir. Asıl savunma mekanizması olarak urtikarya kılları atarlar, bu kıllar cilt ve gözlerde tahrişe neden olabilir.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4>Bu türün yasal olarak edinilmesi mümkün müdür?</h4>
+                        <div class="accordion-content">
+                            <p>Evet, ancak CITES Ek II kapsamında korunduğu için, yasal olarak üretilmiş ve belgelendirilmiş bireyler edinmelisiniz. Yetkili ve güvenilir satıcılardan alım yapılması önemlidir.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4>Tarantulam yemek yemiyorsa ne yapmalıyım?</h4>
+                        <div class="accordion-content">
+                            <p>Yemek reddi normal bir davranıştır, özellikle deri değişimi öncesi ve sonrasında görülür. Eğer tarantula sağlıklı görünüyorsa endişelenmeyin. Deri değişimi belirtileri (renk koyulaşması, hareketsizlik) olup olmadığını kontrol edin. Yetişkin bir tarantula, aylar boyunca yemek yemeden hayatta kalabilir.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4>Terraryumda canlı bitki kullanabilir miyim?</h4>
+                        <div class="accordion-content">
+                            <p>Evet, ancak düşük nemli ortamlarda yaşayabilen bitkiler seçin. Sukulent türleri ve hava bitkileri (tillandsia) iyi seçeneklerdir. Bitkilerin, tarantulanın toprak kazmasını engellemeyecek şekilde yerleştirildiğinden emin olun.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4>Tarantulam sürekli terraryumun köşesinde duruyor, normal mi?</h4>
+                        <div class="accordion-content">
+                            <p>Bu normal bir davranıştır. Tarantulalar genellikle güvenli hissettikleri bir köşe veya sığınak seçer ve çoğu zamanını orada geçirir. Eğer aşırı hareketlilik ve kaçma çabası gibi stres belirtileri yoksa endişelenmenize gerek yoktur.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Egzotik Hayvanlar Dünyası. Tüm hakları saklıdır.</p>
+            <div class="social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Accordion işlevselliği
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            
+            accordionItems.forEach(item => {
+                const header = item.querySelector('h4');
+                const content = item.querySelector('.accordion-content');
+                
+                header.addEventListener('click', () => {
+                    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
