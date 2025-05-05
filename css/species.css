@@ -1,0 +1,103 @@
+/* Species Page Styles */
+.species-header-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.taxonomy {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.fact-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.fact-card {
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.fact-card h4 {
+    margin-top: 0;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 10px;
+}
+
+.care-guide {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.care-guide-item {
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.care-guide-item h4 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+.care-level {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+}
+
+.beginner { background-color: #4caf50; }
+.intermediate { background-color: #ff9800; }
+.advanced { background-color: #f44336; }
+
+.species-section p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.species-section h3 {
+    color: var(--primary-color);
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+/* Responsive Design for Species Pages */
+@media (max-width: 768px) {
+    .species-header {
+        flex-direction: column;
+    }
+    
+    .species-header-image {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .species-header-content {
+        width: 100%;
+    }
+    
+    .fact-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .care-guide {
+        grid-template-columns: 1fr;
+    }
+} 

@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arizona Sarışın Tarantula (Aphonopelma chalcodes) Bakım Rehberi | Egzotik Hayvanlar Dünyası</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .species-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            gap: 30px;
+        }
+        
+        .species-header-image {
+            width: 40%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .species-header-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .species-header-content {
+            width: 60%;
+        }
+        
+        .species-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .fact-card {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .fact-card h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .care-level {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .beginner { background-color: #4caf50; }
+        .intermediate { background-color: #ff9800; }
+        .advanced { background-color: #f44336; }
+        
+        .species-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .species-title {
+            margin-bottom: 20px;
+        }
+        
+        .species-title h1 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .scientific-name {
+            font-style: italic;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+            color: #666;
+        }
+        
+        .common-names {
+            font-size: 0.9em;
+            color: #888;
+        }
+        
+        .quick-facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .fact {
+            padding: 5px 10px;
+        }
+        
+        .fact span {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        
+        .species-image-gallery {
+            margin: 30px 0;
+        }
+        
+        .main-image {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .thumbnail-container {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+        
+        .thumbnail-container img {
+            width: 100px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .thumbnail-container img:hover {
+            transform: scale(1.05);
+        }
+        
+        .species-overview, .taxonomy-section, .care-section, .breeding-section, .related-species, .faq-section, .resources-section {
+            margin: 40px 0;
+        }
+        
+        .taxonomy-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .taxonomy-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .taxonomy-item span {
+            font-weight: bold;
+            margin-right: 5px;
+            color: var(--primary-color);
+        }
+        
+        .taxonomy-note {
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+            margin-top: 15px;
+        }
+        
+        .care-subsection {
+            margin: 30px 0;
+        }
+        
+        .care-tips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .tip {
+            flex: 1;
+            min-width: 250px;
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .tip i {
+            font-size: 1.5em;
+            color: var(--primary-color);
+        }
+        
+        .tip-content h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .tip-content p {
+            margin: 5px 0;
+        }
+        
+        .warning-box {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .warning-box h4 {
+            margin-top: 0;
+            color: #856404;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .breeding-steps {
+            margin: 20px 0;
+        }
+        
+        .step {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .step:last-child {
+            border-bottom: none;
+        }
+        
+        .step h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary-color);
+        }
+        
+        .species-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .species-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .species-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .species-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .species-card-info {
+            padding: 15px;
+        }
+        
+        .species-card-info h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn.disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .accordion {
+            margin: 20px 0;
+        }
+        
+        .accordion-item {
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .accordion-header {
+            background-color: #f9f9f9;
+            padding: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            position: relative;
+            transition: background-color 0.3s;
+        }
+        
+        .accordion-header:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .accordion-header:after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s;
+        }
+        
+        .accordion-header.active:after {
+            transform: translateY(-50%) rotate(180deg);
+        }
+        
+        .accordion-content {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: white;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .resource-card {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .resource-card i {
+            font-size: 2em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .resource-card h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .resource-card ul {
+            text-align: left;
+            list-style-position: inside;
+        }
+        
+        .resource-card li {
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .species-header {
+                flex-direction: column;
+            }
+            
+            .species-header-image, .species-header-content {
+                width: 100%;
+            }
+            
+            .care-tips {
+                flex-direction: column;
+            }
+            
+            .tip {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Egzotik Hayvanlar Dünyası</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Ana Sayfa</a></li>
+                    <li><a href="../tarantulas.html">Tarantulalar</a></li>
+                    <li><a href="../snakes.html">Yılanlar</a></li>
+                    <li><a href="../lizards.html">Kertenkeleler</a></li>
+                    <li><a href="../about.html">Hakkımızda</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="species-page">
+        <div class="container">
+            <div class="species-container">
+                <div class="species-header">
+                    <div class="species-title">
+                        <h1>Arizona Sarışın Tarantula (Aphonopelma chalcodes)</h1>
+                        <div class="scientific-name">Aphonopelma chalcodes</div>
+                        <div class="common-names">Arizona Blonde Tarantula, Desert Blonde Tarantula</div>
+                    </div>
+                    <div class="quick-facts">
+                        <div class="fact"><span>Ortalama Boy:</span> 10-13 cm</div>
+                        <div class="fact"><span>Ömrü:</span> Dişiler 25-30+ yıl, Erkekler 5-10 yıl</div>
+                        <div class="fact"><span>Bakım Seviyesi:</span> <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i> (Başlangıç)</div>
+                        <div class="fact"><span>Mizaç:</span> <i class="fas fa-smile"></i> Sakin, uysal</div>
+                    </div>
+                </div>
+
+                <div class="species-image-gallery">
+                    <div class="main-image">
+                        <img src="../images/aphonopelma-chalcodes-main.jpg" alt="Arizona Sarışın Tarantula (Aphonopelma chalcodes)" id="mainImage">
+                    </div>
+                    <div class="thumbnail-container">
+                        <img src="../images/aphonopelma-chalcodes-1.jpg" alt="Aphonopelma chalcodes 1" onclick="changeImage('../images/aphonopelma-chalcodes-1.jpg')">
+                        <img src="../images/aphonopelma-chalcodes-2.jpg" alt="Aphonopelma chalcodes 2" onclick="changeImage('../images/aphonopelma-chalcodes-2.jpg')">
+                        <img src="../images/aphonopelma-chalcodes-3.jpg" alt="Aphonopelma chalcodes 3" onclick="changeImage('../images/aphonopelma-chalcodes-3.jpg')">
+                    </div>
+                </div>
+
+                <div class="species-overview">
+                    <h2>Genel Bakış</h2>
+                    <p>Arizona Sarışın Tarantula (Aphonopelma chalcodes), Amerika Birleşik Devletleri'nin güneybatısından, özellikle Arizona eyaletinin çöl bölgelerinden gelen dayanıklı bir tarantula türüdür. Vücudunun açık kahverengi ile sarımsı rengi ve siyah abdomenindeki altın renkli tüyleri nedeniyle "Sarışın Tarantula" olarak adlandırılmaktadır.</p>
+                    
+                    <p>Bu tür, çöl ortamına mükemmel şekilde adapte olmuştur. A. chalcodes, çevresel koşullardaki değişimlere karşı son derece dayanıklıdır ve yapay ortamlarda yüksek bir uyum yeteneği gösterir. Sakin mizacı, dayanıklılığı ve nispeten kolay bakım gereksinimleri sayesinde, tarantula hobisine yeni başlayanlar için ideal bir türdür.</p>
+                    
+                    <p>Aphonopelma chalcodes türü, tarantulalar arasında en uzun ömürlü türlerden biridir. Doğal ortamında dişi bireyler 30 yıldan fazla yaşayabilir. Çöl ikliminde yaşamaya adapte olduğundan, genellikle kuru ve ılık ortamları tercih eder.</p>
+                </div>
+
+                <div class="taxonomy-section">
+                    <h2>Taksonomi ve Sınıflandırma</h2>
+                    <div class="taxonomy-list">
+                        <div class="taxonomy-item"><span>Alem:</span> Animalia (Hayvanlar)</div>
+                        <div class="taxonomy-item"><span>Şube:</span> Arthropoda (Eklem Bacaklılar)</div>
+                        <div class="taxonomy-item"><span>Sınıf:</span> Arachnida (Örümceğimsiler)</div>
+                        <div class="taxonomy-item"><span>Takım:</span> Araneae (Örümcekler)</div>
+                        <div class="taxonomy-item"><span>Alt Takım:</span> Mygalomorphae</div>
+                        <div class="taxonomy-item"><span>Familya:</span> Theraphosidae (Tarantulalar)</div>
+                        <div class="taxonomy-item"><span>Alt Familya:</span> Theraphosinae</div>
+                        <div class="taxonomy-item"><span>Cins:</span> Aphonopelma</div>
+                        <div class="taxonomy-item"><span>Tür:</span> A. chalcodes</div>
+                    </div>
+                    <p class="taxonomy-note">Not: Aphonopelma cinsi Amerika kıtasına özgüdür ve özellikle Kuzey Amerika'nın güneybatı bölgesinde yaygındır. Son yıllarda yapılan genetik çalışmalar, bu cinste birçok yeni türün tanımlanmasına yol açmıştır.</p>
+                </div>
+
+                <div class="care-section">
+                    <h2>Bakım Rehberi</h2>
+                    
+                    <div class="care-subsection">
+                        <h3>Terraryum Gereksinimleri</h3>
+                        <p>Aphonopelma chalcodes, doğal yaşam alanında yer yüzeyinde yuva yapan bir türdür ve kazıcı özellikleri vardır. Yetişkin bir birey için ideal terraryum, 30-40 cm uzunluğunda, 25-30 cm genişliğinde ve en az 20-25 cm yüksekliğinde olmalıdır.</p>
+                        
+                        <div class="care-tips">
+                            <div class="tip">
+                                <i class="fas fa-thermometer-half"></i>
+                                <div class="tip-content">
+                                    <h4>Sıcaklık</h4>
+                                    <p>İdeal: 24-28°C</p>
+                                    <p>Kısa süreli tolerans: 18-30°C</p>
+                                </div>
+                            </div>
+                            <div class="tip">
+                                <i class="fas fa-tint"></i>
+                                <div class="tip-content">
+                                    <h4>Nem</h4>
+                                    <p>%40-50 oranında nem</p>
+                                    <p>Çöl türü olduğundan düşük nem tercih eder</p>
+                                </div>
+                            </div>
+                            <div class="tip">
+                                <i class="fas fa-mountain"></i>
+                                <div class="tip-content">
+                                    <h4>Substrat</h4>
+                                    <p>10-15 cm derinliğinde substrat</p>
+                                    <p>Torf, kum ve toprak karışımı</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p>A. chalcodes çöl kökenli bir tür olduğundan, kuru ortamları tercih eder. Kuru bir substrat ve düşük nem seviyesi sağlamak önemlidir. Terraryumun bir köşesinde küçük bir su kabı bulundurmak yeterlidir. Aşırı nem, bu tür için stres ve sağlık sorunlarına yol açabilir.</p>
+                    </div>
+                    
+                    <div class="care-subsection">
+                        <h3>Terraryum Düzeni ve Aksesuarlar</h3>
+                        <ul>
+                            <li><strong>Substrat:</strong> Kuru, kazılabilen bir substrat kullanın. Torf, toprak ve çöl kumu karışımı idealdir. Bu tür yeraltı yuvaları oluşturmaktan hoşlanır, bu nedenle yeterli derinlikte (en az 10 cm) substrat sağlanmalıdır.</li>
+                            <li><strong>Saklanma Yeri:</strong> Doğal ortamında yuva kazma alışkanlığı olsa da, bir saklanma yeri sağlamak, tarantulanın stresini azaltabilir. Mantar kökü, yarı gömülü saksı veya ticari bir tarantula sığınağı kullanılabilir.</li>
+                            <li><strong>Su Kabı:</strong> Küçük, sığ bir su kabı. Su kabı, nem oranını çok yükseltmeyecek şekilde yerleştirilmelidir.</li>
+                            <li><strong>Dekor:</strong> Doğal habitat görünümü için kuru bitki malzemeleri, kaya parçaları veya küçük kaktüsler (gerçek veya yapay) eklenebilir.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-subsection">
+                        <h3>Beslenme</h3>
+                        <p>A. chalcodes türü, diğer tarantulalar gibi etçildir ve canlı böceklerle beslenir. Doğal yaşam alanında, fırsat buldukça avlanan bir türdür ve uzun süre (bazen aylar) yemeden kalabilir. Esaret altında uygun bir beslenme programı şu şekilde olabilir:</p>
+                        <ul>
+                            <li><strong>Yavru (1 cm bacak açıklığına kadar):</strong> 3-4 günde bir pinhead (yeni doğmuş) cırcır böcekleri</li>
+                            <li><strong>Genç (1-8 cm):</strong> 7-10 günde bir orta boy cırcır böceği, un kurdu veya küçük dubia hamam böceği</li>
+                            <li><strong>Yetişkin (8+ cm):</strong> 2-3 haftada bir 2-3 büyük cırcır böceği, un kurdu, dubia hamam böceği</li>
+                        </ul>
+                        <p>Bu tür, doğal ortamında sık sık kıtlık yaşadığından, aşırı beslemeden kaçınılmalıdır. Özellikle yetişkin bireyler, uzun süre yemek yemeden kalabilir. Yem artıkları 24 saat içinde terraryumdan çıkarılmalıdır.</p>
+                    </div>
+                    
+                    <div class="care-subsection">
+                        <h3>Sağlık ve Bakım</h3>
+                        <p>Aphonopelma chalcodes, son derece dayanıklı bir tarantuladır ve doğru bakım koşullarında nadiren sağlık sorunları yaşar. Temel bakım gereksinimleri:</p>
+                        <ul>
+                            <li><strong>Deri Değişimi:</strong> Yavru ve genç bireyler daha sık (2-4 ayda bir), yetişkinler ise yılda bir kez deri değiştirir. Deri değişimi sırasında tarantulayı rahatsız etmeyin ve bu dönemde beslemekten kaçının.</li>
+                            <li><strong>Su:</strong> Temiz su sağlayın, ancak yüksek nem oluşturmaktan kaçının. Su kabını düzenli olarak temizleyin ve taze su ile doldurun.</li>
+                            <li><strong>Uzun Ömür:</strong> Bu tür, dişi bireylerin 25-30+ yıl yaşayabilmesiyle bilinir, bu nedenle uzun vadeli bir bakım planı gerektirir.</li>
+                        </ul>
+                        
+                        <div class="warning-box">
+                            <h4><i class="fas fa-exclamation-triangle"></i> Dikkat Edilmesi Gereken Sağlık Sorunları</h4>
+                            <ul>
+                                <li><strong>Nem Kaynaklı Sorunlar:</strong> Aşırı nem, mantar enfeksiyonlarına ve solunum sorunlarına yol açabilir. Terraryumu kuru tutun.</li>
+                                <li><strong>Dehidrasyon:</strong> Her ne kadar çöl türü olsa da, uzun süre susuz kalmak büzüşmüş abdomen ve halsizliğe neden olabilir.</li>
+                                <li><strong>Düşme Yaralanmaları:</strong> Bu tür yavaş hareket eder, ancak yine de düşmeler abdomenin zarar görmesine neden olabilir.</li>
+                                <li><strong>Deri Değişimi Sorunları:</strong> Özellikle düşük nemde deri değişimi sorunları yaşanabilir. Deri değişimi döneminde terraryumun bir bölümünü hafifçe nemlendirmek faydalı olabilir.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="care-subsection">
+                        <h3>Davranış ve Elleçleme</h3>
+                        <p>A. chalcodes genellikle sakin ve uysal bir tarantuladır. Tehdit edildiğinde ilk tepkisi kaçmak veya saklanmaktır. Nadiren tehdit duruşu alır ve çok nadiren ısırma davranışı gösterir.</p>
+                        
+                        <p>Bu tür, tehdit hissettiğinde saldırmak yerine savunma olarak urticating (yakıcı) tüylerini kullanır. Bu tüyler, insan cildi ve gözlerde tahriş yaratabilir, bu nedenle tarantula ile çalışırken eldiven ve göz koruması kullanılması önerilir.</p>
+                        
+                        <p>Sakin mizacı nedeniyle, tarantula hobisinde "elleçlenebilen" bir tür olarak bilinse de, tarantulaların elleçlenmesi genellikle önerilmez. Elleçleme, hem tarantulaya hem de sahibine risk oluşturabilir. Taşıma gerekiyorsa, nazikçe bir kaba yönlendirme yöntemi kullanılmalıdır.</p>
+                        
+                        <p>A. chalcodes genellikle gündüz saatlerinde inaktiftir ve akşam/gece saatlerinde daha aktif olur. Doğal yaşam alanında, gündüzleri yuvasında kalır ve geceleri avlanmak için dışarı çıkar.</p>
+                    </div>
+                </div>
+
+                <div class="breeding-section">
+                    <h2>Üreme Bilgileri</h2>
+                    <p>A. chalcodes türünün üremesi, doğal yaşam döngüsünü takip eder ve yağmur mevsimi öncesine denk gelir. Esaret altında üretimi mümkündür, ancak deneyim ve özen gerektirir:</p>
+                    
+                    <div class="breeding-steps">
+                        <div class="step">
+                            <h3><i class="fas fa-venus-mars"></i> Cinsiyet Belirleme</h3>
+                            <p>Dişiler daha iri yapılı, daha uzun ömürlü ve genellikle daha kalın bacaklıdır. Erkekler daha ince bacaklara, daha küçük abdomen ve tibial çıkıntılara (çiftleşme kancaları) sahiptir. Kesin cinsiyet tayini için atılmış deri (exuvia) incelenmelidir.</p>
+                        </div>
+                        <div class="step">
+                            <h3><i class="fas fa-temperature-high"></i> Hazırlık</h3>
+                            <p>Çiftleştirme öncesi, her iki tarantula da sağlıklı ve iyi beslenmiş olmalıdır. Dişi son deri değişiminden en az 1-2 ay sonra çiftleştirilmelidir. Doğal döngülerini taklit etmek için, nem seviyesini kısa bir süre için hafifçe artırmak faydalı olabilir.</p>
+                        </div>
+                        <div class="step">
+                            <h3><i class="fas fa-heart"></i> Çiftleştirme</h3>
+                            <p>Çiftleştirme, geniş ve nötr bir alanda gerçekleştirilmelidir. Erkek tarantula, vibrasyon ve davul çalma hareketleriyle dişiye yaklaşır. Dişi, erkeğin yaklaşmasına izin verirse, erkek sperm transferi yapar. Çiftleşme sonrası erkeği hemen uzaklaştırın, çünkü dişi tarafından yenme riski vardır.</p>
+                        </div>
+                        <div class="step">
+                            <h3><i class="fas fa-egg"></i> Kokon Oluşturma</h3>
+                            <p>Başarılı çiftleşmeden yaklaşık 2-6 ay sonra, dişi bir kokon (yumurta kesesi) oluşturur. Bu kokon, 50-200 yumurta içerebilir. Dişi, kokonunu korumak için agresif davranabilir ve genellikle kokonunu saklamak için yuva içine çekilir.</p>
+                        </div>
+                        <div class="step">
+                            <h3><i class="fas fa-baby"></i> Yavru Bakımı</h3>
+                            <p>Yavrular, kokon oluştuktan yaklaşık 6-8 hafta sonra çıkar. İlk deri değişiminden sonra (genellikle yumurtadan çıktıktan 7-10 gün sonra), yavrular birbirlerinden ayrılmaya başlarlar. Bu aşamada ayrı kaplara alınmalıdır. Yavrular, daha yüksek nem ve sıcaklık ortamında tutulmalı ve pinhead cırcır böcekleri ile beslenmelidir.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="related-species">
+                    <h2>Benzer Türler</h2>
+                    <p>Aphonopelma chalcodes'e benzer özelliklere sahip ve benzer bakım gereksinimleri olan diğer tarantula türleri:</p>
+                    
+                    <div class="species-cards">
+                        <div class="species-card">
+                            <img src="../images/aphonopelma-hentzi-thumb.jpg" alt="Teksas Kahverengi Tarantulası">
+                            <div class="species-card-info">
+                                <h3>Teksas Kahverengi Tarantulası</h3>
+                                <div class="scientific-name">Aphonopelma hentzi</div>
+                                <p>Aynı cinsten, benzer bakım gerektiren başka bir Kuzey Amerika türü</p>
+                                <a href="#" class="btn disabled">Yakında</a>
+                            </div>
+                        </div>
+                        <div class="species-card">
+                            <img src="../images/grammostola-porteri-thumb.jpg" alt="Şili Gül Tarantulası">
+                            <div class="species-card-info">
+                                <h3>Şili Gül Tarantulası</h3>
+                                <div class="scientific-name">Grammostola porteri</div>
+                                <p>Benzer mizaca sahip, dayanıklı bir başlangıç türü</p>
+                                <a href="#" class="btn disabled">Yakında</a>
+                            </div>
+                        </div>
+                        <div class="species-card">
+                            <img src="../images/brachypelma-emilia-thumb.jpg" alt="Meksika Kırmızı Bacak Tarantulası">
+                            <div class="species-card-info">
+                                <h3>Meksika Kırmızı Bacak Tarantulası</h3>
+                                <div class="scientific-name">Brachypelma emilia</div>
+                                <p>Sakin mizaçlı, kurak ortamları seven bir tür</p>
+                                <a href="brachypelma-emilia.html" class="btn">Detaylı Bilgi</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-section">
+                    <h2>Sık Sorulan Sorular</h2>
+                    
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header">Aphonopelma chalcodes neden Arizona Blonde (Arizona Sarışın) Tarantula olarak adlandırılır?</div>
+                            <div class="accordion-content">
+                                <p>Bu tür, Arizona eyaletinde yaygın olduğu için "Arizona" ismini almıştır. "Blonde" (Sarışın) ise vücudunun açık kahverengi/sarımsı rengi ve abdomenindeki altın renkli tüylerden gelmektedir. Bu açık renk, çöl ortamında kamuflaj sağlar.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <div class="accordion-header">Bu tarantula türü gerçekten 30 yıl yaşayabilir mi?</div>
+                            <div class="accordion-content">
+                                <p>Evet, A. chalcodes türünün dişi bireyleri, tarantulalar arasında en uzun ömürlü olanlardan biridir. Uygun bakım koşullarında, dişiler 25-30 yıl, hatta bazı durumlarda daha uzun süre yaşayabilir. Erkekler ise olgunluğa eriştikten sonra genellikle sadece birkaç yıl daha yaşar (toplam 5-10 yıl).</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <div class="accordion-header">Aphonopelma chalcodes iyi bir başlangıç türü müdür?</div>
+                            <div class="accordion-content">
+                                <p>Evet, A. chalcodes mükemmel bir başlangıç türüdür. Sakin mizacı, dayanıklılığı, bakım hatalarına karşı toleransı ve nispeten basit bakım gereksinimleri ile yeni başlayanlar için idealdir. Ayrıca, yavaş hareket etme eğiliminde olduğundan, elleçlemesi diğer türlere göre daha kolaydır (ancak yine de gereksiz elleçlemeden kaçınılmalıdır).</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <div class="accordion-header">Bu tarantula ne sıklıkta beslenmelidir?</div>
+                            <div class="accordion-content">
+                                <p>A. chalcodes doğal ortamında uzun süreler yemek yemeden kalabilir. Yetişkin bireyler 2-3 haftada bir, gençler 7-10 günde bir, yavrular ise 3-4 günde bir beslenebilir. Özellikle deri değişimi dönemlerinde besleme sıklığı azaltılmalı veya durdurulmalıdır. Aşırı beslemeden kaçınmak önemlidir, çünkü doğal ortamında bu tür düzenli olarak kıtlık yaşar.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <div class="accordion-header">A. chalcodes türü için teraryum nemini nasıl düşük tutabilirim?</div>
+                            <div class="accordion-content">
+                                <p>Bu türün teraryumu için nem kontrolü önemlidir. Düşük nemi korumak için: (1) Kuru bir substrat kullanın ve sadece arada bir hafifçe nemlendirin, (2) Terraryuma küçük bir su kabı koyun, ama spreyle nemlendirmekten kaçının, (3) İyi havalandırma sağlayın, (4) Islak yem artıklarını hemen çıkarın. Nem oranı genellikle %40-50 civarında tutulmalıdır.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resources-section">
+                    <h2>Kaynaklar ve Daha Fazla Bilgi</h2>
+                    
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <i class="fas fa-book"></i>
+                            <h3>Önerilen Kitaplar</h3>
+                            <ul>
+                                <li>"The Tarantula Keeper's Guide" - Stanley A. Schultz & Marguerite J. Schultz</li>
+                                <li>"Tarantulas of the USA: A Guide to All 54 Species" - Chris Hamilton</li>
+                                <li>"American Tarantulas: Their Natural History and Husbandry" - J. Meyer</li>
+                            </ul>
+                        </div>
+                        <div class="resource-card">
+                            <i class="fas fa-globe"></i>
+                            <h3>Çevrimiçi Kaynaklar</h3>
+                            <ul>
+                                <li><a href="https://arachnoboards.com/" target="_blank">Arachnoboards Forum</a></li>
+                                <li><a href="https://tomsbigspiders.com/" target="_blank">Tom's Big Spiders</a></li>
+                                <li><a href="https://www.tarantulaforum.com/" target="_blank">Tarantula Forum</a></li>
+                            </ul>
+                        </div>
+                        <div class="resource-card">
+                            <i class="fas fa-users"></i>
+                            <h3>Topluluklar</h3>
+                            <ul>
+                                <li><a href="https://www.reddit.com/r/tarantulas/" target="_blank">Reddit r/tarantulas</a></li>
+                                <li><a href="https://www.facebook.com/groups/tarantulaenthusiasts/" target="_blank">Facebook Tarantula Enthusiasts Group</a></li>
+                                <li><a href="https://www.instagram.com/explore/tags/aphonopelmachalcodes/" target="_blank">Instagram #aphonopelmachalcodes</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Egzotik Hayvanlar Dünyası. Tüm hakları saklıdır.</p>
+            <div class="social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Image gallery functionality
+        function changeImage(src) {
+            document.getElementById('mainImage').src = src;
+        }
+        
+        // Accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const content = this.nextElementSibling;
+                    
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

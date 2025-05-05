@@ -130,7 +130,12 @@
     <header>
         <div class="container">
             <div class="logo">
-                <h1>Egzotik Hayvanlar Dünyası</h1>
+                <a href="index.html">Egzotik Hayvanlar Dünyası</a>
+            </div>
+            <div class="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
             <nav>
                 <ul>
@@ -730,24 +735,7 @@
         </div>
     </footer>
     
-    <script>
-        function openTab(evt, tabId) {
-            // Tüm tab içeriklerini gizle
-            var tabContents = document.getElementsByClassName("tab-content");
-            for (var i = 0; i < tabContents.length; i++) {
-                tabContents[i].classList.remove("active");
-            }
-            
-            // Tüm butonlardan active sınıfını kaldır
-            var tabButtons = document.getElementsByClassName("tab-btn");
-            for (var i = 0; i < tabButtons.length; i++) {
-                tabButtons[i].classList.remove("active");
-            }
-            
-            // Tıklanan butonun içeriğini göster ve butona active sınıfını ekle
-            document.getElementById(tabId).classList.add("active");
-            evt.currentTarget.classList.add("active");
-        }
-    </script>
+    <script src="js/tabs.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html> 

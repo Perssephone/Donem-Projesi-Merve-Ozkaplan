@@ -4,364 +4,807 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kral Yılanı (Lampropeltis getula) Bakım Rehberi | Egzotik Hayvanlar Dünyası</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/species.css">
+    <link rel="stylesheet" href="../style.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Inline species-specific styles */
+        .species-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* Header and Footer Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        header .logo h1 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        header nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        header nav ul li {
+            margin-left: 20px;
+        }
+
+        header nav ul li a {
+            padding: 10px 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s;
+            text-decoration: none;
+            color: var(--dark-color);
+        }
+
+        header nav ul li a:hover,
+        header nav ul li a.active {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer .social a {
+            color: white;
+            margin-left: 15px;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        footer .social a:hover {
+            color: var(--secondary-color);
+        }
+
+        .species-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .species-title h1 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .scientific-name {
+            font-style: italic;
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .quick-facts {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        .fact {
+            margin-bottom: 8px;
+        }
+
+        .fact span {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .species-image-gallery {
+            margin-bottom: 30px;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail-container {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .thumbnail-container img {
+            width: 100px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .thumbnail-container img:hover {
+            transform: scale(1.05);
+        }
+
+        .species-overview, .taxonomy-section, .care-section, .morphs-section, .breeding-section, 
+        .related-species, .faq-section, .resources-section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            margin: 20px 0 15px;
+        }
+
+        .taxonomy-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .taxonomy-item span {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .taxonomy-note {
+            font-style: italic;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .care-tips {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .tip {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .tip i {
+            color: var(--primary-color);
+            font-size: 1.5em;
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        .warning-box {
+            background-color: #fff3e0;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid var(--warning-color);
+        }
+
+        .warning-box h4 {
+            color: var(--warning-color);
+            margin-bottom: 10px;
+        }
+
+        .morph-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .morph-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .morph-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .morph-card h3 {
+            padding: 15px 15px 5px;
+            margin: 0;
+        }
+
+        .morph-card p {
+            padding: 0 15px 15px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        /* Breeding section styles */
+        .breeding-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .step {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .step h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .step h3 i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+
+        /* Related species styles */
+        .species-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .species-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .species-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .species-card-info {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .species-card-info h3 {
+            margin: 0 0 5px 0;
+        }
+
+        .species-card-info p {
+            margin: 10px 0 15px;
+            flex-grow: 1;
+        }
+
+        .species-card-info .btn {
+            align-self: flex-start;
+        }
+
+        .btn.disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* FAQ accordion styles */
+        .accordion-item {
+            margin-bottom: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background-color: #f5f5f5;
+            padding: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--primary-color);
+            position: relative;
+            transition: background-color 0.3s;
+        }
+
+        .accordion-header:hover {
+            background-color: #e0e0e0;
+        }
+
+        .accordion-header::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 15px;
+            transition: transform 0.3s;
+        }
+
+        .accordion-header.active::after {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .accordion-content p {
+            padding: 15px;
+            margin: 0;
+        }
+
+        /* Resources section styles */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .resource-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .resource-card i {
+            font-size: 2em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .resource-card h3 {
+            margin: 10px 0 15px;
+        }
+
+        .resource-card ul {
+            list-style: disc;
+            margin-left: 20px;
+        }
+
+        .resource-card ul li {
+            margin-bottom: 5px;
+        }
+
+        /* Footer styles */
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .species-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .quick-facts {
+                width: 100%;
+            }
+            
+            .main-image {
+                height: 300px;
+            }
+            
+            .care-tips, .taxonomy-list, .morph-gallery, 
+            .breeding-steps, .species-cards, .resources-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <div class="logo">
-            <a href="../index.html">Egzotik Hayvanlar Dünyası</a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Ana Sayfa</a></li>
-                <li><a href="../tarantulas.html">Tarantulalar</a></li>
-                <li><a href="../snakes.html">Yılanlar</a></li>
-                <li><a href="../lizards.html">Kertenkeleler</a></li>
-                <li><a href="../contact.html">İletişim</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <div class="species-container">
-        <div class="species-header">
-            <div class="species-title">
-                <h1>Kral Yılanı (Lampropeltis getula)</h1>
-                <div class="scientific-name">Lampropeltis getula</div>
+        <div class="container">
+            <div class="logo">
+                <h1>Egzotik Hayvanlar Dünyası</h1>
             </div>
-            <div class="quick-facts">
-                <div class="fact"><span>Ortalama Boy:</span> 90-140 cm</div>
-                <div class="fact"><span>Ömrü:</span> 15-20 yıl</div>
-                <div class="fact"><span>Bakım Seviyesi:</span> <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i> (Başlangıç)</div>
-                <div class="fact"><span>Mizaç:</span> <i class="fas fa-smile"></i> Aktif, genellikle uysal</div>
-            </div>
-        </div>
-
-        <div class="species-image-gallery">
-            <div class="main-image">
-                <img src="../images/king-snake-main.jpg" alt="Kral Yılanı (Lampropeltis getula)" id="mainImage">
-            </div>
-            <div class="thumbnail-container">
-                <img src="../images/king-snake-1.jpg" alt="Kral Yılanı 1" onclick="changeImage('../images/king-snake-1.jpg')">
-                <img src="../images/king-snake-2.jpg" alt="Kral Yılanı 2" onclick="changeImage('../images/king-snake-2.jpg')">
-                <img src="../images/king-snake-3.jpg" alt="Kral Yılanı 3" onclick="changeImage('../images/king-snake-3.jpg')">
-                <img src="../images/king-snake-morph.jpg" alt="Kral Yılanı Morph" onclick="changeImage('../images/king-snake-morph.jpg')">
-            </div>
-        </div>
-
-        <div class="species-overview">
-            <h2>Genel Bakış</h2>
-            <p>Kral Yılanları (Lampropeltis getula), çarpıcı görünümleri, dayanıklı yapıları ve uysal karakterleri nedeniyle yılan hobicileri arasında oldukça popülerdir. Kuzey Amerika'ya özgü bu türler, siyah zeminde beyaz, sarı veya krem rengi bantlar veya lekelerle tanınır.</p>
-            
-            <p>İsmini diğer yılanları (zehirli olanlar dahil) yiyebilme yeteneğinden alır ve bu nedenle "kral" olarak adlandırılır. Güçlü ve etkili avcılardır, ancak insanlar için zehirli değildir ve genellikle yetiştirme için uysaldır.</p>
-            
-            <p>Doğada çeşitli habitatlarda yaşarlar - çöllerden ormanlara, tarlalardan dağlık bölgelere kadar geniş alanlara uyum sağlayabilirler. Bu adaptasyon yeteneği, onları ev ortamında bakım için oldukça dayanıklı yapar. Yer seviyesinde yaşamayı tercih ederler ve genellikle çok iyi kazıcıdırlar.</p>
-        </div>
-
-        <div class="taxonomy-section">
-            <h2>Taksonomi ve Sınıflandırma</h2>
-            <div class="taxonomy-list">
-                <div class="taxonomy-item"><span>Alem:</span> Animalia (Hayvanlar)</div>
-                <div class="taxonomy-item"><span>Şube:</span> Chordata (Kordalılar)</div>
-                <div class="taxonomy-item"><span>Sınıf:</span> Reptilia (Sürüngenler)</div>
-                <div class="taxonomy-item"><span>Takım:</span> Squamata (Pullu Sürüngenler)</div>
-                <div class="taxonomy-item"><span>Familya:</span> Colubridae (Karayılanlar)</div>
-                <div class="taxonomy-item"><span>Cins:</span> Lampropeltis</div>
-                <div class="taxonomy-item"><span>Tür:</span> L. getula</div>
-            </div>
-            <p class="taxonomy-note">Not: Kral Yılanları çeşitli alt türlere sahiptir ve taksonomileri son yıllarda çeşitli revizyonlardan geçmiştir. Bazı alt türler artık ayrı türler olarak sınıflandırılmaktadır.</p>
-        </div>
-
-        <div class="care-section">
-            <h2>Bakım Rehberi</h2>
-            
-            <div class="care-subsection">
-                <h3>Terraryum Gereksinimleri</h3>
-                <p>Kral Yılanları için ideal terraryum, yetişkin bir birey için en az 90-120 cm uzunluğunda, 45-60 cm genişliğinde ve 30-45 cm yüksekliğinde olmalıdır. Yavru ve genç bireyler için daha küçük terraryumlar yeterli olabilir.</p>
-                
-                <div class="care-tips">
-                    <div class="tip">
-                        <i class="fas fa-thermometer-half"></i>
-                        <div class="tip-content">
-                            <h4>Sıcaklık</h4>
-                            <p>Sıcak bölge: 28-30°C</p>
-                            <p>Serin bölge: 24-26°C</p>
-                            <p>Gece düşüş: 21-24°C</p>
-                        </div>
-                    </div>
-                    <div class="tip">
-                        <i class="fas fa-tint"></i>
-                        <div class="tip-content">
-                            <h4>Nem</h4>
-                            <p>%40-60 oranında nem</p>
-                            <p>Deri değişimi zamanında %60-65</p>
-                        </div>
-                    </div>
-                    <div class="tip">
-                        <i class="fas fa-lightbulb"></i>
-                        <div class="tip-content">
-                            <h4>Aydınlatma</h4>
-                            <p>12 saat açık / 12 saat kapalı döngü</p>
-                            <p>UVB gerekli değildir</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <p>Terraryumda ısı matları, ısı lambaları veya seramik ısıtıcılar kullanılabilir. Tüm ısı kaynakları termostat ile kontrol edilmelidir. Kral Yılanları sıcaklık gradyanını tercih eder, bu nedenle terraryumun bir ucunu diğer ucundan daha sıcak tutmak önemlidir.</p>
-            </div>
-            
-            <div class="care-subsection">
-                <h3>Terraryum Düzeni ve Aksesuarlar</h3>
-                <ul>
-                    <li><strong>Altlık:</strong> Asprathum, kıyılmış kavak ağacı, orman taban malzemesi veya gazete kağıdı kullanılabilir. En az 5-7 cm derinliğinde olmalıdır çünkü Kral Yılanları kazmayı severler.</li>
-                    <li><strong>Saklanma Yerleri:</strong> En az iki saklanma yeri sağlanmalıdır - biri sıcak tarafta, diğeri serin tarafta. Ticari yılan yuvaları, ters çevrilmiş saksılar veya ağaç kabuğu kullanılabilir.</li>
-                    <li><strong>Tırmanma Yapıları:</strong> Kral Yılanları çok iyi tırmanıcı olmasa da, düşük seviyeli dallar ve kaya yapıları eklemek faydalı olabilir.</li>
-                    <li><strong>Su Kabı:</strong> Temiz su her zaman mevcut olmalıdır. Yılanın içine tamamen girebileceği kadar büyük bir kap tercih edilebilir.</li>
-                    <li><strong>Dekor:</strong> Yapay veya gerçek bitkiler (güvenli türler), kaya düzenlemeleri ve kütükler kullanılabilir. Ancak terraryumda kolay temizlenebilir olması önemlidir.</li>
-                </ul>
-            </div>
-            
-            <div class="care-subsection">
-                <h3>Beslenme</h3>
-                <p>Kral Yılanları mükemmel yiyicilerdir ve genellikle beslenmeyi reddetmezler. Ana beslenme kaynakları kemirgenlerdir, ancak doğada yılanlar, kertenkeler ve kuş yumurtaları da yerler.</p>
-                <ul>
-                    <li><strong>Yavrular (1 yaşına kadar):</strong> 5-7 günde bir pinky fare</li>
-                    <li><strong>Gençler (1-2 yaş):</strong> 7 günde bir hopper veya yetişkin fare</li>
-                    <li><strong>Yetişkinler (2+ yaş):</strong> 7-14 günde bir yetişkin fare veya küçük sıçan</li>
-                </ul>
-                <p>Dondurulmuş/çözülmüş kemirgenler tercih edilir. Canlı kemirgenler yılanı yaralayabilir ve gereksiz strese neden olabilir. Beslemeden sonra 48 saat yılanı rahatsız etmemek önemlidir. Kral Yılanları bazen aşırı beslenmeye eğilimlidir, bu yüzden sağlıklı bir kiloda tutmak için beslenme sıklığını ve miktarını izlemek gerekir.</p>
-            </div>
-            
-            <div class="care-subsection">
-                <h3>Sağlık ve Bakım</h3>
-                <p>Kral Yılanları genellikle sağlam ve hastalığa dirençlidir, ancak düzenli kontroller önemlidir:</p>
-                <ul>
-                    <li><strong>Deri Değişimi:</strong> Sağlıklı bir yılan düzenli olarak tam bir parça halinde deri değiştirir. Yavru yılanlar yaklaşık her ay, yetişkinler 1-3 ayda bir deri değiştirir.</li>
-                    <li><strong>Temizlik:</strong> Kirli altlık hemen temizlenmeli, su kabı her gün kontrol edilmeli ve 3-4 günde bir tamamen değiştirilmelidir. Tüm terraryum 1-2 ayda bir tamamen temizlenmelidir.</li>
-                    <li><strong>Egzotik Veteriner Kontrolleri:</strong> Yeni bir yılan alındığında ve sonrasında yılda en az bir kez veteriner kontrolünden geçirilmelidir.</li>
-                </ul>
-                
-                <div class="warning-box">
-                    <h4><i class="fas fa-exclamation-triangle"></i> Yaygın Sağlık Sorunları</h4>
-                    <ul>
-                        <li><strong>Solunum Yolu Enfeksiyonları:</strong> Belirtileri ağız açık nefes alma, hırıltılı solunum veya burun akıntısıdır. Genellikle yetersiz sıcaklık veya nem nedeniyle oluşur.</li>
-                        <li><strong>Ağız Çürümesi (Stomatit):</strong> Ağız çevresinde kızarıklık, şişlik veya iltihap görülür.</li>
-                        <li><strong>Akarlar:</strong> Küçük, hareketli noktalar olarak görünür, özellikle pulların altında ve gözlerin etrafında bulunur.</li>
-                        <li><strong>Deri Değişimi Sorunları:</strong> Özellikle düşük nem seviyelerinde görülür. Eski deri tamamen atılamayabilir.</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="care-subsection">
-                <h3>Davranış ve Sosyalleşme</h3>
-                <p>Kral Yılanları genellikle aktif ve meraklı hayvanlardır. Dokunulmaya alışırlar, ancak bazı bireyler özellikle gençken tutulduklarında sinirli olabilirler. Düzenli ve nazik etkileşim onları daha uysal hale getirebilir.</p>
-                
-                <p>Karakteristik davranışları arasında:</p>
-                <ul>
-                    <li><strong>Kazma:</strong> Altlık içinde tüneller açmayı severler.</li>
-                    <li><strong>Keşfetme:</strong> Özellikle gece aktif olurlar ve terraryumlarını sürekli keşfederler.</li>
-                    <li><strong>Savunma Davranışı:</strong> Tehdit altında hissettiklerinde top şeklinde kıvrılabilir, titreyen bir kuyruk gösterebilir veya yalancı ısırık yapabilirler.</li>
-                </ul>
-                
-                <p>Kral Yılanları kesinlikle tek başlarına tutulmalıdır. Oldukça bölgeseldir ve kanibalizm gösterebilirler - aynı türden bile olsa diğer yılanları yiyebilirler.</p>
-            </div>
-        </div>
-
-        <div class="morphs-section">
-            <h2>Renk Varyasyonları (Morphs)</h2>
-            <p>Kral Yılanları çeşitli renk ve desen varyasyonlarına sahiptir. Hem doğal alt türler hem de yetiştirme programlarında geliştirilen morphlar bulunur:</p>
-            
-            <div class="morph-gallery">
-                <div class="morph-card">
-                    <img src="../images/king-snake-california.jpg" alt="California Kral Yılanı">
-                    <h3>California Kral Yılanı</h3>
-                    <p>Siyah zemin üzerine beyaz veya krem rengi bantlar. En yaygın türlerden biridir.</p>
-                </div>
-                <div class="morph-card">
-                    <img src="../images/king-snake-florida.jpg" alt="Florida Kral Yılanı">
-                    <h3>Florida Kral Yılanı</h3>
-                    <p>Siyah veya koyu kahverengi zemin üzerine sarı lekeler veya kesintili bantlar.</p>
-                </div>
-                <div class="morph-card">
-                    <img src="../images/king-snake-mexican-black.jpg" alt="Meksika Siyah Kral Yılanı">
-                    <h3>Meksika Siyah Kral Yılanı</h3>
-                    <p>Tamamen parlak siyah renkte, desensiz bir vücuda sahiptir.</p>
-                </div>
-                <div class="morph-card">
-                    <img src="../images/king-snake-albino.jpg" alt="Albino Kral Yılanı">
-                    <h3>Albino</h3>
-                    <p>Siyah pigment eksikliği, beyaz zemin üzerine sarı veya kırmızı desenler.</p>
-                </div>
-            </div>
-            
-            <p class="morph-note">Not: Farklı alt türlerin farklı bakım gereksinimleri olabilir. Örneğin, çöl bölgelerinden gelen alt türler daha düşük nem seviyeleri tercih ederken, Florida alt türleri daha yüksek nem seviyelerine ihtiyaç duyabilir.</p>
-        </div>
-        
-        <div class="breeding-section">
-            <h2>Üreme Bilgileri</h2>
-            <p>Kral Yılanları, doğru koşullar sağlandığında esaret altında başarıyla üretilebilir. Genellikle 3-4 yaşından sonra cinsel olgunluğa ulaşırlar.</p>
-            
-            <div class="breeding-steps">
-                <div class="step">
-                    <h3><i class="fas fa-snowflake"></i> Kış Uykusu (Brumation)</h3>
-                    <p>Üreme döngüsünü başlatmak için genellikle 2-3 aylık bir kış uykusu gerekir. Sıcaklığı kademeli olarak 13-16°C'ye düşürün. Bu dönemde beslenme durdurulur.</p>
-                </div>
-                <div class="step">
-                    <h3><i class="fas fa-temperature-high"></i> Isınma Dönemi</h3>
-                    <p>Kış uykusundan sonra, sıcaklığı kademeli olarak normal seviyeye getirin ve beslenmeyi yeniden başlatın. Erkekler genellikle bu dönemde daha aktif hale gelir.</p>
-                </div>
-                <div class="step">
-                    <h3><i class="fas fa-heart"></i> Çiftleştirme</h3>
-                    <p>Isınma döneminden 2-3 hafta sonra erkek ve dişiyi bir araya getirin. Çiftleşme genellikle ilkbaharda gerçekleşir. Çiftleşme sırasında erkek, dişiyi takip eder ve vücudunu dişinin etrafına sarar.</p>
-                </div>
-                <div class="step">
-                    <h3><i class="fas fa-egg"></i> Yumurta Bırakma</h3>
-                    <p>Çiftleşmeden 30-45 gün sonra dişi, 3-24 arasında (genellikle 5-12) yumurta bırakır. Dişiye önceden bir yumurtlama kutusu sağlanmalıdır - nemli altlık içeren sığ bir kap ideal olacaktır.</p>
-                </div>
-                <div class="step">
-                    <h3><i class="fas fa-baby"></i> Kuluçka</h3>
-                    <p>Yumurtalar 28-30°C'de ve %80-90 nem oranında 55-65 gün boyunca kuluçkaya yatırılır. Kuluçka sırasında yumurtaları çevirmemeye dikkat edin. Yumurtadan çıkan yavrular genellikle ilk deri değişiminden sonra beslenmeye başlar.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="related-species">
-            <h2>Benzer Türler</h2>
-            <p>Kral Yılanına benzer bakım gereksinimleri olan ve başlangıç seviyesi hobiciler için uygun diğer yılan türleri:</p>
-            
-            <div class="species-cards">
-                <div class="species-card">
-                    <img src="../images/corn-snake-thumb.jpg" alt="Mısır Yılanı">
-                    <div class="species-card-info">
-                        <h3>Mısır Yılanı</h3>
-                        <div class="scientific-name">Pantherophis guttatus</div>
-                        <p>Renkli, uysal, bakımı kolay, başlangıç seviyesi türü</p>
-                        <a href="pantherophis-guttatus.html" class="btn">Detaylı Bilgi</a>
-                    </div>
-                </div>
-                <div class="species-card">
-                    <img src="../images/milk-snake-thumb.jpg" alt="Süt Yılanı">
-                    <div class="species-card-info">
-                        <h3>Süt Yılanı</h3>
-                        <div class="scientific-name">Lampropeltis triangulum</div>
-                        <p>Çarpıcı renkler, orta boy, bakımı benzer</p>
-                        <a href="#" class="btn disabled">Yakında</a>
-                    </div>
-                </div>
-                <div class="species-card">
-                    <img src="../images/ball-python-thumb.jpg" alt="Top Piton">
-                    <div class="species-card-info">
-                        <h3>Top Piton</h3>
-                        <div class="scientific-name">Python regius</div>
-                        <p>Sakin mizaçlı, kompakt boyutlu, popüler tür</p>
-                        <a href="python-regius.html" class="btn">Detaylı Bilgi</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="faq-section">
-            <h2>Sık Sorulan Sorular</h2>
-            
-            <div class="accordion">
-                <div class="accordion-item">
-                    <div class="accordion-header">Kral Yılanları gerçekten diğer yılanları yer mi?</div>
-                    <div class="accordion-content">
-                        <p>Evet, Kral Yılanları doğada ophiophagous'tur (yılan yiyen) ve diğer yılanlarla, hatta zehirli türlerle bile beslenebilirler. Zehirli yılanlara karşı belirli bir bağışıklıkları vardır. Esarette beslenen Kral Yılanları kemirgenlerle beslenir ve diğer yılanları yeme fırsatı verilmemelidir.</p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <div class="accordion-header">Kral Yılanları zehirli midir?</div>
-                    <div class="accordion-content">
-                        <p>Hayır, Kral Yılanları zehirli değildir. Colubridae ailesindeki boğucu yılanlardır. Avlarını zehirle değil, vücutlarını sararak ve sıkarak öldürürler. İnsanlar için zehir tehlikesi yoktur.</p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <div class="accordion-header">Kral Yılanları çocuklar için uygun mu?</div>
-                    <div class="accordion-content">
-                        <p>Kral Yılanları, sakin mizaçları ve kolay bakımları nedeniyle çocuklar için nispeten uygun evcil hayvanlardır. Ancak bazı bireyler özellikle genç yaşta biraz sinirli olabilir. 10 yaşından küçük çocuklar her zaman yetişkin gözetiminde olmalıdır. Çocuklara hayvanı nazikçe tutma, beslenme sırasında dikkatli olma ve temas sonrası el yıkama alışkanlıkları öğretilmelidir.</p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <div class="accordion-header">Kral Yılanları ve Mercan Yılanları arasındaki fark nedir?</div>
-                    <div class="accordion-content">
-                        <p>Süt ve Kral Yılanları bazen renkli bantları nedeniyle zehirli Mercan Yılanları ile karıştırılabilir. Ana farklar: Mercan Yılanlarında kırmızı, sarı ve siyah bantlar birbiriyle temas eder ("Red touch yellow, kill a fellow" - Kırmızı sarıya değerse, öldürücüdür). Kral Yılanlarında ise kırmızı ve sarı bantlar siyah bantlarla ayrılır ("Red touch black, friend of Jack" - Kırmızı siyaha değerse, dosttur). Ancak bu renk kuralı sadece Kuzey Amerika türleri için geçerlidir ve güvenilir bir yöntem değildir.</p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <div class="accordion-header">Kral Yılanım kaç yaşına kadar yaşayabilir?</div>
-                    <div class="accordion-content">
-                        <p>İyi bakım koşullarında Kral Yılanları esarette genellikle 15-20 yıl yaşar. Bazı bireyler uygun bakımla 20-25 yıla kadar yaşayabilir. Bu, uzun vadeli bir bağlılık gerektirir ve evcil hayvan olarak almadan önce bu zaman dilimini değerlendirmek önemlidir.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="resources-section">
-            <h2>Kaynaklar ve Daha Fazla Bilgi</h2>
-            
-            <div class="resources-grid">
-                <div class="resource-card">
-                    <i class="fas fa-book"></i>
-                    <h3>Önerilen Kitaplar</h3>
-                    <ul>
-                        <li>"The King Snakes and Milk Snakes" - Ronald G. Markel</li>
-                        <li>"The Complete Carpet Python" - Nick Mutton & Justin Julander</li>
-                        <li>"The General Care and Maintenance of Common Kingsnakes" - David Perlowin</li>
-                    </ul>
-                </div>
-                <div class="resource-card">
-                    <i class="fas fa-globe"></i>
-                    <h3>Çevrimiçi Kaynaklar</h3>
-                    <ul>
-                        <li><a href="https://www.reptilesmagazine.com/california-kingsnake-care-sheet/" target="_blank">Reptiles Magazine Kingsnake Care</a></li>
-                        <li><a href="https://www.morphmarket.com/cats/king-snakes" target="_blank">MorphMarket King Snake Varieties</a></li>
-                        <li><a href="https://kingsnake.com" target="_blank">Kingsnake.com</a></li>
-                    </ul>
-                </div>
-                <div class="resource-card">
-                    <i class="fas fa-users"></i>
-                    <h3>Topluluklar</h3>
-                    <ul>
-                        <li><a href="https://www.reddit.com/r/snakes/" target="_blank">Reddit r/snakes</a></li>
-                        <li><a href="https://www.facebook.com/groups/kingsnakeenthusiasts/" target="_blank">Facebook King Snake Enthusiasts</a></li>
-                        <li>Yerel Herpetoloji Dernekleri</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Egzotik Hayvanlar Dünyası</h3>
-                <p>Egzotik evcil hayvanlar hakkında kapsamlı bilgi kaynağınız.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Hızlı Bağlantılar</h3>
+            <nav>
                 <ul>
                     <li><a href="../index.html">Ana Sayfa</a></li>
                     <li><a href="../tarantulas.html">Tarantulalar</a></li>
                     <li><a href="../snakes.html">Yılanlar</a></li>
                     <li><a href="../lizards.html">Kertenkeleler</a></li>
+                    <li><a href="../about.html">Hakkımızda</a></li>
                 </ul>
-            </div>
-            <div class="footer-section">
-                <h3>İletişim</h3>
-                <p>Email: info@egzotikhayvanlar.com</p>
-                <p>Telefon: (555) 123-4567</p>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="species-page">
+        <div class="container">
+            <div class="species-container">
+                <div class="species-header">
+                    <div class="species-title">
+                        <h1>Kral Yılanı (Lampropeltis getula)</h1>
+                        <div class="scientific-name">Lampropeltis getula</div>
+                    </div>
+                    <div class="quick-facts">
+                        <div class="fact"><span>Ortalama Boy:</span> 90-140 cm</div>
+                        <div class="fact"><span>Ömrü:</span> 15-20 yıl</div>
+                        <div class="fact"><span>Bakım Seviyesi:</span> <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i> (Başlangıç)</div>
+                        <div class="fact"><span>Mizaç:</span> <i class="fas fa-smile"></i> Aktif, genellikle uysal</div>
+                    </div>
+                </div>
+
+                <div class="species-image-gallery">
+                    <div class="main-image">
+                        <img src="../images/king-snake-main.jpg" alt="Kral Yılanı (Lampropeltis getula)" id="mainImage">
+                    </div>
+                    <div class="thumbnail-container">
+                        <img src="../images/king-snake-1.jpg" alt="Kral Yılanı 1" onclick="changeImage('../images/king-snake-1.jpg')">
+                        <img src="../images/king-snake-2.jpg" alt="Kral Yılanı 2" onclick="changeImage('../images/king-snake-2.jpg')">
+                        <img src="../images/king-snake-3.jpg" alt="Kral Yılanı 3" onclick="changeImage('../images/king-snake-3.jpg')">
+                        <img src="../images/king-snake-morph.jpg" alt="Kral Yılanı Morph" onclick="changeImage('../images/king-snake-morph.jpg')">
+                    </div>
+                </div>
+
+                <div class="species-overview">
+                    <h2>Genel Bakış</h2>
+                    <p>Kral Yılanları (Lampropeltis getula), çarpıcı görünümleri, dayanıklı yapıları ve uysal karakterleri nedeniyle yılan hobicileri arasında oldukça popülerdir. Kuzey Amerika'ya özgü bu türler, siyah zeminde beyaz, sarı veya krem rengi bantlar veya lekelerle tanınır.</p>
+                    
+                    <p>İsmini diğer yılanları (zehirli olanlar dahil) yiyebilme yeteneğinden alır ve bu nedenle "kral" olarak adlandırılır. Güçlü ve etkili avcılardır, ancak insanlar için zehirli değildir ve genellikle yetiştirme için uysaldır.</p>
+                    
+                    <p>Doğada çeşitli habitatlarda yaşarlar - çöllerden ormanlara, tarlalardan dağlık bölgelere kadar geniş alanlara uyum sağlayabilirler. Bu adaptasyon yeteneği, onları ev ortamında bakım için oldukça dayanıklı yapar. Yer seviyesinde yaşamayı tercih ederler ve genellikle çok iyi kazıcıdırlar.</p>
+                </div>
+
+                <div class="taxonomy-section">
+                    <h2>Taksonomi ve Sınıflandırma</h2>
+                    <div class="taxonomy-list">
+                        <div class="taxonomy-item"><span>Alem:</span> Animalia (Hayvanlar)</div>
+                        <div class="taxonomy-item"><span>Şube:</span> Chordata (Kordalılar)</div>
+                        <div class="taxonomy-item"><span>Sınıf:</span> Reptilia (Sürüngenler)</div>
+                        <div class="taxonomy-item"><span>Takım:</span> Squamata (Pullu Sürüngenler)</div>
+                        <div class="taxonomy-item"><span>Familya:</span> Colubridae (Karayılanlar)</div>
+                        <div class="taxonomy-item"><span>Cins:</span> Lampropeltis</div>
+                        <div class="taxonomy-item"><span>Tür:</span> L. getula</div>
+                    </div>
+                    <p class="taxonomy-note">Not: Kral Yılanları çeşitli alt türlere sahiptir ve taksonomileri son yıllarda çeşitli revizyonlardan geçmiştir. Bazı alt türler artık ayrı türler olarak sınıflandırılmaktadır.</p>
+                </div>
+
+                <div class="care-section">
+                    <h2>Bakım Rehberi</h2>
+                    
+                    <div class="care-subsection">
+                        <h3>Terraryum Gereksinimleri</h3>
+                        <p>Kral Yılanları için ideal terraryum, yetişkin bir birey için en az 90-120 cm uzunluğunda, 45-60 cm genişliğinde ve 30-45 cm yüksekliğinde olmalıdır. Yavru ve genç bireyler için daha küçük terraryumlar yeterli olabilir.</p>
+                        
+                        <div class="care-tips">
+                            <div class="tip">
+                                <i class="fas fa-thermometer-half"></i>
+                                <div class="tip-content">
+                                    <h4>Sıcaklık</h4>
+                                    <p>Sıcak bölge: 28-30°C</p>
+                                    <p>Serin bölge: 24-26°C</p>
+                                    <p>Gece düşüş: 21-24°C</p>
+                                </div>
+                            </div>
+                            <div class="tip">
+                                <i class="fas fa-tint"></i>
+                                <div class="tip-content">
+                                    <h4>Nem</h4>
+                                    <p>%40-60 oranında nem</p>
+                                    <p>Deri değişimi zamanında %60-65</p>
+                                </div>
+                            </div>
+                            <div class="tip">
+                                <i class="fas fa-lightbulb"></i>
+                                <div class="tip-content">
+                                    <h4>Aydınlatma</h4>
+                                    <p>12 saat açık / 12 saat kapalı döngü</p>
+                                    <p>UVB gerekli değildir</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p>Terraryumda ısı matları, ısı lambaları veya seramik ısıtıcılar kullanılabilir. Tüm ısı kaynakları termostat ile kontrol edilmelidir. Kral Yılanları sıcaklık gradyanını tercih eder, bu nedenle terraryumun bir ucunu diğer ucundan daha sıcak tutmak önemlidir.</p>
+                    </div>
+                    
+                    <div class="care-subsection">
+                        <h3>Terraryum Düzeni ve Aksesuarlar</h3>
+                        <ul>
+                            <li><strong>Altlık:</strong> Asprathum, kıyılmış kavak ağacı, orman taban malzemesi veya gazete kağıdı kullanılabilir. En az 5-7 cm derinliğinde olmalıdır çünkü Kral Yılanları kazmayı severler.</li>
+                            <li><strong>Saklanma Yerleri:</strong> En az iki saklanma yeri sağlanmalıdır - biri sıcak tarafta, diğeri serin tarafta. Ticari yılan yuvaları, ters çevrilmiş saksılar veya ağaç kabuğu kullanılabilir.</li>
+                            <li><strong>Tırmanma Yapıları:</strong> Kral Yılanları çok iyi tırmanıcı olmasa da, düşük seviyeli dallar ve kaya yapıları eklemek faydalı olabilir.</li>
+                            <li><strong>Su Kabı:</strong> Temiz su her zaman mevcut olmalıdır. Yılanın içine tamamen girebileceği kadar büyük bir kap tercih edilebilir.</li>
+                            <li><strong>Dekor:</strong> Yapay veya gerçek bitkiler (güvenli türler), kaya düzenlemeleri ve kütükler kullanılabilir. Ancak terraryumda kolay temizlenebilir olması önemlidir.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-subsection">
+                        <h3>Beslenme</h3>
+                        <p>Kral Yılanları mükemmel yiyicilerdir ve genellikle beslenmeyi reddetmezler. Ana beslenme kaynakları kemirgenlerdir, ancak doğada yılanlar, kertenkeler ve kuş yumurtaları da yerler.</p>
+                        <ul>
+                            <li><strong>Yavrular (1 yaşına kadar):</strong> 5-7 günde bir pinky fare</li>
+                            <li><strong>Gençler (1-2 yaş):</strong> 7 günde bir hopper veya yetişkin fare</li>
+                            <li><strong>Yetişkinler (2+ yaş):</strong> 7-14 günde bir yetişkin fare veya küçük sıçan</li>
+                        </ul>
+                        <p>Dondurulmuş/çözülmüş kemirgenler tercih edilir. Canlı kemirgenler yılanı yaralayabilir ve gereksiz strese neden olabilir. Beslemeden sonra 48 saat yılanı rahatsız etmemek önemlidir. Kral Yılanları bazen aşırı beslenmeye eğilimlidir, bu yüzden sağlıklı bir kiloda tutmak için beslenme sıklığını ve miktarını izlemek gerekir.</p>
+                    </div>
+                    
+                    <div class="care-subsection">
+                        <h3>Sağlık ve Bakım</h3>
+                        <p>Kral Yılanları genellikle sağlam ve hastalığa dirençlidir, ancak düzenli kontroller önemlidir:</p>
+                        <ul>
+                            <li><strong>Deri Değişimi:</strong> Sağlıklı bir yılan düzenli olarak tam bir parça halinde deri değiştirir. Yavru yılanlar yaklaşık her ay, yetişkinler 1-3 ayda bir deri değiştirir.</li>
+                            <li><strong>Temizlik:</strong> Kirli altlık hemen temizlenmeli, su kabı her gün kontrol edilmeli ve 3-4 günde bir tamamen değiştirilmelidir. Tüm terraryum 1-2 ayda bir tamamen temizlenmelidir.</li>
+                            <li><strong>Egzotik Veteriner Kontrolleri:</strong> Yeni bir yılan alındığında ve sonrasında yılda en az bir kez veteriner kontrolünden geçirilmelidir.</li>
+                        </ul>
+                        
+                        <div class="warning-box">
+                            <h4><i class="fas fa-exclamation-triangle"></i> Yaygın Sağlık Sorunları</h4>
+                            <ul>
+                                <li><strong>Solunum Yolu Enfeksiyonları:</strong> Belirtileri ağız açık nefes alma, hırıltılı solunum veya burun akıntısıdır. Genellikle yetersiz sıcaklık veya nem nedeniyle oluşur.</li>
+                                <li><strong>Ağız Çürümesi (Stomatit):</strong> Ağız çevresinde kızarıklık, şişlik veya iltihap görülür.</li>
+                                <li><strong>Akarlar:</strong> Küçük, hareketli noktalar olarak görünür, özellikle pulların altında ve gözlerin etrafında bulunur.</li>
+                                <li><strong>Deri Değişimi Sorunları:</strong> Özellikle düşük nem seviyelerinde görülür. Eski deri tamamen atılamayabilir.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="care-subsection">
+                        <h3>Davranış ve Sosyalleşme</h3>
+                        <p>Kral Yılanları genellikle aktif ve meraklı hayvanlardır. Dokunulmaya alışırlar, ancak bazı bireyler özellikle gençken tutulduklarında sinirli olabilirler. Düzenli ve nazik etkileşim onları daha uysal hale getirebilir.</p>
+                        
+                        <p>Karakteristik davranışları arasında:</p>
+                        <ul>
+                            <li><strong>Kazma:</strong> Altlık içinde tüneller açmayı severler.</li>
+                            <li><strong>Keşfetme:</strong> Özellikle gece aktif olurlar ve terraryumlarını sürekli keşfederler.</li>
+                            <li><strong>Savunma Davranışı:</strong> Tehdit altında hissettiklerinde top şeklinde kıvrılabilir, titreyen bir kuyruk gösterebilir veya yalancı ısırık yapabilirler.</li>
+                        </ul>
+                        
+                        <p>Kral Yılanları kesinlikle tek başlarına tutulmalıdır. Oldukça bölgeseldir ve kanibalizm gösterebilirler - aynı türden bile olsa diğer yılanları yiyebilirler.</p>
+                    </div>
+                </div>
+
+                <div class="morphs-section">
+                    <h2>Renk Varyasyonları (Morphs)</h2>
+                    <p>Kral Yılanları çeşitli renk ve desen varyasyonlarına sahiptir. Hem doğal alt türler hem de yetiştirme programlarında geliştirilen morphlar bulunur:</p>
+                    
+                    <div class="morph-gallery">
+                        <div class="morph-card">
+                            <img src="../images/king-snake-california.jpg" alt="California Kral Yılanı">
+                            <h3>California Kral Yılanı</h3>
+                            <p>Siyah zemin üzerine beyaz veya krem rengi bantlar. En yaygın türlerden biridir.</p>
+                        </div>
+                        <div class="morph-card">
+                            <img src="../images/king-snake-florida.jpg" alt="Florida Kral Yılanı">
+                            <h3>Florida Kral Yılanı</h3>
+                            <p>Siyah veya koyu kahverengi zemin üzerine sarı lekeler veya kesintili bantlar.</p>
+                        </div>
+                        <div class="morph-card">
+                            <img src="../images/king-snake-mexican-black.jpg" alt="Meksika Siyah Kral Yılanı">
+                            <h3>Meksika Siyah Kral Yılanı</h3>
+                            <p>Tamamen parlak siyah renkte, desensiz bir vücuda sahiptir.</p>
+                        </div>
+                        <div class="morph-card">
+                            <img src="../images/king-snake-albino.jpg" alt="Albino Kral Yılanı">
+                            <h3>Albino</h3>
+                            <p>Siyah pigment eksikliği, beyaz zemin üzerine sarı veya kırmızı desenler.</p>
+                        </div>
+                    </div>
+                    
+                    <p class="morph-note">Not: Farklı alt türlerin farklı bakım gereksinimleri olabilir. Örneğin, çöl bölgelerinden gelen alt türler daha düşük nem seviyeleri tercih ederken, Florida alt türleri daha yüksek nem seviyelerine ihtiyaç duyabilir.</p>
+                </div>
+                
+                <div class="breeding-section">
+                    <h2>Üreme Bilgileri</h2>
+                    <p>Kral Yılanları, doğru koşullar sağlandığında esaret altında başarıyla üretilebilir. Genellikle 3-4 yaşından sonra cinsel olgunluğa ulaşırlar.</p>
+                    
+                    <div class="breeding-steps">
+                        <div class="step">
+                            <h3><i class="fas fa-snowflake"></i> Kış Uykusu (Brumation)</h3>
+                            <p>Üreme döngüsünü başlatmak için genellikle 2-3 aylık bir kış uykusu gerekir. Sıcaklığı kademeli olarak 13-16°C'ye düşürün. Bu dönemde beslenme durdurulur.</p>
+                        </div>
+                        <div class="step">
+                            <h3><i class="fas fa-temperature-high"></i> Isınma Dönemi</h3>
+                            <p>Kış uykusundan sonra, sıcaklığı kademeli olarak normal seviyeye getirin ve beslenmeyi yeniden başlatın. Erkekler genellikle bu dönemde daha aktif hale gelir.</p>
+                        </div>
+                        <div class="step">
+                            <h3><i class="fas fa-heart"></i> Çiftleştirme</h3>
+                            <p>Isınma döneminden 2-3 hafta sonra erkek ve dişiyi bir araya getirin. Çiftleşme genellikle ilkbaharda gerçekleşir. Çiftleşme sırasında erkek, dişiyi takip eder ve vücudunu dişinin etrafına sarar.</p>
+                        </div>
+                        <div class="step">
+                            <h3><i class="fas fa-egg"></i> Yumurta Bırakma</h3>
+                            <p>Çiftleşmeden 30-45 gün sonra dişi, 3-24 arasında (genellikle 5-12) yumurta bırakır. Dişiye önceden bir yumurtlama kutusu sağlanmalıdır - nemli altlık içeren sığ bir kap ideal olacaktır.</p>
+                        </div>
+                        <div class="step">
+                            <h3><i class="fas fa-baby"></i> Kuluçka</h3>
+                            <p>Yumurtalar 28-30°C'de ve %80-90 nem oranında 55-65 gün boyunca kuluçkaya yatırılır. Kuluçka sırasında yumurtaları çevirmemeye dikkat edin. Yumurtadan çıkan yavrular genellikle ilk deri değişiminden sonra beslenmeye başlar.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="related-species">
+                    <h2>Benzer Türler</h2>
+                    <p>Kral Yılanına benzer bakım gereksinimleri olan ve başlangıç seviyesi hobiciler için uygun diğer yılan türleri:</p>
+                    
+                    <div class="species-cards">
+                        <div class="species-card">
+                            <img src="../images/corn-snake-thumb.jpg" alt="Mısır Yılanı">
+                            <div class="species-card-info">
+                                <h3>Mısır Yılanı</h3>
+                                <div class="scientific-name">Pantherophis guttatus</div>
+                                <p>Renkli, uysal, bakımı kolay, başlangıç seviyesi türü</p>
+                                <a href="pantherophis-guttatus.html" class="btn">Detaylı Bilgi</a>
+                            </div>
+                        </div>
+                        <div class="species-card">
+                            <img src="../images/milk-snake-thumb.jpg" alt="Süt Yılanı">
+                            <div class="species-card-info">
+                                <h3>Süt Yılanı</h3>
+                                <div class="scientific-name">Lampropeltis triangulum</div>
+                                <p>Çarpıcı renkler, orta boy, bakımı benzer</p>
+                                <a href="#" class="btn disabled">Yakında</a>
+                            </div>
+                        </div>
+                        <div class="species-card">
+                            <img src="../images/ball-python-thumb.jpg" alt="Top Piton">
+                            <div class="species-card-info">
+                                <h3>Top Piton</h3>
+                                <div class="scientific-name">Python regius</div>
+                                <p>Sakin mizaçlı, kompakt boyutlu, popüler tür</p>
+                                <a href="python-regius.html" class="btn">Detaylı Bilgi</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-section">
+                    <h2>Sık Sorulan Sorular</h2>
+                    
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header">Kral Yılanları gerçekten diğer yılanları yer mi?</div>
+                            <div class="accordion-content">
+                                <p>Evet, Kral Yılanları doğada ophiophagous'tur (yılan yiyen) ve diğer yılanlarla, hatta zehirli türlerle bile beslenebilirler. Zehirli yılanlara karşı belirli bir bağışıklıkları vardır. Esarette beslenen Kral Yılanları kemirgenlerle beslenir ve diğer yılanları yeme fırsatı verilmemelidir.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <div class="accordion-header">Kral Yılanları zehirli midir?</div>
+                            <div class="accordion-content">
+                                <p>Hayır, Kral Yılanları zehirli değildir. Colubridae ailesindeki boğucu yılanlardır. Avlarını zehirle değil, vücutlarını sararak ve sıkarak öldürürler. İnsanlar için zehir tehlikesi yoktur.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <div class="accordion-header">Kral Yılanları çocuklar için uygun mu?</div>
+                            <div class="accordion-content">
+                                <p>Kral Yılanları, sakin mizaçları ve kolay bakımları nedeniyle çocuklar için nispeten uygun evcil hayvanlardır. Ancak bazı bireyler özellikle genç yaşta biraz sinirli olabilir. 10 yaşından küçük çocuklar her zaman yetişkin gözetiminde olmalıdır. Çocuklara hayvanı nazikçe tutma, beslenme sırasında dikkatli olma ve temas sonrası el yıkama alışkanlıkları öğretilmelidir.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <div class="accordion-header">Kral Yılanları ve Mercan Yılanları arasındaki fark nedir?</div>
+                            <div class="accordion-content">
+                                <p>Süt ve Kral Yılanları bazen renkli bantları nedeniyle zehirli Mercan Yılanları ile karıştırılabilir. Ana farklar: Mercan Yılanlarında kırmızı, sarı ve siyah bantlar birbiriyle temas eder ("Red touch yellow, kill a fellow" - Kırmızı sarıya değerse, öldürücüdür). Kral Yılanlarında ise kırmızı ve sarı bantlar siyah bantlarla ayrılır ("Red touch black, friend of Jack" - Kırmızı siyaha değerse, dosttur). Ancak bu renk kuralı sadece Kuzey Amerika türleri için geçerlidir ve güvenilir bir yöntem değildir.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <div class="accordion-header">Kral Yılanım kaç yaşına kadar yaşayabilir?</div>
+                            <div class="accordion-content">
+                                <p>İyi bakım koşullarında Kral Yılanları esarette genellikle 15-20 yıl yaşar. Bazı bireyler uygun bakımla 20-25 yıla kadar yaşayabilir. Bu, uzun vadeli bir bağlılık gerektirir ve evcil hayvan olarak almadan önce bu zaman dilimini değerlendirmek önemlidir.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resources-section">
+                    <h2>Kaynaklar ve Daha Fazla Bilgi</h2>
+                    
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <i class="fas fa-book"></i>
+                            <h3>Önerilen Kitaplar</h3>
+                            <ul>
+                                <li>"The King Snakes and Milk Snakes" - Ronald G. Markel</li>
+                                <li>"The Complete Carpet Python" - Nick Mutton & Justin Julander</li>
+                                <li>"The General Care and Maintenance of Common Kingsnakes" - David Perlowin</li>
+                            </ul>
+                        </div>
+                        <div class="resource-card">
+                            <i class="fas fa-globe"></i>
+                            <h3>Çevrimiçi Kaynaklar</h3>
+                            <ul>
+                                <li><a href="https://www.reptilesmagazine.com/california-kingsnake-care-sheet/" target="_blank">Reptiles Magazine Kingsnake Care</a></li>
+                                <li><a href="https://www.morphmarket.com/cats/king-snakes" target="_blank">MorphMarket King Snake Varieties</a></li>
+                                <li><a href="https://kingsnake.com" target="_blank">Kingsnake.com</a></li>
+                            </ul>
+                        </div>
+                        <div class="resource-card">
+                            <i class="fas fa-users"></i>
+                            <h3>Topluluklar</h3>
+                            <ul>
+                                <li><a href="https://www.reddit.com/r/snakes/" target="_blank">Reddit r/snakes</a></li>
+                                <li><a href="https://www.facebook.com/groups/kingsnakeenthusiasts/" target="_blank">Facebook King Snake Enthusiasts</a></li>
+                                <li>Yerel Herpetoloji Dernekleri</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">
+    </section>
+
+    <footer>
+        <div class="container">
             <p>&copy; 2023 Egzotik Hayvanlar Dünyası. Tüm hakları saklıdır.</p>
+            <div class="social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
         </div>
     </footer>
 
