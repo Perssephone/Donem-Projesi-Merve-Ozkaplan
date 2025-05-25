@@ -1,7 +1,7 @@
 # 🦎 Egzotik Hayvanlar Dünyası 🐍
 
 <div align="center">
-  <img src="img/logo/logo.png" alt="Egzotik Hayvanlar Dünyası Logo" width="250">
+  <img src="images/logo/logo.png" alt="Egzotik Hayvanlar Dünyası Logo" width="250">
   <h3>Tarantulalar · Yılanlar · Kertenkeleler</h3>
   <p><em>Egzotik türlerin kapsamlı bilgi ve bakım rehberi</em></p>
 </div>
