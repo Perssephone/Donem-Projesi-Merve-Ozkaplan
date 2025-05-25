@@ -6,19 +6,136 @@
     <title>Kertenkeleler - Egzotik Hayvanlar Dünyası</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .species-image {
+            height: 250px;
+            overflow: hidden;
+            border-radius: 5px 5px 0 0;
+        }
+        
+        .species-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .species-image img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Mobil Navigasyon Stilleri */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            header .container {
+                flex-direction: column;
+                padding: 15px 20px;
+            }
+            
+            header .logo {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            header nav {
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            header nav.active {
+                max-height: 300px;
+            }
+            
+            header nav ul {
+                flex-direction: column;
+                width: 100%;
+                margin-top: 15px;
+            }
+            
+            header nav ul li {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            header nav ul li a {
+                display: block;
+                padding: 12px 0;
+                border-bottom: 1px solid #eee;
+            }
+        }
+        
+        /* Logo Stilleri */
+        .site-logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .site-logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        /* Hero Section Stilleri */
+        .animal-header {
+            background-image: url('img/kertenkele/bearded-dragon-pogona.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            padding: 80px 0;
+        }
+        
+        .animal-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        
+        .animal-header .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .animal-header h2, .animal-header p {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="container">
             <div class="logo">
-                <a href="index.html">Egzotik Hayvanlar Dünyası</a>
+                <div class="site-logo">
+                    <img src="img/logo/logo.png" alt="Egzotik Hayvanlar Dünyası Logo">
+                    <h1>Egzotik Hayvanlar Dünyası</h1>
+                </div>
+                <button class="mobile-menu-btn" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
-            <div class="hamburger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <nav>
+            <nav id="mainNav">
                 <ul>
                     <li><a href="index.html">Ana Sayfa</a></li>
                     <li><a href="tarantulas.html">Tarantulalar</a></li>
@@ -44,9 +161,13 @@
             
             <div class="info-grid">
                 <div class="species-card">
-                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?leopard+gecko');"></div>
+                    <a href="species/eublepharis-macularius.html">
+                        <div class="species-image">
+                            <img src="img/kertenkele/Eublepharismacularius.jpeg" alt="Leopar Keleri">
+                        </div>
+                    </a>
                     <div class="species-content">
-                        <h3>Leopar Keleri (Eublepharis macularius)</h3>
+                        <h3><a href="species/eublepharis-macularius.html">Leopar Keleri (Eublepharis macularius)</a></h3>
                         <p>Pakistan, Afganistan ve Hindistan'ın kurak bölgelerinden gelen bu tür, parlak renkleri, sakin mizacı ve kolay bakımı ile tanınır.</p>
                         <div class="specs">
                             <p><strong>Ortalama Boy:</strong> 20-28 cm</p>
@@ -58,9 +179,13 @@
                 </div>
 
                 <div class="species-card">
-                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?bearded+dragon');"></div>
+                    <a href="species/pogona-vitticeps.html">
+                        <div class="species-image">
+                            <img src="img/kertenkele/bearded-dragon-pogona.jpg" alt="Sakallı Ejder">
+                        </div>
+                    </a>
                     <div class="species-content">
-                        <h3>Sakallı Ejder (Pogona vitticeps)</h3>
+                        <h3><a href="species/pogona-vitticeps.html">Sakallı Ejder (Pogona vitticeps)</a></h3>
                         <p>Avustralya'nın iç bölgelerinden gelen bu tür, sosyal doğası, sakin mizacı ve gösterişli görünümü ile popülerdir.</p>
                         <div class="specs">
                             <p><strong>Ortalama Boy:</strong> 40-60 cm</p>
@@ -72,9 +197,13 @@
                 </div>
 
                 <div class="species-card">
-                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?crested+gecko');"></div>
+                    <a href="species/correlophus-ciliatus.html">
+                        <div class="species-image">
+                            <img src="img/kertenkele/Correlophusciliatus.jpeg" alt="Tepeli Keler">
+                        </div>
+                    </a>
                     <div class="species-content">
-                        <h3>Tepeli Keler (Correlophus ciliatus)</h3>
+                        <h3><a href="species/correlophus-ciliatus.html">Tepeli Keler (Correlophus ciliatus)</a></h3>
                         <p>Yeni Kaledonya'dan gelen bu tür, ilginç görünümü, yapışkan ayakları ve meyve bazlı diyeti ile diğer kertenkelelerden ayrılır.</p>
                         <div class="specs">
                             <p><strong>Ortalama Boy:</strong> 15-20 cm</p>
@@ -86,9 +215,13 @@
                 </div>
 
                 <div class="species-card">
-                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?blue+tongued+skink');"></div>
+                    <a href="species/tiliqua-scincoides.html">
+                        <div class="species-image">
+                            <img src="img/kertenkele/Tiliquascincoides.jpg" alt="Mavi Dilli Skink">
+                        </div>
+                    </a>
                     <div class="species-content">
-                        <h3>Mavi Dilli Skink (Tiliqua scincoides)</h3>
+                        <h3><a href="species/tiliqua-scincoides.html">Mavi Dilli Skink (Tiliqua scincoides)</a></h3>
                         <p>Avustralya ve Yeni Gine'de yaşayan bu tür, mavi dili, büyük boyutu ve sakin mizacı ile bilinir.</p>
                         <div class="specs">
                             <p><strong>Ortalama Boy:</strong> 45-60 cm</p>
@@ -207,7 +340,11 @@
             </div>
         </div>
     </footer>
-
-    <script src="js/main.js"></script>
+    
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('active');
+        });
+    </script>
 </body>
 </html> 

@@ -178,20 +178,119 @@
             color: var(--primary-color);
             margin-bottom: 10px;
         }
+        
+        /* Mobil Navigasyon Stilleri */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            header .container {
+                flex-direction: column;
+                padding: 15px 20px;
+            }
+            
+            header .logo {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            header nav {
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            header nav.active {
+                max-height: 300px;
+            }
+            
+            header nav ul {
+                flex-direction: column;
+                width: 100%;
+                margin-top: 15px;
+            }
+            
+            header nav ul li {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            header nav ul li a {
+                display: block;
+                padding: 12px 0;
+                border-bottom: 1px solid #eee;
+            }
+        }
+        
+        /* Logo Stilleri */
+        .site-logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .site-logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        /* Hero Section Stilleri */
+        .animal-header {
+            background-image: url('img/yilanlar/python_regius.jpeg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            padding: 80px 0;
+        }
+        
+        .animal-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        
+        .animal-header .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .animal-header h2, .animal-header p {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
             <div class="logo">
-                <a href="index.html">Egzotik Hayvanlar Dünyası</a>
+                <div class="site-logo">
+                    <img src="img/logo/logo.png" alt="Egzotik Hayvanlar Dünyası Logo">
+                    <h1>Egzotik Hayvanlar Dünyası</h1>
+                </div>
+                <button class="mobile-menu-btn" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
-            <div class="hamburger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <nav>
+            <nav id="mainNav">
                 <ul>
                     <li><a href="index.html">Ana Sayfa</a></li>
                     <li><a href="tarantulas.html">Tarantulalar</a></li>
@@ -455,7 +554,7 @@
             <div class="species-grid">
                 <div class="species-card">
                     <a href="species/python-regius.html" class="species-link">
-                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?ball+python');"></div>
+                    <div class="species-image" style="background-image: url('img/yilanlar/python_regius.jpeg');"></div>
                     <div class="species-content">
                         <h3>Top Piton</h3>
                         <p><em>Python regius</em></p>
@@ -480,7 +579,7 @@
 
                 <div class="species-card">
                     <a href="species/pantherophis-guttatus.html" class="species-link">
-                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?corn+snake');"></div>
+                    <div class="species-image" style="background-image: url('img/yilanlar/pantherophis_guttatus.jpg');"></div>
                     <div class="species-content">
                         <h3>Mısır Yılanı</h3>
                         <p><em>Pantherophis guttatus</em></p>
@@ -506,7 +605,7 @@
 
                 <div class="species-card">
                     <a href="species/lampropeltis-getula.html" class="species-link">
-                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?kingsnake');"></div>
+                    <div class="species-image" style="background-image: url('img/yilanlar/lampropeltis_getula.jpg');"></div>
                     <div class="species-content">
                         <h3>Kral Yılanı</h3>
                         <p><em>Lampropeltis getula</em></p>
@@ -532,7 +631,7 @@
 
                 <div class="species-card">
                     <a href="species/boa-constrictor.html" class="species-link">
-                    <div class="species-image" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Boa_constrictor%2C_Va%C5%88kovka%2C_Brno_%282%29.jpg/1200px-Boa_constrictor%2C_Va%C5%88kovka%2C_Brno_%282%29.jpg');"></div>
+                    <div class="species-image" style="background-image: url('img/yilanlar/boa_constrictor.jpg');"></div>
                     <div class="species-content">
                         <h3>Boa Yılanı</h3>
                         <p><em>Boa constrictor</em></p>
@@ -558,7 +657,7 @@
                 
                 <div class="species-card">
                     <a href="species/lampropeltis-triangulum.html" class="species-link">
-                    <div class="species-image" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Lampropeltis_triangulum_campbelli_4902.JPG/1200px-Lampropeltis_triangulum_campbelli_4902.JPG');"></div>
+                    <div class="species-image" style="background-image: url('img/yilanlar/lampropeltis_triangulum.jpeg');"></div>
                     <div class="species-content">
                         <h3>Süt Yılanı</h3>
                         <p><em>Lampropeltis triangulum</em></p>
@@ -584,7 +683,7 @@
                 
                 <div class="species-card">
                     <a href="species/morelia-viridis.html" class="species-link">
-                    <div class="species-image" style="background-image: url('https://www.thesprucepets.com/thmb/v4i9qpMEjFpKJyZnPwf2YpWLwO4=/2123x1416/filters:fill(auto,1)/GettyImages-645145685-5c09a8f046e0fb0001d4c09c.jpg');"></div>
+                    <div class="species-image" style="background-image: url('img/yilanlar/gtp.jpg');"></div>
                     <div class="species-content">
                         <h3>Yeşil Ağaç Pitonu</h3>
                         <p><em>Morelia viridis</em></p>
@@ -610,7 +709,7 @@
                 
                 <div class="species-card">
                     <a href="species/heterodon-nasicus.html" class="species-link">
-                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?hognose+snake');"></div>
+                    <div class="species-image" style="background-image: url('img/yilanlar/Heterodonnasicus.png');"></div>
                     <div class="species-content">
                         <h3>Domuz Burunlu Yılan</h3>
                         <p><em>Heterodon nasicus</em></p>
@@ -636,7 +735,7 @@
                 
                 <div class="species-card">
                     <a href="species/python-reticulatus.html" class="species-link">
-                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?reticulated+python');"></div>
+                    <div class="species-image" style="background-image: url('img/yilanlar/retic.png');"></div>
                     <div class="species-content">
                         <h3>Retiküle Piton</h3>
                         <p><em>Python reticulatus</em></p>
@@ -831,7 +930,28 @@
         </div>
     </footer>
     
-    <script src="js/tabs.js"></script>
-    <script src="js/main.js"></script>
+    <script>
+        function openTab(evt, tabId) {
+            // Tüm tab içeriklerini gizle
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            
+            // Tüm butonlardan active sınıfını kaldır
+            var tabButtons = document.getElementsByClassName("tab-btn");
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+            
+            // Tıklanan butonun içeriğini göster ve butona active sınıfını ekle
+            document.getElementById(tabId).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('active');
+        });
+    </script>
 </body>
 </html> 

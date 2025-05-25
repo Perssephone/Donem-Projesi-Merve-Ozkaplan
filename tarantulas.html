@@ -122,7 +122,512 @@
         }
         
         .care-section {
-            margin-top: 60px;
+            background-color: #f8f8f8;
+            padding: 60px 0;
+            margin-top: 80px;
+        }
+        
+        .care-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .care-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        .care-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .care-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .care-container h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .care-container h3::before {
+            font-family: "Font Awesome 6 Free";
+            margin-right: 10px;
+            font-weight: 900;
+            color: var(--secondary-color);
+        }
+        
+        .care-container:nth-child(1) h3::before {
+            content: "\f1ad"; /* terrarium icon */
+        }
+        
+        .care-container:nth-child(2) h3::before {
+            content: "\f2c8"; /* temperature icon */
+        }
+        
+        .care-container:nth-child(3) h3::before {
+            content: "\f5e7"; /* bone icon */
+        }
+        
+        .care-container:nth-child(4) h3::before {
+            content: "\f0f0"; /* user md icon */
+        }
+        
+        .care-container:nth-child(5) h3::before {
+            content: "\f256"; /* hand peace icon */
+        }
+        
+        .care-container ul {
+            padding-left: 20px;
+        }
+        
+        .care-container ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 5px;
+        }
+        
+        .care-container ul li::marker {
+            color: var(--primary-color);
+        }
+        
+        .species-image {
+            height: 220px;
+            overflow: hidden;
+            border-radius: 5px 5px 0 0;
+        }
+        
+        .species-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .species-card:hover .species-image img {
+            transform: scale(1.05);
+        }
+        
+        /* Nadir Tarantula Türleri Tablosu İçin Geliştirilmiş Stil */
+        .table-container {
+            overflow-x: auto;
+            margin: 30px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            -webkit-overflow-scrolling: touch; /* Daha iyi mobil kaydırma */
+            background-color: white;
+            position: relative;
+            scrollbar-width: thin; /* Firefox için */
+        }
+        
+        .table-container::-webkit-scrollbar {
+            height: 8px;
+            background-color: #f1f1f1;
+            border-radius: 0 0 10px 10px;
+        }
+        
+        .table-container::-webkit-scrollbar-thumb {
+            background-color: #00796b;
+            border-radius: 10px;
+        }
+        
+        .table-container::-webkit-scrollbar-track {
+            background-color: #f1f1f1;
+            border-radius: 0 0 10px 10px;
+        }
+        
+        /* Mobil için kart görünümü */
+        .table-cards {
+            display: none;
+        }
+        
+        /* Masaüstü için Geliştirilmiş Tablo Stili */
+        table {
+            width: 100%;
+            min-width: 800px; /* Tablo minimum genişliği */
+            border-collapse: separate;
+            border-spacing: 0;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            table-layout: fixed; /* Sabit sütun genişlikleri için değiştirildi */
+        }
+        
+        thead {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        th, td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+            word-wrap: break-word;
+            vertical-align: middle;
+            line-height: 1.4;
+        }
+        
+        th {
+            font-weight: 600;
+            white-space: nowrap;
+            position: relative;
+            border-bottom: 2px solid #00695c;
+        }
+        
+        th:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 25%;
+            height: 50%;
+            width: 1px;
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Sütun genişlikleri - Masaüstü için optimize edildi */
+        th:nth-child(1) { width: 18%; } /* Tür Adı */
+        th:nth-child(2) { width: 20%; } /* Bilimsel Adı */
+        th:nth-child(3) { width: 12%; } /* Ortalama Boy */
+        th:nth-child(4) { width: 12%; } /* Zorluk */
+        th:nth-child(5) { width: 38%; } /* Özellikler - En geniş alan */
+        
+        tbody tr {
+            transition: background-color 0.2s;
+        }
+        
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        tbody tr:hover {
+            background-color: #e8f5e9;
+        }
+        
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        td a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: block;
+            padding: 3px 0;
+        }
+        
+        td a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+        
+        /* Tablo içindeki zorluk seviyesi için özel stil */
+        td .care-level {
+            display: inline-block;
+            text-align: center;
+            min-width: 80px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        /* Mobil için kartların stilleri */
+        .species-card-mobile {
+            background-color: white;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .species-card-mobile:hover {
+            transform: translateY(-5px);
+        }
+        
+        .species-card-mobile a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .species-card-mobile h4 {
+            background-color: var(--primary-color);
+            color: white;
+            margin: 0;
+            padding: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .species-card-mobile .card-body {
+            padding: 15px;
+        }
+        
+        .species-card-mobile .card-row {
+            margin-bottom: 8px;
+            display: flex;
+        }
+        
+        .species-card-mobile .card-label {
+            font-weight: bold;
+            min-width: 110px;
+            color: #333;
+        }
+        
+        .species-card-mobile .card-value {
+            flex: 1;
+        }
+        
+        /* Mobil görünüm değişiklikleri */
+        @media (max-width: 768px) {
+            .table-container table {
+                display: none;
+            }
+            
+            .table-cards {
+                display: block;
+            }
+            
+            .table-container {
+                box-shadow: none;
+                background-color: transparent;
+                overflow: visible;
+            }
+            
+            /* Mobil kartlardaki zorluk etiketi stilini güncelle */
+            .species-card-mobile .care-level {
+                display: inline-block;
+                text-align: center;
+                min-width: 80px;
+                padding: 4px 10px;
+                border-radius: 20px;
+                font-weight: 600;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            
+            .scroll-hint {
+                display: none !important;  /* Mobil görünümde ipucunu gizle */
+            }
+        }
+        
+        /* Responsif Tablo Stilleri - Küçük Tabletler */
+        @media (min-width: 769px) and (max-width: 992px) {
+            .table-container {
+                margin: 20px 0;
+            }
+            
+            table {
+                font-size: 0.9rem;
+            }
+            
+            th, td {
+                padding: 12px 10px;
+            }
+            
+            .care-level {
+                padding: 2px 6px;
+                font-size: 0.7em;
+            }
+        }
+        
+        /* Nadir Türler Başlık Kartı */
+        .subheader {
+            background: linear-gradient(135deg, #e0f2f1, #b2dfdb);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 40px 0 20px;
+            border-left: 5px solid var(--primary-color);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .subheader h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+        
+        .subheader p {
+            color: #333;
+            margin: 0;
+        }
+        
+        /* Geliştirilmiş Hayvan Başlık Stil */
+        .animal-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/tarantula/tarantula.jpg');
+            background-position: center;
+            background-size: cover;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .animal-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .animal-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Ana İçerik Başlıkları İçin Stil */
+        .animal-info h2 {
+            color: var(--primary-color);
+            margin: 40px 0 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .animal-info h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        /* Logo Stilleri */
+        .site-logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .site-logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        /* Mobil Navigasyon Stilleri */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            header .container {
+                flex-direction: column;
+                padding: 15px 20px;
+            }
+            
+            header .logo {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            header nav {
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            header nav.active {
+                max-height: 300px;
+            }
+            
+            header nav ul {
+                flex-direction: column;
+                width: 100%;
+                margin-top: 15px;
+            }
+            
+            header nav ul li {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            header nav ul li a {
+                display: block;
+                padding: 12px 0;
+                border-bottom: 1px solid #eee;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            th, td {
+                padding: 8px 5px;
+            }
+            
+            table th:nth-child(3), /* Ortalama Boy */
+            table td:nth-child(3) {
+                display: none;
+            }
+        }
+        
+        /* Tablo için kaydırma ipucu stili */
+        .scroll-hint {
+            text-align: center;
+            margin: 10px 0 20px;
+            font-size: 0.9rem;
+            color: #666;
+            display: none;
+        }
+        
+        .scroll-hint i {
+            color: var(--primary-color);
+            animation: bounce-horizontal 1.5s infinite;
+        }
+        
+        .scroll-hint i:first-child {
+            margin-right: 5px;
+            animation-delay: 0.2s;
+        }
+        
+        .scroll-hint i:last-child {
+            margin-left: 5px;
+        }
+        
+        @keyframes bounce-horizontal {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(5px);
+            }
+        }
+        
+        /* Tablo kaydırılabilir olduğunda ipucunu göster (JavaScript ile kontrol edilecek) */
+        .table-scrollable .scroll-hint {
+            display: block;
         }
     </style>
 </head>
@@ -130,14 +635,15 @@
     <header>
         <div class="container">
             <div class="logo">
-                <a href="index.html">Egzotik Hayvanlar Dünyası</a>
+                <div class="site-logo">
+                    <img src="img/logo/logo.png" alt="Egzotik Hayvanlar Dünyası Logo">
+                    <h1>Egzotik Hayvanlar Dünyası</h1>
+                </div>
+                <button class="mobile-menu-btn" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
-            <div class="hamburger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <nav>
+            <nav id="mainNav">
                 <ul>
                     <li><a href="index.html">Ana Sayfa</a></li>
                     <li><a href="tarantulas.html" class="active">Tarantulalar</a></li>
@@ -245,7 +751,9 @@
             <div class="species-grid">
                 <div class="species-card">
                     <a href="species/brachypelma-hamorii.html" class="species-link">
-                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?mexican+red+knee+tarantula');"></div>
+                    <div class="species-image">
+                        <img src="img/tarantula/Brachypelma_Hamorii.jpg" alt="Meksika Kırmızı Diz Tarantulası" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
                     <div class="species-content">
                         <h3>Meksika Kırmızı Diz Tarantulası</h3>
                         <p><em>Brachypelma hamorii</em></p>
@@ -268,7 +776,9 @@
 
                 <div class="species-card">
                     <a href="species/tliltocatl-albopilosus.html" class="species-link">
-                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?curly+hair+tarantula');"></div>
+                    <div class="species-image">
+                        <img src="img/tarantula/Brachypelma_Albopilosum.jpg" alt="Kıvırcık Saçlı Tarantula">
+                    </div>
                     <div class="species-content">
                         <h3>Kıvırcık Saçlı Tarantula</h3>
                         <p><em>Tliltocatl albopilosus</em></p>
@@ -291,7 +801,9 @@
 
                 <div class="species-card">
                     <a href="species/avicularia-avicularia.html" class="species-link">
-                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?pink+toe+tarantula');"></div>
+                    <div class="species-image">
+                        <img src="img/tarantula/AviculariaaviculariaTucurui.jpg" alt="Pembe Ayaklı Tarantula">
+                    </div>
                     <div class="species-content">
                         <h3>Pembe Ayaklı Tarantula</h3>
                         <p><em>Avicularia avicularia</em></p>
@@ -312,32 +824,13 @@
                     </a>
                 </div>
 
-                <div class="species-card">
-                    <a href="species/grammostola-rosea.html" class="species-link">
-                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?chilean+rose+tarantula');"></div>
-                    <div class="species-content">
-                        <h3>Şili Gül Tarantulası</h3>
-                        <p><em>Grammostola rosea</em></p>
-                        <p>Şili'nin kurak bölgelerinde bulunan bu tür, pembemsi-kahverengi rengi ve dayanıklılığı ile tanınır.</p>
-                        <div class="habitat-tags">
-                            <span class="habitat-tag">Yer Yaşamı</span>
-                            <span class="habitat-tag">Yeni Dünya</span>
-                        </div>
-                        <div class="specs">
-                            <p><strong>Ortalama Boy:</strong> 12-15 cm</p>
-                            <p><strong>Yaşam Süresi:</strong> Dişiler 15-20 yıl, Erkekler 4-6 yıl</p>
-                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level beginner">Başlangıç</span></p>
-                            <p><strong>Mizaç:</strong> Sakin, genellikle uysal</p>
-                            <p><strong>Doğal Habitat:</strong> Şili, Bolivya ve Arjantin'in kurak ve yarı kurak bölgeleri</p>
-                            <p><strong>Önerilen Terraryum Boyutu:</strong> 30x30x30 cm</p>
-                        </div>
-                    </div>
-                    </a>
-                </div>
+                
                 
                 <div class="species-card">
                     <a href="species/theraphosa-blondi.html" class="species-link">
-                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?goliath+bird+eater');"></div>
+                    <div class="species-image">
+                        <img src="img/tarantula/theraphosa_vlondi.webp" alt="Goliath Kuş Yiyen Tarantula">
+                    </div>
                     <div class="species-content">
                         <h3>Goliath Kuş Yiyen Tarantula</h3>
                         <p><em>Theraphosa blondi</em></p>
@@ -360,7 +853,9 @@
                 
                 <div class="species-card">
                     <a href="species/caribena-versicolor.html" class="species-link">
-                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?tarantula+spider');"></div>
+                    <div class="species-image">
+                        <img src="img/tarantula/caribena_versicolor.jpg" alt="Antiller Pembe Ayaklı Tarantula">
+                    </div>
                     <div class="species-content">
                         <h3>Antiller Pembe Ayaklı Tarantula</h3>
                         <p><em>Caribena versicolor</em></p>
@@ -383,7 +878,9 @@
                 
                 <div class="species-card">
                     <a href="species/pterinochilus-murinus.html" class="species-link">
-                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?orange+baboon+tarantula');"></div>
+                    <div class="species-image">
+                        <img src="img/tarantula/pterinochilus_murinus.jpg" alt="Turuncu Babun Tarantula">
+                    </div>
                     <div class="species-content">
                         <h3>Turuncu Babun Tarantula</h3>
                         <p><em>Pterinochilus murinus</em></p>
@@ -406,7 +903,9 @@
                 
                 <div class="species-card">
                     <a href="species/cyriopagopus-lividus.html" class="species-link">
-                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?cobalt+blue+tarantula');"></div>
+                    <div class="species-image">
+                        <img src="img/tarantula/cyriopagopus_lividus.jpg" alt="Kobalt Mavi Tarantula">
+                    </div>
                     <div class="species-content">
                         <h3>Kobalt Mavi Tarantula</h3>
                         <p><em>Cyriopagopus lividus</em></p>
@@ -430,7 +929,9 @@
                 <!-- Yeni Tarantula Türleri -->
                 <div class="species-card">
                     <a href="species/poecilotheria-metallica.html" class="species-link">
-                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?poecilotheria+metallica');"></div>
+                    <div class="species-image">
+                        <img src="img/tarantula/poecilotheria_metallica.jpeg" alt="Safir Ornamental Tarantula">
+                    </div>
                     <div class="species-content">
                         <h3>Safir Ornamental Tarantula</h3>
                         <p><em>Poecilotheria metallica</em></p>
@@ -451,32 +952,13 @@
                     </a>
                 </div>
                 
-                <div class="species-card">
-                    <a href="species/chromatopelma-cyaneopubescens.html" class="species-link">
-                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?greenbottle+blue+tarantula');"></div>
-                    <div class="species-content">
-                        <h3>Yeşil Şişe Mavi Tarantula</h3>
-                        <p><em>Chromatopelma cyaneopubescens</em></p>
-                        <p>Canlı mavi bacakları, yeşil prosoma (baş bölgesi) ve turuncu abdomen ile son derece renkli bir türdür. Karmaşık ağ yapıları inşa etmesiyle tanınır.</p>
-                        <div class="habitat-tags">
-                            <span class="habitat-tag">Yarı Ağaç Yaşamı</span>
-                            <span class="habitat-tag">Yeni Dünya</span>
-                        </div>
-                        <div class="specs">
-                            <p><strong>Ortalama Boy:</strong> 12-15 cm</p>
-                            <p><strong>Yaşam Süresi:</strong> Dişiler 12-15 yıl, Erkekler 3-4 yıl</p>
-                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level beginner">Başlangıç</span></p>
-                            <p><strong>Mizaç:</strong> Aktif, ürkek fakat genellikle uysal</p>
-                            <p><strong>Doğal Habitat:</strong> Venezuela'nın Paraguana Yarımadası'ndaki kurak bölgeler</p>
-                            <p><strong>Önerilen Terraryum Boyutu:</strong> 30x30x30 cm</p>
-                        </div>
-                    </div>
-                    </a>
-                </div>
+                
                 
                 <div class="species-card">
                     <a href="species/psalmopoeus-irminia.html" class="species-link">
-                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?venezuelan+suntiger');"></div>
+                    <div class="species-image">
+                        <img src="img/tarantula/psalmopoeus_irminia.jpg" alt="Venezuela Güneş Kaplanı">
+                    </div>
                     <div class="species-content">
                         <h3>Venezuela Güneş Kaplanı</h3>
                         <p><em>Psalmopoeus irminia</em></p>
@@ -497,157 +979,215 @@
                     </a>
                 </div>
                 
-                <div class="species-card">
-                    <a href="species/ephebopus-murinus.html" class="species-link">
-                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?skeleton+tarantula');"></div>
-                    <div class="species-content">
-                        <h3>İskelet Tarantula</h3>
-                        <p><em>Ephebopus murinus</em></p>
-                        <p>Siyah vücut üzerinde beyazımsı çizgileri olan bu tür, iskelet görünümü nedeniyle bu adı almıştır. İlginç bir özelliği, femurlarda urtikarya kıllarına sahip olmasıdır.</p>
-                        <div class="habitat-tags">
-                            <span class="habitat-tag">Kazıcı</span>
-                            <span class="habitat-tag">Yeni Dünya</span>
+               
+                
+             
+                
+              
+          
+            
+                
+                <!-- Mobil Cihazlar İçin Kart Görünümü -->
+                <div class="table-cards">
+                    <div class="species-card-mobile">
+                        <a href="species/xenesthis-immanis.html">
+                            <h4>Kolombiya Kırmızı</h4>
+                            <div class="card-body">
+                                <div class="card-row">
+                                    <div class="card-label">Bilimsel Adı:</div>
+                                    <div class="card-value"><em>Xenesthis immanis</em></div>
                         </div>
-                        <div class="specs">
-                            <p><strong>Ortalama Boy:</strong> 12-15 cm</p>
-                            <p><strong>Yaşam Süresi:</strong> Dişiler 12-15 yıl, Erkekler 3-5 yıl</p>
-                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level intermediate">Orta</span></p>
-                            <p><strong>Mizaç:</strong> Ürkek, savunmacı</p>
-                            <p><strong>Doğal Habitat:</strong> Güney Amerika'nın kuzey bölgesindeki yağmur ormanları</p>
-                            <p><strong>Önerilen Terraryum Boyutu:</strong> 30x30x30 cm, derin substrat</p>
+                                <div class="card-row">
+                                    <div class="card-label">Ortalama Boy:</div>
+                                    <div class="card-value">18-20 cm</div>
+                                </div>
+                                <div class="card-row">
+                                    <div class="card-label">Zorluk:</div>
+                                    <div class="card-value"><span class="care-level intermediate">Orta</span></div>
+                                </div>
+                                <div class="card-row">
+                                    <div class="card-label">Özellikler:</div>
+                                    <div class="card-value">Çarpıcı kırmızı-pembe vücut, büyük ve etkileyici bir tür</div>
                         </div>
                     </div>
                     </a>
                 </div>
                 
-                <div class="species-card">
-                    <a href="species/brachypelma-emilia.html" class="species-link">
-                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?mexican+redleg+tarantula');"></div>
-                    <div class="species-content">
-                        <h3>Meksika Kırmızı Bacak</h3>
-                        <p><em>Brachypelma emilia</em></p>
-                        <p>Siyah vücut üzerinde kırmızı-turuncu bacaklara sahip olan bu tür, Brachypelma hamorii'ye benzer ancak desenleri farklıdır. Sakin ve uzun ömürlüdür.</p>
-                        <div class="habitat-tags">
-                            <span class="habitat-tag">Yer Yaşamı</span>
-                            <span class="habitat-tag">Yeni Dünya</span>
+                    <div class="species-card-mobile">
+                        <a href="species/monocentropus-balfouri.html">
+                            <h4>Sokotra Adası Mavi</h4>
+                            <div class="card-body">
+                                <div class="card-row">
+                                    <div class="card-label">Bilimsel Adı:</div>
+                                    <div class="card-value"><em>Monocentropus balfouri</em></div>
                         </div>
-                        <div class="specs">
-                            <p><strong>Ortalama Boy:</strong> 12-15 cm</p>
-                            <p><strong>Yaşam Süresi:</strong> Dişiler 20-30 yıl, Erkekler 5-7 yıl</p>
-                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level beginner">Başlangıç</span></p>
-                            <p><strong>Mizaç:</strong> Sakin, uysal</p>
-                            <p><strong>Doğal Habitat:</strong> Meksika'nın Sinaloa ve Sonora eyaletlerindeki yarı kurak bölgeler</p>
-                            <p><strong>Önerilen Terraryum Boyutu:</strong> 30x30x30 cm</p>
+                                <div class="card-row">
+                                    <div class="card-label">Ortalama Boy:</div>
+                                    <div class="card-value">10-15 cm</div>
+                                </div>
+                                <div class="card-row">
+                                    <div class="card-label">Zorluk:</div>
+                                    <div class="card-value"><span class="care-level advanced">İleri</span></div>
+                                </div>
+                                <div class="card-row">
+                                    <div class="card-label">Özellikler:</div>
+                                    <div class="card-value">Mavi-beyaz renkleri olan nadir bir tür, koloniler halinde yaşayabilir</div>
                         </div>
                     </div>
                     </a>
                 </div>
                 
-                <div class="species-card">
-                    <a href="species/ceratogyrus-darlingi.html" class="species-link">
-                    <div class="species-image" style="background-image: url('https://source.unsplash.com/600x400/?horned+baboon+tarantula');"></div>
-                    <div class="species-content">
-                        <h3>Boynuzlu Babun Tarantula</h3>
-                        <p><em>Ceratogyrus darlingi</em></p>
-                        <p>Prosoma üzerinde bulunan karakteristik boynuz şeklindeki çıkıntısı ile tanınır. Afrika kökenli, hızlı ve savunmacı bir türdür.</p>
-                        <div class="habitat-tags">
-                            <span class="habitat-tag">Kazıcı</span>
-                            <span class="habitat-tag">Eski Dünya</span>
+                    <div class="species-card-mobile">
+                        <a href="species/pamphobeteus-sp-machala.html">
+                            <h4>Ekvador Mor</h4>
+                            <div class="card-body">
+                                <div class="card-row">
+                                    <div class="card-label">Bilimsel Adı:</div>
+                                    <div class="card-value"><em>Pamphobeteus sp. "Machala"</em></div>
                         </div>
-                        <div class="specs">
-                            <p><strong>Ortalama Boy:</strong> 12-15 cm</p>
-                            <p><strong>Yaşam Süresi:</strong> Dişiler 15-20 yıl, Erkekler 3-4 yıl</p>
-                            <p><strong>Zorluk Seviyesi:</strong> <span class="care-level advanced">İleri</span></p>
-                            <p><strong>Mizaç:</strong> Agresif, savunmacı</p>
-                            <p><strong>Doğal Habitat:</strong> Zimbabve, Mozambik ve güney Afrika'nın kurak savanları</p>
-                            <p><strong>Önerilen Terraryum Boyutu:</strong> 30x30x30 cm, derin substrat</p>
+                                <div class="card-row">
+                                    <div class="card-label">Ortalama Boy:</div>
+                                    <div class="card-value">18-22 cm</div>
+                                </div>
+                                <div class="card-row">
+                                    <div class="card-label">Zorluk:</div>
+                                    <div class="card-value"><span class="care-level intermediate">Orta</span></div>
+                                </div>
+                                <div class="card-row">
+                                    <div class="card-label">Özellikler:</div>
+                                    <div class="card-value">Erkekler çarpıcı mor renkte, dişiler kahverengi-siyah</div>
                         </div>
                     </div>
                     </a>
                 </div>
+                    
+                    <div class="species-card-mobile">
+                        <a href="species/harpactira-pulchripes.html">
+                            <h4>Altın Ayaklı Babun</h4>
+                            <div class="card-body">
+                                <div class="card-row">
+                                    <div class="card-label">Bilimsel Adı:</div>
+                                    <div class="card-value"><em>Harpactira pulchripes</em></div>
+                                </div>
+                                <div class="card-row">
+                                    <div class="card-label">Ortalama Boy:</div>
+                                    <div class="card-value">10-12 cm</div>
+                                </div>
+                                <div class="card-row">
+                                    <div class="card-label">Zorluk:</div>
+                                    <div class="card-value"><span class="care-level intermediate">Orta</span></div>
+                                </div>
+                                <div class="card-row">
+                                    <div class="card-label">Özellikler:</div>
+                                    <div class="card-value">Siyah vücut, parlak altın sarısı bacaklar, çok nadir</div>
+                                </div>
+                            </div>
+                        </a>
             </div>
             
-            <div class="subheader" style="background-color: #e0f2f1; padding: 15px; border-radius: 5px; margin: 30px 0;">
-                <h3>Nadir Tarantula Türleri</h3>
-                <p>Aşağıda, daha az yaygın ancak evcil hayvan olarak bakılabilen ilginç tarantula türleri bulunmaktadır.</p>
+                    <div class="species-card-mobile">
+                        <a href="species/lasiodora-parahybana.html">
+                            <h4>Brezilya Siyah</h4>
+                            <div class="card-body">
+                                <div class="card-row">
+                                    <div class="card-label">Bilimsel Adı:</div>
+                                    <div class="card-value"><em>Lasiodora parahybana</em></div>
+                                </div>
+                                <div class="card-row">
+                                    <div class="card-label">Ortalama Boy:</div>
+                                    <div class="card-value">20-25 cm</div>
+                                </div>
+                                <div class="card-row">
+                                    <div class="card-label">Zorluk:</div>
+                                    <div class="card-value"><span class="care-level beginner">Başlangıç</span></div>
+                                </div>
+                                <div class="card-row">
+                                    <div class="card-label">Özellikler:</div>
+                                    <div class="card-value">Çok büyük bir tür, hızlı büyür, uysal mizaçlı</div>
+                                </div>
+                            </div>
+                        </a>
             </div>
             
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Tür Adı</th>
-                            <th>Bilimsel Adı</th>
-                            <th>Ortalama Boy</th>
-                            <th>Zorluk</th>
-                            <th>Özellikler</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><a href="species/xenesthis-immanis.html">Kolombiya Kırmızı</a></td>
-                            <td><em>Xenesthis immanis</em></td>
-                            <td>18-20 cm</td>
-                            <td><span class="care-level intermediate">Orta</span></td>
-                            <td>Çarpıcı kırmızı-pembe vücut, büyük ve etkileyici bir tür</td>
-                        </tr>
-                        <tr>
-                            <td><a href="species/monocentropus-balfouri.html">Sokotra Adası Mavi</a></td>
-                            <td><em>Monocentropus balfouri</em></td>
-                            <td>10-15 cm</td>
-                            <td><span class="care-level advanced">İleri</span></td>
-                            <td>Mavi-beyaz renkleri olan nadir bir tür, koloniler halinde yaşayabilir</td>
-                        </tr>
-                        <tr>
-                            <td><a href="species/pamphobeteus-sp-machala.html">Ekvador Mor</a></td>
-                            <td><em>Pamphobeteus sp. "Machala"</em></td>
-                            <td>18-22 cm</td>
-                            <td><span class="care-level intermediate">Orta</span></td>
-                            <td>Erkekler çarpıcı mor renkte, dişiler kahverengi-siyah</td>
-                        </tr>
-                        <tr>
-                            <td><a href="species/harpactira-pulchripes.html">Altın Ayaklı Babun</a></td>
-                            <td><em>Harpactira pulchripes</em></td>
-                            <td>10-12 cm</td>
-                            <td><span class="care-level intermediate">Orta</span></td>
-                            <td>Siyah vücut, parlak altın sarısı bacaklar, çok nadir</td>
-                        </tr>
-                        <tr>
-                            <td><a href="species/lasiodora-parahybana.html">Brezilya Siyah</a></td>
-                            <td><em>Lasiodora parahybana</em></td>
-                            <td>20-25 cm</td>
-                            <td><span class="care-level beginner">Başlangıç</span></td>
-                            <td>Çok büyük bir tür, hızlı büyür, uysal mizaçlı</td>
-                        </tr>
-                        <tr>
-                            <td><a href="species/heteroscodra-maculata.html">Babun Örümceği</a></td>
-                            <td><em>Heteroscodra maculata</em></td>
-                            <td>10-15 cm</td>
-                            <td><span class="care-level advanced">İleri</span></td>
-                            <td>Beyaz-siyah desenli, çok hızlı, savunmacı</td>
-                        </tr>
-                        <tr>
-                            <td><a href="species/psalmopoeus-cambridgei.html">Trinidad Zümrüdü</a></td>
-                            <td><em>Psalmopoeus cambridgei</em></td>
-                            <td>15-17 cm</td>
-                            <td><span class="care-level intermediate">Orta</span></td>
-                            <td>Yeşilimsi-bronz renk, hızlı büyür, çevik</td>
-                        </tr>
-                        <tr>
-                            <td><a href="species/phormictopus-sp-purple.html">Mor Haiti</a></td>
-                            <td><em>Phormictopus sp. "purple"</em></td>
-                            <td>15-18 cm</td>
-                            <td><span class="care-level intermediate">Orta</span></td>
-                            <td>Mor-kahverengi tonları, güçlü ve aktif</td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <div class="species-card-mobile">
+                        <a href="species/heteroscodra-maculata.html">
+                            <h4>Babun Örümceği</h4>
+                            <div class="card-body">
+                                <div class="card-row">
+                                    <div class="card-label">Bilimsel Adı:</div>
+                                    <div class="card-value"><em>Heteroscodra maculata</em></div>
+                                </div>
+                                <div class="card-row">
+                                    <div class="card-label">Ortalama Boy:</div>
+                                    <div class="card-value">10-15 cm</div>
+                                </div>
+                                <div class="card-row">
+                                    <div class="card-label">Zorluk:</div>
+                                    <div class="card-value"><span class="care-level advanced">İleri</span></div>
+                                </div>
+                                <div class="card-row">
+                                    <div class="card-label">Özellikler:</div>
+                                    <div class="card-value">Beyaz-siyah desenli, çok hızlı, savunmacı</div>
+                                </div>
+                            </div>
+                        </a>
             </div>
             
-            <div class="species-navigation" style="margin-top: 40px; text-align: center;">
-                <a href="species/all-tarantulas.html" class="btn">Tüm Tarantula Türlerini Görüntüle</a>
+                    <div class="species-card-mobile">
+                        <a href="species/psalmopoeus-cambridgei.html">
+                            <h4>Trinidad Zümrüdü</h4>
+                            <div class="card-body">
+                                <div class="card-row">
+                                    <div class="card-label">Bilimsel Adı:</div>
+                                    <div class="card-value"><em>Psalmopoeus cambridgei</em></div>
             </div>
+                                <div class="card-row">
+                                    <div class="card-label">Ortalama Boy:</div>
+                                    <div class="card-value">15-17 cm</div>
         </div>
+                                <div class="card-row">
+                                    <div class="card-label">Zorluk:</div>
+                                    <div class="card-value"><span class="care-level intermediate">Orta</span></div>
+                                </div>
+                                <div class="card-row">
+                                    <div class="card-label">Özellikler:</div>
+                                    <div class="card-value">Yeşilimsi-bronz renk, hızlı büyür, çevik</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="species-card-mobile">
+                        <a href="species/phormictopus-sp-purple.html">
+                            <h4>Mor Haiti</h4>
+                            <div class="card-body">
+                                <div class="card-row">
+                                    <div class="card-label">Bilimsel Adı:</div>
+                                    <div class="card-value"><em>Phormictopus sp. "purple"</em></div>
+                                </div>
+                                <div class="card-row">
+                                    <div class="card-label">Ortalama Boy:</div>
+                                    <div class="card-value">15-18 cm</div>
+                                </div>
+                                <div class="card-row">
+                                    <div class="card-label">Zorluk:</div>
+                                    <div class="card-value"><span class="care-level intermediate">Orta</span></div>
+                                </div>
+                                <div class="card-row">
+                                    <div class="card-label">Özellikler:</div>
+                                    <div class="card-value">Mor-kahverengi tonları, güçlü ve aktif</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scroll-hint">
+                <i class="fas fa-arrow-left"></i> Tablo içeriğini görmek için yana kaydırın <i class="fas fa-arrow-right"></i>
+            </div>
+
+           
     </section>
 
     <section class="care-section">
@@ -735,7 +1275,74 @@
         </div>
     </footer>
     
-    <script src="js/tabs.js"></script>
-    <script src="js/main.js"></script>
+    <script>
+        function openTab(evt, tabId) {
+            // Tüm tab içeriklerini gizle
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            
+            // Tüm butonlardan active sınıfını kaldır
+            var tabButtons = document.getElementsByClassName("tab-btn");
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+            
+            // Tıklanan butonun içeriğini göster ve butona active sınıfını ekle
+            document.getElementById(tabId).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+        
+        // Mobil menü için JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                
+                // Menü ikonunu değiştir (hamburger/çarpı)
+                const menuIcon = menuToggle.querySelector('i');
+                if (mainNav.classList.contains('active')) {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                } else {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+            
+            // Küçük ekranda menü linklerine tıklandığında menüyü kapat
+            const menuLinks = mainNav.querySelectorAll('a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        mainNav.classList.remove('active');
+                        const menuIcon = menuToggle.querySelector('i');
+                        menuIcon.classList.remove('fa-times');
+                        menuIcon.classList.add('fa-bars');
+                    }
+                });
+            });
+            
+            // Tabloların kaydırılabilir olup olmadığını kontrol et
+            function checkTableScroll() {
+                const tableContainers = document.querySelectorAll('.table-container');
+                
+                tableContainers.forEach(container => {
+                    if (container.scrollWidth > container.clientWidth) {
+                        container.classList.add('table-scrollable');
+                    } else {
+                        container.classList.remove('table-scrollable');
+                    }
+                });
+            }
+            
+            // Sayfa yüklendiğinde ve yeniden boyutlandırıldığında kontrol et
+            checkTableScroll();
+            window.addEventListener('resize', checkTableScroll);
+        });
+    </script>
 </body>
 </html> 

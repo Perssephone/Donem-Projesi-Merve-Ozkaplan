@@ -16,15 +16,90 @@
             margin-bottom: 20px;
             line-height: 1.8;
         }
+        
+        /* Mobil Navigasyon Stilleri */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            header .container {
+                flex-direction: column;
+                padding: 15px 20px;
+            }
+            
+            header .logo {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            header nav {
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            header nav.active {
+                max-height: 300px;
+            }
+            
+            header nav ul {
+                flex-direction: column;
+                width: 100%;
+                margin-top: 15px;
+            }
+            
+            header nav ul li {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            header nav ul li a {
+                display: block;
+                padding: 12px 0;
+                border-bottom: 1px solid #eee;
+            }
+        }
+        
+        /* Logo Stilleri */
+        .site-logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .site-logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
             <div class="logo">
-                <h1>Egzotik Hayvanlar Dünyası</h1>
+                <div class="site-logo">
+                    <img src="img/logo/logo.png" alt="Egzotik Hayvanlar Dünyası Logo">
+                    <h1>Egzotik Hayvanlar Dünyası</h1>
+                </div>
+                <button class="mobile-menu-btn" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
-            <nav>
+            <nav id="mainNav">
                 <ul>
                     <li><a href="index.html">Ana Sayfa</a></li>
                     <li><a href="tarantulas.html">Tarantulalar</a></li>
@@ -79,5 +154,11 @@
             </div>
         </div>
     </footer>
+    
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('active');
+        });
+    </script>
 </body>
 </html> 

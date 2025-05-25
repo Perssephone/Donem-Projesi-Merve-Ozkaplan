@@ -1,83 +1,110 @@
-# 🦂 Egzotik Hayvanlar Dünyası 🐍
+# 🦎 Egzotik Hayvanlar Dünyası 🐍
 
 <div align="center">
-  <img src="images/logo.png" alt="Egzotik Hayvanlar Dünyası Logo" width="300">
-  <br>
-  <h3>Tarantulalar, Yılanlar ve Daha Fazlası</h3>
-  <p>Türkiye'nin en kapsamlı egzotik hayvan rehberi</p>
-  
-  ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-  ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-  ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+  <img src="img/logo/logo.png" alt="Egzotik Hayvanlar Dünyası Logo" width="250">
+  <h3>Tarantulalar · Yılanlar · Kertenkeleler</h3>
+  <p><em>Egzotik türlerin kapsamlı bilgi ve bakım rehberi</em></p>
 </div>
 
 ## 📋 Proje Hakkında
 
-Egzotik Hayvanlar Dünyası, farklı egzotik hayvan türlerinin bakımı, habitatları ve özellikleri hakkında kapsamlı bilgiler sunan bir web sitesidir. Bu websitesi, egzotik hayvan besleme meraklıları, yeni başlayanlar ve uzmanlar için detaylı bir kaynak olarak hazırlanmıştır.
+Bu web sitesi, egzotik hayvanlar hakkında kapsamlı bir rehber sunmaktadır. Tarantulalar, yılanlar ve kertenkeleler hakkında detaylı bilgiler, bakım önerileri ve türler hakkında kapsamlı içerikler bulabilirsiniz. Site, bu özel türlerin bakımı ve yaşam alanları konusunda doğru bilgilendirmeyi amaçlamaktadır.
 
-### ✨ Özellikler
+## 🕷️ Tarantula Türleri
 
-- 📱 **Tamamen Responsive Tasarım**: Tüm cihazlarda mükemmel görüntüleme deneyimi
-- 🖼️ **Görsel Zenginlik**: Yüksek kaliteli görseller ve detaylı bilgiler
-- 📊 **Detaylı Bilgi Kartları**: Her tür için temel özellikler, habitat bilgisi ve fiziksel özellikler
-- 🔍 **Kapsamlı Bakım Rehberleri**: Ayrıntılı terraryum gereksinimleri, çevre koşulları ve beslenme bilgileri
-- ⏱️ **Yaşam Döngüsü Zaman Çizelgeleri**: Her tür için detaylı yaşam döngüsü bilgileri
+Sitemizdeki popüler tarantula türleri:
 
-## 🗂️ İçerik Kategorileri
+### Yeni Dünya Tarantulaları
 
-### 🕷️ Tarantulalar
+| Tür Adı | Bilimsel Adı | Ortalama Boy | Zorluk Seviyesi |
+|---------|--------------|--------------|-----------------|
+| Meksika Kırmızı Diz | *Brachypelma hamorii* | 12-15 cm | Başlangıç |
+| Kıvırcık Saçlı Tarantula | *Tliltocatl albopilosus* | 13-16 cm | Başlangıç |
+| Pembe Ayaklı Tarantula | *Avicularia avicularia* | 10-13 cm | Orta |
+| Goliath Kuş Yiyen | *Theraphosa blondi* | 25-30 cm | İleri |
+| Venezuela Güneş Kaplanı | *Psalmopoeus irminia* | 12-15 cm | Orta |
 
-| Tür | Zorluk Seviyesi | Öne Çıkan Özellik |
-|-----|-----------------|-------------------|
-| [Theraphosa blondi](species/theraphosa-blondi.html) | İleri | Dünyanın en büyük tarantulası |
-| [Caribena versicolor](species/caribena-versicolor.html) | Orta | Olağanüstü renkler |
-| [Pterinochilus murinus](species/pterinochilus-murinus.html) | İleri | Hızlı ve agresif |
-| [Cyriopagopus lividus](species/cyriopagopus-lividus.html) | İleri | Göz alıcı mavi renk |
-| [Poecilotheria metallica](species/poecilotheria-metallica.html) | İleri | Metalik mavi desen |
-| [Chromatopelma cyaneopubescens](species/chromatopelma-cyaneopubescens.html) | Başlangıç | Renk değiştiren tüyler |
-| [Psalmopoeus irminia](species/psalmopoeus-irminia.html) | Orta | Etkileyici kaplan deseni |
-| [Ephebopus murinus](species/ephebopus-murinus.html) | Orta | İskelet görünümlü desenler |
-| [Brachypelma emilia](species/brachypelma-emilia.html) | Başlangıç | Uzun ömür |
-| [Ceratogyrus darlingi](species/ceratogyrus-darlingi.html) | İleri | Karakteristik boynuz |
+### Eski Dünya Tarantulaları
 
-### 🐍 Yılanlar ve 🦎 Kertenkeleler
+| Tür Adı | Bilimsel Adı | Ortalama Boy | Zorluk Seviyesi |
+|---------|--------------|--------------|-----------------|
+| Antiller Pembe Ayaklı | *Caribena versicolor* | 10-12 cm | Orta |
+| Turuncu Babun | *Pterinochilus murinus* | 10-15 cm | İleri |
+| Kobalt Mavi | *Cyriopagopus lividus* | 12-15 cm | İleri |
+| Safir Ornamental | *Poecilotheria metallica* | 15-20 cm | İleri |
 
-*Yakında eklenecek*
+## 🐍 Yılan Türleri
+
+Sitemizdeki popüler yılan türleri:
+
+### Başlangıç Seviyesi Yılanlar
+
+| Tür Adı | Bilimsel Adı | Ortalama Boy | Habitat |
+|---------|--------------|--------------|---------|
+| Top Piton | *Python regius* | 90-150 cm | Batı Afrika |
+| Mısır Yılanı | *Pantherophis guttatus* | 120-180 cm | Kuzey Amerika |
+| Kral Yılanı | *Lampropeltis getula* | 90-140 cm | ABD'nin doğu ve güneyi |
+| Süt Yılanı | *Lampropeltis triangulum* | 60-120 cm | Kuzey ve Orta Amerika |
+
+### Orta ve İleri Seviye Yılanlar
+
+| Tür Adı | Bilimsel Adı | Ortalama Boy | Zorluk Seviyesi |
+|---------|--------------|--------------|-----------------|
+| Boa Yılanı | *Boa constrictor* | 180-300 cm | Orta |
+| Yeşil Ağaç Pitonu | *Morelia viridis* | 120-180 cm | İleri |
+| Domuz Burunlu Yılan | *Heterodon nasicus* | 45-90 cm | Başlangıç-Orta |
+| Retiküle Piton | *Python reticulatus* | 4-6 metre | Çok İleri |
+
+## 🦎 Kertenkele Türleri
+
+Sitemizdeki popüler kertenkele türleri:
+
+| Tür Adı | Bilimsel Adı | Ortalama Boy | Yaşam Süresi | Zorluk Seviyesi |
+|---------|--------------|--------------|--------------|-----------------|
+| Leopar Keleri | *Eublepharis macularius* | 20-28 cm | 10-20 yıl | Başlangıç |
+| Sakallı Ejder | *Pogona vitticeps* | 40-60 cm | 8-12 yıl | Başlangıç-Orta |
+| Tepeli Keler | *Correlophus ciliatus* | 15-20 cm | 15-20 yıl | Başlangıç |
+| Mavi Dilli Skink | *Tiliqua scincoides* | 45-60 cm | 15-20 yıl | Orta |
+
+## 🏠 Bakım Rehberi Bölümleri
+
+Her hayvan türü için kapsamlı bakım rehberi:
+
+- **Yaşam Alanı (Terraryum)** - Doğru terraryum kurulumu ve ekipmanlar
+- **Sıcaklık ve Aydınlatma** - Türe özgü sıcaklık gereksinimleri ve UVB ihtiyaçları
+- **Nem ve Su** - Nem seviyeleri ve su gereksinimleri
+- **Beslenme** - Türe özgü beslenme programları ve besin takviyeleri
+- **Sağlık** - Yaygın sağlık sorunları ve önleyici bakım
+- **Etkileşim** - Hayvanla güvenli etkileşim kurma yöntemleri
+
+## 🚀 Sitenin Özellikleri
+
+- **Detaylı Tür Bilgisi**: Her tür için köken, doğal habitat ve davranış bilgileri
+- **Görsel Galeri**: Yüksek kaliteli fotoğraflar ve görsel tanımlama
+- **Bakım Rehberleri**: Adım adım bakım talimatları ve ipuçları
+- **Zorluk Seviyeleri**: Başlangıç, orta ve ileri düzey bakıcılar için tür önerileri
+- **Terraryum Kurulumu**: Türe özgü terraryum kurulum rehberleri
+- **Besleme Çizelgeleri**: Yaşa ve türe göre önerilen besleme programları
+- **Mobil Uyumlu Tasarım**: Tüm cihazlarda sorunsuz deneyim
 
 ## 💻 Teknolojiler
 
 - HTML5
 - CSS3
 - JavaScript
-- Font Awesome
-- Google Fonts
+- Font Awesome ikonları
+- Responsive tasarım
 
-## 📸 Ekran Görüntüleri
+## 👩‍💻 Geliştirici
 
-<div align="center">
-  <img src="images/screenshot1.jpg" alt="Anasayfa" width="400">
-  <img src="images/screenshot2.jpg" alt="Tür Sayfası" width="400">
-</div>
+**Merve Özkaplan**
 
-## 🔜 Gelecek Güncellemeler
+## 📝 Lisans
 
-- Yılan ve kertenkele türleri için içerik
-- Kullanıcı deneyimlerini paylaşabilecekleri forum sayfası
-- Canlı yem besiciliği hakkında bilgiler
-- Veteriner rehberi ve sağlık sorunları
-- Türkiye'de egzotik hayvan mağazaları haritası
-
-## 🤝 Proje Sahibi
-
-Bu web sitesi, Merve Özkaplan tarafından dönem projesi olarak geliştirilmiştir.
-
-## 📄 Lisans
-
-Bu proje [MIT Lisansı](LICENSE) altında lisanslanmıştır.
+Bu proje açık kaynak olarak lisanslanmıştır.
 
 ---
 
 <div align="center">
-  <p>⭐ Bu projeyi beğendiyseniz yıldız vermeyi unutmayın! ⭐</p>
-  <p>© 2024 Egzotik Hayvanlar Dünyası. Tüm hakları saklıdır.</p>
+  <p>🦎 Doğru bilgi, doğru bakım ve egzotik türlere karşı saygı 🐍</p>
 </div>
