@@ -3,435 +3,476 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boa Yılanı (Boa constrictor) Bakım Rehberi | Egzotik Hayvanlar Dünyası</title>
+    <title>Boa Yılanı - Egzotik Hayvanlar Dünyası</title>
     <link rel="stylesheet" href="../style.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Inline species-specific styles */
-        .species-container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
+        /* Mobil Navigasyon Stilleri */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 5px;
         }
-
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            header .container {
+                flex-direction: column;
+                padding: 15px 20px;
+            }
+            
+            header .logo {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            header nav {
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            header nav.active {
+                max-height: 300px;
+            }
+            
+            header nav ul {
+                flex-direction: column;
+                width: 100%;
+                margin-top: 15px;
+            }
+            
+            header nav ul li {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            header nav ul li a {
+                display: block;
+                padding: 12px 0;
+                border-bottom: 1px solid #eee;
+            }
+        }
+        
         .species-header {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            gap: 30px;
         }
-
-        .species-title h1 {
-            color: var(--primary-color);
-            margin-bottom: 5px;
-        }
-
-        .scientific-name {
-            font-style: italic;
-            color: #666;
-            font-size: 1.1em;
-        }
-
-        .quick-facts {
-            background-color: #f5f5f5;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 15px;
-        }
-
-        .fact {
-            margin-bottom: 8px;
-        }
-
-        .fact span {
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .species-image-gallery {
-            margin-bottom: 30px;
-        }
-
-        .main-image {
-            width: 100%;
-            height: 400px;
-            overflow: hidden;
+        
+        .species-header-image {
+            width: 40%;
             border-radius: 10px;
-            margin-bottom: 10px;
+            overflow: hidden;
         }
-
-        .main-image img {
+        
+        .species-header-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .species-header-content {
+            width: 60%;
+        }
+        
+        .species-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .fact-card {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .fact-card h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .care-level {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .beginner { background-color: #4caf50; }
+        .intermediate { background-color: #ff9800; }
+        .advanced { background-color: #f44336; }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .gallery-item {
+            border-radius: 5px;
+            overflow: hidden;
+            height: 200px;
+        }
+        
+        .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.3s;
         }
-
-        .thumbnail-container {
-            display: flex;
-            gap: 10px;
-            overflow-x: auto;
-            padding-bottom: 10px;
-        }
-
-        .thumbnail-container img {
-            width: 100px;
-            height: 70px;
-            object-fit: cover;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .thumbnail-container img:hover {
+        
+        .gallery-item:hover img {
             transform: scale(1.05);
         }
-
-        .species-overview, .taxonomy-section, .care-section, .morphs-section, .breeding-section {
-            margin-bottom: 40px;
+        
+        .care-guide-section {
+            margin: 40px 0;
         }
-
-        h2 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #e0e0e0;
+        
+        .care-guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
         }
-
-        h3 {
+        
+        .care-guide-item {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .care-guide-item h4 {
             color: var(--secondary-color);
-            margin: 20px 0 15px;
+            margin-top: 0;
         }
-
-        .taxonomy-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px;
-            background-color: #f5f5f5;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 15px;
+        
+        .care-guide-item ul {
+            padding-left: 20px;
         }
-
-        .taxonomy-item span {
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .taxonomy-note {
-            font-style: italic;
-            font-size: 0.9em;
-            color: #666;
-        }
-
-        .care-tips {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .tip {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 5px;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .tip i {
-            color: var(--primary-color);
-            font-size: 1.5em;
-            margin-right: 15px;
-            margin-top: 5px;
-        }
-
-        .warning-box {
-            background-color: #fff3e0;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px 0;
-            border-left: 4px solid var(--warning-color);
-        }
-
-        .warning-box h4 {
-            color: var(--warning-color);
+        
+        .care-guide-item li {
             margin-bottom: 10px;
         }
-
-        .morph-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .morph-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-
-        .morph-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        .morph-card h3 {
-            padding: 15px 15px 5px;
-            margin: 0;
-        }
-
-        .morph-card p {
-            padding: 0 15px 15px;
-            font-size: 0.9em;
-            color: #666;
-        }
-
-        @media (max-width: 768px) {
-            .species-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
             
-            .quick-facts {
-                width: 100%;
-            }
-            
-            .main-image {
-                height: 300px;
-            }
-            
-            .care-tips, .taxonomy-list, .morph-gallery {
-                grid-template-columns: 1fr;
-            }
+        /* Logo Stilleri */
+        .site-logo {
+            display: flex;
+            align-items: center;
         }
-    </style>
+        
+        .site-logo img {
+            height: 50px;
+            margin-right: 15px;
+        }</style>
 </head>
 <body>
     <header>
-        <div class="logo">
-            <a href="../index.html">Egzotik Hayvanlar Dünyası</a>
+        <div class="container">
+                            <div class="logo">
+                <div class="site-logo">
+                    <img src="../img/logo/logo.png" alt="Egzotik Hayvanlar Dünyası Logo">
+                <h1>Egzotik Hayvanlar Dünyası</h1></div>
+                <button class="mobile-menu-btn" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="../index.html">Ana Sayfa</a></li>
+                    <li><a href="../tarantulas.html">Tarantulalar</a></li>
+                    <li><a href="../snakes.html">Yılanlar</a></li>
+                    <li><a href="../lizards.html">Kertenkeleler</a></li>
+                    <li><a href="../about.html">Hakkımızda</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Ana Sayfa</a></li>
-                <li><a href="../tarantulas.html">Tarantulalar</a></li>
-                <li><a href="../snakes.html">Yılanlar</a></li>
-                <li><a href="../lizards.html">Kertenkeleler</a></li>
-                <li><a href="../about.html">Hakkımızda</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <div class="species-container">
-        <div class="species-header">
-            <div class="species-title">
-                <h1>Boa Yılanı (Boa constrictor)</h1>
-                <div class="scientific-name">Boa constrictor</div>
+    <section class="animal-header">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="../index.html">Ana Sayfa</a> &gt; 
+                <a href="../snakes.html">Yılanlar</a> &gt; 
+                <span>Boa Yılanı</span>
             </div>
-            <div class="quick-facts">
-                <div class="fact"><span>Ortalama Boy:</span> 180-300 cm</div>
-                <div class="fact"><span>Ömrü:</span> 20-30 yıl</div>
-                <div class="fact"><span>Bakım Seviyesi:</span> <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i> (Orta)</div>
-                <div class="fact"><span>Mizaç:</span> <i class="fas fa-smile"></i> Genellikle uysal, sakin</div>
-            </div>
+            <h2>Boa Yılanı (<em>Boa constrictor</em>)</h2>
         </div>
+    </section>
 
-        <div class="species-image-gallery">
-            <div class="main-image">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Boa_constrictor%2C_Va%C5%88kovka%2C_Brno_%282%29.jpg/1200px-Boa_constrictor%2C_Va%C5%88kovka%2C_Brno_%282%29.jpg" alt="Boa Yılanı (Boa constrictor)" id="mainImage">
-            </div>
-            <div class="thumbnail-container">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Boa_constrictor%2C_Va%C5%88kovka%2C_Brno_%282%29.jpg/1200px-Boa_constrictor%2C_Va%C5%88kovka%2C_Brno_%282%29.jpg" alt="Boa Yılanı 1" onclick="changeImage(this.src)">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Boa_constrictor_imperator_2.jpg/800px-Boa_constrictor_imperator_2.jpg" alt="Boa Yılanı 2" onclick="changeImage(this.src)">
-                <img src="https://img.freepik.com/premium-photo/boa-constrictor-snake-isolated-white-background_191971-14262.jpg" alt="Boa Yılanı 3" onclick="changeImage(this.src)">
-                <img src="https://www.worldlifeexpectancy.com/images/a/r/r/b/boa_constrictor.jpg" alt="Boa Yılanı Morph" onclick="changeImage(this.src)">
-            </div>
-        </div>
-
-        <div class="species-overview">
-            <h2>Genel Bakış</h2>
-            <p>Boa yılanı (Boa constrictor), etkileyici boyutu, göz alıcı desenleri ve nispeten uysal doğası nedeniyle egzotik hayvan hobicileri arasında popüler bir türdür. Orta ve Güney Amerika'nın nemli tropik ormanlarından kurak bölgelerine kadar geniş bir habitatta yaşar.</p>
-            
-            <p>Bu güçlü yılanlar, ağırlıklı olarak küçük ve orta boy memelilerle beslenir ve adından da anlaşılacağı gibi, avını boğarak öldürür. Çoğu yılanın aksine, boa yılanları canlı doğum yapar (ovovivipar) ve yavruları yumurtadan çıkmış halde dünyaya gelir.</p>
-            
-            <p>Esaret altında, düzgün bakım koşulları sağlandığında 20-30 yıl yaşayabilirler. Başlangıç seviyesinden daha deneyimli hobi sahiplerine kadar, boyut ve barınma gereksinimleri nedeniyle orta düzey bir bakım gerektirirler.</p>
-        </div>
-
-        <div class="taxonomy-section">
-            <h2>Taksonomi ve Sınıflandırma</h2>
-            <div class="taxonomy-list">
-                <div class="taxonomy-item"><span>Alem:</span> Animalia (Hayvanlar)</div>
-                <div class="taxonomy-item"><span>Şube:</span> Chordata (Kordalılar)</div>
-                <div class="taxonomy-item"><span>Sınıf:</span> Reptilia (Sürüngenler)</div>
-                <div class="taxonomy-item"><span>Takım:</span> Squamata (Pullu Sürüngenler)</div>
-                <div class="taxonomy-item"><span>Alt Takım:</span> Serpentes (Yılanlar)</div>
-                <div class="taxonomy-item"><span>Familya:</span> Boidae (Boalar)</div>
-                <div class="taxonomy-item"><span>Cins:</span> Boa</div>
-                <div class="taxonomy-item"><span>Tür:</span> B. constrictor</div>
-            </div>
-            <p class="taxonomy-note">Not: Boa constrictor'un pek çok alt türü vardır, bunların arasında Boa constrictor imperator (Orta Amerika Boası) ve Boa constrictor constrictor (Kırmızı Kuyruklu Boa) en yaygın olanlardır.</p>
-        </div>
-
-        <div class="care-section">
-            <h2>Bakım Rehberi</h2>
-            
-            <div class="care-subsection">
-                <h3>Terraryum Gereksinimleri</h3>
-                <p>Yetişkin bir boa yılanı için, minimum 180x90x60 cm boyutlarında bir terraryum gereklidir. Genç bireyler için daha küçük bir ortam kullanılabilir, ancak bu yılanlar hızla büyüdükleri için, yetişkin boyutları düşünülerek planlama yapılmalıdır.</p>
-                
-                <div class="care-tips">
-                    <div class="tip">
-                        <i class="fas fa-thermometer-half"></i>
-                        <div class="tip-content">
-                            <h4>Sıcaklık</h4>
-                            <p>Sıcak bölge: 30-32°C</p>
-                            <p>Serin bölge: 26-28°C</p>
-                            <p>Gece düşüş: 24-26°C</p>
-                        </div>
-                    </div>
-                    <div class="tip">
-                        <i class="fas fa-tint"></i>
-                        <div class="tip-content">
-                            <h4>Nem</h4>
-                            <p>%50-60 oranında nem</p>
-                            <p>Deri değişimi zamanında %65-75</p>
-                        </div>
-                    </div>
-                    <div class="tip">
-                        <i class="fas fa-lightbulb"></i>
-                        <div class="tip-content">
-                            <h4>Aydınlatma</h4>
-                            <p>12 saat açık / 12 saat kapalı döngü</p>
-                            <p>UVB zorunlu değil ancak düşük düzeyde faydalı olabilir</p>
-                        </div>
+    <section class="animal-info">
+        <div class="container">
+            <div class="species-header">
+                <div class="species-header-image">
+                    <img src="../img/yilanlar/boa_constrictor.jpg" alt="Boa Yılanı">
+                </div>
+                <div class="species-header-content">
+                    <h3>Genel Bakış</h3>
+                    <p>Boa Yılanı (Boa constrictor), Orta ve Güney Amerika'nın tropik bölgelerine özgü, büyük boyutlu, güçlü bir yılan türüdür. İsmini, avlarını sıkarak (boğarak) öldürme tekniğinden almıştır.</p>
+                    
+                    <p>Etkileyici boyutu, güzel renk ve desen çeşitliliği, dayanıklı yapısı ve nispeten uysal mizacı sayesinde, egzotik hayvan hobicileri arasında popüler bir seçimdir. Çeşitli alt türleri ve morfolojileri bulunur ve uygun bakım koşullarında 20-30 yıl yaşayabilirler.</p>
+                    
+                    <div class="taxonomy">
+                        <h4>Bilimsel Sınıflandırma</h4>
+                        <p><strong>Alem:</strong> Animalia</p>
+                        <p><strong>Şube:</strong> Chordata</p>
+                        <p><strong>Sınıf:</strong> Reptilia</p>
+                        <p><strong>Takım:</strong> Squamata</p>
+                        <p><strong>Alttakım:</strong> Serpentes</p>
+                        <p><strong>Familya:</strong> Boidae</p>
+                        <p><strong>Cins:</strong> Boa</p>
+                        <p><strong>Tür:</strong> B. constrictor</p>
                     </div>
                 </div>
+            </div>
+            
+            <div class="species-facts">
+                <div class="fact-card">
+                    <h4>Temel Özellikler</h4>
+                    <p><strong>Ortalama Boy:</strong> 180-300 cm (6-10 feet) (alt türe göre değişir)</p>
+                    <p><strong>Ağırlık:</strong> 4-15 kg (yetişkin)</p>
+                    <p><strong>Yaşam Süresi:</strong> 20-30 yıl (esaret altında)</p>
+                    <p><strong>Zorluk Seviyesi:</strong> <span class="care-level intermediate">Orta</span></p>
+                    <p><strong>Mizaç:</strong> Genellikle sakin ve uysal, bazı bireyler daha aktif olabilir</p>
+                </div>
                 
-                <p>Isıtma için, alt ısıtıcılar, seramik ısıtıcılar veya ısı lambaları kullanılabilir. Tüm ısıtma kaynakları termostat ile kontrol edilmelidir. Terraryumun bir ucunda sıcak bir bölge, diğer ucunda daha serin bir bölge oluşturarak termal gradyan sağlanmalıdır.</p>
-            </div>
-            
-            <div class="care-subsection">
-                <h3>Terraryum Düzeni ve Aksesuarlar</h3>
-                <ul>
-                    <li><strong>Altlık:</strong> Hindistan cevizi toprağı (coco soil), orman toprağı, kıyılmış kavak ağacı talaşı veya gazete kağıdı kullanılabilir. Çam ve sedir talaşı gibi aromatik altlıklardan kaçınılmalıdır.</li>
-                    <li><strong>Saklanma Yerleri:</strong> Yılanın vücudunun en az yarısını saklayabilecek büyüklükte, hem sıcak hem de serin bölgede birer saklanma alanı sağlanmalıdır.</li>
-                    <li><strong>Tırmanma Dalları:</strong> Boalar kısmen ağaç üzerinde de yaşar, bu nedenle dayanıklı dallar ve tırmanma yapıları sağlanmalıdır.</li>
-                    <li><strong>Su Kabı:</strong> Yılanın içine tamamen girebileceği büyüklükte olmalıdır. Su her gün değiştirilmelidir.</li>
-                    <li><strong>Bitkiler:</strong> Yapay veya canlı bitkiler saklanma alanları oluşturabilir ve nem seviyelerini dengeleyebilir.</li>
-                </ul>
-            </div>
-            
-            <div class="care-subsection">
-                <h3>Beslenme</h3>
-                <p>Boa yılanları, yaşlarına ve boyutlarına göre değişen sıklıkta kemirgenlerle beslenir:</p>
-                <ul>
-                    <li><strong>Yavrular (1 yaşına kadar):</strong> 7-10 günde bir fare (hopper veya küçük yetişkin)</li>
-                    <li><strong>Gençler (1-3 yaş):</strong> 10-14 günde bir büyük fare veya küçük sıçan</li>
-                    <li><strong>Yetişkinler (3+ yaş):</strong> 2-4 haftada bir orta boy sıçan veya guinea pig</li>
-                </ul>
-                <p>Donmuş/çözülmüş yem tercih edilir çünkü canlı yem yılanı yaralayabilir. Yemi yılanın en kalın bölümünden biraz daha küçük olmalıdır. Aşırı beslemeden kaçınılmalıdır, obezite ciddi sağlık sorunlarına yol açabilir.</p>
-            </div>
-            
-            <div class="care-subsection">
-                <h3>Sağlık ve Bakım</h3>
-                <p>Boa yılanları genellikle sağlam hayvanlardır, ancak düzenli bakım ve takip gerektirirler:</p>
-                <ul>
-                    <li><strong>Deri Değişimi:</strong> Genç boalar 4-6 haftada bir, yetişkinler 6-8 haftada bir deri değiştirir. Deri değişimi öncesinde nemin artırılması yardımcı olabilir.</li>
-                    <li><strong>Temizlik:</strong> Kirli altlık hemen temizlenmeli, tam değişim ayda bir kez yapılmalıdır.</li>
-                    <li><strong>Veteriner Kontrolleri:</strong> Yılda bir kez uzman sürüngen veterinerinde muayene önerilir.</li>
-                    <li><strong>Parazit Kontrolü:</strong> Yılda bir kez dışkı muayenesi ve gerekirse parazit tedavisi yapılmalıdır.</li>
-                </ul>
+                <div class="fact-card">
+                    <h4>Habitat Bilgileri</h4>
+                    <p><strong>Doğal Habitat:</strong> Orta ve Güney Amerika'nın tropik ve subtropik bölgeleri</p>
+                    <p><strong>Yaşam Tarzı:</strong> Karasal ve yarı-ağaç yaşamı (arboreal), ortama göre değişir</p>
+                    <p><strong>Habitat Tipi:</strong> Yağmur ormanları, kurak ormanlar, savanlar, yarı-çöl bölgeleri</p>
+                    <p><strong>Aktivite Düzeni:</strong> Genellikle gece aktif (nokturnal), bazen crepuscular (alacakaranlık)</p>
+                    <p><strong>Doğal Davranış:</strong> Avını pusu kurarak yakalama, sıkarak (constricting) öldürme</p>
+                </div>
                 
-                <div class="warning-box">
-                    <h4><i class="fas fa-exclamation-triangle"></i> Dikkat Edilmesi Gereken Sağlık Sorunları</h4>
-                    <ul>
-                        <li><strong>Solunum Yolu Enfeksiyonu:</strong> Ağızdan nefes alma, hırıltılı solunum, burun akıntısı</li>
-                        <li><strong>Ağız Çürümesi (Stomatit):</strong> Ağız içinde kızarıklık, şişlik ve iltihap</li>
-                        <li><strong>Parazitler:</strong> İç (bağırsak parazitleri) ve dış (kene, akar) parazitler</li>
-                        <li><strong>Deri Enfeksiyonları:</strong> Özellikle yüksek nem ve kötü bakım koşullarında</li>
-                        <li><strong>Inklüzyon Vücut Hastalığı (IBD):</strong> Boalarda görülen ciddi, bulaşıcı bir hastalık</li>
-                    </ul>
+                <div class="fact-card">
+                    <h4>Fiziksel Özellikler</h4>
+                    <p><strong>Renk:</strong> Kahverengi, krem ve gri tonlarında, sırt boyunca oval veya kelebek şeklinde desenler</p>
+                    <p><strong>Alt Türler:</strong> Boa c. imperator (Orta Amerika), Boa c. constrictor (Güney Amerika) ve diğerleri</p>
+                    <p><strong>Vücut Yapısı:</strong> Güçlü, kaslı, uzun vücut; küçük pullu, pürüzsüz derili</p>
+                    <p><strong>Cinsiyet Farklılıkları:</strong> Dişiler genellikle daha büyük ve kalın, erkekler daha küçük ve ince</p>
+                    <p><strong>Özel Özellikler:</strong> Gözlerin yanında ısı sensörleri (çukurlar), pençe benzeri mahmuzlar (anal spur)</p>
                 </div>
             </div>
             
-            <div class="care-subsection">
-                <h3>Davranış ve Sosyalleşme</h3>
-                <p>Boa yılanları genellikle sakin ve uysal hayvanlardır, ancak her bireyin farklı bir kişiliği olabilir. Düzenli ve nazik bir şekilde ele alındıklarında, genellikle insan etkileşimine alışırlar.</p>
-                
-                <p>Bu yılanlar yalnız yaşayan hayvanlardır ve asla aynı terraryumda başka yılanlarla tutulmamalıdır. Kanibalizm veya yaralanma riski vardır. Ele alırken vücudun en az üçte birini destekleyerek tutulmalıdır.</p>
-                
-                <p>Boalar özellikle beslenmeden sonra stres yaşayabilir, bu nedenle beslemeden sonraki 48 saat içinde ele alınmamalıdır. Yeni bir ortama alıştıktan sonra, haftada bir veya iki kez kısa süreliğine ele alınabilirler.</p>
+            <div class="care-guide-section">
+                <h3>Detaylı Bakım Rehberi</h3>
+                <div class="care-guide-grid">
+                    <div class="care-guide-item">
+                        <h4>Terraryum Gereksinimleri</h4>
+                        <ul>
+                            <li><strong>Boyut:</strong> Yetişkin bir birey için en az 180x90x60 cm boyutlarında büyük bir terraryum gereklidir</li>
+                            <li><strong>Substrat:</strong> Hindistan cevizi lifi, cypress talaşı, orman toprağı veya gazete kağıdı</li>
+                            <li><strong>Saklanma Alanları:</strong> En az iki büyük saklanma kutusu veya mağara (terraryumun farklı kısımlarında)</li>
+                            <li><strong>Tırmanma İmkanı:</strong> Kalın, sağlam dallar ve platformlar (özellikle yarı-ağaçsal alt türler için)</li>
+                            <li><strong>Su Kabı:</strong> Tüm vücuduyla girebileceği büyük, sağlam bir su kabı (nem sağlama ve banyo için)</li>
+                            <li><strong>Güvenlik:</strong> Kaçma riski yüksek olduğundan, sağlam kilitli kapağı olan bir terraryum şarttır</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Sıcaklık ve Nem</h4>
+                        <ul>
+                            <li><strong>Sıcaklık Gradyanı:</strong> Terraryumda bir sıcaklık gradyanı oluşturulmalıdır
+                                <ul>
+                                    <li>Sıcak Taraf: 30-32°C (86-90°F)</li>
+                                    <li>Serin Taraf: 25-28°C (77-82°F)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Basking Spot:</strong> Lokal ısıtma bölgesi 32-35°C (90-95°F)</li>
+                            <li><strong>Gece Sıcaklığı:</strong> Gece 24-26°C (75-79°F) olmalıdır</li>
+                            <li><strong>Nem Oranı:</strong> %60-70 (alt türe göre değişir, bazıları daha düşük nem gerektirir)</li>
+                            <li><strong>Nem Sağlama:</strong> Büyük su kabı, düzenli spreyleme veya otomatik nemlendirme sistemi</li>
+                            <li><strong>Isıtma Ekipmanları:</strong> Seramik ısıtıcı, radyant ısı paneli, ısıtma matı (hepsi termostat kontrollü)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Beslenme ve Su</h4>
+                        <ul>
+                            <li><strong>Besin Türü:</strong> Kemirgenler (fareler, sıçanlar) ve büyüdükçe tavşan, kobay gibi daha büyük hayvanlar</li>
+                            <li><strong>Beslenme Sıklığı:</strong>
+                                <ul>
+                                    <li>Yavrular (1 yaşına kadar): 7-10 günde bir</li>
+                                    <li>Gençler (1-3 yaş): 10-14 günde bir</li>
+                                    <li>Yetişkinler (3+ yaş): 2-4 haftada bir</li>
+                                </ul>
+                            </li>
+                            <li><strong>Besin Boyutu:</strong> Yılanın vücudunun en geniş kısmından biraz daha kalın olmalıdır</li>
+                            <li><strong>Beslenme Uyarısı:</strong> Aşırı besleme obeziteye yol açabilir, boyut/ağırlık düzenli kontrol edilmelidir</li>
+                            <li><strong>Su:</strong> Her zaman temiz su bulunmalı, büyük su kabı haftada en az iki kez temizlenmelidir</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Sağlık ve Bakım</h4>
+                        <ul>
+                            <li><strong>Deri Değişimi:</strong> Düzenli ve tam deri değişimi sağlıklı olduğunu gösterir
+                                <ul>
+                                    <li>Yavrular: Her 4-6 haftada bir</li>
+                                    <li>Yetişkinler: Her 6-8 haftada bir</li>
+                                </ul>
+                            </li>
+                            <li><strong>Yaygın Sağlık Sorunları:</strong>
+                                <ul>
+                                    <li>Solunum yolu enfeksiyonları (hatalı nem ve sıcaklık nedeniyle)</li>
+                                    <li>Ağız çürümesi (Stomatitis)</li>
+                                    <li>Parazitler (iç ve dış)</li>
+                                    <li>Deri değişimi sorunları</li>
+                                    <li>İnklüzyon hastalığı (IBD) - ölümcül bir virüs</li>
+                                </ul>
+                            </li>
+                            <li><strong>Veteriner Kontrolleri:</strong> Yılda bir kez sürüngen uzmanı veteriner kontrolü önerilir</li>
+                            <li><strong>Temizlik:</strong> Dışkı ve idrar hemen temizlenmeli, tam terraryum temizliği ayda bir yapılmalıdır</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Davranış ve Tutma</h4>
+                        <ul>
+                            <li><strong>Mizaç:</strong> Çoğunlukla sakin ve uysal, düzenli sosyalleşmeyle daha da uysallaşır</li>
+                            <li><strong>Savunma Davranışı:</strong> Tehdit altında hissettiğinde kafa vuruşu yapabilir, nadiren ısırır</li>
+                            <li><strong>Tutma Önerileri:</strong>
+                                <ul>
+                                    <li>Büyük yılanları en az iki kişiyle tutun (güvenlik için)</li>
+                                    <li>Vücudunun tüm uzunluğunu destekleyin</li>
+                                    <li>Beslemeden sonra 72 saat tutmaktan kaçının</li>
+                                    <li>Baş ve boyun bölgesini kontrol ederek tutun</li>
+                                </ul>
+                            </li>
+                            <li><strong>Stres Belirtileri:</strong> Aşırı hareketlilik, sürekli saklanma, agresif davranışlar, yem reddi</li>
+                            <li><strong>Tutma Sıklığı:</strong> Haftada 1-2 kez, her seferinde 15-20 dakika (çok sık tutulması strese neden olabilir)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+           
+            
+            <div class="faq-section">
+                <h3>Sık Sorulan Sorular</h3>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <h4>Bir Boa Yılanı ev ortamında ne kadar büyüyebilir?</h4>
+                        <div class="accordion-content">
+                            <p>Boa Yılanlarının boyutu alt türlere göre büyük ölçüde değişir. Orta Amerika Boası (Boa c. imperator) genellikle 1.5-2.5 metre (5-8 feet) uzunluğa ulaşırken, Güney Amerika'nın gerçek Boa constrictorları 3 metre (10 feet) veya daha fazla uzunlukta olabilir. Dişiler genellikle erkeklerden %30-40 daha büyük olabilir. İyi beslenen ancak aşırı kilolu olmayan bir Boa, iyi genetik ve uygun bakım koşullarında türüne göre maksimum boyutuna ulaşacaktır. Ancak evcil hayvan olarak tutulan birçok Boa, doğal yabani kardeşleri kadar büyük olmayabilir.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4>Boa Yılanlarının farklı alt türleri arasındaki temel farklar nelerdir?</h4>
+                        <div class="accordion-content">
+                            <p>Boa constrictor kompleksinde birkaç alt tür vardır, en yaygın iki tanesi: <br>
+                            1. <strong>Boa c. imperator (BCI):</strong> Orta Amerika, Meksika ve Kolombiya'nın kuzeyinde bulunur. Genellikle daha küçük (1.5-2.5 metre), daha kuru habitatta yaşar ve daha çabuk evcilleşir. <br>
+                            2. <strong>Boa c. constrictor (BCC):</strong> Güney Amerika'nın kuzeyinde bulunur (Amazon, Surinam, Guyana, vb). Daha büyük olur (2.5-3+ metre), daha parlak deri rengi ve daha keskin desenler gösterir. <br>
+                            Diğer alt türler arasında Red-Tailed Boa, Sonoran Boa, Argentine Boa ve Hogg Island Boa bulunur, bunların her biri kendine özgü renk, desen ve büyüklük özelliklerine sahiptir. Bakım gereksinimleri temelde aynıdır, ancak bazı alt türler diğerlerinden daha fazla nem veya farklı sıcaklık aralıkları gerektirebilir.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4>Boa Yılanları insanlar için tehlikeli midir?</h4>
+                        <div class="accordion-content">
+                            <p>Boa Yılanları zehirli değildir ve genellikle insanlara karşı saldırgan değildir. Ancak, bu büyük ve güçlü yılanların tehlikeli durumlar yaratabilecek potansiyeli vardır. İyi sosyalleştirilmiş bir Boa genellikle uysaldır, ancak stresli veya korkmuş bir yılan ısırabilir veya savunma amacıyla kafa vuruşu yapabilir. Büyük yetişkin Boalar güçlüdür ve yanlış tutulmaları halinde yaralanmalara yol açabilir. Bu nedenle, 2 metreden uzun yılanları en az iki kişiyle tutmak daha güvenlidir. Boalar asla çocuklarla veya diğer evcil hayvanlarla yalnız bırakılmamalıdır. Doğru bakım, düzenli tutma ve yılanın vücut diline dikkat etmek, güvenli bir ortam sağlamak için esastır.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4>Boa Yılanları için en yaygın morf varyasyonları nelerdir?</h4>
+                        <div class="accordion-content">
+                            <p>Boa Yılanları için popüler morf varyasyonları şunlardır: <br>
+                            - <strong>Albino:</strong> Melanin eksikliği, pembe/kırmızı gözler, sarı/beyaz/turuncu renk <br>
+                            - <strong>Hypomelanistic (Hypo):</strong> Azaltılmış siyah pigment, daha parlak renkler <br>
+                            - <strong>Anery (Anerythristic):</strong> Kırmızı/turuncu pigment eksikliği, gri/siyah tonları <br>
+                            - <strong>Salmon:</strong> Somon/pembe renk tonlarında <br>
+                            - <strong>Motley:</strong> Sırt deseni düzensiz, genellikle yan kısımlarda normal desen <br>
+                            - <strong>Ghost:</strong> Hypo ve Anery kombinasyonu, solgun görünüm <br>
+                            - <strong>Jungle:</strong> Düzensiz ve karışık desenleme <br>
+                            - <strong>Leopard/Jaguar:</strong> Lekeli veya noktalı desenler <br>
+                            - <strong>Sharp Line:</strong> Keskin ve net desenli <br>
+                            Bunların yanında, bu temel morfların kombinasyonlarından oluşan yüzlerce farklı varyasyon da üretilmektedir.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="morphs-section">
-            <h2>Renk Varyasyonları (Morphs)</h2>
-            <p>Boa yılanları, çeşitli renk ve desen varyasyonlarına sahiptir. İşte en popüler morphlardan bazıları:</p>
-            
-            <div class="morph-gallery">
-                <div class="morph-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Boa_constrictor%2C_Va%C5%88kovka%2C_Brno_%282%29.jpg/1200px-Boa_constrictor%2C_Va%C5%88kovka%2C_Brno_%282%29.jpg" alt="Normal (Wild Type) Boa Yılanı">
-                    <h3>Normal (Wild Type)</h3>
-                    <p>Doğal görünüm, kırmızımsı-kahverengi zemin üzerine koyu desenler.</p>
-                </div>
-                <div class="morph-card">
-                    <img src="https://reptifiles.com/wp-content/uploads/2020/09/Albino-Boa-Constrictor.jpg" alt="Albino Boa Yılanı">
-                    <h3>Albino</h3>
-                    <p>Melanin eksikliği, parlak sarı/krem zemin rengi, pembe veya turuncu desenler.</p>
-                </div>
-                <div class="morph-card">
-                    <img src="https://i.pinimg.com/originals/a5/8c/9e/a58c9ee3f72a284ee4d4a4ee02e89f56.jpg" alt="Hypo Boa Yılanı">
-                    <h3>Hypo (Salmon)</h3>
-                    <p>Azalmış melanin, daha açık zemin rengi ve daha az belirgin desenler.</p>
-                </div>
-                <div class="morph-card">
-                    <img src="https://www.worldofballpythons.com/files/morphs/super-pastel-boa/001.jpg" alt="Motley Boa Yılanı">
-                    <h3>Motley</h3>
-                    <p>Sırt deseni yerine uzunlamasına çizgiler, karın tarafında azalmış desenler.</p>
-                </div>
-            </div>
-            
-            <p class="morph-note">Not: Morph türleri, alt türlere göre de değişiklik gösterebilir. Örneğin, Boa constrictor imperator (BCI) ile Boa constrictor constrictor (BCC) arasında renk ve desen farklılıkları doğal olarak da mevcuttur.</p>
-        </div>
-        
-        <div class="breeding-section">
-            <h2>Üreme Bilgileri</h2>
-            <p>Boa yılanlarının üretimi, deneyimli yetiştiriciler için uygun bir süreçtir ancak yer ve kaynak gerektirir.</p>
-            
-            <h3>Üreme Sürecinin Aşamaları</h3>
-            <ul>
-                <li><strong>Hazırlık:</strong> Üretim öncesi, hem erkek hem dişi sağlıklı ve iyi kondisyonda olmalıdır. Dişi en az 3-4 yaşında ve 1.8 metre boyunda olmalıdır.</li>
-                <li><strong>Kış Uykusu (Brumation):</strong> 60-90 gün boyunca sıcaklık 24-26°C'ye düşürülür ve ışıklandırma azaltılır.</li>
-                <li><strong>Çiftleştirme:</strong> Kış uykusu sonrası sıcaklık ve nem artırılarak çiftleştirme başlatılır. Erkek ve dişi kısa süreliğine aynı terraryuma yerleştirilir.</li>
-                <li><strong>Gebelik:</strong> Gebelik 100-150 gün sürer. Bu dönemde dişiye ekstra beslenme ve özen gösterilmelidir.</li>
-                <li><strong>Doğum:</strong> Dişi 10-65 yavru doğurabilir, her biri yaklaşık 35-45 cm boyundadır.</li>
-            </ul>
-            
-            <p>Yeni doğan yavrular ayrı ayrı küçük terraryumlarda tutulmalı ve yaklaşık 10 gün sonra ilk beslenmeleri gerçekleştirilmelidir. Yavruluktan itibaren düzenli elle tutma, daha uysal yetişkinler yetiştirilmesine yardımcı olur.</p>
-        </div>
-    </div>
+    </section>
 
     <footer>
         <div class="container">
             <p>&copy; 2023 Egzotik Hayvanlar Dünyası. Tüm hakları saklıdır.</p>
             <div class="social">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
     </footer>
-
+    
     <script>
-        function changeImage(src) {
-            document.getElementById('mainImage').src = src;
-        }
+        // Accordion işlevselliği
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            
+            accordionItems.forEach(item => {
+                const header = item.querySelector('h4');
+                const content = item.querySelector('.accordion-content');
+                
+                header.addEventListener('click', () => {
+                    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+            
+            // Mobil menü işlevselliği
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                
+                // Menü ikonunu değiştir (hamburger/çarpı)
+                const menuIcon = menuToggle.querySelector('i');
+                if (mainNav.classList.contains('active')) {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                } else {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+            
+            // Küçük ekranda menü linklerine tıklandığında menüyü kapat
+            const menuLinks = mainNav.querySelectorAll('a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        mainNav.classList.remove('active');
+                        const menuIcon = menuToggle.querySelector('i');
+                        menuIcon.classList.remove('fa-times');
+                        menuIcon.classList.add('fa-bars');
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html> 

@@ -3,10 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pembe Ayak Tarantulası - Egzotik Hayvanlar Dünyası</title>
+    <title>Pembe Ayaklı Tarantula - Egzotik Hayvanlar Dünyası</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Mobil Navigasyon Stilleri */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            header .container {
+                flex-direction: column;
+                padding: 15px 20px;
+            }
+            
+            header .logo {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            header nav {
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            header nav.active {
+                max-height: 300px;
+            }
+            
+            header nav ul {
+                flex-direction: column;
+                width: 100%;
+                margin-top: 15px;
+            }
+            
+            header nav ul li {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            header nav ul li a {
+                display: block;
+                padding: 12px 0;
+                border-bottom: 1px solid #eee;
+            }
+        }
+        
         .species-header {
             display: flex;
             align-items: center;
@@ -119,308 +177,213 @@
         .care-guide-item li {
             margin-bottom: 10px;
         }
-        
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            max-width: 100%;
-            margin: 30px 0;
-        }
-        
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .lifecycle-timeline {
-            position: relative;
-            max-width: 1200px;
-            margin: 40px auto;
-        }
-        
-        .lifecycle-timeline::after {
-            content: '';
-            position: absolute;
-            width: 6px;
-            background-color: var(--primary-color);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -3px;
-        }
-        
-        .timeline-container {
-            padding: 10px 40px;
-            position: relative;
-            background-color: inherit;
-            width: 50%;
-        }
-        
-        .timeline-container::after {
-            content: '';
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            right: -13px;
-            background-color: white;
-            border: 4px solid var(--secondary-color);
-            top: 15px;
-            border-radius: 50%;
-            z-index: 1;
-        }
-        
-        .left {
-            left: 0;
-        }
-        
-        .right {
-            left: 50%;
-        }
-        
-        .left::before {
-            content: " ";
-            height: 0;
-            position: absolute;
-            top: 22px;
-            width: 0;
-            z-index: 1;
-            right: 30px;
-            border: medium solid var(--primary-color);
-            border-width: 10px 0 10px 10px;
-            border-color: transparent transparent transparent var(--primary-color);
-        }
-        
-        .right::before {
-            content: " ";
-            height: 0;
-            position: absolute;
-            top: 22px;
-            width: 0;
-            z-index: 1;
-            left: 30px;
-            border: medium solid var(--primary-color);
-            border-width: 10px 10px 10px 0;
-            border-color: transparent var(--primary-color) transparent transparent;
-        }
-        
-        .right::after {
-            left: -12px;
-        }
-        
-        .timeline-content {
-            padding: 20px 30px;
-            background-color: white;
-            position: relative;
-            border-radius: 6px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        @media screen and (max-width: 768px) {
-            .species-header {
-                flex-direction: column;
-            }
             
-            .species-header-image, .species-header-content {
-                width: 100%;
-            }
-            
-            .lifecycle-timeline::after {
-                left: 31px;
-            }
-            
-            .timeline-container {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-            
-            .timeline-container::before {
-                left: 60px;
-                border: medium solid var(--primary-color);
-                border-width: 10px 10px 10px 0;
-                border-color: transparent var(--primary-color) transparent transparent;
-            }
-            
-            .left::after, .right::after {
-                left: 18px;
-            }
-            
-            .right {
-                left: 0;
-            }
+        /* Logo Stilleri */
+        .site-logo {
+            display: flex;
+            align-items: center;
         }
-    </style>
+        
+        .site-logo img {
+            height: 50px;
+            margin-right: 15px;
+        }</style>
 </head>
 <body>
-    <nav>
-        <div class="logo">
-            <a href="../index.html">
-                <img src="../images/logo.png" alt="Logo">
-                <span>Egzotik Hayvanlar Dünyası</span>
-            </a>
-        </div>
-        <ul class="nav-links">
-            <li><a href="../index.html">Ana Sayfa</a></li>
-            <li><a href="../about.html">Hakkımızda</a></li>
-            <li><a href="../contact.html">İletişim</a></li>
-        </ul>
-    </nav>
-
-    <main class="container">
-        <div class="species-header">
-            <div class="species-header-image">
-                <img src="../images/avicularia-avicularia.jpg" alt="Avicularia avicularia">
+    <header>
+        <div class="container">
+                            <div class="logo">
+                <div class="site-logo">
+                    <img src="../img/logo/logo.png" alt="Egzotik Hayvanlar Dünyası Logo">
+                <h1>Egzotik Hayvanlar Dünyası</h1></div>
+                <button class="mobile-menu-btn" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
-            <div class="species-header-content">
-                <h1>Pembe Ayak Tarantulası (Avicularia avicularia)</h1>
-                <p class="scientific-name"><i>Avicularia avicularia</i></p>
-                <span class="care-level beginner">Bakım Seviyesi: Başlangıç</span>
-                <p>Pembe Ayak Tarantulası, ağaç üzerinde yaşayan (arboreal) bir tarantula türüdür. Güney Amerika'nın yağmur ormanlarında doğal olarak bulunur. Uysal karakteri ve göz alıcı görünümü ile hobi sahipleri arasında popüler bir türdür.</p>
-            </div>
-        </div>
-
-        <div class="species-facts">
-            <div class="fact-card">
-                <h4>Genel Bilgiler</h4>
-                <ul>
-                    <li>Doğal Yaşam Alanı: Güney Amerika</li>
-                    <li>Yaşam Süresi: Dişiler 10-12 yıl, Erkekler 3-4 yıl</li>
-                    <li>Erişkin Boyutu: 11-13 cm</li>
-                    <li>Temperament: Genellikle uysal</li>
-                </ul>
-            </div>
-            <div class="fact-card">
-                <h4>Habitat Gereksinimleri</h4>
-                <ul>
-                    <li>Sıcaklık: 24-28°C</li>
-                    <li>Nem Oranı: 75-85%</li>
-                    <li>Terraryum Tipi: Dikey/Arboreal</li>
-                    <li>Minimum Terraryum Boyutu: 30x30x45 cm</li>
-                </ul>
-            </div>
-            <div class="fact-card">
-                <h4>Beslenme</h4>
-                <ul>
-                    <li>Canlı böcekler (cırcır böceği, hamam böceği)</li>
-                    <li>Besleme sıklığı: Haftada 1-2 kez</li>
-                    <li>Su kabı gereklidir</li>
-                    <li>Vitaminli toz takviyesi önerilir</li>
-                </ul>
-            </div>
-        </div>
-
-        <section class="care-guide-section">
-            <h2>Bakım Rehberi</h2>
-            <div class="care-guide-grid">
-                <div class="care-guide-item">
-                    <h4>Terraryum Düzeni</h4>
-                    <ul>
-                        <li>Dikey tırmanma imkanları (mantarlar, dallar)</li>
-                        <li>Yapay veya canlı bitkiler</li>
-                        <li>Saklanma yerleri ve yapay kovuklar</li>
-                        <li>Nemli kokopeat substrat</li>
-                        <li>Su kabı</li>
-                    </ul>
-                </div>
-                <div class="care-guide-item">
-                    <h4>Günlük Bakım</h4>
-                    <ul>
-                        <li>Su kabını temiz tutun ve düzenli doldurun</li>
-                        <li>Terraryumu günlük olarak spreyleyin</li>
-                        <li>Ölen böcekleri ve kalıntıları temizleyin</li>
-                        <li>Sıcaklık ve nem kontrolü yapın</li>
-                    </ul>
-                </div>
-                <div class="care-guide-item">
-                    <h4>Sağlık Kontrolleri</h4>
-                    <ul>
-                        <li>Düzenli gömlek değişimi takibi</li>
-                        <li>Stres belirtilerini gözlemleyin</li>
-                        <li>Beslenme durumunu takip edin</li>
-                        <li>Yaralanma veya hastalık belirtilerini kontrol edin</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section class="lifecycle-section">
-            <h2>Yaşam Döngüsü</h2>
-            <div class="lifecycle-timeline">
-                <div class="timeline-container left">
-                    <div class="timeline-content">
-                        <h3>Yumurta Kesesi</h3>
-                        <p>Dişi örümcek yaklaşık 100-200 yumurta içeren bir kese üretir ve bunu 3-4 hafta boyunca korur.</p>
-                    </div>
-                </div>
-                <div class="timeline-container right">
-                    <div class="timeline-content">
-                        <h3>Nimf Dönemi</h3>
-                        <p>Yumurtadan çıkan yavrular ilk birkaç gün kese içinde kalır. Bu dönemde henüz beslenmeye başlamazlar.</p>
-                    </div>
-                </div>
-                <div class="timeline-container left">
-                    <div class="timeline-content">
-                        <h3>Genç Örümcek</h3>
-                        <p>İlk gömlek değişiminden sonra bağımsız yaşama başlar ve aktif olarak avlanmaya başlar.</p>
-                    </div>
-                </div>
-                <div class="timeline-container right">
-                    <div class="timeline-content">
-                        <h3>Erişkin Dönem</h3>
-                        <p>2-3 yıl içinde erişkin boya ulaşır. Dişiler daha uzun yaşar ve daha büyük olur.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="gallery">
-            <div class="gallery-item">
-                <img src="../images/avicularia-avicularia-1.jpg" alt="Avicularia avicularia yaşam alanı">
-            </div>
-            <div class="gallery-item">
-                <img src="../images/avicularia-avicularia-2.jpg" alt="Avicularia avicularia beslenme">
-            </div>
-            <div class="gallery-item">
-                <img src="../images/avicularia-avicularia-3.jpg" alt="Avicularia avicularia gömlek değişimi">
-            </div>
-            <div class="gallery-item">
-                <img src="../images/avicularia-avicularia-4.jpg" alt="Avicularia avicularia yavru">
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Egzotik Hayvanlar Dünyası</h3>
-                <p>Egzotik hayvanlar hakkında kapsamlı bilgi ve bakım rehberleri.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Hızlı Bağlantılar</h3>
+            <nav id="mainNav">
                 <ul>
                     <li><a href="../index.html">Ana Sayfa</a></li>
+                    <li><a href="../tarantulas.html">Tarantulalar</a></li>
+                    <li><a href="../snakes.html">Yılanlar</a></li>
+                    <li><a href="../lizards.html">Kertenkeleler</a></li>
                     <li><a href="../about.html">Hakkımızda</a></li>
-                    <li><a href="../contact.html">İletişim</a></li>
                 </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="animal-header">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="../index.html">Ana Sayfa</a> &gt; 
+                <a href="../tarantulas.html">Tarantulalar</a> &gt; 
+                <span>Pembe Ayaklı Tarantula</span>
             </div>
-            <div class="footer-section">
-                <h3>Bizi Takip Edin</h3>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+            <h2>Pembe Ayaklı Tarantula (<em>Avicularia avicularia</em>)</h2>
+        </div>
+    </section>
+
+    <section class="animal-info">
+        <div class="container">
+            <div class="species-header">
+                <div class="species-header-image">
+                    <img src="../img/tarantula/AviculariaaviculariaTucurui.jpg" alt="Pembe Ayaklı Tarantula">
+                </div>
+                <div class="species-header-content">
+                    <h3>Genel Bakış</h3>
+                    <p>Pembe Ayaklı Tarantula (Avicularia avicularia), Güney Amerika'nın tropikal bölgelerinde yaşayan popüler bir ağaç tarantulası türüdür. Bacaklarının uçlarındaki pembe-beyaz renkli tüyleri sayesinde kolayca tanınabilir.</p>
+                    
+                    <p>Bu tarantula türü, diğer türlere göre daha çok tırmanmayı ve yüksek yerlerde yaşamayı tercih eder. Yüksek nem ve sıcaklık gereksinimleri nedeniyle orta seviye bakım gerektirir.</p>
+                    
+                    <div class="taxonomy">
+                        <h4>Bilimsel Sınıflandırma</h4>
+                        <p><strong>Alem:</strong> Animalia</p>
+                        <p><strong>Şube:</strong> Arthropoda</p>
+                        <p><strong>Sınıf:</strong> Arachnida</p>
+                        <p><strong>Takım:</strong> Araneae</p>
+                        <p><strong>Alttakım:</strong> Mygalomorphae</p>
+                        <p><strong>Familya:</strong> Theraphosidae</p>
+                        <p><strong>Cins:</strong> Avicularia</p>
+                        <p><strong>Tür:</strong> A. avicularia</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="species-facts">
+                <div class="fact-card">
+                    <h4>Temel Özellikler</h4>
+                    <p><strong>Ortalama Boy:</strong> 11-13 cm (bacak açıklığı)</p>
+                    <p><strong>Vücut Uzunluğu:</strong> 5-6 cm</p>
+                    <p><strong>Yaşam Süresi:</strong> Dişiler 10-15 yıl, Erkekler 3-4 yıl</p>
+                    <p><strong>Zorluk Seviyesi:</strong> <span class="care-level intermediate">Orta</span></p>
+                    <p><strong>Mizaç:</strong> Genellikle sakin, ürkek, nadiren agresif</p>
+                </div>
+                
+                <div class="fact-card">
+                    <h4>Habitat Bilgileri</h4>
+                    <p><strong>Doğal Habitat:</strong> Güney Amerika tropikal yağmur ormanları (Brezilya, Kolombiya, Venezuela, Trinidad)</p>
+                    <p><strong>Yaşam Tarzı:</strong> Ağaç yaşamı (Arboreal)</p>
+                    <p><strong>Habitat Tipi:</strong> Ağaçların gövdelerinde, kabuklar altında, ağaç kovuklarında yaşar</p>
+                    <p><strong>Doğal Davranış:</strong> Ağaç kabuklarında tüp şeklinde ipek yuvalar oluşturur</p>
+                    <p><strong>Koruma Durumu:</strong> Yaygın, ancak habitat kaybı nedeniyle bazı bölgelerde azalmakta</p>
+                </div>
+                
+                <div class="fact-card">
+                    <h4>Fiziksel Özellikler</h4>
+                    <p><strong>Renk:</strong> Koyu kahverengi-siyah vücut, pembe-beyaz bacak uçları</p>
+                    <p><strong>Urtikarya Kılları:</strong> Var (savunma mekanizması olarak, ancak diğer türlere göre daha az etkili)</p>
+                    <p><strong>Cinsiyet Farklılıkları:</strong> Dişiler daha büyük ve kalın vücutlu</p>
+                    <p><strong>Büyüme Hızı:</strong> Orta</p>
+                    <p><strong>Özel Özellikler:</strong> Pembe ayakları ve tırmanma yeteneği için özelleşmiş tüylü ayak pedleri</p>
+                </div>
+            </div>
+            
+            <div class="care-guide-section">
+                <h3>Detaylı Bakım Rehberi</h3>
+                <div class="care-guide-grid">
+                    <div class="care-guide-item">
+                        <h4>Terraryum Gereksinimleri</h4>
+                        <ul>
+                            <li><strong>Boyut:</strong> Yetişkin bir birey için dikey olarak 30x30x45 cm (yükseklik önemli) boyutlarında bir terraryum idealdir.</li>
+                            <li><strong>Düzenleme:</strong> Dikey tırmanma yüzeyleri (mantar kabuğu, dallar, yapay bitkiler) sağlanmalıdır.</li>
+                            <li><strong>Substrat:</strong> 5-7 cm derinliğinde hindistan cevizi lifi (coco fiber) veya karışık toprak kullanılabilir.</li>
+                            <li><strong>Saklanma Alanı:</strong> Bir mantar tüpü veya içi boş ağaç dalı, saklanma ve yuva yapma imkanı sağlar.</li>
+                            <li><strong>Su Kabı:</strong> Küçük bir su kabı gereklidir; ayrıca terraryumun duvarlarına su püskürtülebilir.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Sıcaklık ve Nem</h4>
+                        <ul>
+                            <li><strong>İdeal Sıcaklık:</strong> 24-28°C (75-82°F)</li>
+                            <li><strong>Sıcaklık Aralığı:</strong> 22-30°C (72-86°F)</li>
+                            <li><strong>Nem Oranı:</strong> %75-85 (yüksek nem)</li>
+                            <li><strong>Nem Sağlama:</strong> Düzenli olarak (2-3 günde bir) terraryumun duvarlarına su püskürtün</li>
+                            <li><strong>Uyarı:</strong> Yetersiz nem ölümcül olabilir; ancak aşırı nem ve durgun hava da mantar oluşumuna neden olabilir</li>
+                            <li><strong>Havalandırma:</strong> İyi havalandırma sağlanmalı, ancak hava akımı doğrudan tarantulaya yönlendirilmemelidir</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Beslenme ve Su</h4>
+                        <ul>
+                            <li><strong>Besin Tipi:</strong> Canlı böcekler (cırcır böcekleri, un kurtları, hamam böcekleri)</li>
+                            <li><strong>Beslenme Sıklığı:</strong> Yetişkinler için 7-10 günde bir, gençler için haftada 1-2 kez</li>
+                            <li><strong>Beslenme Tekniği:</strong> Ağaç tarantulalarını beslerken, yem böceklerinin kaçmaması için dikkatli olun</li>
+                            <li><strong>Su:</strong> Her zaman temiz su bulundurun; ayrıca tarantula yapraklardan ve terraryum duvarlarından su damlalarını içebilir</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Özel Bakım Notları</h4>
+                        <ul>
+                            <li><strong>Tırmanma:</strong> Bu türün düşmesi ciddi yaralanmalara veya ölüme neden olabilir; terraryumun kapaklı ve güvenli olduğundan emin olun</li>
+                            <li><strong>Savunma Davranışı:</strong> Tehdit altında hissettiklerinde dışkılarını savunma silahı olarak kullanabilirler</li>
+                            <li><strong>Tutma:</strong> Mümkünse tutmaktan kaçının; gerekirse, ani hareketler yapmaktan kaçının ve düşme riski için düşük seviyede tutun</li>
+                            <li><strong>Üreme:</strong> Dişiler 100-200 yumurta içeren kokon oluşturur ve yaklaşık 1-2 ay boyunca korur</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-section">
+                <h3>Fotoğraf Galerisi</h3>
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <img src="../img/tarantula/AviculariaaviculariaTucurui.jpg" alt="Pembe Ayaklı Tarantula 1">
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Egzotik Hayvanlar Dünyası. Tüm hakları saklıdır.</p>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Egzotik Hayvanlar Dünyası. Tüm hakları saklıdır.</p>
+            <div class="social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
         </div>
     </footer>
+
+    <script>
+        // Sayfa yüklendiğinde
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mevcut JavaScript kodu (varsa)
+            
+            // Mobil menü işlevselliği
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                
+                // Menü ikonunu değiştir (hamburger/çarpı)
+                const menuIcon = menuToggle.querySelector('i');
+                if (mainNav.classList.contains('active')) {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                } else {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+            
+            // Küçük ekranda menü linklerine tıklandığında menüyü kapat
+            const menuLinks = mainNav.querySelectorAll('a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        mainNav.classList.remove('active');
+                        const menuIcon = menuToggle.querySelector('i');
+                        menuIcon.classList.remove('fa-times');
+                        menuIcon.classList.add('fa-bars');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html> 

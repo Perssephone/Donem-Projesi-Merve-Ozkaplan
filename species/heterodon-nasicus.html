@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domuz Burunlu Yılan - Egzotik Hayvanlar Dünyası</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Mobil Navigasyon Stilleri */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            header .container {
+                flex-direction: column;
+                padding: 15px 20px;
+            }
+            
+            header .logo {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            header nav {
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            header nav.active {
+                max-height: 300px;
+            }
+            
+            header nav ul {
+                flex-direction: column;
+                width: 100%;
+                margin-top: 15px;
+            }
+            
+            header nav ul li {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            header nav ul li a {
+                display: block;
+                padding: 12px 0;
+                border-bottom: 1px solid #eee;
+            }
+        }
+        
+        .species-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            gap: 30px;
+        }
+        
+        .species-header-image {
+            width: 40%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .species-header-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .species-header-content {
+            width: 60%;
+        }
+        
+        .species-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .fact-card {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .fact-card h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .care-level {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .beginner { background-color: #4caf50; }
+        .intermediate { background-color: #ff9800; }
+        .advanced { background-color: #f44336; }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .gallery-item {
+            border-radius: 5px;
+            overflow: hidden;
+            height: 200px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .care-guide-section {
+            margin: 40px 0;
+        }
+        
+        .care-guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .care-guide-item {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .care-guide-item h4 {
+            color: var(--secondary-color);
+            margin-top: 0;
+        }
+        
+        .care-guide-item ul {
+            padding-left: 20px;
+        }
+        
+        .care-guide-item li {
+            margin-bottom: 10px;
+        }
+            
+        /* Logo Stilleri */
+        .site-logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .site-logo img {
+            height: 50px;
+            margin-right: 15px;
+        }</style>
+</head>
+<body>
+    <header>
+        <div class="container">
+                            <div class="logo">
+                <div class="site-logo">
+                    <img src="../img/logo/logo.png" alt="Egzotik Hayvanlar Dünyası Logo">
+                <h1>Egzotik Hayvanlar Dünyası</h1></div>
+                <button class="mobile-menu-btn" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="../index.html">Ana Sayfa</a></li>
+                    <li><a href="../tarantulas.html">Tarantulalar</a></li>
+                    <li><a href="../snakes.html">Yılanlar</a></li>
+                    <li><a href="../lizards.html">Kertenkeleler</a></li>
+                    <li><a href="../about.html">Hakkımızda</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="animal-header">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="../index.html">Ana Sayfa</a> &gt; 
+                <a href="../snakes.html">Yılanlar</a> &gt; 
+                <span>Domuz Burunlu Yılan</span>
+            </div>
+            <h2>Domuz Burunlu Yılan (<em>Heterodon nasicus</em>)</h2>
+        </div>
+    </section>
+
+    <section class="animal-info">
+        <div class="container">
+            <div class="species-header">
+                <div class="species-header-image">
+                    <img src="../img/yilanlar/Heterodonnasicus.png" alt="Domuz Burunlu Yılan">
+                </div>
+                <div class="species-header-content">
+                    <h3>Genel Bakış</h3>
+                    <p>Domuz Burunlu Yılan (Heterodon nasicus), Kuzey Amerika'nın orta ve batı bölgelerinde yaşayan, karakteristik yukarı doğru kıvrık burnu olan küçük-orta boyutlu bir yılan türüdür. İngilizce adı "Western Hognose Snake" olan bu tür, ismini burun şeklinin domuzu andırmasından alır.</p>
+                    
+                    <p>Bu sevimli yılanlar, tiyatral savunma davranışları ile tanınır. Tehdit altında hissettiklerinde önce tehditkar bir duruş sergiler, ardından ölü taklidi yaparak karnını gösterir ve ağzından kötü kokulu bir madde salar. Bu davranışları ve küçük boyutları ile evcil hayvan olarak giderek popülerleşmektedir.</p>
+                    
+                    <div class="taxonomy">
+                        <h4>Bilimsel Sınıflandırma</h4>
+                        <p><strong>Alem:</strong> Animalia</p>
+                        <p><strong>Şube:</strong> Chordata</p>
+                        <p><strong>Sınıf:</strong> Reptilia</p>
+                        <p><strong>Takım:</strong> Squamata</p>
+                        <p><strong>Alttakım:</strong> Serpentes</p>
+                        <p><strong>Familya:</strong> Colubridae</p>
+                        <p><strong>Cins:</strong> Heterodon</p>
+                        <p><strong>Tür:</strong> H. nasicus</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="species-facts">
+                <div class="fact-card">
+                    <h4>Temel Özellikler</h4>
+                    <p><strong>Ortalama Boy:</strong> 45-90 cm (1.5-3 feet)</p>
+                    <p><strong>Ağırlık:</strong> 200-400 gram (yetişkin)</p>
+                    <p><strong>Yaşam Süresi:</strong> 10-15 yıl (esaret altında)</p>
+                    <p><strong>Zorluk Seviyesi:</strong> <span class="care-level beginner">Başlangıç-Orta</span></p>
+                    <p><strong>Mizaç:</strong> Genellikle uysal, tehdit altında tiyatral davranışlar sergiler</p>
+                </div>
+                
+                <div class="fact-card">
+                    <h4>Habitat Bilgileri</h4>
+                    <p><strong>Doğal Habitat:</strong> ABD'nin orta ve batı kesimleri, Kanada ve Meksika'nın bazı bölgeleri</p>
+                    <p><strong>Yaşam Tarzı:</strong> Karasal, kazıcı</p>
+                    <p><strong>Habitat Tipi:</strong> Çayırlar, kurak alanlar, kumlu ve topraklı bölgeler</p>
+                    <p><strong>Aktivite Düzeni:</strong> Genellikle gündüz aktif (diurnal)</p>
+                    <p><strong>Doğal Davranış:</strong> Kazma, avlanma için kafa ve burun kullanma, savunma için ölü taklidi</p>
+                </div>
+                
+                <div class="fact-card">
+                    <h4>Fiziksel Özellikler</h4>
+                    <p><strong>Renk:</strong> Bej, kahverengi, gri zemin üzerinde koyu lekeler (alt türlere göre değişir)</p>
+                    <p><strong>Vücut Yapısı:</strong> Kısa ve tıknaz vücut, yukarı doğru kıvrık burun şekli</p>
+                    <p><strong>Baş Şekli:</strong> Geniş, üçgen şeklinde baş, belirgin ve kalkık burun</p>
+                    <p><strong>Cinsiyet Farklılıkları:</strong> Erkekler genellikle daha küçük ve ince kuyruklu, dişiler daha iri</p>
+                    <p><strong>Özel Özellikler:</strong> Genişlemiş ve düzleşebilen boyun, kazma işlevi gören sert burun pulu</p>
+                </div>
+            </div>
+            
+            <div class="care-guide-section">
+                <h3>Detaylı Bakım Rehberi</h3>
+                <div class="care-guide-grid">
+                    <div class="care-guide-item">
+                        <h4>Terraryum Gereksinimleri</h4>
+                        <ul>
+                            <li><strong>Boyut:</strong> Yetişkin bir birey için en az 75x45x45 cm boyutlarında bir terraryum</li>
+                            <li><strong>Substrat:</strong> En az 7-10 cm derinliğinde, kazılabilir substrat (aspen talaşı ideal, ayrıca hindistan cevizi lifi veya temiz toprak-kum karışımı)</li>
+                            <li><strong>Saklanma Alanları:</strong> En az iki saklanma kutusu veya mağara</li>
+                            <li><strong>Kazma İmkanı:</strong> Derin substrat ve gömülebilecekleri alanlar (doğal davranışları için önemli)</li>
+                            <li><strong>Su Kabı:</strong> Küçük, devrilmeyen bir su kabı (çok büyük olması gerekmez, nadiren banyo yaparlar)</li>
+                            <li><strong>Dekorasyon:</strong> Kütükler, kayalar, yapay bitkiler (çok fazla olmamalı, kazma alanını kısıtlamamalı)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Sıcaklık ve Nem</h4>
+                        <ul>
+                            <li><strong>Sıcaklık Gradyanı:</strong> Terraryumda bir sıcaklık gradyanı oluşturulmalıdır
+                                <ul>
+                                    <li>Sıcak Taraf: 29-32°C (84-90°F)</li>
+                                    <li>Serin Taraf: 24-26°C (75-79°F)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Basking Spot:</strong> Lokal ısıtma bölgesi 32-35°C (90-95°F)</li>
+                            <li><strong>Gece Sıcaklığı:</strong> Gece 21-24°C (70-75°F) olmalıdır</li>
+                            <li><strong>Nem Oranı:</strong> %30-50 (kuru ortamı tercih ederler)</li>
+                            <li><strong>Nem Kontrolü:</strong> Yüksek nem solunum yolu enfeksiyonlarına neden olabilir, iyi havalandırma sağlanmalıdır</li>
+                            <li><strong>Isıtma Ekipmanları:</strong> Alttan ısıtma matı veya seramik ısıtıcı (her zaman termostat kontrollü olmalıdır)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Beslenme ve Su</h4>
+                        <ul>
+                            <li><strong>Besin Türü:</strong> Doğada kurbağa ve semender larvalarını tercih ederler, ancak esarette kemirgenlerle beslenebilirler</li>
+                            <li><strong>Beslenme Sıklığı:</strong>
+                                <ul>
+                                    <li>Yavrular (1 yaşına kadar): 5-7 günde bir</li>
+                                    <li>Gençler (1-2 yaş): 7-10 günde bir</li>
+                                    <li>Yetişkinler (2+ yaş): 10-14 günde bir</li>
+                                </ul>
+                            </li>
+                            <li><strong>Besin Boyutu:</strong> Yılanın vücudunun en geniş kısmından biraz daha kalın olmalıdır</li>
+                            <li><strong>Beslenme Notu:</strong> Bazı bireyler kemirgen yemeyi reddedebilir, bu durumda kurbağa kokusu emdirilmiş fare önerilebilir</li>
+                            <li><strong>Su:</strong> Her zaman temiz su bulundurulmalı ve 2-3 günde bir değiştirilmelidir</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Sağlık ve Bakım</h4>
+                        <ul>
+                            <li><strong>Deri Değişimi:</strong> Sağlıklı deri değişimi tek parça halinde olmalıdır
+                                <ul>
+                                    <li>Yavrular: Her 3-4 haftada bir</li>
+                                    <li>Yetişkinler: Her 4-8 haftada bir</li>
+                                </ul>
+                            </li>
+                            <li><strong>Yaygın Sağlık Sorunları:</strong>
+                                <ul>
+                                    <li>Solunum yolu enfeksiyonları (yüksek nem veya düşük sıcaklık nedeniyle)</li>
+                                    <li>Ağız çürümesi (Stomatitis)</li>
+                                    <li>Parazitler (iç ve dış)</li>
+                                    <li>Deri değişimi sorunları (düşük nem nedeniyle)</li>
+                                    <li>Obezite (aşırı besleme nedeniyle)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Önleyici Bakım:</strong> Düzenli veteriner kontrolleri, özellikle yeni alınan hayvanlar için</li>
+                            <li><strong>Özel Not:</strong> Domuz burunlu yılanlar hafif zehirlidir (opisthoglyph - arka dişli), ancak zehirleri insanlar için tehlikeli değildir. Yine de ısırılma durumunda hafif alerjik reaksiyonlar görülebilir.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Davranış ve Tutma</h4>
+                        <ul>
+                            <li><strong>Mizaç:</strong> Genellikle uysal, ancak stres altında tiyatral savunma davranışları gösterir</li>
+                            <li><strong>Savunma Davranışı:</strong> Önce boyun ve vücudu şişirme, tıslama ve sahte saldırı, sonra ölü taklidi yapma</li>
+                            <li><strong>Tutma Önerileri:</strong>
+                                <ul>
+                                    <li>Yavaş ve sakin hareketlerle yaklaşın</li>
+                                    <li>Beslemeden sonra 48 saat tutmaktan kaçının</li>
+                                    <li>Vücudunun tüm uzunluğunu destekleyin</li>
+                                    <li>Ölü taklidi yapıyorsa rahat bırakın, kendiliğinden normale dönecektir</li>
+                                </ul>
+                            </li>
+                            <li><strong>Aktivite Düzeni:</strong> Genellikle gündüz aktiftir, beslenme ve keşif faaliyetleri bu saatlerde görülür</li>
+                            <li><strong>Kazma Davranışı:</strong> Substrat içinde kazma ve tüneller oluşturma, doğal davranışlarını desteklemek için derin substrat sağlanmalıdır</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+           
+            
+            <div class="faq-section">
+                <h3>Sık Sorulan Sorular</h3>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <h4>Domuz Burunlu Yılanlar gerçekten zehirli midir?</h4>
+                        <div class="accordion-content">
+                            <p>Evet, Domuz Burunlu Yılanlar teknik olarak hafif zehirlidir, ancak zehirleri insanlar için tehlikeli değildir. Arka dişli (opisthoglyph) bir yapıya sahiptirler; yani zehir dişleri ağzın arka kısmında bulunur ve avlarını immobilize etmek için kullanılır. İnsanlar için bu zehir genellikle sadece hafif bir şişlik, kızarıklık veya kaşıntıya neden olabilir. Bazı kişilerde alerjik reaksiyonlar görülebilir, bu nedenle ısırık durumunda yine de dikkatli olunmalıdır. Bu yılanlar, ısırmak yerine genellikle savunma olarak tiyatral gösteriler ve ölü taklidi yapmayı tercih ederler.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4>Domuz Burunlu Yılanların neden böyle tuhaf bir burunları vardır?</h4>
+                        <div class="accordion-content">
+                            <p>Domuz Burunlu Yılanların yukarı doğru kıvrık ve düzleşmiş burnu, onların yaşam tarzlarına mükemmel bir adaptasyondur. Bu özelleşmiş burun yapısı, kum veya toprak altındaki avlarını (kurbağalar, kurbağa yumurtaları ve semender larvaları) daha kolay bulmak ve kazarak çıkarmak için kullanılır. Burun şekli, onlara toprağı daha etkili bir şekilde kazma ve oyma yeteneği sağlar. Ayrıca, kemirgenlerin yer altındaki yuvalarını keşfetmek için de bu yapıyı kullanabilirler. Bu "kazma küreği" benzeri yapı, evrimsel süreçte geliştirdikleri özel bir adaptasyondur ve onların doğal yaşam alanlarında başarılı olmalarını sağlar.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4>Domuz Burunlu Yılanların en popüler morfları hangileridir?</h4>
+                        <div class="accordion-content">
+                            <p>Domuz Burunlu Yılanların evcil hayvan ticaretinde birçok popüler morfu bulunmaktadır. En yaygın morflar şunlardır:<br>
+                            - <strong>Albino:</strong> Kırmızı gözlü, beyaz/pembe zemin üzerinde turuncu/kırmızı lekeli<br>
+                            - <strong>Anery (Anerythristic):</strong> Kırmızı pigment eksikliği, siyah ve gri tonları<br>
+                            - <strong>Axanthic:</strong> Sarı pigment eksikliği, siyah ve gri tonları<br>
+                            - <strong>Snow:</strong> Albino ve Anery kombinasyonu, beyaz/pembe zemin üzerinde soluk lekeler<br>
+                            - <strong>Super Arctic:</strong> Neredeyse tamamen beyaz olan morfu<br>
+                            - <strong>Caramel:</strong> Kahverengi/bej zemin üzerinde karamel tonları<br>
+                            - <strong>Extreme Red:</strong> Parlak kırmızı/turuncu renklerin baskın olduğu morfu<br>
+                            - <strong>Conda:</strong> Sert pullar ve kenarlarında dikenli görünüm olan bir morfu<br>
+                            - <strong>Superconda:</strong> Conda özelliğinin homozigot formu, daha belirgin doku<br>
+                            <br>Ayrıca bu temel morfların kombinasyonlarından oluşan Toffee, Lavender, Coral, Red Arctic gibi birçok farklı renk varyasyonu da mevcuttur.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4>Domuz Burunlu Yılanın ölü taklidi yapması nasıl bir davranıştır?</h4>
+                        <div class="accordion-content">
+                            <p>Domuz Burunlu Yılanların en ilginç davranışlarından biri, tehdit altında hissettiklerinde yaptıkları dramatik ölü taklididir (thanatosis). Bu savunma mekanizması şu aşamalarla gerçekleşir:<br>
+                            1. <strong>İlk Savunma:</strong> Önce boyun ve vücudu şişirir, tıslar ve sahte saldırı yapar (genellikle ağzı kapalı olarak)<br>
+                            2. <strong>Dramatik Davranış:</strong> Bu çalışmazsa, ağzını açar, dilini dışarı çıkarır, vücudunu tersine çevirir (karnı yukarı gelecek şekilde)<br>
+                            3. <strong>Ölü Taklidi:</strong> Hareketsiz kalır, bazen kötü kokulu bir madde salar ve çürümüş bir hayvan görüntüsü verir<br>
+                            <br>Bu davranış tamamen bir savunma taktiğidir ve yılan rahatsız edilmeyi bıraktığında (genellikle birkaç dakika içinde) normal pozisyonuna döner. Bu davranış evcil ortamda bile görülebilir, ancak zamanla alıştıkça daha az sıklıkta sergilenebilir. Yılan bu davranışı gösterdiğinde, en iyisi onu rahat bırakmak ve kendi kendine toparlanmasına izin vermektir.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Egzotik Hayvanlar Dünyası. Tüm hakları saklıdır.</p>
+            <div class="social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Accordion işlevselliği
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            
+            accordionItems.forEach(item => {
+                const header = item.querySelector('h4');
+                const content = item.querySelector('.accordion-content');
+                
+                header.addEventListener('click', () => {
+                    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+            
+            // Mobil menü işlevselliği
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                
+                // Menü ikonunu değiştir (hamburger/çarpı)
+                const menuIcon = menuToggle.querySelector('i');
+                if (mainNav.classList.contains('active')) {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                } else {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+            
+            // Küçük ekranda menü linklerine tıklandığında menüyü kapat
+            const menuLinks = mainNav.querySelectorAll('a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        mainNav.classList.remove('active');
+                        const menuIcon = menuToggle.querySelector('i');
+                        menuIcon.classList.remove('fa-times');
+                        menuIcon.classList.add('fa-bars');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

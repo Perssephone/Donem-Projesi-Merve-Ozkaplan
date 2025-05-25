@@ -3,10 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kıvırcık Tüylü Tarantula (Tliltocatl albopilosus) Bakım Rehberi | Egzotik Hayvanlar Dünyası</title>
+    <title>Kıvırcık Saçlı Tarantula - Egzotik Hayvanlar Dünyası</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Mobil Navigasyon Stilleri */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            header .container {
+                flex-direction: column;
+                padding: 15px 20px;
+            }
+            
+            header .logo {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            header nav {
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            header nav.active {
+                max-height: 300px;
+            }
+            
+            header nav ul {
+                flex-direction: column;
+                width: 100%;
+                margin-top: 15px;
+            }
+            
+            header nav ul li {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            header nav ul li a {
+                display: block;
+                padding: 12px 0;
+                border-bottom: 1px solid #eee;
+            }
+        }
+        
         .species-header {
             display: flex;
             align-items: center;
@@ -65,354 +123,84 @@
         .intermediate { background-color: #ff9800; }
         .advanced { background-color: #f44336; }
         
-        .species-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .species-title {
-            margin-bottom: 20px;
-        }
-        
-        .species-title h1 {
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-        
-        .scientific-name {
-            font-style: italic;
-            font-size: 1.2em;
-            margin-bottom: 5px;
-            color: #666;
-        }
-        
-        .common-names {
-            font-size: 0.9em;
-            color: #888;
-        }
-        
-        .quick-facts {
-            display: flex;
-            flex-wrap: wrap;
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 15px;
-            margin: 20px 0;
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 5px;
-        }
-        
-        .fact {
-            padding: 5px 10px;
-        }
-        
-        .fact span {
-            font-weight: bold;
-            margin-right: 5px;
-        }
-        
-        .species-image-gallery {
             margin: 30px 0;
         }
         
-        .main-image {
-            width: 100%;
-            height: 400px;
+        .gallery-item {
+            border-radius: 5px;
             overflow: hidden;
-            border-radius: 10px;
-            margin-bottom: 10px;
+            height: 200px;
         }
         
-        .main-image img {
+        .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.3s;
         }
         
-        .thumbnail-container {
-            display: flex;
-            gap: 10px;
-            overflow-x: auto;
-            padding-bottom: 10px;
-        }
-        
-        .thumbnail-container img {
-            width: 100px;
-            height: 70px;
-            object-fit: cover;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        
-        .thumbnail-container img:hover {
+        .gallery-item:hover img {
             transform: scale(1.05);
         }
         
-        .species-overview, .taxonomy-section, .care-section, .breeding-section, .related-species, .faq-section, .resources-section {
+        .care-guide-section {
             margin: 40px 0;
         }
         
-        .taxonomy-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 10px;
-            margin: 20px 0;
-        }
-        
-        .taxonomy-item {
-            padding: 8px 0;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .taxonomy-item span {
-            font-weight: bold;
-            margin-right: 5px;
-            color: var(--primary-color);
-        }
-        
-        .taxonomy-note {
-            font-size: 0.9em;
-            color: #666;
-            font-style: italic;
-            margin-top: 15px;
-        }
-        
-        .care-subsection {
-            margin: 30px 0;
-        }
-        
-        .care-tips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin: 20px 0;
-        }
-        
-        .tip {
-            flex: 1;
-            min-width: 250px;
-            background-color: #f5f5f5;
-            padding: 15px;
-            border-radius: 5px;
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-        }
-        
-        .tip i {
-            font-size: 1.5em;
-            color: var(--primary-color);
-        }
-        
-        .tip-content h4 {
-            margin-top: 0;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-        
-        .tip-content p {
-            margin: 5px 0;
-        }
-        
-        .warning-box {
-            background-color: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 0 5px 5px 0;
-        }
-        
-        .warning-box h4 {
-            margin-top: 0;
-            color: #856404;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .breeding-steps {
-            margin: 20px 0;
-        }
-        
-        .step {
-            margin-bottom: 25px;
-            padding-bottom: 25px;
-            border-bottom: 1px dashed #ddd;
-        }
-        
-        .step:last-child {
-            border-bottom: none;
-        }
-        
-        .step h3 {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--primary-color);
-        }
-        
-        .species-cards {
+        .care-guide-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
+            gap: 30px;
+            margin-top: 20px;
         }
         
-        .species-card {
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        
-        .species-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .species-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        
-        .species-card-info {
-            padding: 15px;
-        }
-        
-        .species-card-info h3 {
-            margin-top: 0;
-            margin-bottom: 5px;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 8px 15px;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
+        .care-guide-item {
+            background-color: #fff;
             border-radius: 5px;
-            margin-top: 10px;
-            transition: background-color 0.3s;
-        }
-        
-        .btn:hover {
-            background-color: var(--secondary-color);
-        }
-        
-        .btn.disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-        
-        .accordion {
-            margin: 20px 0;
-        }
-        
-        .accordion-item {
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        
-        .accordion-header {
-            background-color: #f9f9f9;
-            padding: 15px;
-            cursor: pointer;
-            font-weight: bold;
-            position: relative;
-            transition: background-color 0.3s;
-        }
-        
-        .accordion-header:hover {
-            background-color: #f1f1f1;
-        }
-        
-        .accordion-header:after {
-            content: '\f078';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            transition: transform 0.3s;
-        }
-        
-        .accordion-header.active:after {
-            transform: translateY(-50%) rotate(180deg);
-        }
-        
-        .accordion-content {
-            padding: 0 15px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            background-color: white;
-        }
-        
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-        
-        .resource-card {
-            background-color: #f5f5f5;
             padding: 20px;
-            border-radius: 5px;
-            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
-        .resource-card i {
-            font-size: 2em;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-        
-        .resource-card h3 {
+        .care-guide-item h4 {
+            color: var(--secondary-color);
             margin-top: 0;
-            margin-bottom: 15px;
-            color: var(--primary-color);
         }
         
-        .resource-card ul {
-            text-align: left;
-            list-style-position: inside;
+        .care-guide-item ul {
+            padding-left: 20px;
         }
         
-        .resource-card li {
+        .care-guide-item li {
             margin-bottom: 10px;
         }
-        
-        @media (max-width: 768px) {
-            .species-header {
-                flex-direction: column;
-            }
             
-            .species-header-image, .species-header-content {
-                width: 100%;
-            }
-            
-            .care-tips {
-                flex-direction: column;
-            }
-            
-            .tip {
-                min-width: 100%;
-            }
+        /* Logo Stilleri */
+        .site-logo {
+            display: flex;
+            align-items: center;
         }
-    </style>
+        
+        .site-logo img {
+            height: 50px;
+            margin-right: 15px;
+        }</style>
 </head>
 <body>
     <header>
         <div class="container">
-            <div class="logo">
-                <h1>Egzotik Hayvanlar Dünyası</h1>
+                            <div class="logo">
+                <div class="site-logo">
+                    <img src="../img/logo/logo.png" alt="Egzotik Hayvanlar Dünyası Logo">
+                <h1>Egzotik Hayvanlar Dünyası</h1></div>
+                <button class="mobile-menu-btn" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
-            <nav>
+            <nav id="mainNav">
                 <ul>
                     <li><a href="../index.html">Ana Sayfa</a></li>
                     <li><a href="../tarantulas.html">Tarantulalar</a></li>
@@ -424,278 +212,124 @@
         </div>
     </header>
 
-    <section class="species-page">
+    <section class="animal-header">
         <div class="container">
-            <div class="species-container">
-                <div class="species-header">
-                    <div class="species-title">
-                        <h1>Kıvırcık Tüylü Tarantula (Tliltocatl albopilosus)</h1>
-                        <div class="scientific-name">Tliltocatl albopilosus</div>
-                        <div class="common-names">(Eski adı: Brachypelma albopilosum)</div>
-                    </div>
-                    <div class="quick-facts">
-                        <div class="fact"><span>Ortalama Boy:</span> 12-15 cm</div>
-                        <div class="fact"><span>Ömrü:</span> Dişiler 15-20 yıl, Erkekler 4-8 yıl</div>
-                        <div class="fact"><span>Bakım Seviyesi:</span> <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i> (Başlangıç)</div>
-                        <div class="fact"><span>Mizaç:</span> <i class="fas fa-smile"></i> Çok sakin, uysal</div>
+            <div class="breadcrumbs">
+                <a href="../index.html">Ana Sayfa</a> &gt; 
+                <a href="../tarantulas.html">Tarantulalar</a> &gt; 
+                <span>Kıvırcık Saçlı Tarantula</span>
+            </div>
+            <h2>Kıvırcık Saçlı Tarantula (<em>Tliltocatl albopilosus</em>)</h2>
+        </div>
+    </section>
+
+    <section class="animal-info">
+        <div class="container">
+            <div class="species-header">
+                <div class="species-header-image">
+                    <img src="../img/tarantula/Brachypelma_Albopilosum.jpg" alt="Kıvırcık Saçlı Tarantula">
+                </div>
+                <div class="species-header-content">
+                    <h3>Genel Bakış</h3>
+                    <p>Kıvırcık Saçlı Tarantula (Tliltocatl albopilosus), benzersiz kıvırcık tüyleri ve sakin mizacı ile tanınan popüler bir tarantula türüdür. Daha önce Brachypelma albopilosum olarak bilinen bu tür, bilimsel olarak yeniden sınıflandırılmıştır.</p>
+                    
+                    <p>Bu tür, yeni başlayanlar için mükemmel bir seçimdir. Dayanıklı yapısı, sakin mizacı ve ilginç görünümü nedeniyle tarantula hobisine yeni başlayanların tercih ettiği türlerden biridir.</p>
+                    
+                    <div class="taxonomy">
+                        <h4>Bilimsel Sınıflandırma</h4>
+                        <p><strong>Alem:</strong> Animalia</p>
+                        <p><strong>Şube:</strong> Arthropoda</p>
+                        <p><strong>Sınıf:</strong> Arachnida</p>
+                        <p><strong>Takım:</strong> Araneae</p>
+                        <p><strong>Alttakım:</strong> Mygalomorphae</p>
+                        <p><strong>Familya:</strong> Theraphosidae</p>
+                        <p><strong>Cins:</strong> Tliltocatl</p>
+                        <p><strong>Tür:</strong> T. albopilosus</p>
                     </div>
                 </div>
-
-                <div class="species-image-gallery">
-                    <div class="main-image">
-                        <img src="../images/tliltocatl-albopilosus-main.jpg" alt="Kıvırcık Tüylü Tarantula (Tliltocatl albopilosus)" id="mainImage">
-                    </div>
-                    <div class="thumbnail-container">
-                        <img src="../images/tliltocatl-albopilosus-1.jpg" alt="Tliltocatl albopilosus 1" onclick="changeImage('../images/tliltocatl-albopilosus-1.jpg')">
-                        <img src="../images/tliltocatl-albopilosus-2.jpg" alt="Tliltocatl albopilosus 2" onclick="changeImage('../images/tliltocatl-albopilosus-2.jpg')">
-                        <img src="../images/tliltocatl-albopilosus-3.jpg" alt="Tliltocatl albopilosus 3" onclick="changeImage('../images/tliltocatl-albopilosus-3.jpg')">
-                    </div>
+            </div>
+            
+            <div class="species-facts">
+                <div class="fact-card">
+                    <h4>Temel Özellikler</h4>
+                    <p><strong>Ortalama Boy:</strong> 13-15 cm (bacak açıklığı)</p>
+                    <p><strong>Vücut Uzunluğu:</strong> 5-6 cm</p>
+                    <p><strong>Yaşam Süresi:</strong> Dişiler 15-20 yıl, Erkekler 4-7 yıl</p>
+                    <p><strong>Zorluk Seviyesi:</strong> <span class="care-level beginner">Başlangıç</span></p>
+                    <p><strong>Mizaç:</strong> Sakin, çok uysal</p>
                 </div>
-
-                <div class="species-overview">
-                    <h2>Genel Bakış</h2>
-                    <p>Kıvırcık Tüylü Tarantula (Tliltocatl albopilosus), adını tüm vücudunu kaplayan karakteristik kıvırcık tüylerinden alan, sevimli görünümlü bir tarantula türüdür. Orta Amerika'nın Costa Rica ve Honduras bölgelerinden gelen bu tür, eşsiz görünümü ve sakin mizacıyla tarantula hobisinde en popüler türlerden biridir.</p>
-                    
-                    <p>Bu tarantula, bakımının kolay olması, strese karşı dirençli yapısı ve nadiren agresif davranış göstermesi nedeniyle başlangıç seviyesindeki tarantula sahipleri için mükemmel bir seçimdir. T. albopilosus türü, terraryum koşullarına çabuk adapte olabilir ve çoğu olumsuz duruma oldukça dayanıklıdır.</p>
-                    
-                    <p>2017 yılına kadar Brachypelma cinsinde sınıflandırılan bu tür, daha sonra yapılan taksonomik çalışmalar sonucunda Tliltocatl cinsine dahil edilmiştir. Hala bazı kaynaklarda eski adıyla (Brachypelma albopilosum) anılmaktadır.</p>
+                
+                <div class="fact-card">
+                    <h4>Habitat Bilgileri</h4>
+                    <p><strong>Doğal Habitat:</strong> Kosta Rika, Honduras ve Nikaragua'nın tropikal ormanları</p>
+                    <p><strong>Yaşam Tarzı:</strong> Yer yaşamı (Terrestrial)</p>
+                    <p><strong>Habitat Tipi:</strong> Tropikal ormanlar, orta nem seviyeli alanlar</p>
+                    <p><strong>Doğal Davranış:</strong> Yüzeyde yaşar ve toprağa kısa tüneller kazar</p>
+                    <p><strong>Koruma Durumu:</strong> CITES Ek II kapsamında korunmaktadır</p>
                 </div>
-
-                <div class="taxonomy-section">
-                    <h2>Taksonomi ve Sınıflandırma</h2>
-                    <div class="taxonomy-list">
-                        <div class="taxonomy-item"><span>Alem:</span> Animalia (Hayvanlar)</div>
-                        <div class="taxonomy-item"><span>Şube:</span> Arthropoda (Eklem Bacaklılar)</div>
-                        <div class="taxonomy-item"><span>Sınıf:</span> Arachnida (Örümceğimsiler)</div>
-                        <div class="taxonomy-item"><span>Takım:</span> Araneae (Örümcekler)</div>
-                        <div class="taxonomy-item"><span>Alt Takım:</span> Mygalomorphae</div>
-                        <div class="taxonomy-item"><span>Familya:</span> Theraphosidae (Tarantulalar)</div>
-                        <div class="taxonomy-item"><span>Alt Familya:</span> Theraphosinae</div>
-                        <div class="taxonomy-item"><span>Cins:</span> Tliltocatl</div>
-                        <div class="taxonomy-item"><span>Tür:</span> T. albopilosus</div>
-                    </div>
-                    <p class="taxonomy-note">Not: Bu tür 2017 yılına kadar Brachypelma cinsinde sınıflandırılmıştır. Ayrıca, "Curly Hair Tarantula" olarak da bilinir ve iki farklı formu vardır: "Hobby form" ve "Nicaraguan form".</p>
+                
+                <div class="fact-card">
+                    <h4>Fiziksel Özellikler</h4>
+                    <p><strong>Renk:</strong> Kahverengi-siyah vücut, karakteristik kıvırcık tüyler</p>
+                    <p><strong>Urtikarya Kılları:</strong> Var (savunma mekanizması olarak)</p>
+                    <p><strong>Cinsiyet Farklılıkları:</strong> Dişiler daha büyük ve uzun ömürlü</p>
+                    <p><strong>Büyüme Hızı:</strong> Orta-hızlı</p>
+                    <p><strong>Deri Değişimi:</strong> Gençken her 1-2 ayda, yetişkinlerde yılda 1-2 kez</p>
                 </div>
-
-                <div class="care-section">
-                    <h2>Bakım Rehberi</h2>
-                    
-                    <div class="care-subsection">
-                        <h3>Terraryum Gereksinimleri</h3>
-                        <p>Tliltocatl albopilosus, hem yer hem de yarı kazıcı bir türdür. Yetişkin bir birey için ideal terraryum, 30-40 cm uzunluğunda, 25-30 cm genişliğinde ve en az 25 cm yüksekliğinde olmalıdır.</p>
-                        
-                        <div class="care-tips">
-                            <div class="tip">
-                                <i class="fas fa-thermometer-half"></i>
-                                <div class="tip-content">
-                                    <h4>Sıcaklık</h4>
-                                    <p>İdeal: 22-26°C</p>
-                                    <p>Kısa süreli tolerans: 20-28°C</p>
-                                </div>
-                            </div>
-                            <div class="tip">
-                                <i class="fas fa-tint"></i>
-                                <div class="tip-content">
-                                    <h4>Nem</h4>
-                                    <p>%65-75 oranında nem</p>
-                                    <p>Ortam nemli olmalı ama aşırı ıslak olmamalı</p>
-                                </div>
-                            </div>
-                            <div class="tip">
-                                <i class="fas fa-mountain"></i>
-                                <div class="tip-content">
-                                    <h4>Substrat</h4>
-                                    <p>8-12 cm derinliğinde substrat</p>
-                                    <p>Torf, hindistan cevizi lifi, nemli toprak karışımı</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <p>T. albopilosus türü için ısı kaynağı genellikle gerekmez, çünkü oda sıcaklığında (22-26°C) rahat ederler. Eğer ortam daha soğuksa, terraryumun bir tarafına ısı matı yerleştirilebilir, ancak her zaman termostat ile kontrol edilmelidir. Nem seviyesini korumak için substratın bir bölümünü düzenli olarak nemlendirmek ve daima temiz su kabı bulundurmak önemlidir.</p>
-                    </div>
-                    
-                    <div class="care-subsection">
-                        <h3>Terraryum Düzeni ve Aksesuarlar</h3>
+            </div>
+            
+            <div class="care-guide-section">
+                <h3>Detaylı Bakım Rehberi</h3>
+                <div class="care-guide-grid">
+                    <div class="care-guide-item">
+                        <h4>Terraryum Gereksinimleri</h4>
                         <ul>
-                            <li><strong>Substrat:</strong> Nemli tutulabilen bir toprak karışımı idealdir. Torf, hindistan cevizi lifi ve orman toprağı karışımı kullanılabilir.</li>
-                            <li><strong>Saklanma Yeri:</strong> Ağaç kabuğu, mantar kökü veya yarı gömülü bir saksı gibi bir sığınak. Bu tür, genellikle açık alanda bulunmaktan çekinmese de, stresini azaltmak için bir saklanma yeri sağlamak önemlidir.</li>
-                            <li><strong>Su Kabı:</strong> Sığ ve geniş bir su kabı. T. albopilosus türü zaman zaman su içebilir.</li>
-                            <li><strong>Dekor:</strong> Yaprak döküntüleri ve tahta parçaları gibi doğal öğeler ekleyebilirsiniz. Canlı bitkiler kullanılacaksa, tarantulanın kazmak için onları sökmeyeceğinden emin olun.</li>
+                            <li><strong>Boyut:</strong> Yetişkin bir birey için 30x30x30 cm boyutlarında bir terraryum idealdir.</li>
+                            <li><strong>Substrat:</strong> 8-10 cm derinliğinde hindistan cevizi lifi (coco fiber) veya toprak karışımı tavsiye edilir.</li>
+                            <li><strong>Dekorasyon:</strong> Bir saklanma alanı (mantar kabuğu veya saksı), yapay veya canlı bitkiler ve dekoratif taşlar eklenebilir.</li>
+                            <li><strong>Su Kabı:</strong> Sürekli taze su bulunduracak küçük ve sığ bir kap gereklidir.</li>
+                            <li><strong>Havalandırma:</strong> İyi havalandırma küf ve nem sorunlarını önlemek için önemlidir.</li>
                         </ul>
                     </div>
                     
-                    <div class="care-subsection">
-                        <h3>Beslenme</h3>
-                        <p>T. albopilosus türü, çoğu tarantula gibi fırsat buldukça avlanan bir avcıdır. İyi bir iştaha sahiptir ve genellikle yem reddetmez. Uygun bir beslenme programı şu şekilde olabilir:</p>
+                    <div class="care-guide-item">
+                        <h4>Sıcaklık ve Nem</h4>
                         <ul>
-                            <li><strong>Yavru (1 cm bacak açıklığına kadar):</strong> 3-4 günde bir pinhead (yeni doğmuş) cırcır böcekleri</li>
-                            <li><strong>Genç (1-8 cm):</strong> Haftada 1-2 kez orta boy cırcır böceği, un kurdu veya küçük dubia hamam böceği</li>
-                            <li><strong>Yetişkin (8+ cm):</strong> Haftada bir veya 10 günde bir 3-4 büyük cırcır böceği, un kurdu, dubia hamam böceği veya küçük fare yavrusu (pinky mice)</li>
+                            <li><strong>İdeal Sıcaklık:</strong> 24-28°C (75-82°F)</li>
+                            <li><strong>Sıcaklık Aralığı:</strong> 22-30°C (72-86°F)</li>
+                            <li><strong>Nem Oranı:</strong> %60-70 (orta nem)</li>
+                            <li><strong>Isıtma:</strong> Genellikle oda sıcaklığında iyi gelişir, ihtiyaç durumunda bir ısıtma pedi kullanılabilir.</li>
+                            <li><strong>Nem Sağlama:</strong> Haftada 1-2 kez substratın bir kısmını hafifçe nemlendirin.</li>
                         </ul>
-                        <p>Bu tür, deri değişimi dönemlerinde bile genellikle yem kabul edebilir, ancak deri değişimi yaklaşırken (abdomen koyulaştığında) beslemekten kaçınmak en iyisidir. Tüm yem artıklarını 24 saat içinde terraryumdan çıkarın.</p>
                     </div>
                     
-                    <div class="care-subsection">
-                        <h3>Sağlık ve Bakım</h3>
-                        <p>T. albopilosus türü, oldukça dayanıklı bir tarantuladır ve genellikle sağlık sorunları yaşamaz. Ancak, tüm tarantulalar gibi düzenli bakıma ihtiyaç duyar:</p>
+                    <div class="care-guide-item">
+                        <h4>Beslenme ve Su</h4>
                         <ul>
-                            <li><strong>Deri Değişimi:</strong> Genç bireyler 1-3 ayda bir, yetişkinler yılda 1-2 kez deri değiştirir. Deri değişimi sırasında tarantulayı rahatsız etmeyin.</li>
-                            <li><strong>Nem Kontrolü:</strong> Substratın bir kısmının her zaman nemli olduğundan emin olun, ancak aşırı ıslaklıktan kaçının çünkü bu, mantar ve küf oluşumuna neden olabilir.</li>
-                            <li><strong>Genel Bakım:</strong> Su kabını temiz tutun ve düzenli olarak taze su ile doldurun. Terraryumu düzenli olarak kontrol edin ve kirli bölümleri temizleyin.</li>
+                            <li><strong>Besin Tipi:</strong> Canlı böcekler (cırcır böcekleri, un kurtları, dubia hamam böcekleri)</li>
+                            <li><strong>Beslenme Sıklığı:</strong> Yetişkinler için 7-10 günde bir, yavrular için haftada 2-3 kez</li>
+                            <li><strong>Besin Boyutu:</strong> Tarantulanın abdomen büyüklüğüyle eşit veya daha küçük olmalıdır</li>
+                            <li><strong>Öneriler:</strong> Bu tür genellikle iyi bir iştaha sahiptir ve besleme konusunda sorun çıkarmaz.</li>
                         </ul>
-                        
-                        <div class="warning-box">
-                            <h4><i class="fas fa-exclamation-triangle"></i> Dikkat Edilmesi Gereken Sağlık Sorunları</h4>
-                            <ul>
-                                <li><strong>Mikoz (Mantar Enfeksiyonu):</strong> Vücutta beyaz veya sarı lekeler</li>
-                                <li><strong>Dehidrasyon:</strong> Büzüşmüş abdomen, halsizlik, hareketsizlik</li>
-                                <li><strong>Akarlar:</strong> Vücut eklemlerinde ve etrafında küçük beyaz noktalar</li>
-                                <li><strong>Deri Değişimi Sorunları:</strong> Yarım kalmış deri değişimi, özellikle bacaklarda sıkışma</li>
-                            </ul>
-                        </div>
                     </div>
                     
-                    <div class="care-subsection">
-                        <h3>Davranış ve Elleçleme</h3>
-                        <p>T. albopilosus, tarantulalar arasında en sakin ve uysal türlerden biridir. Nadiren tehdit duruşu alır ve genellikle agresif davranışlar sergilemez. Rahatsız edildiğinde ilk tepkisi kaçmak veya saklanmaktır.</p>
-                        
-                        <p>Bu türün tehdit hissettiğinde kullanabileceği urticating (yakıcı) tüyleri vardır ve insan cildi ve gözlerde tahriş yaratabilir. Bu nedenle, elleçleme sırasında eldiven ve göz koruması kullanılması önerilir.</p>
-                        
-                        <p>Her ne kadar sakin bir tür olsa da, gereksiz elleçlemeden kaçınılmalıdır. Tarantulayı taşımak gerektiğinde, düşme riski nedeniyle nazikçe bir kaba yönlendirilmelidir. Düşmeler, tarantulanın yumuşak abdomenine ciddi zarar verebilir ve ölümcül olabilir.</p>
+                    <div class="care-guide-item">
+                        <h4>Deri Değişimi ve Sağlık</h4>
+                        <ul>
+                            <li><strong>Deri Değişimi Belirtileri:</strong> İştah kaybı, hareketlilikte azalma, daha koyu renkli görünüm</li>
+                            <li><strong>Hazırlık:</strong> Su kabını dolu tutun ve bu süreçte besleme yapmayın</li>
+                            <li><strong>Süreç Sonrası:</strong> Deri değişiminden sonra en az 5-7 gün besleme yapmayın</li>
+                            <li><strong>Sağlık Sorunları:</strong> Dehidrasyon, mantar enfeksiyonu, deri değişimi sorunları</li>
+                        </ul>
                     </div>
                 </div>
-
-                <div class="breeding-section">
-                    <h2>Üreme Bilgileri</h2>
-                    <p>T. albopilosus türü, tarantulalar arasında üretimi nispeten kolay olan türlerden biridir, ancak yine de deneyim ve dikkat gerektirir:</p>
-                    
-                    <div class="breeding-steps">
-                        <div class="step">
-                            <h3><i class="fas fa-venus-mars"></i> Cinsiyet Belirleme</h3>
-                            <p>Dişiler daha iri yapılı ve uzun ömürlüdür. Erkekler daha ince bacaklara, daha küçük abdomen ve tibial çıkıntılara (çiftleşme kancaları) sahiptir. Kesin cinsiyet tayini için atılmış deri (exuvia) incelenmelidir.</p>
-                        </div>
-                        <div class="step">
-                            <h3><i class="fas fa-temperature-high"></i> Hazırlık</h3>
-                            <p>Her iki tarantula da yetişkin olmalı ve iyi beslenmelidir. Dişi son deri değişiminden en az 2-3 ay sonra çiftleştirilmelidir. Erkek tarantulayı çiftleştirmeden önce iyi besleyin.</p>
-                        </div>
-                        <div class="step">
-                            <h3><i class="fas fa-heart"></i> Çiftleştirme</h3>
-                            <p>Çiftleştirme, nötr ve geniş bir alanda yapılmalıdır. Erkek, bacaklarıyla davul çalarak dişiye yaklaşır ve kur yapar. Başarılı çiftleşmeden sonra erkeği hemen uzaklaştırın, çünkü dişi tarafından yenme riski vardır.</p>
-                        </div>
-                        <div class="step">
-                            <h3><i class="fas fa-egg"></i> Kokon Oluşturma</h3>
-                            <p>Başarılı çiftleşmeden yaklaşık 2-3 ay sonra, dişi 300-700 yumurta içeren bir kokon (yumurta kesesi) oluşturur. Bu süreçte dişi, kokonunu korumak için agresif olabilir.</p>
-                        </div>
-                        <div class="step">
-                            <h3><i class="fas fa-baby"></i> Yavru Bakımı</h3>
-                            <p>Yavrular, kokon oluştuktan yaklaşık 6-8 hafta sonra çıkar. İlk birkaç hafta birlikte kalır, ardından dağılmaya başlarlar. Bu aşamada ayrı kaplara alınmalıdır. Yavrular, yüksek nem ve sıcaklık ortamında tutulmalı ve pinhead cırcır böcekleri ile beslenmelidir.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="related-species">
-                    <h2>Benzer Türler</h2>
-                    <p>T. albopilosus'a benzer özelliklere sahip ve benzer bakım gereksinimleri olan diğer tarantula türleri:</p>
-                    
-                    <div class="species-cards">
-                        <div class="species-card">
-                            <img src="../images/brachypelma-emilia-thumb.jpg" alt="Meksika Kırmızı Bacak Tarantulası">
-                            <div class="species-card-info">
-                                <h3>Meksika Kırmızı Bacak Tarantulası</h3>
-                                <div class="scientific-name">Brachypelma emilia</div>
-                                <p>Kırmızı/turuncu bacakları ve sakin mizacıyla bilinen tür</p>
-                                <a href="brachypelma-emilia.html" class="btn">Detaylı Bilgi</a>
-                            </div>
-                        </div>
-                        <div class="species-card">
-                            <img src="../images/tliltocatl-vagans-thumb.jpg" alt="Meksika Kızıl Göbek Tarantulası">
-                            <div class="species-card-info">
-                                <h3>Meksika Kızıl Göbek Tarantulası</h3>
-                                <div class="scientific-name">Tliltocatl vagans</div>
-                                <p>Kızıl/turuncu abdomenli, aynı cinsten başka bir tür</p>
-                                <a href="#" class="btn disabled">Yakında</a>
-                            </div>
-                        </div>
-                        <div class="species-card">
-                            <img src="../images/grammostola-pulchripes-thumb.jpg" alt="Altın Bacak Chaco Tarantulası">
-                            <div class="species-card-info">
-                                <h3>Altın Bacak Chaco Tarantulası</h3>
-                                <div class="scientific-name">Grammostola pulchripes</div>
-                                <p>Sarı bacaklı, büyük boyutlu, uysal bir tür</p>
-                                <a href="#" class="btn disabled">Yakında</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-section">
-                    <h2>Sık Sorulan Sorular</h2>
-                    
-                    <div class="accordion">
-                        <div class="accordion-item">
-                            <div class="accordion-header">Tliltocatl albopilosus neden Curly Hair (Kıvırcık Tüylü) Tarantula olarak adlandırılır?</div>
-                            <div class="accordion-content">
-                                <p>Bu tür, vücudunu kaplayan karakteristik kıvırcık tüyleri nedeniyle bu ismi almıştır. Özellikle bacaklar ve abdomen üzerindeki tüyler belirgin şekilde kıvırcıktır, bu da tarantulaya özgün ve sevimli bir görünüm kazandırır.</p>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <div class="accordion-header">Bu tarantula türü başlangıç seviyesi için uygun mudur?</div>
-                            <div class="accordion-content">
-                                <p>Evet, T. albopilosus, tarantula hobisine yeni başlayanlar için mükemmel bir seçimdir. Sakin mizacı, dayanıklılığı, bakım hataları konusundaki toleransı ve görece kolay bakım ihtiyaçları ile başlangıç seviyesindeki bakıcılar için idealdir.</p>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <div class="accordion-header">Tliltocatl albopilosus ve Brachypelma albopilosum arasındaki fark nedir?</div>
-                            <div class="accordion-content">
-                                <p>Tliltocatl albopilosus ve Brachypelma albopilosum aslında aynı türü ifade eder. 2017 yılında yapılan taksonomik çalışmalar sonucunda, bu tür Brachypelma cinsinden alınarak Tliltocatl cinsine dahil edilmiştir. Dolayısıyla, Tliltocatl albopilosus güncel bilimsel ismi, Brachypelma albopilosum ise eski sınıflandırmadaki ismidir.</p>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <div class="accordion-header">Bu tarantulanın farklı tipleri var mıdır?</div>
-                            <div class="accordion-content">
-                                <p>Evet, T. albopilosus türünün iki ana formu vardır: "Hobby form" ve "Nicaraguan form" (veya "Honduras form"). Hobby form, hobide uzun yıllardır üretilen, genellikle daha koyu renkli ve daha az kıvırcık tüylü olan formudur. Nicaraguan form ise daha açık renkli ve daha belirgin kıvırcık tüylere sahiptir. Ayrıca bazı kaynaklarda "Costa Rica" formu da ayrı bir varyant olarak anılmaktadır.</p>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <div class="accordion-header">Bu tarantula ne kadar hızlı büyür?</div>
-                            <div class="accordion-content">
-                                <p>T. albopilosus orta hızda büyüyen bir türdür. Yeni doğan yavrular yetişkin boya ulaşmak için yaklaşık 2-3 yıl gerektirir. Büyüme hızı, beslenme sıklığı, sıcaklık ve diğer bakım koşullarına bağlı olarak değişebilir. Dişiler erkeklerden daha uzun sürede olgunlaşır ancak daha büyük boyutlara ulaşır.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="resources-section">
-                    <h2>Kaynaklar ve Daha Fazla Bilgi</h2>
-                    
-                    <div class="resources-grid">
-                        <div class="resource-card">
-                            <i class="fas fa-book"></i>
-                            <h3>Önerilen Kitaplar</h3>
-                            <ul>
-                                <li>"The Tarantula Keeper's Guide" - Stanley A. Schultz & Marguerite J. Schultz</li>
-                                <li>"Tarantulas and Other Arachnids" - Samuel D. Marshall</li>
-                                <li>"The Tarantula: Classification and Identification Guide" - Andrew Smith</li>
-                            </ul>
-                        </div>
-                        <div class="resource-card">
-                            <i class="fas fa-globe"></i>
-                            <h3>Çevrimiçi Kaynaklar</h3>
-                            <ul>
-                                <li><a href="https://arachnoboards.com/" target="_blank">Arachnoboards Forum</a></li>
-                                <li><a href="https://tomsbigspiders.com/" target="_blank">Tom's Big Spiders</a></li>
-                                <li><a href="https://www.tarantulaaddicts.com/" target="_blank">Tarantula Addicts</a></li>
-                            </ul>
-                        </div>
-                        <div class="resource-card">
-                            <i class="fas fa-users"></i>
-                            <h3>Topluluklar</h3>
-                            <ul>
-                                <li><a href="https://www.reddit.com/r/tarantulas/" target="_blank">Reddit r/tarantulas</a></li>
-                                <li><a href="https://www.facebook.com/groups/tarantulaenthusiasts/" target="_blank">Facebook Tarantula Enthusiasts Group</a></li>
-                                <li><a href="https://www.instagram.com/explore/tags/tliltocatlalbopilosus/" target="_blank">Instagram #tliltocatlalbopilosus</a></li>
-                            </ul>
-                        </div>
+            </div>
+            
+            <div class="gallery-section">
+                <h3>Fotoğraf Galerisi</h3>
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <img src="../img/tarantula/Brachypelma_Albopilosum.jpg" alt="Kıvırcık Saçlı Tarantula 1">
                     </div>
                 </div>
             </div>
@@ -714,24 +348,37 @@
     </footer>
 
     <script>
-        // Image gallery functionality
-        function changeImage(src) {
-            document.getElementById('mainImage').src = src;
-        }
-        
-        // Accordion functionality
+        // Sayfa yüklendiğinde
         document.addEventListener('DOMContentLoaded', function() {
-            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            // Mevcut JavaScript kodu
             
-            accordionHeaders.forEach(header => {
-                header.addEventListener('click', function() {
-                    this.classList.toggle('active');
-                    const content = this.nextElementSibling;
-                    
-                    if (content.style.maxHeight) {
-                        content.style.maxHeight = null;
-                    } else {
-                        content.style.maxHeight = content.scrollHeight + "px";
+            // Mobil menü işlevselliği
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                
+                // Menü ikonunu değiştir (hamburger/çarpı)
+                const menuIcon = menuToggle.querySelector('i');
+                if (mainNav.classList.contains('active')) {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                } else {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+            
+            // Küçük ekranda menü linklerine tıklandığında menüyü kapat
+            const menuLinks = mainNav.querySelectorAll('a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        mainNav.classList.remove('active');
+                        const menuIcon = menuToggle.querySelector('i');
+                        menuIcon.classList.remove('fa-times');
+                        menuIcon.classList.add('fa-bars');
                     }
                 });
             });

@@ -3,435 +3,472 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yeşil Ağaç Pitonu (Morelia viridis) Bakım Rehberi | Egzotik Hayvanlar Dünyası</title>
+    <title>Yeşil Ağaç Pitonu - Egzotik Hayvanlar Dünyası</title>
     <link rel="stylesheet" href="../style.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Inline species-specific styles */
-        .species-container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
+        /* Mobil Navigasyon Stilleri */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 5px;
         }
-
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            header .container {
+                flex-direction: column;
+                padding: 15px 20px;
+            }
+            
+            header .logo {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            header nav {
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            header nav.active {
+                max-height: 300px;
+            }
+            
+            header nav ul {
+                flex-direction: column;
+                width: 100%;
+                margin-top: 15px;
+            }
+            
+            header nav ul li {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            header nav ul li a {
+                display: block;
+                padding: 12px 0;
+                border-bottom: 1px solid #eee;
+            }
+        }
+        
         .species-header {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            gap: 30px;
         }
-
-        .species-title h1 {
-            color: var(--primary-color);
-            margin-bottom: 5px;
-        }
-
-        .scientific-name {
-            font-style: italic;
-            color: #666;
-            font-size: 1.1em;
-        }
-
-        .quick-facts {
-            background-color: #f5f5f5;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 15px;
-        }
-
-        .fact {
-            margin-bottom: 8px;
-        }
-
-        .fact span {
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .species-image-gallery {
-            margin-bottom: 30px;
-        }
-
-        .main-image {
-            width: 100%;
-            height: 400px;
-            overflow: hidden;
+        
+        .species-header-image {
+            width: 40%;
             border-radius: 10px;
-            margin-bottom: 10px;
+            overflow: hidden;
         }
-
-        .main-image img {
+        
+        .species-header-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .species-header-content {
+            width: 60%;
+        }
+        
+        .species-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .fact-card {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .fact-card h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .care-level {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .beginner { background-color: #4caf50; }
+        .intermediate { background-color: #ff9800; }
+        .advanced { background-color: #f44336; }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .gallery-item {
+            border-radius: 5px;
+            overflow: hidden;
+            height: 200px;
+        }
+        
+        .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.3s;
         }
-
-        .thumbnail-container {
-            display: flex;
-            gap: 10px;
-            overflow-x: auto;
-            padding-bottom: 10px;
-        }
-
-        .thumbnail-container img {
-            width: 100px;
-            height: 70px;
-            object-fit: cover;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .thumbnail-container img:hover {
+        
+        .gallery-item:hover img {
             transform: scale(1.05);
         }
-
-        .species-overview, .taxonomy-section, .care-section, .morphs-section, .breeding-section {
-            margin-bottom: 40px;
+        
+        .care-guide-section {
+            margin: 40px 0;
         }
-
-        h2 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #e0e0e0;
+        
+        .care-guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
         }
-
-        h3 {
+        
+        .care-guide-item {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .care-guide-item h4 {
             color: var(--secondary-color);
-            margin: 20px 0 15px;
+            margin-top: 0;
         }
-
-        .taxonomy-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px;
-            background-color: #f5f5f5;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 15px;
+        
+        .care-guide-item ul {
+            padding-left: 20px;
         }
-
-        .taxonomy-item span {
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .taxonomy-note {
-            font-style: italic;
-            font-size: 0.9em;
-            color: #666;
-        }
-
-        .care-tips {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .tip {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 5px;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .tip i {
-            color: var(--primary-color);
-            font-size: 1.5em;
-            margin-right: 15px;
-            margin-top: 5px;
-        }
-
-        .warning-box {
-            background-color: #fff3e0;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px 0;
-            border-left: 4px solid var(--warning-color);
-        }
-
-        .warning-box h4 {
-            color: var(--warning-color);
+        
+        .care-guide-item li {
             margin-bottom: 10px;
         }
-
-        .morph-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .morph-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-
-        .morph-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        .morph-card h3 {
-            padding: 15px 15px 5px;
-            margin: 0;
-        }
-
-        .morph-card p {
-            padding: 0 15px 15px;
-            font-size: 0.9em;
-            color: #666;
-        }
-
-        @media (max-width: 768px) {
-            .species-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
             
-            .quick-facts {
-                width: 100%;
-            }
-            
-            .main-image {
-                height: 300px;
-            }
-            
-            .care-tips, .taxonomy-list, .morph-gallery {
-                grid-template-columns: 1fr;
-            }
+        /* Logo Stilleri */
+        .site-logo {
+            display: flex;
+            align-items: center;
         }
-    </style>
+        
+        .site-logo img {
+            height: 50px;
+            margin-right: 15px;
+        }</style>
 </head>
 <body>
     <header>
-        <div class="logo">
-            <a href="../index.html">Egzotik Hayvanlar Dünyası</a>
+        <div class="container">
+                            <div class="logo">
+                <div class="site-logo">
+                    <img src="../img/logo/logo.png" alt="Egzotik Hayvanlar Dünyası Logo">
+                <h1>Egzotik Hayvanlar Dünyası</h1></div>
+                <button class="mobile-menu-btn" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="../index.html">Ana Sayfa</a></li>
+                    <li><a href="../tarantulas.html">Tarantulalar</a></li>
+                    <li><a href="../snakes.html">Yılanlar</a></li>
+                    <li><a href="../lizards.html">Kertenkeleler</a></li>
+                    <li><a href="../about.html">Hakkımızda</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Ana Sayfa</a></li>
-                <li><a href="../tarantulas.html">Tarantulalar</a></li>
-                <li><a href="../snakes.html">Yılanlar</a></li>
-                <li><a href="../lizards.html">Kertenkeleler</a></li>
-                <li><a href="../about.html">Hakkımızda</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <div class="species-container">
-        <div class="species-header">
-            <div class="species-title">
-                <h1>Yeşil Ağaç Pitonu (Morelia viridis)</h1>
-                <div class="scientific-name">Morelia viridis</div>
+    <section class="animal-header">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="../index.html">Ana Sayfa</a> &gt; 
+                <a href="../snakes.html">Yılanlar</a> &gt; 
+                <span>Yeşil Ağaç Pitonu</span>
             </div>
-            <div class="quick-facts">
-                <div class="fact"><span>Ortalama Boy:</span> 120-180 cm</div>
-                <div class="fact"><span>Ömrü:</span> 15-20 yıl</div>
-                <div class="fact"><span>Bakım Seviyesi:</span> <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i> (İleri)</div>
-                <div class="fact"><span>Mizaç:</span> <i class="fas fa-frown"></i> Genellikle huysuz, hassas</div>
-            </div>
+            <h2>Yeşil Ağaç Pitonu (<em>Morelia viridis</em>)</h2>
         </div>
+    </section>
 
-        <div class="species-image-gallery">
-            <div class="main-image">
-                <img src="https://www.thesprucepets.com/thmb/v4i9qpMEjFpKJyZnPwf2YpWLwO4=/2123x1416/filters:fill(auto,1)/GettyImages-645145685-5c09a8f046e0fb0001d4c09c.jpg" alt="Yeşil Ağaç Pitonu (Morelia viridis)" id="mainImage">
-            </div>
-            <div class="thumbnail-container">
-                <img src="https://www.thesprucepets.com/thmb/v4i9qpMEjFpKJyZnPwf2YpWLwO4=/2123x1416/filters:fill(auto,1)/GettyImages-645145685-5c09a8f046e0fb0001d4c09c.jpg" alt="Yeşil Ağaç Pitonu 1" onclick="changeImage(this.src)">
-                <img src="https://www.thesprucepets.com/thmb/_O-YDRT3wgSIo4h_u07gSO0njP8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-173983289-5c09a9e946e0fb00014eaac3.jpg" alt="Yeşil Ağaç Pitonu 2" onclick="changeImage(this.src)">
-                <img src="https://www.reptilecentre.com/blog/wp-content/uploads/2020/11/Green-Tree-Python-Care-Sheet-Header-Image.jpg" alt="Yeşil Ağaç Pitonu 3" onclick="changeImage(this.src)">
-                <img src="https://a-z-animals.com/media/2022/10/shutterstock_2085696013-1024x614.jpg" alt="Yeşil Ağaç Pitonu Yavru" onclick="changeImage(this.src)">
-            </div>
-        </div>
-
-        <div class="species-overview">
-            <h2>Genel Bakış</h2>
-            <p>Yeşil Ağaç Pitonu (Morelia viridis), göz alıcı canlı yeşil rengi ve benzersiz vücut yapısı ile dünyanın en çarpıcı yılan türlerinden biridir. Yeni Gine, Endonezya'nın bazı adaları ve Avustralya'nın kuzey ucundaki yağmur ormanlarında yaşayan bu tür, ağaçlarda yaşama konusunda son derece uzmanlaşmıştır.</p>
-            
-            <p>Bu pitonlar yumurtlayarak çoğalır (ovipar) ve yavrular doğduklarında genellikle parlak sarı veya kırmızı renklidir. Yaklaşık 6-12 ay içinde, yaşla birlikte karakteristik zümrüt yeşili rengine dönüşürler. Ağaç dallarında sarılarak yaşayan bu yılanlar, keskin dişlere ve olağanüstü hassas ısı algılama çukurlarına sahiptir.</p>
-            
-            <p>Bakımı nispeten zor olduğu için, başlangıç seviyesindeki yılan sahipleri için uygun değildir. Özel nem, sıcaklık gereksinimleri ve hassas doğaları, bu türün ileri düzey bakım gerektirdiği anlamına gelir. Ancak, doğru bakım koşulları sağlandığında esaret altında 15-20 yıl yaşayabilirler.</p>
-        </div>
-
-        <div class="taxonomy-section">
-            <h2>Taksonomi ve Sınıflandırma</h2>
-            <div class="taxonomy-list">
-                <div class="taxonomy-item"><span>Alem:</span> Animalia (Hayvanlar)</div>
-                <div class="taxonomy-item"><span>Şube:</span> Chordata (Kordalılar)</div>
-                <div class="taxonomy-item"><span>Sınıf:</span> Reptilia (Sürüngenler)</div>
-                <div class="taxonomy-item"><span>Takım:</span> Squamata (Pullu Sürüngenler)</div>
-                <div class="taxonomy-item"><span>Alt Takım:</span> Serpentes (Yılanlar)</div>
-                <div class="taxonomy-item"><span>Familya:</span> Pythonidae (Pitonlar)</div>
-                <div class="taxonomy-item"><span>Cins:</span> Morelia</div>
-                <div class="taxonomy-item"><span>Tür:</span> M. viridis</div>
-            </div>
-            <p class="taxonomy-note">Not: Yeşil Ağaç Pitonu daha önce Chondropython viridis olarak sınıflandırılmaktaydı. Genetik çalışmalar sonucunda Morelia cinsine dahil edilmiştir. Çeşitli yerel varyasyonları ve renk morph'ları vardır.</p>
-        </div>
-
-        <div class="care-section">
-            <h2>Bakım Rehberi</h2>
-            
-            <div class="care-subsection">
-                <h3>Terraryum Gereksinimleri</h3>
-                <p>Yeşil Ağaç Pitonları için özel bir terraryum düzeni gereklidir. Yetişkin bir birey için minimum 60x60x90 cm (dikey yönde uzun) boyutlarında bir terraryum önerilir. Yavru veya genç bireyler için daha küçük terraryumlar kullanılabilir.</p>
-                
-                <div class="care-tips">
-                    <div class="tip">
-                        <i class="fas fa-thermometer-half"></i>
-                        <div class="tip-content">
-                            <h4>Sıcaklık</h4>
-                            <p>Gündüz sıcaklığı: 28-30°C</p>
-                            <p>Gece sıcaklığı: 22-24°C</p>
-                            <p>Basking noktası: 32°C</p>
-                        </div>
-                    </div>
-                    <div class="tip">
-                        <i class="fas fa-tint"></i>
-                        <div class="tip-content">
-                            <h4>Nem</h4>
-                            <p>%60-80 oranında nem</p>
-                            <p>Günde 1-2 kez spreyleme gerekli</p>
-                        </div>
-                    </div>
-                    <div class="tip">
-                        <i class="fas fa-lightbulb"></i>
-                        <div class="tip-content">
-                            <h4>Aydınlatma</h4>
-                            <p>12 saat açık / 12 saat kapalı döngü</p>
-                            <p>Düşük seviyede UVB faydalı olabilir</p>
-                        </div>
+    <section class="animal-info">
+        <div class="container">
+            <div class="species-header">
+                <div class="species-header-image">
+                    <img src="../img/yilanlar/gtp.jpg" alt="Yeşil Ağaç Pitonu">
+                </div>
+                <div class="species-header-content">
+                    <h3>Genel Bakış</h3>
+                    <p>Yeşil Ağaç Pitonu (Morelia viridis), Yeni Gine, Endonezya'nın bazı kısımları ve Avustralya'nın kuzey kıyısındaki Cape York Yarımadası'na özgü, canlı yeşil renkli bir yılan türüdür. Ağaçsal yaşam tarzına mükemmel şekilde adapte olmuştur.</p>
+                    
+                    <p>Bu türün en dikkat çekici özelliği, yavruların doğduklarında genellikle sarı veya kırmızı renkte olması ve yaklaşık 6-12 ay içinde yetişkin yeşil rengine dönüşmeleridir. Karakteristik dinlenme pozu, vücudunu bir dalın üzerine sarmal şekilde sarması ve başını sarmalın ortasında tutmasıdır.</p>
+                    
+                    <div class="taxonomy">
+                        <h4>Bilimsel Sınıflandırma</h4>
+                        <p><strong>Alem:</strong> Animalia</p>
+                        <p><strong>Şube:</strong> Chordata</p>
+                        <p><strong>Sınıf:</strong> Reptilia</p>
+                        <p><strong>Takım:</strong> Squamata</p>
+                        <p><strong>Alttakım:</strong> Serpentes</p>
+                        <p><strong>Familya:</strong> Pythonidae</p>
+                        <p><strong>Cins:</strong> Morelia</p>
+                        <p><strong>Tür:</strong> M. viridis</p>
                     </div>
                 </div>
+            </div>
+            
+            <div class="species-facts">
+                <div class="fact-card">
+                    <h4>Temel Özellikler</h4>
+                    <p><strong>Ortalama Boy:</strong> 150-180 cm (5-6 feet)</p>
+                    <p><strong>Ağırlık:</strong> 1-1.6 kg (yetişkin)</p>
+                    <p><strong>Yaşam Süresi:</strong> 15-20 yıl (esaret altında)</p>
+                    <p><strong>Zorluk Seviyesi:</strong> <span class="care-level advanced">İleri</span></p>
+                    <p><strong>Mizaç:</strong> Genellikle çekingen, kolayca stres yaşayabilir, ısırmaya eğilimli</p>
+                </div>
                 
-                <p>Isıtma kaynakları olarak, seramik ısıtıcılar veya radyant ısı panelleri tercih edilmelidir. Isı lambalarını kullanırken dikkatli olunmalıdır, çünkü nem seviyesini düşürebilir ve yılanı dehidrate edebilir. Tüm ısıtma cihazları termostat ile kontrol edilmelidir.</p>
-            </div>
-            
-            <div class="care-subsection">
-                <h3>Terraryum Düzeni ve Aksesuarlar</h3>
-                <ul>
-                    <li><strong>Altlık:</strong> Hindistan cevizi lifi (coco husk), yosun veya orman taban örtüsü kullanılabilir. Yüksek nemi tutabilmesi önemlidir.</li>
-                    <li><strong>Tünekler/Dallar:</strong> Sağlam, kalın dallar veya özel tasarlanmış tünekler gereklidir. Yeşil Ağaç Pitonu zamanının çoğunu bu dalların üzerinde sarılı halde geçirir.</li>
-                    <li><strong>Bitkiler:</strong> Canlı veya yapay bitkiler, hem saklanma yerleri oluşturur hem de nem seviyesini korumaya yardımcı olur.</li>
-                    <li><strong>Su Kabı:</strong> Küçük bir su kabı zeminde bulundurulmalıdır, ancak bu yılanlar genellikle yapraklardan su damlaları içer.</li>
-                    <li><strong>Nem Sağlayıcılar:</strong> Otomatik spreyleme sistemleri veya büyük bir nem kaynağı faydalı olabilir.</li>
-                </ul>
-                <p>Terraryum, bu türün arboreal (ağaçsal) doğasını yansıtacak şekilde dikey yönde zengin olmalıdır. Farklı kalınlıklarda dallar ve tünekler, farklı seviyeler oluşturacak şekilde yerleştirilmelidir.</p>
-            </div>
-            
-            <div class="care-subsection">
-                <h3>Beslenme</h3>
-                <p>Yeşil Ağaç Pitonları, yaşlarına ve boyutlarına göre değişen sıklıkta kemirgenlerle beslenir:</p>
-                <ul>
-                    <li><strong>Yavrular (1 yaşına kadar):</strong> 5-7 günde bir pinky veya fuzzy fare</li>
-                    <li><strong>Gençler (1-2 yaş):</strong> 7-10 günde bir küçük yetişkin fare</li>
-                    <li><strong>Yetişkinler (2+ yaş):</strong> 10-14 günde bir orta boy veya büyük fare</li>
-                </ul>
-                <p>Donmuş/çözülmüş yem tercih edilir ve uzun bir besleme çubuğu kullanılarak sunulmalıdır. Yeşil Ağaç Pitonları genellikle dallardan aşağı sarkarken avlarını yakalarlar, bu nedenle yemi yılanın baş hizasında veya biraz yukarısında tutmak, doğal av davranışını teşvik eder.</p>
-            </div>
-            
-            <div class="care-subsection">
-                <h3>Sağlık ve Bakım</h3>
-                <p>Yeşil Ağaç Pitonları hassas hayvanlardır ve özel bakım gerektirirler:</p>
-                <ul>
-                    <li><strong>Deri Değişimi:</strong> 4-6 haftada bir gerçekleşir. Deri değişimi sırasında nem seviyesinin yüksek tutulması çok önemlidir.</li>
-                    <li><strong>Temizlik:</strong> Dışkı ve yem artıkları hemen temizlenmeli, tam terraryum temizliği 1-2 ayda bir yapılmalıdır.</li>
-                    <li><strong>Veteriner Kontrolleri:</strong> Yılda bir kez uzman sürüngen veterinerinde kontrol önerilir.</li>
-                </ul>
+                <div class="fact-card">
+                    <h4>Habitat Bilgileri</h4>
+                    <p><strong>Doğal Habitat:</strong> Yeni Gine, Endonezya'nın bazı adaları ve Avustralya'nın Cape York bölgesi</p>
+                    <p><strong>Yaşam Tarzı:</strong> Tamamen ağaçsal (arboreal), nadiren yere iner</p>
+                    <p><strong>Habitat Tipi:</strong> Tropik ve subtropik yağmur ormanları, orman kenarları</p>
+                    <p><strong>Aktivite Düzeni:</strong> Geceleri aktif (nokturnal), gündüzleri ağaçlarda dinlenir</p>
+                    <p><strong>Doğal Davranış:</strong> Ambush avcısı (pusu kurarak avlanır), genellikle hareketsiz bekler</p>
+                </div>
                 
-                <div class="warning-box">
-                    <h4><i class="fas fa-exclamation-triangle"></i> Dikkat Edilmesi Gereken Sağlık Sorunları</h4>
-                    <ul>
-                        <li><strong>Solunum Yolu Enfeksiyonları:</strong> Düşük nem ve hava akımı sorunlarından kaynaklanan en yaygın hastalıklardandır.</li>
-                        <li><strong>Ağız Çürümesi (Stomatit):</strong> Ağız içinde kızarıklık ve iltihap görülür.</li>
-                        <li><strong>Kriptosporidiozis:</strong> Sindirim sistemi paraziti, ciddi hastalıklara yol açabilir.</li>
-                        <li><strong>Stres:</strong> Aşırı elle tutma, uygunsuz barınma koşulları veya tekrarlayan rahatsızlıklar strese neden olabilir.</li>
-                    </ul>
+                <div class="fact-card">
+                    <h4>Fiziksel Özellikler</h4>
+                    <p><strong>Renk:</strong> Yetişkinlerde parlak yeşil, yavrularda sarı veya kırmızı</p>
+                    <p><strong>Vücut Yapısı:</strong> İnce, uzun vücut, lateralden sıkıştırılmış</p>
+                    <p><strong>Baş Şekli:</strong> Üçgen şeklinde, büyük gözler</p>
+                    <p><strong>Lokasyon Varyasyonları:</strong> Biak, Aru, Sorong, Jayapura, Merauke gibi çeşitli lokasyon varyantları</p>
+                    <p><strong>Özel Özellikler:</strong> Isı algılama çukurları, sivri dişler, prehensilkuyruk (tutunabilen)</p>
                 </div>
             </div>
             
-            <div class="care-subsection">
-                <h3>Davranış ve Sosyalleşme</h3>
-                <p>Yeşil Ağaç Pitonları genellikle huysuz ve savunmacı bir mizaca sahiptir. Yılanın vücudunda herhangi bir yere dokunulduğunda, hızla o bölgeye doğru dönerek ısırabilirler. Doğal davranışları gereği, genellikle kendi dallarında sarılı halde ve hareketsiz olarak beklerler.</p>
-                
-                <p>Bu türün elleştirilmesi minimum düzeyde tutulmalıdır. Ele alınması gerektiğinde, bir kanca ile nazikçe desteklenerek ve vücudun en az üçte birini destekleyerek tutulmalıdır. Ele alışması için, yavruluktan itibaren düzenli ancak kısa süreli ele alınmaları önerilir.</p>
-                
-                <p>Asla aynı terraryumda birden fazla Yeşil Ağaç Pitonu tutulmamalıdır. Kanibalizm riski vardır ve strese neden olur. Ayrıca, beslenme sonrası en az 48 saat boyunca ele alınmamalıdır.</p>
+            <div class="care-guide-section">
+                <h3>Detaylı Bakım Rehberi</h3>
+                <div class="care-guide-grid">
+                    <div class="care-guide-item">
+                        <h4>Terraryum Gereksinimleri</h4>
+                        <ul>
+                            <li><strong>Boyut:</strong> Yetişkin için minimum 60x60x90 cm (en-derinlik-yükseklik), ideal olan 60x60x120 cm</li>
+                            <li><strong>Terraryum Tipi:</strong> Dikey yönelimli, iyi havalandırmalı terraryum</li>
+                            <li><strong>Tırmanma Yapıları:</strong> Çok sayıda kalın dal, tırmanma platformları gereklidir</li>
+                            <li><strong>Saklanma Yerleri:</strong> Yapraklı saklanma alanları, koru kutuları veya yapay bitkiler</li>
+                            <li><strong>Substrat:</strong> Orman tabanı malzemesi, hindistan cevizi lifi, yosun karışımı</li>
+                            <li><strong>Bitkilendirme:</strong> Canlı veya iyi kalite yapay bitkiler (gizlenme imkanı sağlar)</li>
+                            <li><strong>Su Kabı:</strong> Yeterince büyük, temiz su içeren bir kap - yılan içmek için kullanır</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Sıcaklık ve Nem</h4>
+                        <ul>
+                            <li><strong>Gündüz Sıcaklığı:</strong> 28-30°C (82-86°F)</li>
+                            <li><strong>Gece Sıcaklığı:</strong> 22-24°C (72-75°F)</li>
+                            <li><strong>Basking Spot:</strong> 32°C (90°F) civarında bir bölge</li>
+                            <li><strong>Nem Oranı:</strong> %60-80 (günlük püskürtme yoluyla sağlanır)</li>
+                            <li><strong>Isıtma Ekipmanları:</strong> Seramik ısıtıcı veya radyant ısı paneli (termostat kontrollü)</li>
+                            <li><strong>Nem Kontrolü:</strong> Otomatik püskürtme sistemi veya günde 1-2 kez manuel püskürtme</li>
+                            <li><strong>Havalandırma:</strong> İyi havalandırma sağlanırken nem kaybı önlenmelidir</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Beslenme ve Su</h4>
+                        <ul>
+                            <li><strong>Besin Türü:</strong> Kemirgenler (fareler, sıçanlar)</li>
+                            <li><strong>Beslenme Sıklığı:</strong>
+                                <ul>
+                                    <li>Yavrular (2 yaşına kadar): 7-10 günde bir</li>
+                                    <li>Yetişkinler (2+ yaş): 10-14 günde bir</li>
+                                </ul>
+                            </li>
+                            <li><strong>Besin Boyutu:</strong> Yılanın vücudunun en geniş kısmından hafifçe daha geniş</li>
+                            <li><strong>Beslenme Tekniği:</strong> Cımbız ile tutulmuş av, dalda dinlenirken sunulmalıdır</li>
+                            <li><strong>Beslenme Zamanı:</strong> Akşam veya gece - doğal aktivite zamanlarında</li>
+                            <li><strong>Su:</strong> Temiz içme suyu, 2-3 günde bir değiştirilmelidir</li>
+                            <li><strong>Vitamin Takviyeleri:</strong> Nadiren gereklidir, doğru beslenme programı yeterlidir</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Sağlık ve Bakım</h4>
+                        <ul>
+                            <li><strong>Deri Değişimi:</strong> Her 1-2 ayda bir tam deri değişimi gerçekleşir</li>
+                            <li><strong>Yaygın Sağlık Sorunları:</strong>
+                                <ul>
+                                    <li>Solunum yolu enfeksiyonları (yetersiz sıcaklık ve nem nedeniyle)</li>
+                                    <li>Ağız çürümesi (stomatitis)</li>
+                                    <li>Dış parazitler (akarlar, keneler)</li>
+                                    <li>İç parazitler</li>
+                                    <li>Deri değişimi sorunları (düşük nem nedeniyle)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Veteriner Bakımı:</strong> Yılda bir kez sürüngen uzmanı veteriner kontrolü</li>
+                            <li><strong>Karantina:</strong> Yeni hayvanlar en az 90 gün karantinada tutulmalıdır</li>
+                            <li><strong>Sanitasyon:</strong> Dışkı/atıklar hemen temizlenmeli, tam temizlik ayda bir yapılmalıdır</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Davranış ve Tutma</h4>
+                        <ul>
+                            <li><strong>Mizaç:</strong> Genellikle çekingen, savunmacı, strese eğilimli</li>
+                            <li><strong>Tutma Önerileri:</strong> Minimal tutulmalı, gerekli olduğunda bir kanca kullanılmalıdır</li>
+                            <li><strong>Savunma Davranışı:</strong> Isırma, vücut pozisyonunu S-şeklinde savunmaya alma</li>
+                            <li><strong>Uyum Süreci:</strong> Yeni çevresine alışması için birkaç hafta rahatsız edilmemeli</li>
+                            <li><strong>Stres Belirtileri:</strong> Sürekli hareket, yem reddi, savunma pozisyonu, saklanma</li>
+                            <li><strong>Sosyalleşme:</strong> Bu tür tutmak için değil seyretmek içindir, sürekli tutulması stres yaratır</li>
+                            <li><strong>Gece Davranışı:</strong> Gece aktiftir, bu saatlerde avlanma ve keşif davranışları gösterir</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            <div class="faq-section">
+                <h3>Sık Sorulan Sorular</h3>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <h4>Yeşil Ağaç Pitonları neden renk değiştirir?</h4>
+                        <div class="accordion-content">
+                            <p>Yeşil Ağaç Pitonları (Morelia viridis) doğduklarında genellikle sarı, kırmızı veya kahverengi renklidir. Bu renk değişimi ontogenetik bir süreçtir, yani hayvanın gelişim aşamalarıyla ilgilidir. Yavrular, genellikle 6-12 ay içinde yetişkin yeşil rengine dönüşür, ancak bu süre 1-2 yıl kadar da sürebilir. Renk değişiminin kesin nedeni tam olarak anlaşılmamıştır, ancak doğal yaşam alanlarında, yavruların ormandaki çürüyen yapraklar arasında kamufle olmalarını sağladığı, yetişkinlerin ise ağaç gövdeleri ve yaprakları arasında gizlenmelerine yardımcı olduğu düşünülmektedir. Doğal morfolojilere ek olarak, turuncu, mavi, sarı ve beyaz tonlarında olan ve renk değişimi göstermeyen çeşitli morfoloji selektif yetiştirme programlarında üretilmiştir.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4>Yeşil Ağaç Pitonlarının farklı lokalite varyantları nelerdir?</h4>
+                        <div class="accordion-content">
+                            <p>Yeşil Ağaç Pitonları, coğrafi kökenlerine göre birkaç lokalite varyantına sahiptir. En yaygın varyantlar şunlardır:<br>
+                            - <strong>Biak:</strong> Genellikle yavruken mavi-beyaz renkli, yetişkin olduğunda mavi benekli açık yeşil.<br>
+                            - <strong>Aru:</strong> Yavruken sarı renkli, yetişkin olduğunda parlak yeşil, sırtta mavi noktalar olabilir.<br>
+                            - <strong>Sorong:</strong> Yavruken sarı veya kırmızı, yetişkin olduğunda parlak yeşil, bazen sarı benekli.<br>
+                            - <strong>Jayapura:</strong> Yavruken sarı, yetişkin olduğunda daha koyu yeşil.<br>
+                            - <strong>Merauke:</strong> Yavruken kırmızı-kahverengi, yetişkin olduğunda genellikle koyu yeşil.<br>
+                            - <strong>Cape York (Avustralya):</strong> Yavruken genellikle sarı, yetişkin olduğunda yeşil.<br>
+                            <br>Bu varyantlar arasında renk, desen, büyüklük ve hatta davranış bakımından küçük farklılıklar olabilir. Bakım gereksinimleri temelde aynıdır, ancak doğal habitatlarına bağlı olarak bazıları daha yüksek veya daha düşük sıcaklık ve nem seviyelerine adapte olmuş olabilir.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4>Yeşil Ağaç Pitonları tutulması zor bir tür müdür?</h4>
+                        <div class="accordion-content">
+                            <p>Evet, Yeşil Ağaç Pitonları (GTP) genellikle ileri seviye bakım gerektiren bir tür olarak kabul edilir. Bunu zorlaştıran faktörler şunlardır:<br>
+                            1. <strong>Çevresel Gereksinimler:</strong> Doğru sıcaklık ve nem dengesi sağlamak oldukça kritiktir; hatalar solunum yolu enfeksiyonları gibi ciddi sağlık sorunlarına yol açabilir.<br>
+                            2. <strong>Hassas Mizaç:</strong> Kolayca strese girerler ve stres bağışıklık sistemini baskılayabilir.<br>
+                            3. <strong>Agresif Eğilim:</strong> Çoğu birey agresif olabilir ve kuvvetli, sivri dişleri ile ısırabilir.<br>
+                            4. <strong>Özel Terraryum Gereksinimleri:</strong> Tamamen ağaçsal bir yaşam tarzına sahiptirler ve özel dikey terraryum düzeni gerektirir.<br>
+                            5. <strong>Beslenme Zorlukları:</strong> Bazı bireyler, özellikle yeni ortamlara alıştıktan sonra beslenmeyi reddedebilir.<br>
+                            <br>Bu nedenle, daha önce yılan deneyimi olan ve bu türün belirli gereksinimlerini karşılayabilen hobiciler için daha uygundur. Yeni başlayanlar için Top Piton (Ball Python) veya Mısır Yılanı (Corn Snake) gibi türler daha iyi bir seçimdir.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4>Yeşil Ağaç Pitonları üretiminde nelere dikkat edilmelidir?</h4>
+                        <div class="accordion-content">
+                            <p>Yeşil Ağaç Pitonlarının üretimi, deneyimli yetiştiriciler için bile zorlu bir süreçtir. Başarılı bir üretim için dikkat edilmesi gereken temel noktalar:<br>
+                            1. <strong>Damızlık Hayvanlar:</strong> En az 3-4 yaşında, sağlıklı ve iyi kondisyonda olmalıdır.<br>
+                            2. <strong>Mevsimsel Döngü:</strong> Doğal habitatlarındaki mevsimsel değişimleri taklit eden sıcaklık ve nem döngüleri uygulanmalıdır.<br>
+                            3. <strong>Brumation (Kış Uykusu):</strong> 2-3 aylık bir dönemde sıcaklık ve nem değerlerinin kademeli olarak düşürülmesi gerekir.<br>
+                            4. <strong>Çiftleştirme:</strong> Brumation sonrası sıcaklık ve nem değerleri kademeli olarak artırılır ve erkek-dişi bir araya getirilir.<br>
+                            5. <strong>Kuluçka:</strong> Dişi genellikle 10-25 yumurta bırakır ve bunlar 49-65 gün boyunca 31-32°C sıcaklık ve %90-100 nem ortamında kuluçkalanmalıdır.<br>
+                            6. <strong>Yavru Bakımı:</strong> Yavrular çok hassastır ve ayrı bireysel terraryumlarda, yüksek nem ve kontrollü sıcaklık koşullarında tutulmalıdır.<br>
+                            <br>Üretim girişimlerinde başarı oranı, yetiştirici deneyimi, genetik faktörler ve bakım kalitesine bağlı olarak değişir. Bu türün üretimi uzmanlaşma ve özel ekipman gerektirdiğinden, genellikle ileri düzey yetiştiriciler tarafından yapılır.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="morphs-section">
-            <h2>Renk Varyasyonları ve Doğal Varyantlar</h2>
-            <p>Yeşil Ağaç Pitonları, doğal habitat bölgelerine bağlı olarak çeşitli renk varyasyonlarına sahiptir. Ayrıca yavrular doğduklarında genellikle sarı veya kırmızı renklidir ve zamanla yeşile dönüşür.</p>
-            
-            <div class="morph-gallery">
-                <div class="morph-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/Juvenile_Green_Tree_Python.jpg" alt="Yavru Sarı Yeşil Ağaç Pitonu">
-                    <h3>Yavru (Sarı)</h3>
-                    <p>Çoğu yavru parlak sarı renkle doğar ve 6-12 ay içinde yeşile dönüşür.</p>
-                </div>
-                <div class="morph-card">
-                    <img src="https://reptilerapture.net/assets/images/rr-gtp-juv-red-05-04-21-a.jpg" alt="Yavru Kırmızı Yeşil Ağaç Pitonu">
-                    <h3>Yavru (Kırmızı)</h3>
-                    <p>Bazı lokasyonlardan gelen yavrular kırmızı veya turuncu renklidir.</p>
-                </div>
-                <div class="morph-card">
-                    <img src="https://reptilerapture.net/assets/images/gtp-sorong-yearling-6-13-2021c.jpg" alt="Sorong Yeşil Ağaç Pitonu">
-                    <h3>Sorong</h3>
-                    <p>Batı Papua'dan gelen, parlak yeşil renkli ve genellikle sırt kısmında beyaz benekler bulunan varyant.</p>
-                </div>
-                <div class="morph-card">
-                    <img src="https://lh3.googleusercontent.com/proxy/FbsXWGbUCQwCnzQHCTsaiwJoY-q-3lk64UZaEQRKecwZa6MlcB7UCq1YC84G8M3a5V1ZJ49_KqXm1IEW5LNv4qOjMOsrJ-OYcj5yTWnQH3wRu9pWc0gHxwbQnw" alt="Biak Yeşil Ağaç Pitonu">
-                    <h3>Biak</h3>
-                    <p>Biak Adası'ndan gelen, daha açık yeşil veya mavi-yeşil tonlarına sahip, sırtında çoğunlukla beyaz çizgiler bulunan varyant.</p>
-                </div>
-            </div>
-            
-            <p class="morph-note">Not: Yıllar içinde çeşitli üretim çalışmaları sonucu mavi, sarı, melanj ve albino gibi nadir morph'lar da geliştirilmiştir. Ancak bu egzotik varyantlar yüksek fiyatlı ve ender bulunurlar.</p>
-        </div>
-        
-        <div class="breeding-section">
-            <h2>Üreme Bilgileri</h2>
-            <p>Yeşil Ağaç Pitonlarının üretimi, deneyimli yetiştiriciler için bile zorlu bir süreç olabilir. Başarılı bir üretim için doğal habitatlarının mevsimsel değişimlerini taklit etmek gerekir.</p>
-            
-            <h3>Üreme Sürecinin Aşamaları</h3>
-            <ul>
-                <li><strong>Hazırlık:</strong> Hem erkek hem dişi optimal sağlık durumunda olmalıdır. Dişi genellikle en az 3-4 yaşında ve 1.5 kg ağırlığında olmalıdır.</li>
-                <li><strong>Mevsimsel Döngü:</strong> Yaklaşık 2-3 ay boyunca gece sıcaklıkları 22-24°C'ye düşürülmeli ve gündüz sıcaklıkları da 26-28°C civarında tutulmalıdır. Bu dönemde nem biraz azaltılabilir.</li>
-                <li><strong>Çiftleştirme:</strong> Mevsimsel döngü sonrası, sıcaklık ve nem tekrar artırılır. Erkek ve dişi, dişinin terraryumunda bir araya getirilir. Çiftleşme birkaç saat sürebilir.</li>
-                <li><strong>Gebelik:</strong> Başarılı bir çiftleşme sonrası gebelik yaklaşık 40-45 gün sürer. Bu dönemde dişinin iştahı azalır ve "gövde kıvrımları" oluşmaya başlar.</li>
-                <li><strong>Yumurtlama:</strong> Dişi genellikle 6-25 arasında yumurta bırakır. Yumurtlama için nemli bir kuluçka kutusu sağlanmalıdır.</li>
-                <li><strong>Kuluçka:</strong> Yumurtalar dikkatle toplanıp, 31-32°C sıcaklık ve %90-100 nem ortamında kuluçka makinesine yerleştirilir. Kuluçka süresi yaklaşık 45-55 gündür.</li>
-            </ul>
-            
-            <p>Yeni çıkan yavrular, bireysel küçük terraryumlarda tutulmalıdır. İlk beslenmeleri genellikle ilk deri değişiminden sonra (yaklaşık 10-14 gün) gerçekleşir. Başlangıçta pinky fare ile beslenmeli ve aşırı elle tutulmaktan kaçınılmalıdır.</p>
-        </div>
-    </div>
+    </section>
 
     <footer>
         <div class="container">
             <p>&copy; 2023 Egzotik Hayvanlar Dünyası. Tüm hakları saklıdır.</p>
             <div class="social">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
     </footer>
-
+    
     <script>
-        function changeImage(src) {
-            document.getElementById('mainImage').src = src;
-        }
+        // Accordion işlevselliği
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            
+            accordionItems.forEach(item => {
+                const header = item.querySelector('h4');
+                const content = item.querySelector('.accordion-content');
+                
+                header.addEventListener('click', () => {
+                    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+            
+            // Mobil menü işlevselliği
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                
+                // Menü ikonunu değiştir (hamburger/çarpı)
+                const menuIcon = menuToggle.querySelector('i');
+                if (mainNav.classList.contains('active')) {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                } else {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+            
+            // Küçük ekranda menü linklerine tıklandığında menüyü kapat
+            const menuLinks = mainNav.querySelectorAll('a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        mainNav.classList.remove('active');
+                        const menuIcon = menuToggle.querySelector('i');
+                        menuIcon.classList.remove('fa-times');
+                        menuIcon.classList.add('fa-bars');
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html> 

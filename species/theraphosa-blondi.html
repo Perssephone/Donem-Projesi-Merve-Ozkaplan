@@ -3,165 +3,390 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Goliath Kuş Yiyen Tarantula (Theraphosa blondi) | Egzotik Hayvanlar</title>
+    <title>Goliath Kuş Yiyen Tarantula - Egzotik Hayvanlar Dünyası</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Mobil Navigasyon Stilleri */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            header .container {
+                flex-direction: column;
+                padding: 15px 20px;
+            }
+            
+            header .logo {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            header nav {
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            header nav.active {
+                max-height: 300px;
+            }
+            
+            header nav ul {
+                flex-direction: column;
+                width: 100%;
+                margin-top: 15px;
+            }
+            
+            header nav ul li {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            header nav ul li a {
+                display: block;
+                padding: 12px 0;
+                border-bottom: 1px solid #eee;
+            }
+        }
+        
+        .species-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            gap: 30px;
+        }
+        
+        .species-header-image {
+            width: 40%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .species-header-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .species-header-content {
+            width: 60%;
+        }
+        
+        .species-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .fact-card {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .fact-card h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .care-level {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .beginner { background-color: #4caf50; }
+        .intermediate { background-color: #ff9800; }
+        .advanced { background-color: #f44336; }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .gallery-item {
+            border-radius: 5px;
+            overflow: hidden;
+            height: 200px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .care-guide-section {
+            margin: 40px 0;
+        }
+        
+        .care-guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .care-guide-item {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .care-guide-item h4 {
+            color: var(--secondary-color);
+            margin-top: 0;
+        }
+        
+        .care-guide-item ul {
+            padding-left: 20px;
+        }
+        
+        .care-guide-item li {
+            margin-bottom: 10px;
+        }
+            
+        /* Logo Stilleri */
+        .site-logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .site-logo img {
+            height: 50px;
+            margin-right: 15px;
+        }</style>
 </head>
 <body>
-    <nav>
-        <div class="logo">
-            <a href="../index.html">
-                <img src="../images/logo.png" alt="Logo">
-                <span>Egzotik Hayvanlar Dünyası</span>
-            </a>
-        </div>
-        <ul class="nav-links">
-            <li><a href="../index.html">Ana Sayfa</a></li>
-            <li><a href="../about.html">Hakkımızda</a></li>
-            <li><a href="../contact.html">İletişim</a></li>
-        </ul>
-    </nav>
-
-    <div class="container">
-        <div class="species-header">
-            <div class="species-header-image">
-                <img src="../images/theraphosa-blondi.jpg" alt="Goliath Kuş Yiyen Tarantula">
+    <header>
+        <div class="container">
+                            <div class="logo">
+                <div class="site-logo">
+                    <img src="../img/logo/logo.png" alt="Egzotik Hayvanlar Dünyası Logo">
+                <h1>Egzotik Hayvanlar Dünyası</h1></div>
+                <button class="mobile-menu-btn" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
-            <div class="species-header-content">
-                <h1>Goliath Kuş Yiyen Tarantula</h1>
-                <p class="scientific-name">Theraphosa blondi</p>
-                <span class="care-level advanced">İleri Seviye</span>
-                <p>Theraphosa blondi, dünyanın en büyük örümcek türü olarak bilinen, etkileyici bir tarantuladır. Güney Amerika'nın yağmur ormanlarında yaşayan bu dev tür, 30 cm'ye kadar ulaşabilen bacak açıklığı ile dikkat çeker. Agresif mizacı ve özel bakım gereksinimleri nedeniyle deneyimli hobiciler için uygundur.</p>
-                <p>Doğal yaşam alanı olan Amazon yağmur ormanlarında, nemli ve sıcak koşullarda yaşar. Yerde yaşayan (terrestrial) bir tür olarak, toprağa derin yuvalar kazar ve genellikle geceleri avlanır. İsmini küçük kuşları bile avlayabilme yeteneğinden alır.</p>
-            </div>
-        </div>
-
-        <div class="species-facts">
-            <div class="fact-card">
-                <h4>Temel Özellikler</h4>
-                <ul>
-                    <li>Ortalama Boy: 25-30 cm (bacak açıklığı)</li>
-                    <li>Vücut Uzunluğu: 10-12 cm</li>
-                    <li>Yaşam Süresi: Dişiler 20-25 yıl, Erkekler 3-6 yıl</li>
-                    <li>Mizaç: Agresif, savunmacı</li>
-                    <li>Aktiflik Zamanı: Gece aktif (nokturnal)</li>
-                </ul>
-            </div>
-            <div class="fact-card">
-                <h4>Habitat Bilgisi</h4>
-                <ul>
-                    <li>Doğal Yaşam Alanı: Güney Amerika (Amazon)</li>
-                    <li>Yaşam Stili: Yerde yaşayan (terrestrial)</li>
-                    <li>Nem İhtiyacı: Yüksek (%80-85)</li>
-                    <li>Sıcaklık İhtiyacı: 26-29°C</li>
-                    <li>Doğal Ortamı: Tropik yağmur ormanları</li>
-                </ul>
-            </div>
-            <div class="fact-card">
-                <h4>Fiziksel Özellikler</h4>
-                <ul>
-                    <li>Renk: Koyu kahverengi-siyah</li>
-                    <li>Savunma: Güçlü zehir, urticating tüyler</li>
-                    <li>Özel Özellikler: Dev boyut, güçlü fangler</li>
-                    <li>Cinsiyet Farklılığı: Dişiler çok daha büyük</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="care-guide-section">
-            <h2>Bakım Rehberi</h2>
-            <div class="care-guide-grid">
-                <div class="care-guide-item">
-                    <h4>Terraryum Gereksinimleri</h4>
-                    <ul>
-                        <li>Minimum 60x45x45 cm boyutlarında terraryum</li>
-                        <li>30-40 cm derinliğinde kazılabilir substrat</li>
-                        <li>Geniş su kabı (nem için)</li>
-                        <li>Sağlam, kaçamayacağı kapak sistemi</li>
-                        <li>Saklanma alanı veya yapay kovuk</li>
-                    </ul>
-                </div>
-                <div class="care-guide-item">
-                    <h4>Çevre Koşulları</h4>
-                    <ul>
-                        <li>Sıcaklık: 26-29°C (gece 24-25°C)</li>
-                        <li>Nem: %80-85</li>
-                        <li>Havalandırma: İyi havalandırma gerekli</li>
-                        <li>Substrat: Nemli tutulmalı</li>
-                        <li>Düzenli spreyleme gerekli</li>
-                    </ul>
-                </div>
-                <div class="care-guide-item">
-                    <h4>Beslenme</h4>
-                    <ul>
-                        <li>Büyük canlı böcekler</li>
-                        <li>Genç fareler (yetişkinler için)</li>
-                        <li>Haftada 1-2 kez beslenme</li>
-                        <li>Büyük su kabı sürekli dolu olmalı</li>
-                        <li>Besin boyutu vücut büyüklüğüne uygun olmalı</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="lifecycle-section">
-            <h2>Yaşam Döngüsü</h2>
-            <div class="lifecycle-timeline">
-                <div class="timeline-container left">
-                    <div class="timeline-content">
-                        <h3>Yumurta Dönemi</h3>
-                        <p>Dişi örümcek 100-200 yumurtalı bir kokon üretir ve 2-3 ay boyunca korur.</p>
-                    </div>
-                </div>
-                <div class="timeline-container right">
-                    <div class="timeline-content">
-                        <h3>Yavru Dönemi</h3>
-                        <p>Yavrular kokondan çıktıktan sonra hızlı bir büyüme sürecine girerler.</p>
-                    </div>
-                </div>
-                <div class="timeline-container left">
-                    <div class="timeline-content">
-                        <h3>Genç Dönem</h3>
-                        <p>2-3 yıl boyunca düzenli gömlek değiştirerek büyürler.</p>
-                    </div>
-                </div>
-                <div class="timeline-container right">
-                    <div class="timeline-content">
-                        <h3>Erişkin Dönem</h3>
-                        <p>3-4 yaşında erişkin boya ulaşırlar. Dişiler 20-25 yıl yaşayabilir.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Hakkımızda</h3>
-                <p>Egzotik Hayvanlar Dünyası, egzotik evcil hayvanlar hakkında kapsamlı bilgi sunan bir kaynaktır.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Hızlı Bağlantılar</h3>
+            <nav id="mainNav">
                 <ul>
                     <li><a href="../index.html">Ana Sayfa</a></li>
+                    <li><a href="../tarantulas.html">Tarantulalar</a></li>
+                    <li><a href="../snakes.html">Yılanlar</a></li>
+                    <li><a href="../lizards.html">Kertenkeleler</a></li>
                     <li><a href="../about.html">Hakkımızda</a></li>
-                    <li><a href="../contact.html">İletişim</a></li>
                 </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="animal-header">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="../index.html">Ana Sayfa</a> &gt; 
+                <a href="../tarantulas.html">Tarantulalar</a> &gt; 
+                <span>Goliath Kuş Yiyen Tarantula</span>
             </div>
-            <div class="footer-section">
-                <h3>Bizi Takip Edin</h3>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+            <h2>Goliath Kuş Yiyen Tarantula (<em>Theraphosa blondi</em>)</h2>
+        </div>
+    </section>
+
+    <section class="animal-info">
+        <div class="container">
+            <div class="species-header">
+                <div class="species-header-image">
+                    <img src="../img/tarantula/theraphosa_vlondi.webp" alt="Goliath Kuş Yiyen Tarantula">
+                </div>
+                <div class="species-header-content">
+                    <h3>Genel Bakış</h3>
+                    <p>Goliath Kuş Yiyen Tarantula (Theraphosa blondi), dünyanın en büyük tarantula türüdür. Bacak açıklığı 28-30 cm'ye ulaşabilir ve vücut ağırlığı 170 grama kadar çıkabilir. Amazon yağmur ormanlarında doğal olarak bulunur.</p>
+                    
+                    <p>İsminin aksine, temel besini kuşlar değildir. Ancak fırsat bulduğunda küçük kemirgenler, kurbağalar, yılanlar ve hatta küçük kuşlar gibi omurgalı hayvanları avlayabilir. Güçlü çeneleri ve agresif mizacı nedeniyle ileri seviye bakım gerektirir.</p>
+                    
+                    <div class="taxonomy">
+                        <h4>Bilimsel Sınıflandırma</h4>
+                        <p><strong>Alem:</strong> Animalia</p>
+                        <p><strong>Şube:</strong> Arthropoda</p>
+                        <p><strong>Sınıf:</strong> Arachnida</p>
+                        <p><strong>Takım:</strong> Araneae</p>
+                        <p><strong>Alttakım:</strong> Mygalomorphae</p>
+                        <p><strong>Familya:</strong> Theraphosidae</p>
+                        <p><strong>Cins:</strong> Theraphosa</p>
+                        <p><strong>Tür:</strong> T. blondi</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="species-facts">
+                <div class="fact-card">
+                    <h4>Temel Özellikler</h4>
+                    <p><strong>Ortalama Boy:</strong> 25-30 cm (bacak açıklığı)</p>
+                    <p><strong>Vücut Uzunluğu:</strong> 10-12 cm</p>
+                    <p><strong>Yaşam Süresi:</strong> Dişiler 15-25 yıl, Erkekler 3-6 yıl</p>
+                    <p><strong>Zorluk Seviyesi:</strong> <span class="care-level advanced">İleri</span></p>
+                    <p><strong>Mizaç:</strong> Agresif, savunmacı, hızlı tehdit pozu alır</p>
+                </div>
+                
+                <div class="fact-card">
+                    <h4>Habitat Bilgileri</h4>
+                    <p><strong>Doğal Habitat:</strong> Kuzey Güney Amerika (Venezüella, Brezilya, Guyana, Surinam) yağmur ormanları</p>
+                    <p><strong>Yaşam Tarzı:</strong> Yer yaşamı (Terrestrial)</p>
+                    <p><strong>Habitat Tipi:</strong> Nemli orman tabanı, nehir kıyıları, bataklık alanlar</p>
+                    <p><strong>Doğal Davranış:</strong> Derin ve geniş çukurlar kazar, gece aktiftir</p>
+                    <p><strong>Özel Not:</strong> Yüksek nem ihtiyacı vardır, doğal yaşam alanında su baskınlarına uyum sağlamıştır</p>
+                </div>
+                
+                <div class="fact-card">
+                    <h4>Fiziksel Özellikler</h4>
+                    <p><strong>Renk:</strong> Koyu kahverengi-siyah</p>
+                    <p><strong>Urtikarya Kılları:</strong> Var (güçlü tahriş edici özelliği var)</p>
+                    <p><strong>Ayırt Edici Özellikler:</strong> Devasa boy, kalın bacaklar, güçlü çeneler (fangs)</p>
+                    <p><strong>Zehir:</strong> Orta derecede etkili, şiddetli ağrıya neden olabilir</p>
+                    <p><strong>Özel Savunma:</strong> Şiddetli ısırık, urtikarya kıllarını atma ve tehdit pozu</p>
+                </div>
+            </div>
+            
+            <div class="care-guide-section">
+                <h3>Detaylı Bakım Rehberi</h3>
+                <div class="care-guide-grid">
+                    <div class="care-guide-item">
+                        <h4>Terraryum Gereksinimleri</h4>
+                        <ul>
+                            <li><strong>Boyut:</strong> Yetişkin bir birey için minimum 60x45x45 cm boyutlarında bir terraryum gereklidir.</li>
+                            <li><strong>Substrat:</strong> 15-20 cm derinliğinde hindistan cevizi lifi (coco fiber) ve turba yosunu karışımı önerilir.</li>
+                            <li><strong>Saklanma Alanı:</strong> Büyük bir kütük, geniş bir mantar kabuğu veya özel yapım bir sığınak sağlanmalıdır.</li>
+                            <li><strong>Su Kabı:</strong> Büyük ve sığ bir su kabı her zaman bulunmalıdır. Bu tür nemli ortamları sever.</li>
+                            <li><strong>Dekorasyon:</strong> Geniş yapraklar, kökler ve orman tabanı görünümü verecek doğal malzemeler kullanılabilir.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Sıcaklık ve Nem</h4>
+                        <ul>
+                            <li><strong>İdeal Sıcaklık:</strong> 26-29°C (78-84°F)</li>
+                            <li><strong>Sıcaklık Aralığı:</strong> 24-32°C (75-90°F)</li>
+                            <li><strong>Nem Oranı:</strong> %80-90 (çok yüksek nem)</li>
+                            <li><strong>Nem Sağlama:</strong> Substratı düzenli olarak nemli tutun ve terraryumu günlük olarak hafifçe püskürtün</li>
+                            <li><strong>Isıtma:</strong> Isıtma pedi (terraryumun altına değil, yan tarafa monte edilmeli)</li>
+                            <li><strong>Uyarı:</strong> Aşırı sıcaklık ve yetersiz nem ölümcül olabilir</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Beslenme ve Su</h4>
+                        <ul>
+                            <li><strong>Besin Tipi:</strong> Büyük canlı böcekler (dev un kurtları, büyük hamam böcekleri, süper cırcır böcekleri)</li>
+                            <li><strong>Özel Yemler:</strong> Yetişkin bireylere ara sıra küçük fareler verilebilir (ayda bir)</li>
+                            <li><strong>Beslenme Sıklığı:</strong> Yetişkinler için 10-14 günde bir</li>
+                            <li><strong>Besin Miktarı:</strong> Bu tür büyük bir iştaha sahiptir; her öğünde 3-4 büyük böcek veya 1 yetişkin fare</li>
+                            <li><strong>Su:</strong> Temiz su her zaman mevcut olmalıdır; su kabı büyük ve sığ olmalıdır</li>
+                            <li><strong>Uyarı:</strong> Bu tür, yemek zamanı çok agresif olabilir; besleme sırasında maşa kullanın ve dikkatli olun</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="care-guide-item">
+                        <h4>Özel Bakım Notları</h4>
+                        <ul>
+                            <li><strong>Tutma:</strong> Kesinlikle önerilmez. Bu tür agresiftir, güçlü bir ısırığa sahiptir ve urtikarya kılları ciddi tahrişe neden olabilir.</li>
+                            <li><strong>Kastrat Riskleri:</strong> T. blondi, klasik urtikarya kıllarına ek olarak, diğer türlerde pek görülmeyen özel tahriş edici kıllar üretebilir.</li>
+                            <li><strong>Terraryum Temizliği:</strong> Tam temizlik yaparken eldiven, uzun kollu giysi ve maske kullanın.</li>
+                            <li><strong>Davranış:</strong> Doğal ortamını kazma eğilimindedir; yeterli miktarda substrat sağlanmalıdır.</li>
+                            <li><strong>Sağlık Sorunları:</strong> Yüksek nem gereksinimi nedeniyle yetersiz nem durumunda solunum sorunları yaşanabilir.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-section">
+                <h3>Fotoğraf Galerisi</h3>
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <img src="../img/tarantula/theraphosa_vlondi.webp" alt="Goliath Kuş Yiyen Tarantula 1">
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Egzotik Hayvanlar Dünyası. Tüm hakları saklıdır.</p>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Egzotik Hayvanlar Dünyası. Tüm hakları saklıdır.</p>
+            <div class="social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
         </div>
     </footer>
+
+    <script>
+        // Sayfa yüklendiğinde
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mevcut JavaScript kodu (varsa)
+            
+            // Mobil menü işlevselliği
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                
+                // Menü ikonunu değiştir (hamburger/çarpı)
+                const menuIcon = menuToggle.querySelector('i');
+                if (mainNav.classList.contains('active')) {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                } else {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+            
+            // Küçük ekranda menü linklerine tıklandığında menüyü kapat
+            const menuLinks = mainNav.querySelectorAll('a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        mainNav.classList.remove('active');
+                        const menuIcon = menuToggle.querySelector('i');
+                        menuIcon.classList.remove('fa-times');
+                        menuIcon.classList.add('fa-bars');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html> 

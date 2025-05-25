@@ -7,6 +7,64 @@
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Mobil Navigasyon Stilleri */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            header .container {
+                flex-direction: column;
+                padding: 15px 20px;
+            }
+            
+            header .logo {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            header nav {
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            header nav.active {
+                max-height: 300px;
+            }
+            
+            header nav ul {
+                flex-direction: column;
+                width: 100%;
+                margin-top: 15px;
+            }
+            
+            header nav ul li {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            header nav ul li a {
+                display: block;
+                padding: 12px 0;
+                border-bottom: 1px solid #eee;
+            }
+        }
+        
         .species-header {
             display: flex;
             align-items: center;
@@ -302,15 +360,32 @@
             color: #666;
             margin-bottom: 5px;
         }
+        
+        /* Logo Stilleri */
+        .site-logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .site-logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
             <div class="logo">
-                <h1>Egzotik Hayvanlar Dünyası</h1>
+                <div class="site-logo">
+                    <img src="../img/logo/logo.png" alt="Egzotik Hayvanlar Dünyası Logo">
+                    <h1>Egzotik Hayvanlar Dünyası</h1>
+                </div>
+                <button class="mobile-menu-btn" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
-            <nav>
+            <nav id="mainNav">
                 <ul>
                     <li><a href="../index.html">Ana Sayfa</a></li>
                     <li><a href="../tarantulas.html">Tarantulalar</a></li>
@@ -337,7 +412,7 @@
         <div class="container">
             <div class="species-header">
                 <div class="species-header-image">
-                    <img src="https://source.unsplash.com/600x400/?mexican+red+knee+tarantula" alt="Meksika Kırmızı Diz Tarantulası">
+                    <img src="../img/tarantula/Brachypelma_Hamorii.jpg" alt="Meksika Kırmızı Diz Tarantulası">
                 </div>
                 <div class="species-header-content">
                     <h3>Genel Bakış</h3>
@@ -536,70 +611,9 @@
                 </div>
             </div>
             
-            <div class="gallery-section">
-                <h3>Fotoğraf Galerisi</h3>
-                <div class="gallery">
-                    <div class="gallery-item">
-                        <img src="https://source.unsplash.com/600x400/?tarantula+red+knee" alt="Meksika Kırmızı Diz Tarantulası 1">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://source.unsplash.com/600x400/?spider+tarantula" alt="Meksika Kırmızı Diz Tarantulası 2">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://source.unsplash.com/600x400/?arachnid+spider" alt="Meksika Kırmızı Diz Tarantulası 3">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://source.unsplash.com/600x400/?mexican+tarantula" alt="Meksika Kırmızı Diz Tarantulası 4">
-                    </div>
-                </div>
-            </div>
             
-            <div class="related-species">
-                <h3>Benzer Türler</h3>
-                <p>Brachypelma hamorii'ye benzer özelliklere sahip diğer tarantula türleri:</p>
-                <div class="related-grid">
-                    <a href="brachypelma-emilia.html" class="related-card">
-                        <div class="related-image">
-                            <img src="https://source.unsplash.com/600x400/?mexican+redleg+tarantula" alt="Meksika Kırmızı Bacak Tarantulası">
-                        </div>
-                        <div class="related-content">
-                            <h4>Meksika Kırmızı Bacak</h4>
-                            <p><em>Brachypelma emilia</em></p>
-                            <p>Zorluk: <span class="care-level beginner">Başlangıç</span></p>
-                        </div>
-                    </a>
-                    <a href="tliltocatl-albopilosus.html" class="related-card">
-                        <div class="related-image">
-                            <img src="https://source.unsplash.com/600x400/?curly+hair+tarantula" alt="Kıvırcık Saçlı Tarantula">
-                        </div>
-                        <div class="related-content">
-                            <h4>Kıvırcık Saçlı Tarantula</h4>
-                            <p><em>Tliltocatl albopilosus</em></p>
-                            <p>Zorluk: <span class="care-level beginner">Başlangıç</span></p>
-                        </div>
-                    </a>
-                    <a href="grammostola-rosea.html" class="related-card">
-                        <div class="related-image">
-                            <img src="https://source.unsplash.com/600x400/?chilean+rose+tarantula" alt="Şili Gül Tarantulası">
-                        </div>
-                        <div class="related-content">
-                            <h4>Şili Gül Tarantulası</h4>
-                            <p><em>Grammostola rosea</em></p>
-                            <p>Zorluk: <span class="care-level beginner">Başlangıç</span></p>
-                        </div>
-                    </a>
-                    <a href="aphonopelma-chalcodes.html" class="related-card">
-                        <div class="related-image">
-                            <img src="https://source.unsplash.com/600x400/?arizona+blonde+tarantula" alt="Arizona Sarışın Tarantulası">
-                        </div>
-                        <div class="related-content">
-                            <h4>Arizona Sarışın Tarantulası</h4>
-                            <p><em>Aphonopelma chalcodes</em></p>
-                            <p>Zorluk: <span class="care-level beginner">Başlangıç</span></p>
-                        </div>
-                    </a>
-                </div>
-            </div>
+            
+           
             
             <div class="faq-section">
                 <h3>Sık Sorulan Sorular</h3>
@@ -661,6 +675,37 @@
                 
                 header.addEventListener('click', () => {
                     content.style.display = content.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+            
+            // Mobil menü işlevselliği
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                
+                // Menü ikonunu değiştir (hamburger/çarpı)
+                const menuIcon = menuToggle.querySelector('i');
+                if (mainNav.classList.contains('active')) {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                } else {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+            
+            // Küçük ekranda menü linklerine tıklandığında menüyü kapat
+            const menuLinks = mainNav.querySelectorAll('a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        mainNav.classList.remove('active');
+                        const menuIcon = menuToggle.querySelector('i');
+                        menuIcon.classList.remove('fa-times');
+                        menuIcon.classList.add('fa-bars');
+                    }
                 });
             });
         });
